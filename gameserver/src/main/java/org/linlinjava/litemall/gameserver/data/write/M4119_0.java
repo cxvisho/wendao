@@ -6,10 +6,12 @@
 package org.linlinjava.litemall.gameserver.data.write;
 
 import io.netty.buffer.ByteBuf;
+
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+
 import org.linlinjava.litemall.gameserver.data.GameWriteTool;
 import org.linlinjava.litemall.gameserver.data.UtilObjMap;
 import org.linlinjava.litemall.gameserver.data.vo.Vo_4119_0;
@@ -23,12 +25,12 @@ public class M4119_0 extends BaseWrite {
     }
 
     protected void writeO(ByteBuf writeBuf, Object object) {
-        List<Vo_4119_0> object1 = (List)object;
+        List<Vo_4119_0> object1 = (List) object;
         GameWriteTool.writeShort(writeBuf, object1.size());
         Iterator var4 = object1.iterator();
 
-        while(var4.hasNext()) {
-            Vo_4119_0 obj = (Vo_4119_0)var4.next();
+        while (var4.hasNext()) {
+            Vo_4119_0 obj = (Vo_4119_0) var4.next();
             GameWriteTool.writeInt(writeBuf, obj.id);
             GameWriteTool.writeString(writeBuf, obj.gid);
             GameWriteTool.writeInt(writeBuf, obj.suit_icon);
@@ -47,10 +49,10 @@ public class M4119_0 extends BaseWrite {
             GameWriteTool.writeShort(writeBuf, map.size());
             Iterator var8 = map.entrySet().iterator();
 
-            while(var8.hasNext()) {
-                Entry<Object, Object> entry = (Entry)var8.next();
-                if (BuildFields.data.get((String)entry.getKey()) != null) {
-                    BuildFields.get((String)entry.getKey()).write(writeBuf, entry.getValue());
+            while (var8.hasNext()) {
+                Entry<Object, Object> entry = (Entry) var8.next();
+                if (BuildFields.data.get((String) entry.getKey()) != null) {
+                    BuildFields.get((String) entry.getKey()).write(writeBuf, entry.getValue());
                 } else {
                     System.out.println(entry.getKey());
                 }

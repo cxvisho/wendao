@@ -1,42 +1,39 @@
-/*    */ package org.linlinjava.litemall.gameserver.data.write;
-/*    */ 
-/*    */ import io.netty.buffer.ByteBuf;
-/*    */ import org.linlinjava.litemall.gameserver.data.GameWriteTool;
-/*    */ import org.linlinjava.litemall.gameserver.data.vo.Vo_40961_0;
-/*    */ import org.linlinjava.litemall.gameserver.netty.BaseWrite;
-/*    */ 
-/*    */ @org.springframework.stereotype.Service
-/*    */ public class M40961_0 extends BaseWrite
-/*    */ {
-/*    */   protected void writeO(ByteBuf writeBuf, Object object)
-/*    */   {
-/* 13 */     Vo_40961_0 object1 = (Vo_40961_0)object;
-/* 14 */     GameWriteTool.writeShort(writeBuf, Integer.valueOf(object1.count));
-/*    */     
-/* 16 */     GameWriteTool.writeString(writeBuf, object1.id);
-/*    */     
-/* 18 */     GameWriteTool.writeShort(writeBuf, Integer.valueOf(object1.type));
-/*    */     
-/* 20 */     GameWriteTool.writeString(writeBuf, object1.sender);
-/*    */     
-/* 22 */     GameWriteTool.writeString(writeBuf, object1.title);
-/*    */     
-/* 24 */     GameWriteTool.writeString2(writeBuf, object1.msg);
-/*    */     
-/* 26 */     GameWriteTool.writeString2(writeBuf, object1.attachment);
-/*    */     
-/* 28 */     GameWriteTool.writeInt(writeBuf, Integer.valueOf(object1.create_time));
-/*    */     
-/* 30 */     GameWriteTool.writeInt(writeBuf, Integer.valueOf(object1.expired_time));
-/*    */     
-/* 32 */     GameWriteTool.writeShort(writeBuf, Integer.valueOf(object1.status));
-/*    */   }
-/*    */   
-/*    */   public int cmd()
-/*    */   {
-/* 37 */     return 40961;
-/*    */   }
-/*    */ }
+package org.linlinjava.litemall.gameserver.data.write;
+
+import io.netty.buffer.ByteBuf;
+import org.linlinjava.litemall.gameserver.data.GameWriteTool;
+import org.linlinjava.litemall.gameserver.data.vo.Vo_40961_0;
+import org.linlinjava.litemall.gameserver.netty.BaseWrite;
+
+@org.springframework.stereotype.Service
+public class M40961_0 extends BaseWrite {
+    protected void writeO(ByteBuf writeBuf, Object object) {
+        Vo_40961_0 object1 = (Vo_40961_0) object;
+        GameWriteTool.writeShort(writeBuf, Integer.valueOf(object1.count));
+
+        GameWriteTool.writeString(writeBuf, object1.id);
+
+        GameWriteTool.writeShort(writeBuf, Integer.valueOf(object1.type));
+
+        GameWriteTool.writeString(writeBuf, object1.sender);
+
+        GameWriteTool.writeString(writeBuf, object1.title);
+
+        GameWriteTool.writeString2(writeBuf, object1.msg);
+
+        GameWriteTool.writeString2(writeBuf, object1.attachment);
+
+        GameWriteTool.writeInt(writeBuf, Integer.valueOf(object1.create_time));
+
+        GameWriteTool.writeInt(writeBuf, Integer.valueOf(object1.expired_time));
+
+        GameWriteTool.writeShort(writeBuf, Integer.valueOf(object1.status));
+    }
+
+    public int cmd() {
+        return 40961;
+    }
+}
 
 
 /* Location:              C:\Users\Administrator\Desktop\gameserver-0.1.0.jar!\org\linlinjava\litemall\gameserver\data\write\M40961_0.class

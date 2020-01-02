@@ -16,7 +16,7 @@ public class M4155_0 extends BaseWrite {
     }
 
     protected void writeO(ByteBuf writeBuf, Object object) {
-        GameWriteTool.writeInt(writeBuf, (Integer)object);
+        GameWriteTool.writeInt(writeBuf, (Integer) object);
     }
 
     public int cmd() {

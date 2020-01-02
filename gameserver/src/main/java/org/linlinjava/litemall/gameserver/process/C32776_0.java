@@ -11,6 +11,7 @@ import org.linlinjava.litemall.gameserver.netty.*;
 import org.linlinjava.litemall.gameserver.data.game.*;
 import org.linlinjava.litemall.gameserver.data.write.*;
 import org.apache.commons.collections.*;
+
 import java.util.*;
 import java.util.Map;
 
@@ -19,8 +20,7 @@ import org.linlinjava.litemall.gameserver.domain.*;
 import org.linlinjava.litemall.db.domain.*;
 
 @Service
-public class C32776_0 implements GameHandler
-{
+public class C32776_0 implements GameHandler {
     @Override
     public void process(final ChannelHandlerContext ctx, final ByteBuf buff) {
         int pos = GameReadTool.readShort(buff);
@@ -36,7 +36,7 @@ public class C32776_0 implements GameHandler
                 if (goods.pos == pos) {
                     final int attrib = goods.goodsInfo.attrib + 10;
                     String current = "";
-                    List<ZhuangbeiInfo> infoList = (List<ZhuangbeiInfo>)GameData.that.baseZhuangbeiInfoService.findByAttrib(Integer.valueOf(attrib));
+                    List<ZhuangbeiInfo> infoList = (List<ZhuangbeiInfo>) GameData.that.baseZhuangbeiInfoService.findByAttrib(Integer.valueOf(attrib));
                     for (int j = 0; j < infoList.size(); ++j) {
                         if (infoList.get(j).getAmount() == goods.goodsInfo.amount) {
                             current = infoList.get(j).getStr();
@@ -49,7 +49,7 @@ public class C32776_0 implements GameHandler
                             if (entry.getKey().equals("groupType")) {
                                 continue;
                             }
-                            if (0 == (int)entry.getValue()) {
+                            if (0 == (int) entry.getValue()) {
                                 continue;
                             }
                             hashMap.put(entry.getKey(), entry.getValue());
@@ -61,7 +61,7 @@ public class C32776_0 implements GameHandler
                         for (final Hashtable<String, Integer> maps : hashtables) {
                             if (maps.get("groupNo") == 2) {
                                 maps.put("groupType", 2);
-                                final GoodsLanSe gooodsLanSe = (GoodsLanSe)JSONUtils.parseObject(JSONUtils.toJSONString((Object)maps), (Class)GoodsLanSe.class);
+                                final GoodsLanSe gooodsLanSe = (GoodsLanSe) JSONUtils.parseObject(JSONUtils.toJSONString((Object) maps), (Class) GoodsLanSe.class);
                                 GameUtil.huodezhuangbei(chara, zhuangbeiInfo, 0, 1, gooodsLanSe);
                             }
                         }
@@ -80,28 +80,28 @@ public class C32776_0 implements GameHandler
                         vo_20481_0.msg = "你成功合成了1个#R" + zhuangbeiInfo.getStr() + "#n。";
                         vo_20481_0.time = 1562987118;
                         GameObjectChar.send(new M20481_0(), vo_20481_0);
-                    }
-                    else {
+                    } else {
                         final Vo_20481_0 vo_20481_2 = new Vo_20481_0();
                         vo_20481_2.msg = "合成失败!";
                         vo_20481_2.time = 1562987118;
                         GameObjectChar.send(new M20481_0(), vo_20481_2);
                     }
                     final int coin = ConsumeMoneyUtils.appraisalMoney(attrib);
-                    if(chara.balance<coin) {return;}
+                    if (chara.balance < coin) {
+                        return;
+                    }
                     chara.balance -= coin;
                     final ListVo_65527_0 listVo_65527_0 = GameUtil.a65527(chara);
                     GameObjectChar.send(new M65527_0(), listVo_65527_0);
                     if (goods.goodsInfo.attrib >= 100) {
-                        infoList = (List<ZhuangbeiInfo>)GameData.that.baseZhuangbeiInfoService.findByAttrib(Integer.valueOf(70));
+                        infoList = (List<ZhuangbeiInfo>) GameData.that.baseZhuangbeiInfoService.findByAttrib(Integer.valueOf(70));
                         for (int k = 0; k < infoList.size(); ++k) {
                             if (infoList.get(k).getAmount() == goods.goodsInfo.amount) {
                                 current = infoList.get(k).getStr();
                             }
                         }
                         GameUtil.removemunber(chara, current, 2);
-                    }
-                    else {
+                    } else {
                         GameUtil.removemunber(chara, "超级女娲石", 2);
                     }
                 }
@@ -118,11 +118,10 @@ public class C32776_0 implements GameHandler
             final ZhuangbeiInfo zhuangbeiInfo2 = GameData.that.baseZhuangbeiInfoService.findOneByStr(pos2);
             if (zhuangbeiInfo2.getAttrib() <= 50) {
                 ClassCurrent = zhuangbeiInfo2.getAttrib() - 15;
-            }
-            else {
+            } else {
                 ClassCurrent = zhuangbeiInfo2.getAttrib() - 10;
             }
-            final List<ZhuangbeiInfo> infoList2 = (List<ZhuangbeiInfo>)GameData.that.baseZhuangbeiInfoService.findByAttrib(Integer.valueOf(ClassCurrent));
+            final List<ZhuangbeiInfo> infoList2 = (List<ZhuangbeiInfo>) GameData.that.baseZhuangbeiInfoService.findByAttrib(Integer.valueOf(ClassCurrent));
             for (int l = 0; l < infoList2.size(); ++l) {
                 if (infoList2.get(l).getAmount() == zhuangbeiInfo2.getAmount()) {
                     current2 = infoList2.get(l).getStr();
@@ -146,17 +145,17 @@ public class C32776_0 implements GameHandler
                     GameObjectChar.send(new M20481_0(), vo_20481_0);
                 }
                 final int coin2 = ConsumeMoneyUtils.appraisalMoney(zhuangbeiInfo2.getAttrib());
-                if(chara.balance<coin2 * owner_id) {return;}
+                if (chara.balance < coin2 * owner_id) {
+                    return;
+                }
                 chara.balance -= coin2 * owner_id;
                 final ListVo_65527_0 listVo_65527_2 = GameUtil.a65527(chara);
                 GameObjectChar.send(new M65527_0(), listVo_65527_2);
-            }
-            else {
+            } else {
                 if (zhuangbeiInfo2.getAttrib() <= 70) {
                     GameUtil.removemunber(chara, current2, 3);
                     GameUtil.huodezhuangbei(chara, zhuangbeiInfo2, 0, 1);
-                }
-                else {
+                } else {
                     final List<Hashtable<String, Integer>> hashtables2 = ForgingEquipmentUtils.appraisalALLEquipment(zhuangbeiInfo2.getAmount(), zhuangbeiInfo2.getAttrib(), null);
                     GameUtil.removemunber(chara, current2, 1);
                     GameUtil.removemunber(chara, "超级女娲石", 2);
@@ -164,7 +163,7 @@ public class C32776_0 implements GameHandler
                         for (final Hashtable<String, Integer> maps2 : hashtables2) {
                             if (maps2.get("groupNo") == 2) {
                                 maps2.put("groupType", 2);
-                                final GoodsLanSe gooodsLanSe2 = (GoodsLanSe)JSONUtils.parseObject(JSONUtils.toJSONString((Object)maps2), (Class)GoodsLanSe.class);
+                                final GoodsLanSe gooodsLanSe2 = (GoodsLanSe) JSONUtils.parseObject(JSONUtils.toJSONString((Object) maps2), (Class) GoodsLanSe.class);
                                 GameUtil.huodezhuangbei(chara, zhuangbeiInfo2, 0, 1, gooodsLanSe2);
                             }
                         }
@@ -175,7 +174,9 @@ public class C32776_0 implements GameHandler
                 vo_20481_3.time = 1562987118;
                 GameObjectChar.send(new M20481_0(), vo_20481_3);
                 final int coin3 = ConsumeMoneyUtils.appraisalMoney(zhuangbeiInfo2.getAttrib());
-                if(chara.balance<coin3) {return;}
+                if (chara.balance < coin3) {
+                    return;
+                }
                 chara.balance -= coin3;
                 final ListVo_65527_0 listVo_65527_3 = GameUtil.a65527(chara);
                 GameObjectChar.send(new M65527_0(), listVo_65527_3);
@@ -199,7 +200,7 @@ public class C32776_0 implements GameHandler
                             if (entry.getKey().equals("groupType")) {
                                 continue;
                             }
-                            if ((int)entry.getValue() == 0) {
+                            if ((int) entry.getValue() == 0) {
                                 continue;
                             }
                             has = false;
@@ -210,7 +211,7 @@ public class C32776_0 implements GameHandler
                         for (final Hashtable<String, Integer> maps3 : hashtables) {
                             if (maps3.get("groupNo") == 27) {
                                 maps3.put("groupType", 2);
-                                final GoodsGaiZaoGongMing goodsLvSeGongMing = (GoodsGaiZaoGongMing)JSONUtils.parseObject(JSONUtils.toJSONString((Object)maps3), (Class)GoodsGaiZaoGongMing.class);
+                                final GoodsGaiZaoGongMing goodsLvSeGongMing = (GoodsGaiZaoGongMing) JSONUtils.parseObject(JSONUtils.toJSONString((Object) maps3), (Class) GoodsGaiZaoGongMing.class);
                                 goods3.goodsGaiZaoGongMing = goodsLvSeGongMing;
                             }
                         }
@@ -225,8 +226,7 @@ public class C32776_0 implements GameHandler
                         vo_20481_4.msg = "恭喜你，炼化成功!";
                         vo_20481_4.time = 1562987118;
                         GameObjectChar.send(new M20481_0(), vo_20481_4);
-                    }
-                    else {
+                    } else {
                         final Vo_41191_0 vo_41191_2 = new Vo_41191_0();
                         vo_41191_2.flag = 0;
                         vo_41191_2.opType = "";
@@ -237,7 +237,9 @@ public class C32776_0 implements GameHandler
                         GameObjectChar.send(new M20481_0(), vo_20481_3);
                     }
                     final int coin = ConsumeMoneyUtils.remakeMoney(goods3.goodsInfo.attrib);
-                    if(chara.balance<coin) {return;}
+                    if (chara.balance < coin) {
+                        return;
+                    }
                     chara.balance -= coin;
                     final ListVo_65527_0 listVo_65527_0 = GameUtil.a65527(chara);
                     GameObjectChar.send(new M65527_0(), listVo_65527_0);
@@ -258,7 +260,7 @@ public class C32776_0 implements GameHandler
                     for (final Hashtable<String, Integer> maps4 : hashtables3) {
                         if (maps4.get("groupNo") == 12) {
                             maps4.put("groupType", 2);
-                            GoodsLvSe goodsLvSe = (GoodsLvSe)JSONUtils.parseObject(JSONUtils.toJSONString((Object)maps4), (Class)GoodsLvSe.class);
+                            GoodsLvSe goodsLvSe = (GoodsLvSe) JSONUtils.parseObject(JSONUtils.toJSONString((Object) maps4), (Class) GoodsLvSe.class);
                             if (goodsLvSe == null) {
                                 goodsLvSe = new GoodsLvSe();
                             }
@@ -266,12 +268,14 @@ public class C32776_0 implements GameHandler
                         }
                         if (maps4.get("groupNo") == 8) {
                             maps4.put("groupType", 2);
-                            final GoodsLvSeGongMing goodsLvSeGongMing2 = (GoodsLvSeGongMing)JSONUtils.parseObject(JSONUtils.toJSONString((Object)maps4), (Class)GoodsLvSeGongMing.class);
+                            final GoodsLvSeGongMing goodsLvSeGongMing2 = (GoodsLvSeGongMing) JSONUtils.parseObject(JSONUtils.toJSONString((Object) maps4), (Class) GoodsLvSeGongMing.class);
                             goods4.goodsLvSeGongMing = goodsLvSeGongMing2;
                         }
                     }
                     final int coin4 = ConsumeMoneyUtils.appendEqMoney(goods4.goodsInfo.attrib);
-                    if(chara.balance<coin4) {return;}
+                    if (chara.balance < coin4) {
+                        return;
+                    }
                     chara.balance -= coin4;
                     GameUtil.a65511(chara);
                     final List<Goods> list = new ArrayList<Goods>();
@@ -313,7 +317,7 @@ public class C32776_0 implements GameHandler
                                 if (entry2.getKey().equals("groupType")) {
                                     continue;
                                 }
-                                if ((int)entry2.getValue() == 0) {
+                                if ((int) entry2.getValue() == 0) {
                                     continue;
                                 }
                                 str = (String) entry2.getKey();
@@ -323,12 +327,12 @@ public class C32776_0 implements GameHandler
                         for (final Hashtable<String, Integer> maps2 : hashtables2) {
                             if (maps2.get("groupNo") == 27) {
                                 maps2.put("groupType", 2);
-                                final GoodsGaiZaoGongMing goodsGaiZaoGongMing2 = (GoodsGaiZaoGongMing)JSONUtils.parseObject(JSONUtils.toJSONString((Object)maps2), (Class)GoodsGaiZaoGongMing.class);
+                                final GoodsGaiZaoGongMing goodsGaiZaoGongMing2 = (GoodsGaiZaoGongMing) JSONUtils.parseObject(JSONUtils.toJSONString((Object) maps2), (Class) GoodsGaiZaoGongMing.class);
                                 goods4.goodsGaiZaoGongMing = goodsGaiZaoGongMing2;
                             }
                             if (maps2.get("groupNo") == 10) {
                                 maps2.put("groupType", 2);
-                                final GoodsGaiZao goodsGaiZao = (GoodsGaiZao)JSONUtils.parseObject(JSONUtils.toJSONString((Object)maps2), (Class)GoodsGaiZao.class);
+                                final GoodsGaiZao goodsGaiZao = (GoodsGaiZao) JSONUtils.parseObject(JSONUtils.toJSONString((Object) maps2), (Class) GoodsGaiZao.class);
                                 goods4.goodsGaiZao = goodsGaiZao;
                             }
                         }
@@ -347,8 +351,7 @@ public class C32776_0 implements GameHandler
                         vo_41191_4.flag = 1;
                         vo_41191_4.opType = "";
                         GameObjectChar.send(new M41191_0(), vo_41191_4);
-                    }
-                    else {
+                    } else {
                         goods4.goodsInfo.store_exp = ints[1];
                         final List<Goods> listgood2 = new ArrayList<Goods>();
                         listgood2.add(goods4);
@@ -363,14 +366,15 @@ public class C32776_0 implements GameHandler
                         GameObjectChar.send(new M41191_0(), vo_41191_5);
                     }
                     final int coin5 = ConsumeMoneyUtils.remakeMoney(goods4.goodsInfo.attrib);
-                    if(chara.balance<coin5) {return;}
+                    if (chara.balance < coin5) {
+                        return;
+                    }
                     chara.balance -= coin5;
                     final ListVo_65527_0 listVo_65527_4 = GameUtil.a65527(chara);
                     GameObjectChar.send(new M65527_0(), listVo_65527_4);
                     if (iswuqi == 1) {
                         GameUtil.removemunber(chara, "超级灵石", pos7);
-                    }
-                    else {
+                    } else {
                         GameUtil.removemunber(chara, "超级晶石", pos7);
                     }
                     GameObjectChar.send(new M65525_0(), chara.backpack);
@@ -396,7 +400,7 @@ public class C32776_0 implements GameHandler
                             if (entry3.getKey().equals("groupType")) {
                                 continue;
                             }
-                            if ((int)entry3.getValue() == 0) {
+                            if ((int) entry3.getValue() == 0) {
                                 continue;
                             }
                             a.add(entry3.getKey());
@@ -408,7 +412,7 @@ public class C32776_0 implements GameHandler
                             if (entry3.getKey().equals("groupType")) {
                                 continue;
                             }
-                            if ((int)entry3.getValue() == 0) {
+                            if ((int) entry3.getValue() == 0) {
                                 continue;
                             }
                             a.add(entry3.getKey());
@@ -420,14 +424,14 @@ public class C32776_0 implements GameHandler
                             if (entry3.getKey().equals("groupType")) {
                                 continue;
                             }
-                            if ((int)entry3.getValue() == 0) {
+                            if ((int) entry3.getValue() == 0) {
                                 continue;
                             }
                             a.add(entry3.getKey());
                             set.add(entry3.getKey());
                         }
                     }
-                    final Collection rs = CollectionUtils.disjunction((Collection)a, (Collection)set);
+                    final Collection rs = CollectionUtils.disjunction((Collection) a, (Collection) set);
                     set = new HashSet();
                     final Object[] objects = rs.toArray();
                     for (int j2 = 0; j2 < objects.length; ++j2) {
@@ -443,7 +447,7 @@ public class C32776_0 implements GameHandler
                             System.out.println(maps5.values());
                             System.out.println(maps5.keys());
                             maps5.put("groupType", 2);
-                            final GoodsHuangSe goodsLanSeObj = (GoodsHuangSe)JSONUtils.parseObject(JSONUtils.toJSONString((Object)maps5), (Class)GoodsHuangSe.class);
+                            final GoodsHuangSe goodsLanSeObj = (GoodsHuangSe) JSONUtils.parseObject(JSONUtils.toJSONString((Object) maps5), (Class) GoodsHuangSe.class);
                             goods4.goodsHuangSe = goodsLanSeObj;
                             GameUtil.a65511(chara);
                             final List list2 = new ArrayList();
@@ -454,8 +458,7 @@ public class C32776_0 implements GameHandler
                             vo_9129_3.para = "39563320";
                             GameObjectChar.send(new M9129_0(), vo_9129_3);
                         }
-                    }
-                    else {
+                    } else {
                         final Vo_41191_0 vo_41191_6 = new Vo_41191_0();
                         vo_41191_6.flag = 0;
                         vo_41191_6.opType = "gold_refine";
@@ -466,7 +469,9 @@ public class C32776_0 implements GameHandler
                         GameObjectChar.send(new M20481_0(), vo_20481_5);
                     }
                     final int coin6 = ConsumeMoneyUtils.yellowMoney(goods4.goodsInfo.attrib);
-                    if(chara.balance<coin6) {return;}
+                    if (chara.balance < coin6) {
+                        return;
+                    }
                     chara.balance -= coin6;
                     final ListVo_65527_0 listVo_65527_5 = GameUtil.a65527(chara);
                     GameObjectChar.send(new M65527_0(), listVo_65527_5);
@@ -488,7 +493,7 @@ public class C32776_0 implements GameHandler
                             if (entry.getKey().equals("groupType")) {
                                 continue;
                             }
-                            if ((int)entry.getValue() == 0) {
+                            if ((int) entry.getValue() == 0) {
                                 continue;
                             }
                             set2.add(entry.getKey());
@@ -500,7 +505,7 @@ public class C32776_0 implements GameHandler
                             if (entry.getKey().equals("groupType")) {
                                 continue;
                             }
-                            if ((int)entry.getValue() == 0) {
+                            if ((int) entry.getValue() == 0) {
                                 continue;
                             }
                             set2.add(entry.getKey());
@@ -512,14 +517,14 @@ public class C32776_0 implements GameHandler
                             if (entry.getKey().equals("groupType")) {
                                 continue;
                             }
-                            if ((int)entry.getValue() == 0) {
+                            if ((int) entry.getValue() == 0) {
                                 continue;
                             }
                             set2.add(entry.getKey());
                             a2.add(entry.getKey());
                         }
                     }
-                    final Collection rs2 = CollectionUtils.disjunction((Collection)a2, (Collection)set2);
+                    final Collection rs2 = CollectionUtils.disjunction((Collection) a2, (Collection) set2);
                     set2 = new HashSet();
                     final Object[] objects2 = rs2.toArray();
                     for (int j3 = 0; j3 < objects2.length; ++j3) {
@@ -528,12 +533,14 @@ public class C32776_0 implements GameHandler
                     final List<Hashtable<String, Integer>> hashtables2 = ForgingEquipmentUtils.appraisalEquipment(goods.goodsInfo.amount, goods.goodsInfo.attrib, 3, set2);
                     for (final Hashtable<String, Integer> maps2 : hashtables2) {
                         maps2.put("groupType", 2);
-                        final GoodsFenSe goodsLanSeObj2 = (GoodsFenSe)JSONUtils.parseObject(JSONUtils.toJSONString((Object)maps2), (Class)GoodsFenSe.class);
+                        final GoodsFenSe goodsLanSeObj2 = (GoodsFenSe) JSONUtils.parseObject(JSONUtils.toJSONString((Object) maps2), (Class) GoodsFenSe.class);
                         goods.goodsFenSe = goodsLanSeObj2;
                         GameUtil.a65511(chara);
                         GameObjectChar.send(new M65525_0(), chara.backpack);
                         final int coin7 = ConsumeMoneyUtils.pinkMoney(goods.goodsInfo.attrib);
-                        if(chara.balance<coin7) {return;}
+                        if (chara.balance < coin7) {
+                            return;
+                        }
                         chara.balance -= coin7;
                         final ListVo_65527_0 listVo_65527_6 = GameUtil.a65527(chara);
                         GameObjectChar.send(new M65527_0(), listVo_65527_6);
@@ -582,11 +589,11 @@ public class C32776_0 implements GameHandler
                         if (entry3.getKey().equals(equipmentKeyByName)) {
                             final int[] equipmentKeyByNames = ForgingEquipmentUtils.appendAttrib(equipmentKeyByName, (Integer) entry3.getValue(), goods5.goodsInfo.attrib, goods5.goodsInfo.amount);
                             final int value = equipmentKeyByNames[0];
-                            if ((int)entry3.getValue() < value) {
+                            if ((int) entry3.getValue() < value) {
                                 has2 = true;
                             }
                             goodsLanSe4.put(entry3.getKey(), value);
-                            final GoodsFenSe goodsHuangSeObj1 = (GoodsFenSe)JSONUtils.parseObject(JSONUtils.toJSONString((Object)goodsLanSe4), (Class)GoodsFenSe.class);
+                            final GoodsFenSe goodsHuangSeObj1 = (GoodsFenSe) JSONUtils.parseObject(JSONUtils.toJSONString((Object) goodsLanSe4), (Class) GoodsFenSe.class);
                             goods5.goodsFenSe = goodsHuangSeObj1;
                             final List list2 = new ArrayList();
                             list2.add(goods5);
@@ -624,8 +631,7 @@ public class C32776_0 implements GameHandler
                 vo_41191_0.flag = 1;
                 vo_41191_0.opType = "";
                 GameObjectChar.send(new M41191_0(), vo_41191_0);
-            }
-            else {
+            } else {
                 final Vo_20481_0 vo_20481_2 = new Vo_20481_0();
                 vo_20481_2.msg = "强化失败!";
                 vo_20481_2.time = 1562987118;
@@ -641,7 +647,9 @@ public class C32776_0 implements GameHandler
             vo_9129_5.para = "33927504";
             GameObjectChar.send(new M9129_0(), vo_9129_5);
             final int coin5 = ConsumeMoneyUtils.appendEqMoney(leve);
-            if(chara.balance<coin5) {return;}
+            if (chara.balance < coin5) {
+                return;
+            }
             chara.balance -= coin5;
             final ListVo_65527_0 listVo_65527_4 = GameUtil.a65527(chara);
             GameObjectChar.send(new M65527_0(), listVo_65527_4);
@@ -676,13 +684,13 @@ public class C32776_0 implements GameHandler
                         final String name = GameData.that.baseShuxingduiyingService.findOneByYingwen(pos8).getName();
                         final String equipmentKeyByName = ForgingEquipmentUtils.getEquipmentKeyByName(name, true);
                         if (entry3.getKey().equals(equipmentKeyByName)) {
-                            final int[] equipmentKeyByNames = ForgingEquipmentUtils.appendAttrib(equipmentKeyByName, (int)entry3.getValue(), goods5.goodsInfo.attrib, goods5.goodsInfo.amount);
+                            final int[] equipmentKeyByNames = ForgingEquipmentUtils.appendAttrib(equipmentKeyByName, (int) entry3.getValue(), goods5.goodsInfo.attrib, goods5.goodsInfo.amount);
                             final int value = equipmentKeyByNames[0];
-                            if ((int)entry3.getValue() < value) {
+                            if ((int) entry3.getValue() < value) {
                                 has2 = true;
                             }
                             goodsLanSe4.put(entry3.getKey(), value);
-                            final GoodsHuangSe goodsHuangSeObj2 = (GoodsHuangSe)JSONUtils.parseObject(JSONUtils.toJSONString((Object)goodsLanSe4), (Class)GoodsHuangSe.class);
+                            final GoodsHuangSe goodsHuangSeObj2 = (GoodsHuangSe) JSONUtils.parseObject(JSONUtils.toJSONString((Object) goodsLanSe4), (Class) GoodsHuangSe.class);
                             goods5.goodsHuangSe = goodsHuangSeObj2;
                             final List list2 = new ArrayList();
                             list2.add(goods5);
@@ -720,8 +728,7 @@ public class C32776_0 implements GameHandler
                 vo_41191_0.flag = 1;
                 vo_41191_0.opType = "";
                 GameObjectChar.send(new M41191_0(), vo_41191_0);
-            }
-            else {
+            } else {
                 final Vo_20481_0 vo_20481_2 = new Vo_20481_0();
                 vo_20481_2.msg = "强化失败！";
                 vo_20481_2.time = 1562987118;
@@ -736,7 +743,9 @@ public class C32776_0 implements GameHandler
             vo_9129_5.para = "33927504";
             GameObjectChar.send(new M9129_0(), vo_9129_5);
             final int coin5 = ConsumeMoneyUtils.appendEqMoney(leve);
-            if(chara.balance<coin5) {return;}
+            if (chara.balance < coin5) {
+                return;
+            }
             chara.balance -= coin5;
             final ListVo_65527_0 listVo_65527_4 = GameUtil.a65527(chara);
             GameObjectChar.send(new M65527_0(), listVo_65527_4);
@@ -771,13 +780,13 @@ public class C32776_0 implements GameHandler
                         final String name = GameData.that.baseShuxingduiyingService.findOneByYingwen(pos8).getName();
                         final String equipmentKeyByName = ForgingEquipmentUtils.getEquipmentKeyByName(name, true);
                         if (entry3.getKey().equals(equipmentKeyByName)) {
-                            final int[] equipmentKeyByNames = ForgingEquipmentUtils.appendAttrib(equipmentKeyByName, (int)entry3.getValue(), goods5.goodsInfo.attrib, goods5.goodsInfo.amount);
+                            final int[] equipmentKeyByNames = ForgingEquipmentUtils.appendAttrib(equipmentKeyByName, (int) entry3.getValue(), goods5.goodsInfo.attrib, goods5.goodsInfo.amount);
                             final int value = equipmentKeyByNames[0];
-                            if ((int)entry3.getValue() < value) {
+                            if ((int) entry3.getValue() < value) {
                                 has2 = true;
                             }
                             goodsLanSe4.put(entry3.getKey(), value);
-                            final GoodsLanSe goodsHuangSeObj3 = (GoodsLanSe)JSONUtils.parseObject(JSONUtils.toJSONString((Object)goodsLanSe4), (Class)GoodsLanSe.class);
+                            final GoodsLanSe goodsHuangSeObj3 = (GoodsLanSe) JSONUtils.parseObject(JSONUtils.toJSONString((Object) goodsLanSe4), (Class) GoodsLanSe.class);
                             goods5.goodsLanSe = goodsHuangSeObj3;
                             final List list2 = new ArrayList();
                             list2.add(goods5);
@@ -819,8 +828,7 @@ public class C32776_0 implements GameHandler
                 vo_9129_0.notify = 51;
                 vo_9129_0.para = "33927504";
                 GameObjectChar.send(new M9129_0(), vo_9129_0);
-            }
-            else {
+            } else {
                 final Vo_20481_0 vo_20481_2 = new Vo_20481_0();
                 vo_20481_2.msg = "强化失败!";
                 vo_20481_2.time = 1562987118;
@@ -831,7 +839,9 @@ public class C32776_0 implements GameHandler
                 GameObjectChar.send(new M41191_0(), vo_41191_0);
             }
             final int coin = ConsumeMoneyUtils.appendEqMoney(leve);
-            if(chara.balance<coin) {return;}
+            if (chara.balance < coin) {
+                return;
+            }
             chara.balance -= coin;
             final ListVo_65527_0 listVo_65527_0 = GameUtil.a65527(chara);
             GameObjectChar.send(new M65527_0(), listVo_65527_0);
@@ -839,7 +849,9 @@ public class C32776_0 implements GameHandler
         if (4 == type) {
             final ZhuangbeiInfo zhuangbeiInfo3 = GameData.that.baseZhuangbeiInfoService.findOneByType(Integer.valueOf(pos));
             final int coin8 = ConsumeMoneyUtils.createMoney(zhuangbeiInfo3.getAttrib());
-            if(chara.balance<coin8) {return;}
+            if (chara.balance < coin8) {
+                return;
+            }
             chara.balance -= coin8;
             final ListVo_65527_0 listVo_65527_7 = GameUtil.a65527(chara);
             GameObjectChar.send(new M65527_0(), listVo_65527_7);
@@ -861,7 +873,7 @@ public class C32776_0 implements GameHandler
                             if (entry4.getKey().equals("groupType")) {
                                 continue;
                             }
-                            if (0 == (int)entry4.getValue()) {
+                            if (0 == (int) entry4.getValue()) {
                                 continue;
                             }
                             goodsLanSe5.put(entry4.getKey(), entry4.getValue());
@@ -884,7 +896,7 @@ public class C32776_0 implements GameHandler
                             if (entry4.getKey().equals("groupType")) {
                                 continue;
                             }
-                            if (0 == (int)entry4.getValue()) {
+                            if (0 == (int) entry4.getValue()) {
                                 continue;
                             }
                             goodsLanSe5.put(entry4.getKey(), entry4.getValue());
@@ -907,7 +919,7 @@ public class C32776_0 implements GameHandler
                             if (entry4.getKey().equals("groupType")) {
                                 continue;
                             }
-                            if (0 == (int)entry4.getValue()) {
+                            if (0 == (int) entry4.getValue()) {
                                 continue;
                             }
                             goodsLanSe5.put(entry4.getKey(), entry4.getValue());
@@ -934,7 +946,7 @@ public class C32776_0 implements GameHandler
             chara.backpack.remove(backpack3);
             chara.backpack.remove(backpack4);
             GameUtil.huodezhuangbei(chara, zhuangbeiInfo3, 0, goods7);
-            final GoodsLanSe goodsHuangSeObj4 = (GoodsLanSe)JSONUtils.parseObject(JSONUtils.toJSONString((Object)goodsLanSe5), (Class)GoodsLanSe.class);
+            final GoodsLanSe goodsHuangSeObj4 = (GoodsLanSe) JSONUtils.parseObject(JSONUtils.toJSONString((Object) goodsLanSe5), (Class) GoodsLanSe.class);
             goods7.goodsLanSe = goodsHuangSeObj4;
             final List<Goods> listbeibao3 = new ArrayList<Goods>();
             listbeibao3.add(goods7);
@@ -949,7 +961,9 @@ public class C32776_0 implements GameHandler
                 final boolean has3 = false;
                 if (chara.backpack.get(i).pos == pos) {
                     final int coin9 = ConsumeMoneyUtils.removeMoney(chara.backpack.get(i).goodsInfo.attrib);
-                    if(chara.balance<coin9) {return;}
+                    if (chara.balance < coin9) {
+                        return;
+                    }
                     chara.balance -= coin9;
                     final ListVo_65527_0 listVo_65527_8 = GameUtil.a65527(chara);
                     GameObjectChar.send(new M65527_0(), listVo_65527_8);
@@ -965,7 +979,7 @@ public class C32776_0 implements GameHandler
                     }
                     int jilv = 2;
                     for (final Map.Entry<Object, Object> entry5 : goodsLanSe.entrySet()) {
-                        if ((int)entry5.getValue() != 0 && cont <= jilv) {
+                        if ((int) entry5.getValue() != 0 && cont <= jilv) {
                             if (entry5.getKey().equals("groupNo")) {
                                 continue;
                             }
@@ -980,11 +994,11 @@ public class C32776_0 implements GameHandler
                                 name2 = "伤害";
                             }
                             final StoreInfo storeInfo = GameData.that.baseStoreInfoService.findOneByName("超级黑水晶");
-                            final GoodsLanSe goodsLanSeObj3 = (GoodsLanSe)JSONUtils.parseObject(JSONUtils.toJSONString((Object)goodsLanSe7), (Class)GoodsLanSe.class);
+                            final GoodsLanSe goodsLanSeObj3 = (GoodsLanSe) JSONUtils.parseObject(JSONUtils.toJSONString((Object) goodsLanSe7), (Class) GoodsLanSe.class);
                             good.goodsLanSe = goodsLanSeObj3;
-                            GameUtil.huodecaifen(chara, storeInfo, 1, goods4.goodsInfo.attrib, (int)entry5.getValue(), name2, good, goods4.goodsInfo.amount);
+                            GameUtil.huodecaifen(chara, storeInfo, 1, goods4.goodsInfo.attrib, (int) entry5.getValue(), name2, good, goods4.goodsInfo.amount);
                             goodsLanSe.remove(entry5.getKey());
-                            final GoodsLanSe goodsLanSeObj4 = (GoodsLanSe)JSONUtils.parseObject(JSONUtils.toJSONString((Object)goodsLanSe), (Class)GoodsLanSe.class);
+                            final GoodsLanSe goodsLanSeObj4 = (GoodsLanSe) JSONUtils.parseObject(JSONUtils.toJSONString((Object) goodsLanSe), (Class) GoodsLanSe.class);
                             goods4.goodsLanSe = goodsLanSeObj4;
                             final List list3 = new ArrayList();
                             list3.add(goods4);
@@ -994,7 +1008,7 @@ public class C32776_0 implements GameHandler
                         }
                     }
                     for (final Map.Entry<Object, Object> entry5 : goodsHuangSe3.entrySet()) {
-                        if ((int)entry5.getValue() != 0 && cont <= jilv) {
+                        if ((int) entry5.getValue() != 0 && cont <= jilv) {
                             if (entry5.getKey().equals("groupNo")) {
                                 continue;
                             }
@@ -1009,11 +1023,11 @@ public class C32776_0 implements GameHandler
                                 name2 = "伤害";
                             }
                             final StoreInfo storeInfo = GameData.that.baseStoreInfoService.findOneByName("超级黑水晶");
-                            final GoodsLanSe goodsHuangSeObj5 = (GoodsLanSe)JSONUtils.parseObject(JSONUtils.toJSONString((Object)goodsHuangSe4), (Class)GoodsLanSe.class);
+                            final GoodsLanSe goodsHuangSeObj5 = (GoodsLanSe) JSONUtils.parseObject(JSONUtils.toJSONString((Object) goodsHuangSe4), (Class) GoodsLanSe.class);
                             good.goodsLanSe = goodsHuangSeObj5;
                             GameUtil.huodecaifen(chara, storeInfo, 1, goods4.goodsInfo.attrib, (Integer) entry5.getValue(), name2, good, goods4.goodsInfo.amount);
                             goodsHuangSe3.remove(entry5.getKey());
-                            final GoodsHuangSe goodsHuangSeObj6 = (GoodsHuangSe)JSONUtils.parseObject(JSONUtils.toJSONString((Object)goodsHuangSe3), (Class)GoodsHuangSe.class);
+                            final GoodsHuangSe goodsHuangSeObj6 = (GoodsHuangSe) JSONUtils.parseObject(JSONUtils.toJSONString((Object) goodsHuangSe3), (Class) GoodsHuangSe.class);
                             goods4.goodsHuangSe = goodsHuangSeObj6;
                             final List list3 = new ArrayList();
                             list3.add(goods4);
@@ -1027,7 +1041,7 @@ public class C32776_0 implements GameHandler
                             if (entry5.getKey().equals("groupType")) {
                                 continue;
                             }
-                            if ((int)entry5.getValue() != 0 && cont <= jilv) {
+                            if ((int) entry5.getValue() != 0 && cont <= jilv) {
                                 final Goods good = new Goods();
                                 final Map<Object, Object> goodsFenSe3 = UtilObjMapshuxing.GoodsLanSe(good.goodsLanSe);
                                 goodsFenSe3.put(entry5.getKey(), entry5.getValue());
@@ -1036,11 +1050,11 @@ public class C32776_0 implements GameHandler
                                     name2 = "伤害";
                                 }
                                 final StoreInfo storeInfo = GameData.that.baseStoreInfoService.findOneByName("超级黑水晶");
-                                final GoodsLanSe goodsFenSeObj = (GoodsLanSe)JSONUtils.parseObject(JSONUtils.toJSONString((Object)goodsFenSe3), (Class)GoodsLanSe.class);
+                                final GoodsLanSe goodsFenSeObj = (GoodsLanSe) JSONUtils.parseObject(JSONUtils.toJSONString((Object) goodsFenSe3), (Class) GoodsLanSe.class);
                                 good.goodsLanSe = goodsFenSeObj;
                                 GameUtil.huodecaifen(chara, storeInfo, 1, goods4.goodsInfo.attrib, (Integer) entry5.getValue(), name2, good, goods4.goodsInfo.amount);
                                 goodsFenSe.remove(entry5.getKey());
-                                final GoodsFenSe goodsFenSeObj2 = (GoodsFenSe)JSONUtils.parseObject(JSONUtils.toJSONString((Object)goodsFenSe), (Class)GoodsFenSe.class);
+                                final GoodsFenSe goodsFenSeObj2 = (GoodsFenSe) JSONUtils.parseObject(JSONUtils.toJSONString((Object) goodsFenSe), (Class) GoodsFenSe.class);
                                 goods4.goodsFenSe = goodsFenSeObj2;
                                 final List list3 = new ArrayList();
                                 list3.add(goods4);
@@ -1057,7 +1071,7 @@ public class C32776_0 implements GameHandler
                             if (entry6.getKey().equals("groupType")) {
                                 continue;
                             }
-                            number += (int)entry6.getValue();
+                            number += (int) entry6.getValue();
                         }
                     }
                     for (final Map.Entry<Object, Object> entry6 : goodsHuangSe3.entrySet()) {
@@ -1065,7 +1079,7 @@ public class C32776_0 implements GameHandler
                             if (entry6.getKey().equals("groupType")) {
                                 continue;
                             }
-                            number += (int)entry6.getValue();
+                            number += (int) entry6.getValue();
                         }
                     }
                     for (final Map.Entry<Object, Object> entry6 : goodsFenSe.entrySet()) {
@@ -1073,7 +1087,7 @@ public class C32776_0 implements GameHandler
                             if (entry6.getKey().equals("groupType")) {
                                 continue;
                             }
-                            number += (int)entry6.getValue();
+                            number += (int) entry6.getValue();
                         }
                     }
                     if (number == 0) {
@@ -1090,8 +1104,7 @@ public class C32776_0 implements GameHandler
                     final Vo_20481_0 vo_20481_7 = new Vo_20481_0();
                     if (name2.equals("")) {
                         vo_20481_7.msg = "拆分失败，请继续努力";
-                    }
-                    else {
+                    } else {
                         vo_20481_7.msg = "你成功拆分出了属性#R" + name2 + "#n";
                     }
                     vo_20481_7.time = 1562987118;
@@ -1120,8 +1133,8 @@ public class C32776_0 implements GameHandler
                                 }
                             }
                         }
-                        final GoodsLanSe goodsLanSeObj5 = (GoodsLanSe)JSONUtils.parseObject(JSONUtils.toJSONString((Object)goodsLanSe8), (Class)GoodsLanSe.class);
-                        final Goods goods11 = (Goods)JSONUtils.parseObject(JSONUtils.toJSONString((Object)objectObjectMap), (Class)Goods.class);
+                        final GoodsLanSe goodsLanSeObj5 = (GoodsLanSe) JSONUtils.parseObject(JSONUtils.toJSONString((Object) goodsLanSe8), (Class) GoodsLanSe.class);
+                        final Goods goods11 = (Goods) JSONUtils.parseObject(JSONUtils.toJSONString((Object) objectObjectMap), (Class) Goods.class);
                         Goods goods7 = new Goods();
                         goods7 = goods11;
                         goods7.pos = GameUtil.beibaoweizhi(chara);
@@ -1142,9 +1155,9 @@ public class C32776_0 implements GameHandler
                         final Map<Object, Object> goodsfense = UtilObjMapshuxing.GoodsFenSe(goods.goodsFenSe);
                         for (final Hashtable<String, Integer> maps4 : hashtables5) {
                             final int groupNo2 = maps4.get("groupNo");
-                            final int groupNolanse2 = (int)goodsLanSe8.get("groupNo");
-                            final int groupNohuangse = (int)goodshuangse.get("groupNo");
-                            final int groupNofense = (int)goodsfense.get("groupNo");
+                            final int groupNolanse2 = (int) goodsLanSe8.get("groupNo");
+                            final int groupNohuangse = (int) goodshuangse.get("groupNo");
+                            final int groupNofense = (int) goodsfense.get("groupNo");
                             if (groupNolanse2 == groupNo2) {
                                 for (final Map.Entry<String, Integer> entry8 : maps4.entrySet()) {
                                     goodsLanSe8.put(entry8.getKey(), entry8.getValue());
@@ -1161,11 +1174,11 @@ public class C32776_0 implements GameHandler
                                 }
                             }
                         }
-                        final GoodsLanSe goodsLanSeObj6 = (GoodsLanSe)JSONUtils.parseObject(JSONUtils.toJSONString((Object)goodsLanSe8), (Class)GoodsLanSe.class);
-                        final GoodsHuangSe goodshuangseObj = (GoodsHuangSe)JSONUtils.parseObject(JSONUtils.toJSONString((Object)goodshuangse), (Class)GoodsHuangSe.class);
-                        final GoodsFenSe goodsfenseObj = (GoodsFenSe)JSONUtils.parseObject(JSONUtils.toJSONString((Object)goodsfense), (Class)GoodsFenSe.class);
+                        final GoodsLanSe goodsLanSeObj6 = (GoodsLanSe) JSONUtils.parseObject(JSONUtils.toJSONString((Object) goodsLanSe8), (Class) GoodsLanSe.class);
+                        final GoodsHuangSe goodshuangseObj = (GoodsHuangSe) JSONUtils.parseObject(JSONUtils.toJSONString((Object) goodshuangse), (Class) GoodsHuangSe.class);
+                        final GoodsFenSe goodsfenseObj = (GoodsFenSe) JSONUtils.parseObject(JSONUtils.toJSONString((Object) goodsfense), (Class) GoodsFenSe.class);
                         Goods goods12 = new Goods();
-                        final Goods goods6 = goods12 = (Goods)JSONUtils.parseObject(JSONUtils.toJSONString((Object)objectObjectMap), (Class)Goods.class);
+                        final Goods goods6 = goods12 = (Goods) JSONUtils.parseObject(JSONUtils.toJSONString((Object) objectObjectMap), (Class) Goods.class);
                         goods12.pos = GameUtil.beibaoweizhi(chara);
                         goods12.goodsInfo.owner_id = 1;
                         goods12.goodsInfo.degree_32 = 0;

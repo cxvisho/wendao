@@ -17,7 +17,7 @@ public class M3581_0 extends BaseWrite {
     }
 
     protected void writeO(ByteBuf writeBuf, Object object) {
-        Vo_3581_0 object1 = (Vo_3581_0)object;
+        Vo_3581_0 object1 = (Vo_3581_0) object;
         GameWriteTool.writeShort(writeBuf, object1.a);
     }
 

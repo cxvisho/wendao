@@ -6,10 +6,12 @@
 package org.linlinjava.litemall.gameserver.data.write;
 
 import io.netty.buffer.ByteBuf;
+
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+
 import org.linlinjava.litemall.gameserver.data.GameWriteTool;
 import org.linlinjava.litemall.gameserver.data.UtilObjMap;
 import org.linlinjava.litemall.gameserver.data.vo.Vo_4121_0;
@@ -23,13 +25,13 @@ public class M4121_0 extends BaseWrite {
     }
 
     protected void writeO(ByteBuf writeBuf, Object object) {
-        List<Vo_4121_0> object1 = (List)object;
+        List<Vo_4121_0> object1 = (List) object;
         GameWriteTool.writeShort(writeBuf, object1.size());
         Iterator var4 = object1.iterator();
 
         label41:
-        while(var4.hasNext()) {
-            Vo_4121_0 obj = (Vo_4121_0)var4.next();
+        while (var4.hasNext()) {
+            Vo_4121_0 obj = (Vo_4121_0) var4.next();
             GameWriteTool.writeInt(writeBuf, obj.id);
             GameWriteTool.writeString(writeBuf, obj.gid);
             GameWriteTool.writeInt(writeBuf, obj.suit_icon);
@@ -50,17 +52,17 @@ public class M4121_0 extends BaseWrite {
             map.remove("memberlight_effect_count");
             Iterator it = map.entrySet().iterator();
 
-            while(true) {
+            while (true) {
                 Entry entry;
                 do {
                     if (!it.hasNext()) {
                         GameWriteTool.writeShort(writeBuf, map.size());
                         Iterator var10 = map.entrySet().iterator();
 
-                        while(var10.hasNext()) {
-                           entry = (Entry)var10.next();
-                            if (BuildFields.data.get((String)entry.getKey()) != null) {
-                                BuildFields.get((String)entry.getKey()).write(writeBuf, entry.getValue());
+                        while (var10.hasNext()) {
+                            entry = (Entry) var10.next();
+                            if (BuildFields.data.get((String) entry.getKey()) != null) {
+                                BuildFields.get((String) entry.getKey()).write(writeBuf, entry.getValue());
                             } else {
                                 System.out.println(entry.getKey());
                             }
@@ -76,8 +78,8 @@ public class M4121_0 extends BaseWrite {
                         continue label41;
                     }
 
-                    entry = (Entry)it.next();
-                } while(!entry.getValue().equals(0) && !entry.getKey().equals(""));
+                    entry = (Entry) it.next();
+                } while (!entry.getValue().equals(0) && !entry.getKey().equals(""));
 
                 it.remove();
             }

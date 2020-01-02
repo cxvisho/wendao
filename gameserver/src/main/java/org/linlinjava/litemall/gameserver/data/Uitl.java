@@ -29,7 +29,7 @@ public class Uitl {
         data.put("1fc3", "8131");
         data.put("3fff", "16383");
         data.put("fff7", "65527");
-        String arr1 = (String)data.get(arr);
+        String arr1 = (String) data.get(arr);
         return arr1 != null;
     }
 
@@ -46,7 +46,7 @@ public class Uitl {
         byte[] bytes = hexToByteArray(value);
         System.out.println(new String(bytes, "GBK"));
 
-        for(int i = 0; i < bytes.length; ++i) {
+        for (int i = 0; i < bytes.length; ++i) {
             byte aByte = bytes[i];
             System.out.print(aByte + " ");
         }
@@ -66,7 +66,7 @@ public class Uitl {
 
         int j = 0;
 
-        for(int i = 0; i < hexlen; i += 2) {
+        for (int i = 0; i < hexlen; i += 2) {
             result[j] = hexToByte(inHex.substring(i, i + 2));
             ++j;
         }
@@ -75,7 +75,7 @@ public class Uitl {
     }
 
     public static byte hexToByte(String inHex) {
-        return (byte)Integer.parseInt(inHex, 16);
+        return (byte) Integer.parseInt(inHex, 16);
     }
 
     public static HashMap<Object, Object> kv() {

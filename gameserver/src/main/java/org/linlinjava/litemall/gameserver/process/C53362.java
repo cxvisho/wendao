@@ -16,16 +16,16 @@ import org.springframework.stereotype.Service;
 @Service
 public class C53362 implements GameHandler {
 
-	public void process(ChannelHandlerContext ctx, ByteBuf buff)
- {
-		
-		Object vo_4275_0 = new Vo_4275_0();;
-		ByteBuf write = new M53363_0().write(vo_4275_0);
-		ctx.writeAndFlush(write);
- }
+    public void process(ChannelHandlerContext ctx, ByteBuf buff) {
+
+        Object vo_4275_0 = new Vo_4275_0();
+        ;
+        ByteBuf write = new M53363_0().write(vo_4275_0);
+        ctx.writeAndFlush(write);
+    }
 
 
-	public int cmd() {
-		return 53362;
-	}
+    public int cmd() {
+        return 53362;
+    }
 }

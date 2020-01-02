@@ -7,9 +7,11 @@ package org.linlinjava.litemall.gameserver.game;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.util.ReferenceCountUtil;
+
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
+
 import org.linlinjava.litemall.db.domain.Npc;
 import org.linlinjava.litemall.db.domain.NpcPoint;
 import org.linlinjava.litemall.gameserver.data.vo.Vo_45157_0;
@@ -67,8 +69,8 @@ public class GameMap {
         gameObjectChar.sendOne(new M65505_0(), vo_65505_1);
         Iterator var6 = npcList.iterator();
 
-        while(var6.hasNext()) {
-            Npc npc = (Npc)var6.next();
+        while (var6.hasNext()) {
+            Npc npc = (Npc) var6.next();
             gameObjectChar.sendOne(new M65529_npc(), npc);
         }
 
@@ -79,7 +81,7 @@ public class GameMap {
         Vo_61671_0 vo_61671_0;
         if (gameObjectChar.gameTeam != null && gameObjectChar.gameTeam.duiwu != null && gameObjectChar.gameTeam.duiwu.size() > 0) {
             vo_61671_0 = new Vo_61671_0();
-            vo_61671_0.id = ((Chara)gameObjectChar.gameTeam.duiwu.get(0)).id;
+            vo_61671_0.id = ((Chara) gameObjectChar.gameTeam.duiwu.get(0)).id;
             vo_61671_0.count = 2;
             vo_61671_0.list.add(2);
             vo_61671_0.list.add(3);
@@ -88,15 +90,15 @@ public class GameMap {
 
         Iterator var13 = this.sessionList.iterator();
 
-        while(var13.hasNext()) {
-            GameObjectChar gameSession = (GameObjectChar)var13.next();
+        while (var13.hasNext()) {
+            GameObjectChar gameSession = (GameObjectChar) var13.next();
             if (gameSession.ctx != null && gameSession.chara != null) {
                 vo_65529_0 = GameUtil.a65529(gameSession.chara);
                 GameUtil.genchongfei(gameSession.chara);
                 gameObjectChar.sendOne(new M65529_0(), vo_65529_0);
                 if (gameSession.gameTeam != null && gameSession.gameTeam.duiwu != null && gameSession.gameTeam.duiwu.size() > 0) {
-                     vo_61671_0 = new Vo_61671_0();
-                    vo_61671_0.id = ((Chara)gameSession.gameTeam.duiwu.get(0)).id;
+                    vo_61671_0 = new Vo_61671_0();
+                    vo_61671_0.id = ((Chara) gameSession.gameTeam.duiwu.get(0)).id;
                     vo_61671_0.count = 2;
                     vo_61671_0.list.add(2);
                     vo_61671_0.list.add(3);
@@ -130,8 +132,8 @@ public class GameMap {
         gameObjectChar.sendOne(new M65505_0(), vo_65505_1);
         Iterator var7 = npcList.iterator();
 
-        while(var7.hasNext()) {
-            Npc npc = (Npc)var7.next();
+        while (var7.hasNext()) {
+            Npc npc = (Npc) var7.next();
             gameObjectChar.sendOne(new M65529_npc(), npc);
         }
 
@@ -141,15 +143,15 @@ public class GameMap {
         this.send(new M65529_0(), vo_65529_0);
         Iterator var9 = this.sessionList.iterator();
 
-        while(var9.hasNext()) {
-            GameObjectChar gameSession = (GameObjectChar)var9.next();
+        while (var9.hasNext()) {
+            GameObjectChar gameSession = (GameObjectChar) var9.next();
             if (gameSession.ctx != null && gameSession.chara != null) {
                 vo_65529_0 = GameUtil.a65529(gameSession.chara);
                 gameObjectChar.sendOne(new M65529_0(), vo_65529_0);
                 GameUtil.genchongfei(gameSession.chara);
                 if (gameSession.gameTeam != null && gameSession.gameTeam.duiwu.size() > 0) {
                     Vo_61671_0 vo_61671_0 = new Vo_61671_0();
-                    vo_61671_0.id = ((Chara)gameSession.gameTeam.duiwu.get(0)).id;
+                    vo_61671_0.id = ((Chara) gameSession.gameTeam.duiwu.get(0)).id;
                     vo_61671_0.count = 2;
                     vo_61671_0.list.add(2);
                     vo_61671_0.list.add(3);
@@ -177,8 +179,8 @@ public class GameMap {
         int sendNum = 0;
         Iterator var7 = this.sessionList.iterator();
 
-        while(var7.hasNext()) {
-            GameObjectChar gameSession = (GameObjectChar)var7.next();
+        while (var7.hasNext()) {
+            GameObjectChar gameSession = (GameObjectChar) var7.next();
             if (gameSession.ctx != null) {
                 ++sendNum;
                 ByteBuf copy = buff.copy();
@@ -201,8 +203,8 @@ public class GameMap {
         ByteBuf buff = baseWrite.write(obj);
         Iterator var6 = this.sessionList.iterator();
 
-        while(var6.hasNext()) {
-            GameObjectChar gameSession = (GameObjectChar)var6.next();
+        while (var6.hasNext()) {
+            GameObjectChar gameSession = (GameObjectChar) var6.next();
             if (!gameObjectChar.equals(gameSession) && gameSession.ctx != null) {
                 ++sendNum;
                 ByteBuf copy = buff.copy();
@@ -218,14 +220,14 @@ public class GameMap {
         ByteBuf buff = baseWrite.write(obj);
         Iterator var6 = this.sessionList.iterator();
 
-        while(true) {
-            while(var6.hasNext()) {
-                GameObjectChar gameSession = (GameObjectChar)var6.next();
+        while (true) {
+            while (var6.hasNext()) {
+                GameObjectChar gameSession = (GameObjectChar) var6.next();
                 boolean has = false;
                 ByteBuf copy;
                 if (gameSession.gameTeam != null && gameSession.gameTeam.duiwu != null) {
-                    for(int i = 0; i < gameSession.gameTeam.duiwu.size(); ++i) {
-                        if (gameSession.equals(GameObjectCharMng.getGameObjectChar(((Chara)gameSession.gameTeam.duiwu.get(i)).id))) {
+                    for (int i = 0; i < gameSession.gameTeam.duiwu.size(); ++i) {
+                        if (gameSession.equals(GameObjectCharMng.getGameObjectChar(((Chara) gameSession.gameTeam.duiwu.get(i)).id))) {
                             has = true;
                         }
                     }
@@ -251,8 +253,8 @@ public class GameMap {
         ByteBuf buff = baseWrite.write(obj);
         Iterator var5 = this.sessionList.iterator();
 
-        while(var5.hasNext()) {
-            GameObjectChar gameSession = (GameObjectChar)var5.next();
+        while (var5.hasNext()) {
+            GameObjectChar gameSession = (GameObjectChar) var5.next();
             if (gameObjectChar.equals(gameSession) && gameSession.ctx != null) {
                 ByteBuf copy = buff.copy();
                 gameSession.send0(copy);
