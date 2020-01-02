@@ -7,6 +7,7 @@ package org.linlinjava.litemall.gameserver.fight;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import org.linlinjava.litemall.gameserver.data.vo.Vo_19945_0;
 import org.linlinjava.litemall.gameserver.data.vo.Vo_19959_0;
 import org.linlinjava.litemall.gameserver.data.write.M19945_0;
@@ -52,7 +53,7 @@ public class NormalAttackSkill implements FightSkill {
         vo_19945_0.damage_type = 1;
         FightManager.send(fightContainer, new M19945_0(), vo_19945_0);
         int hurt = BattleUtils.battle(fightObject.accurate + fightObject.accurate_ext, 0, victimFightObject.fangyu + victimFightObject.fangyu_ext);
-        hurt = (int)((float)hurt * jiabei);
+        hurt = (int) ((float) hurt * jiabei);
         hurt = victimFightObject.reduceShengming(hurt, fabao);
         FightResult fightResult = new FightResult();
         fightResult.id = fightRequest.id;

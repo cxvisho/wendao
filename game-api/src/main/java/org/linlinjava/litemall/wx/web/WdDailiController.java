@@ -16,6 +16,7 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.CopyOnWriteArrayList;
 import javax.servlet.http.HttpServletRequest;
+
 import org.linlinjava.litemall.core.util.JacksonUtil;
 import org.linlinjava.litemall.core.util.ResponseUtil;
 import org.linlinjava.litemall.db.dao.custom.CustomDailiMapper;
@@ -64,13 +65,13 @@ public class WdDailiController {
                 new HashMap();
                 Iterator var16 = zimu.iterator();
 
-                while(var16.hasNext()) {
-                    String zm = (String)var16.next();
+                while (var16.hasNext()) {
+                    String zm = (String) var16.next();
                     maps = this.customDailiMapper.selectAccount(zm);
                     var11 = maps.iterator();
 
-                    while(var11.hasNext()) {
-                        map = (Map)var11.next();
+                    while (var11.hasNext()) {
+                        map = (Map) var11.next();
                         Object numobj = map.get("num");
                         int num = Integer.valueOf(numobj.toString());
                         HashMap hashMap = new HashMap();
@@ -99,8 +100,8 @@ public class WdDailiController {
                 maps = this.customDailiMapper.selectAccount(username);
                 var11 = maps.iterator();
 
-                while(var11.hasNext()) {
-                    map = (Map)var11.next();
+                while (var11.hasNext()) {
+                    map = (Map) var11.next();
                     hashMap.put("code", map.get("code"));
                     hashMap.put("number", map.get("num"));
                     list.add(hashMap);
@@ -171,14 +172,14 @@ public class WdDailiController {
             int alltotal = 0;
             Iterator var10 = zimu.iterator();
 
-            while(var10.hasNext()) {
-                String zm = (String)var10.next();
+            while (var10.hasNext()) {
+                String zm = (String) var10.next();
                 List<Map> maps = this.customDailiMapper.selectMoney(zm, day - 1);
                 int total = 0;
 
                 int num;
-                for(Iterator var14 = maps.iterator(); var14.hasNext(); alltotal += num) {
-                    Map map = (Map)var14.next();
+                for (Iterator var14 = maps.iterator(); var14.hasNext(); alltotal += num) {
+                    Map map = (Map) var14.next();
                     Object numobj = map.get("num");
                     num = Integer.valueOf(numobj.toString());
                     total += num;
@@ -202,8 +203,8 @@ public class WdDailiController {
             int total = 0;
             Iterator var23 = maps.iterator();
 
-            while(var23.hasNext()) {
-                Map map = (Map)var23.next();
+            while (var23.hasNext()) {
+                Map map = (Map) var23.next();
                 zidaihashMap = new HashMap();
                 listin.add(zidaihashMap);
                 zidaihashMap.put("code", map.get("code"));
@@ -273,7 +274,7 @@ public class WdDailiController {
 
         String md5code = (new BigInteger(1, secretBytes)).toString(16);
 
-        for(int i = 0; i < 32 - md5code.length(); ++i) {
+        for (int i = 0; i < 32 - md5code.length(); ++i) {
             md5code = "0" + md5code;
         }
 

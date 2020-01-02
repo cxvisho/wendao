@@ -13,12 +13,12 @@ public class PetAttributesUtils {
     }
 
     public static int[] petAttributes(boolean isMagic, int attrib, int constitution, int mag_power, int phy_power, int speed, int qx_append, int fl_append, int sd_append, int wg_append, int fg_append) {
-        int parry_all = (int)(0.06D * (double)sd_append * (double)speed + 50.0D);
-        int accurate_all = (int)((double)wg_append * 0.3D * (double)phy_power + (double)(16 * attrib) + 50.0D);
-        int mana_all = (int)((double)(fg_append * mag_power) * 0.55D + (double)(15 * attrib) + 70.0D);
-        int def_all = (int)((double)qx_append * 0.81D * (double)constitution + 3.237D * (double)(attrib * attrib));
-        int dex_all = (int)((double)fl_append * 0.38D * (double)mag_power + (double)(70 * attrib));
-        int wiz_all = (int)((double)qx_append * 0.0835D * (double)constitution + 0.77D * (double)(attrib * attrib));
+        int parry_all = (int) (0.06D * (double) sd_append * (double) speed + 50.0D);
+        int accurate_all = (int) ((double) wg_append * 0.3D * (double) phy_power + (double) (16 * attrib) + 50.0D);
+        int mana_all = (int) ((double) (fg_append * mag_power) * 0.55D + (double) (15 * attrib) + 70.0D);
+        int def_all = (int) ((double) qx_append * 0.81D * (double) constitution + 3.237D * (double) (attrib * attrib));
+        int dex_all = (int) ((double) fl_append * 0.38D * (double) mag_power + (double) (70 * attrib));
+        int wiz_all = (int) ((double) qx_append * 0.0835D * (double) constitution + 0.77D * (double) (attrib * attrib));
         int[] attributes = new int[]{def_all, dex_all, accurate_all, mana_all, parry_all, wiz_all};
         return attributes;
     }
@@ -63,12 +63,12 @@ public class PetAttributesUtils {
         }
 
         int[] result = new int[7];
-        int newReiki = (int)((double)(currentReiki + pill * 3000 + equipmentMoney / 5000) + (double)UnidentifiedMoney / 714.2857142857143D);
+        int newReiki = (int) ((double) (currentReiki + pill * 3000 + equipmentMoney / 5000) + (double) UnidentifiedMoney / 714.2857142857143D);
 
-        if ((double)newReiki >= (double)maxReiki /** 0.95D*/) {
+        if ((double) newReiki >= (double) maxReiki /** 0.95D*/) {
             result[0] = 1;
             result[1] = maxReiki;
-        } else if ((double)newReiki > (double)maxReiki * 0.7D && (new Random()).nextInt(10) < 2) {
+        } else if ((double) newReiki > (double) maxReiki * 0.7D && (new Random()).nextInt(10) < 2) {
             result[0] = 1;
             result[1] = maxReiki;
         } else {
@@ -77,29 +77,29 @@ public class PetAttributesUtils {
 
 
         if (quality == 1) {
-            result[2] = (int)(0.5D * (double)Math.abs(appends[0]));
-            result[3] = (int)(0.2D * (double)Math.abs(appends[1]));
-            result[4] = (int)(0.2D * (double)Math.abs(appends[2]));
-            result[5] = (int)(0.2D * (double)Math.abs(appends[3]));
-            result[6] = (int)(0.3D * (double)Math.abs(appends[4]));
+            result[2] = (int) (0.5D * (double) Math.abs(appends[0]));
+            result[3] = (int) (0.2D * (double) Math.abs(appends[1]));
+            result[4] = (int) (0.2D * (double) Math.abs(appends[2]));
+            result[5] = (int) (0.2D * (double) Math.abs(appends[3]));
+            result[6] = (int) (0.3D * (double) Math.abs(appends[4]));
         } else if (quality == 2) {
-            result[2] = (int)(0.6D * (double)Math.abs(appends[0]));
-            result[3] = (int)(0.25D * (double)Math.abs(appends[1]));
-            result[4] = (int)(0.4D * (double)Math.abs(appends[2]));
-            result[5] = (int)(0.5D * (double)Math.abs(appends[3]));
-            result[6] = (int)(0.4D * (double)Math.abs(appends[4]));
+            result[2] = (int) (0.6D * (double) Math.abs(appends[0]));
+            result[3] = (int) (0.25D * (double) Math.abs(appends[1]));
+            result[4] = (int) (0.4D * (double) Math.abs(appends[2]));
+            result[5] = (int) (0.5D * (double) Math.abs(appends[3]));
+            result[6] = (int) (0.4D * (double) Math.abs(appends[4]));
         } else if (quality == 3) {
-            result[2] = (int)(0.8D * (double)Math.abs(appends[0]));
-            result[3] = (int)(0.4D * (double)Math.abs(appends[1]));
-            result[4] = (int)(0.5D * (double)Math.abs(appends[2]));
-            result[5] = (int)(0.7D * (double)Math.abs(appends[3]));
-            result[6] = (int)(0.45D * (double)Math.abs(appends[4]));
-        }else if (quality == 4) {
-            result[2] = (int)(1.0D * (double)Math.abs(appends[0]));
-            result[3] = (int)(0.8D * (double)Math.abs(appends[1]));
-            result[4] = (int)(0.6D * (double)Math.abs(appends[2]));
-            result[5] = (int)(0.9D * (double)Math.abs(appends[3]));
-            result[6] = (int)(0.7D * (double)Math.abs(appends[4]));
+            result[2] = (int) (0.8D * (double) Math.abs(appends[0]));
+            result[3] = (int) (0.4D * (double) Math.abs(appends[1]));
+            result[4] = (int) (0.5D * (double) Math.abs(appends[2]));
+            result[5] = (int) (0.7D * (double) Math.abs(appends[3]));
+            result[6] = (int) (0.45D * (double) Math.abs(appends[4]));
+        } else if (quality == 4) {
+            result[2] = (int) (1.0D * (double) Math.abs(appends[0]));
+            result[3] = (int) (0.8D * (double) Math.abs(appends[1]));
+            result[4] = (int) (0.6D * (double) Math.abs(appends[2]));
+            result[5] = (int) (0.9D * (double) Math.abs(appends[3]));
+            result[6] = (int) (0.7D * (double) Math.abs(appends[4]));
         }
 
         return result;
@@ -126,14 +126,14 @@ public class PetAttributesUtils {
             proportion = 1.0D;
         } else {
             result[1] = newReiki;
-            proportion = 1.0D * (double)newReiki / (double)maxReiki;
+            proportion = 1.0D * (double) newReiki / (double) maxReiki;
         }
 
-        result[2] = (int)(proportion * 0.3D * (double)Math.abs(appends[0]));
-        result[3] = (int)(proportion * 0.3D * (double)Math.abs(appends[1]));
-        result[4] = (int)(proportion * 0.3D * (double)Math.abs(appends[2]));
-        result[5] = (int)(proportion * 0.3D * (double)Math.abs(appends[3]));
-        result[6] = (int)(proportion * 0.3D * (double)Math.abs(appends[4]));
+        result[2] = (int) (proportion * 0.3D * (double) Math.abs(appends[0]));
+        result[3] = (int) (proportion * 0.3D * (double) Math.abs(appends[1]));
+        result[4] = (int) (proportion * 0.3D * (double) Math.abs(appends[2]));
+        result[5] = (int) (proportion * 0.3D * (double) Math.abs(appends[3]));
+        result[6] = (int) (proportion * 0.3D * (double) Math.abs(appends[4]));
         return result;
     }
 
@@ -157,9 +157,9 @@ public class PetAttributesUtils {
             }
 
             if (isMagic) {
-                result[1] = (int)((double)maxAttrib / 12.5D);
+                result[1] = (int) ((double) maxAttrib / 12.5D);
             } else {
-                result[1] = (int)((double)maxAttrib / 12.5D);
+                result[1] = (int) ((double) maxAttrib / 12.5D);
             }
 
             return result;
@@ -183,7 +183,7 @@ public class PetAttributesUtils {
         if (attriba <= 60) {
             count_xx = attriba / 2 + 2;
         } else if (attriba < 81) {
-            count_xx = (int)((double)(attriba - 60) * 1.45D + 32.0D);
+            count_xx = (int) ((double) (attriba - 60) * 1.45D + 32.0D);
         } else {
             count_xx = attriba - 19;
             if (count_xx > 97) {
@@ -191,9 +191,9 @@ public class PetAttributesUtils {
             }
         }
 
-        int[] xx = (int[])hashtable.get(polar);
+        int[] xx = (int[]) hashtable.get(polar);
 
-        for(int i = 0; i < xx.length; ++i) {
+        for (int i = 0; i < xx.length; ++i) {
             if (xx[i] == 1) {
                 if (count_xx >= 33) {
                     base_polars[i] += 33;
@@ -236,11 +236,11 @@ public class PetAttributesUtils {
         if (attriba <= 13) {
             base_ss = new int[]{16, 40, 12, 29};
         } else if (attriba >= 125) {
-            base_ss = (int[])hashtabless125.get(polar);
+            base_ss = (int[]) hashtabless125.get(polar);
         } else {
-            base_ss125 = (int[])hashtabless125.get(polar);
+            base_ss125 = (int[]) hashtabless125.get(polar);
 
-            for(int i = 0; i < 4; ++i) {
+            for (int i = 0; i < 4; ++i) {
                 base_ss[i] += (base_ss125[i] - base_ss[i]) / 112 * (attriba - base_ss[i]);
             }
         }
@@ -256,15 +256,15 @@ public class PetAttributesUtils {
         hashtablessadd.put(3, ss);
         hashtablessadd.put(4, hs);
         hashtablessadd.put(5, ts);
-        int[] addss = (int[])hashtablessadd.get(polar);
+        int[] addss = (int[]) hashtablessadd.get(polar);
         int i;
         if (type == 2) {
-            for(i = 0; i < 4; ++i) {
+            for (i = 0; i < 4; ++i) {
                 base_ss[i] += addss[i];
             }
         } else {
-            for(i = 0; i < 4; ++i) {
-                base_ss[i] = (int)((double)base_ss[i] + (double)addss[i] * 1.5D);
+            for (i = 0; i < 4; ++i) {
+                base_ss[i] = (int) ((double) base_ss[i] + (double) addss[i] * 1.5D);
             }
         }
 

@@ -50,12 +50,12 @@ public class BattleUtils {
         if (!list.isEmpty()) {
             Iterator var7 = list.iterator();
 
-            while(var7.hasNext()) {
-                Hashtable<String, String> hs = (Hashtable)var7.next();
-                monster = (String)hs.get("person");
-                String petValue = (String)hs.get("pet");
+            while (var7.hasNext()) {
+                Hashtable<String, String> hs = (Hashtable) var7.next();
+                monster = (String) hs.get("person");
+                String petValue = (String) hs.get("pet");
                 minePositionTab.put(monster, mineQueueBehind.poll());
-                int petPosition = (Integer)mineQueueFront.poll();
+                int petPosition = (Integer) mineQueueFront.poll();
                 if (null != petValue && !petValue.isEmpty()) {
                     minePositionTab.put(petValue, petPosition);
                 }
@@ -66,8 +66,8 @@ public class BattleUtils {
         if (!monsters.isEmpty()) {
             Iterator var13 = monsters.iterator();
 
-            while(var13.hasNext()) {
-                monster = (String)var13.next();
+            while (var13.hasNext()) {
+                monster = (String) var13.next();
                 if (monsterQueueBehind.isEmpty()) {
                     monsterPositionTab.put(monster, monsterQueueFront.poll());
                 } else {
@@ -110,12 +110,12 @@ public class BattleUtils {
         if (!list.isEmpty()) {
             Iterator var7 = list.iterator();
 
-            while(var7.hasNext()) {
-                Hashtable<String, String> hs = (Hashtable)var7.next();
-                String person = (String)hs.get("person");
-                person = (String)hs.get("pet");
+            while (var7.hasNext()) {
+                Hashtable<String, String> hs = (Hashtable) var7.next();
+                String person = (String) hs.get("person");
+                person = (String) hs.get("pet");
                 minePositionTab.put(person, mineQueueBehind.poll());
-                int petPosition = (Integer)mineQueueFront.poll();
+                int petPosition = (Integer) mineQueueFront.poll();
                 if (null != person && !person.isEmpty()) {
                     minePositionTab.put(person, petPosition);
                 }
@@ -126,12 +126,12 @@ public class BattleUtils {
         if (!monsterList.isEmpty()) {
             Iterator var14 = monsterList.iterator();
 
-            while(var14.hasNext()) {
-                Hashtable<String, String> hs = (Hashtable)var14.next();
-                personValue = (String)hs.get("person");
-                String petValue = (String)hs.get("pet");
+            while (var14.hasNext()) {
+                Hashtable<String, String> hs = (Hashtable) var14.next();
+                personValue = (String) hs.get("person");
+                String petValue = (String) hs.get("pet");
                 monsterPositionTab.put(personValue, monsterQueueBehind.poll());
-                int petPosition = (Integer)monsterQueueFront.poll();
+                int petPosition = (Integer) monsterQueueFront.poll();
                 if (null != petValue && !petValue.isEmpty()) {
                     monsterPositionTab.put(petValue, petPosition);
                 }
@@ -195,8 +195,8 @@ public class BattleUtils {
     public static int battle(int baseAttack, int skillAttack, int monsterDefense) {
         double y = 1.483748645720477D;
         double x = 1.880943782352233D;
-        double jp = (double)monsterDefense * 1.0D / (double)(baseAttack + skillAttack + monsterDefense);
-        int hurt = (int)((double)(baseAttack + skillAttack) * (1.0D - jp * jp) * 0.8785D);
+        double jp = (double) monsterDefense * 1.0D / (double) (baseAttack + skillAttack + monsterDefense);
+        int hurt = (int) ((double) (baseAttack + skillAttack) * (1.0D - jp * jp) * 0.8785D);
         int fudong = hurt / 10;
         if (fudong != 0) {
             int rfudong = FightManager.RANDOM.nextInt(fudong);
@@ -208,19 +208,19 @@ public class BattleUtils {
 
     public static int skillAttack(int baseAttack, int skillLeave, String skillType, int skillPara) {
         if (skillType.contentEquals("WS")) {
-            return (int)(0.001138120610055D * (double)skillLeave * (double)baseAttack);
+            return (int) (0.001138120610055D * (double) skillLeave * (double) baseAttack);
         } else {
             int skillIndex = getSkillIndex(skillPara);
             double[] fs = new double[]{0.0D, 7.98084596967E-4D, 0.002394253790902D, 0.010375099760575D, 0.004788507581804D};
-            return skillType.contentEquals("FS") ? (int)(fs[skillIndex] * (double)skillLeave * (double)baseAttack * 0.8D) : 0;
+            return skillType.contentEquals("FS") ? (int) (fs[skillIndex] * (double) skillLeave * (double) baseAttack * 0.8D) : 0;
         }
     }
 
     public static double extAdd(int skillLeave, int skillPara) {
         int skillIndex = getSkillIndex(skillPara);
         int[] base_pro = new int[]{10, 17, 25, 50, 40};
-        double append = (double)(skillLeave / 208) * 0.3D;
-        return (double)base_pro[skillIndex] * (1.0D + append);
+        double append = (double) (skillLeave / 208) * 0.3D;
+        return (double) base_pro[skillIndex] * (1.0D + append);
     }
 
     public static void init() {
@@ -256,8 +256,8 @@ public class BattleUtils {
                 return 0;
             }
 
-            index = (Integer)var1.next();
-        } while(index > para);
+            index = (Integer) var1.next();
+        } while (index > para);
 
         return para - index;
     }

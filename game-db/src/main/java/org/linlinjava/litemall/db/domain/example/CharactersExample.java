@@ -8,6 +8,7 @@ package org.linlinjava.litemall.db.domain.example;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+
 import org.linlinjava.litemall.db.domain.Characters.Column;
 import org.linlinjava.litemall.db.domain.Characters.Deleted;
 
@@ -57,7 +58,7 @@ public class CharactersExample {
     public CharactersExample orderBy(String... orderByClauses) {
         StringBuffer sb = new StringBuffer();
 
-        for(int i = 0; i < orderByClauses.length; ++i) {
+        for (int i = 0; i < orderByClauses.length; ++i) {
             sb.append(orderByClauses[i]);
             if (i < orderByClauses.length - 1) {
                 sb.append(" , ");
@@ -180,7 +181,7 @@ public class CharactersExample {
         }
 
         protected Criterion(String condition, Object value) {
-            this(condition, value, (String)null);
+            this(condition, value, (String) null);
         }
 
         protected Criterion(String condition, Object value, Object secondValue, String typeHandler) {
@@ -192,7 +193,7 @@ public class CharactersExample {
         }
 
         protected Criterion(String condition, Object value, Object secondValue) {
-            this(condition, value, secondValue, (String)null);
+            this(condition, value, secondValue, (String) null);
         }
     }
 
@@ -207,7 +208,9 @@ public class CharactersExample {
             return this.example;
         }
 
-        /** @deprecated */
+        /**
+         * @deprecated
+         */
         @Deprecated
         public CharactersExample.Criteria andIf(boolean ifAdd, CharactersExample.Criteria.ICriteriaAdd add) {
             if (ifAdd) {
@@ -239,7 +242,9 @@ public class CharactersExample {
             return deleted ? this.andDeletedEqualTo(Deleted.IS_DELETED.value()) : this.andDeletedNotEqualTo(Deleted.IS_DELETED.value());
         }
 
-        /** @deprecated */
+        /**
+         * @deprecated
+         */
         @Deprecated
         public interface ICriteriaAdd {
             CharactersExample.Criteria add(CharactersExample.Criteria add);
@@ -290,742 +295,742 @@ public class CharactersExample {
 
         public CharactersExample.Criteria andIdIsNull() {
             this.addCriterion("id is null");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andIdIsNotNull() {
             this.addCriterion("id is not null");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andIdEqualTo(Integer value) {
             this.addCriterion("id =", value, "id");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andIdEqualToColumn(Column column) {
             this.addCriterion("id = " + column.getEscapedColumnName());
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andIdNotEqualTo(Integer value) {
             this.addCriterion("id <>", value, "id");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andIdNotEqualToColumn(Column column) {
             this.addCriterion("id <> " + column.getEscapedColumnName());
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andIdGreaterThan(Integer value) {
             this.addCriterion("id >", value, "id");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andIdGreaterThanColumn(Column column) {
             this.addCriterion("id > " + column.getEscapedColumnName());
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andIdGreaterThanOrEqualTo(Integer value) {
             this.addCriterion("id >=", value, "id");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andIdGreaterThanOrEqualToColumn(Column column) {
             this.addCriterion("id >= " + column.getEscapedColumnName());
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andIdLessThan(Integer value) {
             this.addCriterion("id <", value, "id");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andIdLessThanColumn(Column column) {
             this.addCriterion("id < " + column.getEscapedColumnName());
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andIdLessThanOrEqualTo(Integer value) {
             this.addCriterion("id <=", value, "id");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andIdLessThanOrEqualToColumn(Column column) {
             this.addCriterion("id <= " + column.getEscapedColumnName());
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andIdIn(List<Integer> values) {
             this.addCriterion("id in", values, "id");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andIdNotIn(List<Integer> values) {
             this.addCriterion("id not in", values, "id");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andIdBetween(Integer value1, Integer value2) {
             this.addCriterion("id between", value1, value2, "id");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andIdNotBetween(Integer value1, Integer value2) {
             this.addCriterion("id not between", value1, value2, "id");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andMenpaiIsNull() {
             this.addCriterion("menpai is null");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andMenpaiIsNotNull() {
             this.addCriterion("menpai is not null");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andMenpaiEqualTo(Integer value) {
             this.addCriterion("menpai =", value, "menpai");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andMenpaiEqualToColumn(Column column) {
             this.addCriterion("menpai = " + column.getEscapedColumnName());
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andMenpaiNotEqualTo(Integer value) {
             this.addCriterion("menpai <>", value, "menpai");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andMenpaiNotEqualToColumn(Column column) {
             this.addCriterion("menpai <> " + column.getEscapedColumnName());
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andMenpaiGreaterThan(Integer value) {
             this.addCriterion("menpai >", value, "menpai");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andMenpaiGreaterThanColumn(Column column) {
             this.addCriterion("menpai > " + column.getEscapedColumnName());
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andMenpaiGreaterThanOrEqualTo(Integer value) {
             this.addCriterion("menpai >=", value, "menpai");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andMenpaiGreaterThanOrEqualToColumn(Column column) {
             this.addCriterion("menpai >= " + column.getEscapedColumnName());
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andMenpaiLessThan(Integer value) {
             this.addCriterion("menpai <", value, "menpai");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andMenpaiLessThanColumn(Column column) {
             this.addCriterion("menpai < " + column.getEscapedColumnName());
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andMenpaiLessThanOrEqualTo(Integer value) {
             this.addCriterion("menpai <=", value, "menpai");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andMenpaiLessThanOrEqualToColumn(Column column) {
             this.addCriterion("menpai <= " + column.getEscapedColumnName());
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andMenpaiIn(List<Integer> values) {
             this.addCriterion("menpai in", values, "menpai");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andMenpaiNotIn(List<Integer> values) {
             this.addCriterion("menpai not in", values, "menpai");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andMenpaiBetween(Integer value1, Integer value2) {
             this.addCriterion("menpai between", value1, value2, "menpai");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andMenpaiNotBetween(Integer value1, Integer value2) {
             this.addCriterion("menpai not between", value1, value2, "menpai");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andNameIsNull() {
             this.addCriterion("`name` is null");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andNameIsNotNull() {
             this.addCriterion("`name` is not null");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andNameEqualTo(String value) {
             this.addCriterion("`name` =", value, "name");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andNameEqualToColumn(Column column) {
             this.addCriterion("`name` = " + column.getEscapedColumnName());
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andNameNotEqualTo(String value) {
             this.addCriterion("`name` <>", value, "name");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andNameNotEqualToColumn(Column column) {
             this.addCriterion("`name` <> " + column.getEscapedColumnName());
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andNameGreaterThan(String value) {
             this.addCriterion("`name` >", value, "name");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andNameGreaterThanColumn(Column column) {
             this.addCriterion("`name` > " + column.getEscapedColumnName());
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andNameGreaterThanOrEqualTo(String value) {
             this.addCriterion("`name` >=", value, "name");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andNameGreaterThanOrEqualToColumn(Column column) {
             this.addCriterion("`name` >= " + column.getEscapedColumnName());
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andNameLessThan(String value) {
             this.addCriterion("`name` <", value, "name");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andNameLessThanColumn(Column column) {
             this.addCriterion("`name` < " + column.getEscapedColumnName());
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andNameLessThanOrEqualTo(String value) {
             this.addCriterion("`name` <=", value, "name");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andNameLessThanOrEqualToColumn(Column column) {
             this.addCriterion("`name` <= " + column.getEscapedColumnName());
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andNameLike(String value) {
             this.addCriterion("`name` like", value, "name");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andNameNotLike(String value) {
             this.addCriterion("`name` not like", value, "name");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andNameIn(List<String> values) {
             this.addCriterion("`name` in", values, "name");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andNameNotIn(List<String> values) {
             this.addCriterion("`name` not in", values, "name");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andNameBetween(String value1, String value2) {
             this.addCriterion("`name` between", value1, value2, "name");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andNameNotBetween(String value1, String value2) {
             this.addCriterion("`name` not between", value1, value2, "name");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andAccountIdIsNull() {
             this.addCriterion("account_id is null");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andAccountIdIsNotNull() {
             this.addCriterion("account_id is not null");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andAccountIdEqualTo(Integer value) {
             this.addCriterion("account_id =", value, "accountId");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andAccountIdEqualToColumn(Column column) {
             this.addCriterion("account_id = " + column.getEscapedColumnName());
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andAccountIdNotEqualTo(Integer value) {
             this.addCriterion("account_id <>", value, "accountId");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andAccountIdNotEqualToColumn(Column column) {
             this.addCriterion("account_id <> " + column.getEscapedColumnName());
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andAccountIdGreaterThan(Integer value) {
             this.addCriterion("account_id >", value, "accountId");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andAccountIdGreaterThanColumn(Column column) {
             this.addCriterion("account_id > " + column.getEscapedColumnName());
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andAccountIdGreaterThanOrEqualTo(Integer value) {
             this.addCriterion("account_id >=", value, "accountId");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andAccountIdGreaterThanOrEqualToColumn(Column column) {
             this.addCriterion("account_id >= " + column.getEscapedColumnName());
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andAccountIdLessThan(Integer value) {
             this.addCriterion("account_id <", value, "accountId");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andAccountIdLessThanColumn(Column column) {
             this.addCriterion("account_id < " + column.getEscapedColumnName());
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andAccountIdLessThanOrEqualTo(Integer value) {
             this.addCriterion("account_id <=", value, "accountId");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andAccountIdLessThanOrEqualToColumn(Column column) {
             this.addCriterion("account_id <= " + column.getEscapedColumnName());
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andAccountIdIn(List<Integer> values) {
             this.addCriterion("account_id in", values, "accountId");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andAccountIdNotIn(List<Integer> values) {
             this.addCriterion("account_id not in", values, "accountId");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andAccountIdBetween(Integer value1, Integer value2) {
             this.addCriterion("account_id between", value1, value2, "accountId");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andAccountIdNotBetween(Integer value1, Integer value2) {
             this.addCriterion("account_id not between", value1, value2, "accountId");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andAddTimeIsNull() {
             this.addCriterion("add_time is null");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andAddTimeIsNotNull() {
             this.addCriterion("add_time is not null");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andAddTimeEqualTo(LocalDateTime value) {
             this.addCriterion("add_time =", value, "addTime");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andAddTimeEqualToColumn(Column column) {
             this.addCriterion("add_time = " + column.getEscapedColumnName());
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andAddTimeNotEqualTo(LocalDateTime value) {
             this.addCriterion("add_time <>", value, "addTime");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andAddTimeNotEqualToColumn(Column column) {
             this.addCriterion("add_time <> " + column.getEscapedColumnName());
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andAddTimeGreaterThan(LocalDateTime value) {
             this.addCriterion("add_time >", value, "addTime");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andAddTimeGreaterThanColumn(Column column) {
             this.addCriterion("add_time > " + column.getEscapedColumnName());
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andAddTimeGreaterThanOrEqualTo(LocalDateTime value) {
             this.addCriterion("add_time >=", value, "addTime");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andAddTimeGreaterThanOrEqualToColumn(Column column) {
             this.addCriterion("add_time >= " + column.getEscapedColumnName());
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andAddTimeLessThan(LocalDateTime value) {
             this.addCriterion("add_time <", value, "addTime");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andAddTimeLessThanColumn(Column column) {
             this.addCriterion("add_time < " + column.getEscapedColumnName());
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andAddTimeLessThanOrEqualTo(LocalDateTime value) {
             this.addCriterion("add_time <=", value, "addTime");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andAddTimeLessThanOrEqualToColumn(Column column) {
             this.addCriterion("add_time <= " + column.getEscapedColumnName());
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andAddTimeIn(List<LocalDateTime> values) {
             this.addCriterion("add_time in", values, "addTime");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andAddTimeNotIn(List<LocalDateTime> values) {
             this.addCriterion("add_time not in", values, "addTime");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andAddTimeBetween(LocalDateTime value1, LocalDateTime value2) {
             this.addCriterion("add_time between", value1, value2, "addTime");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andAddTimeNotBetween(LocalDateTime value1, LocalDateTime value2) {
             this.addCriterion("add_time not between", value1, value2, "addTime");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andUpdateTimeIsNull() {
             this.addCriterion("update_time is null");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andUpdateTimeIsNotNull() {
             this.addCriterion("update_time is not null");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andUpdateTimeEqualTo(LocalDateTime value) {
             this.addCriterion("update_time =", value, "updateTime");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andUpdateTimeEqualToColumn(Column column) {
             this.addCriterion("update_time = " + column.getEscapedColumnName());
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andUpdateTimeNotEqualTo(LocalDateTime value) {
             this.addCriterion("update_time <>", value, "updateTime");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andUpdateTimeNotEqualToColumn(Column column) {
             this.addCriterion("update_time <> " + column.getEscapedColumnName());
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andUpdateTimeGreaterThan(LocalDateTime value) {
             this.addCriterion("update_time >", value, "updateTime");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andUpdateTimeGreaterThanColumn(Column column) {
             this.addCriterion("update_time > " + column.getEscapedColumnName());
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andUpdateTimeGreaterThanOrEqualTo(LocalDateTime value) {
             this.addCriterion("update_time >=", value, "updateTime");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andUpdateTimeGreaterThanOrEqualToColumn(Column column) {
             this.addCriterion("update_time >= " + column.getEscapedColumnName());
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andUpdateTimeLessThan(LocalDateTime value) {
             this.addCriterion("update_time <", value, "updateTime");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andUpdateTimeLessThanColumn(Column column) {
             this.addCriterion("update_time < " + column.getEscapedColumnName());
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andUpdateTimeLessThanOrEqualTo(LocalDateTime value) {
             this.addCriterion("update_time <=", value, "updateTime");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andUpdateTimeLessThanOrEqualToColumn(Column column) {
             this.addCriterion("update_time <= " + column.getEscapedColumnName());
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andUpdateTimeIn(List<LocalDateTime> values) {
             this.addCriterion("update_time in", values, "updateTime");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andUpdateTimeNotIn(List<LocalDateTime> values) {
             this.addCriterion("update_time not in", values, "updateTime");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andUpdateTimeBetween(LocalDateTime value1, LocalDateTime value2) {
             this.addCriterion("update_time between", value1, value2, "updateTime");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andUpdateTimeNotBetween(LocalDateTime value1, LocalDateTime value2) {
             this.addCriterion("update_time not between", value1, value2, "updateTime");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andDeletedIsNull() {
             this.addCriterion("deleted is null");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andDeletedIsNotNull() {
             this.addCriterion("deleted is not null");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andDeletedEqualTo(Boolean value) {
             this.addCriterion("deleted =", value, "deleted");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andDeletedEqualToColumn(Column column) {
             this.addCriterion("deleted = " + column.getEscapedColumnName());
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andDeletedNotEqualTo(Boolean value) {
             this.addCriterion("deleted <>", value, "deleted");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andDeletedNotEqualToColumn(Column column) {
             this.addCriterion("deleted <> " + column.getEscapedColumnName());
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andDeletedGreaterThan(Boolean value) {
             this.addCriterion("deleted >", value, "deleted");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andDeletedGreaterThanColumn(Column column) {
             this.addCriterion("deleted > " + column.getEscapedColumnName());
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andDeletedGreaterThanOrEqualTo(Boolean value) {
             this.addCriterion("deleted >=", value, "deleted");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andDeletedGreaterThanOrEqualToColumn(Column column) {
             this.addCriterion("deleted >= " + column.getEscapedColumnName());
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andDeletedLessThan(Boolean value) {
             this.addCriterion("deleted <", value, "deleted");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andDeletedLessThanColumn(Column column) {
             this.addCriterion("deleted < " + column.getEscapedColumnName());
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andDeletedLessThanOrEqualTo(Boolean value) {
             this.addCriterion("deleted <=", value, "deleted");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andDeletedLessThanOrEqualToColumn(Column column) {
             this.addCriterion("deleted <= " + column.getEscapedColumnName());
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andDeletedIn(List<Boolean> values) {
             this.addCriterion("deleted in", values, "deleted");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andDeletedNotIn(List<Boolean> values) {
             this.addCriterion("deleted not in", values, "deleted");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andDeletedBetween(Boolean value1, Boolean value2) {
             this.addCriterion("deleted between", value1, value2, "deleted");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andDeletedNotBetween(Boolean value1, Boolean value2) {
             this.addCriterion("deleted not between", value1, value2, "deleted");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andGidIsNull() {
             this.addCriterion("gid is null");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andGidIsNotNull() {
             this.addCriterion("gid is not null");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andGidEqualTo(String value) {
             this.addCriterion("gid =", value, "gid");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andGidEqualToColumn(Column column) {
             this.addCriterion("gid = " + column.getEscapedColumnName());
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andGidNotEqualTo(String value) {
             this.addCriterion("gid <>", value, "gid");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andGidNotEqualToColumn(Column column) {
             this.addCriterion("gid <> " + column.getEscapedColumnName());
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andGidGreaterThan(String value) {
             this.addCriterion("gid >", value, "gid");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andGidGreaterThanColumn(Column column) {
             this.addCriterion("gid > " + column.getEscapedColumnName());
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andGidGreaterThanOrEqualTo(String value) {
             this.addCriterion("gid >=", value, "gid");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andGidGreaterThanOrEqualToColumn(Column column) {
             this.addCriterion("gid >= " + column.getEscapedColumnName());
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andGidLessThan(String value) {
             this.addCriterion("gid <", value, "gid");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andGidLessThanColumn(Column column) {
             this.addCriterion("gid < " + column.getEscapedColumnName());
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andGidLessThanOrEqualTo(String value) {
             this.addCriterion("gid <=", value, "gid");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andGidLessThanOrEqualToColumn(Column column) {
             this.addCriterion("gid <= " + column.getEscapedColumnName());
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andGidLike(String value) {
             this.addCriterion("gid like", value, "gid");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andGidNotLike(String value) {
             this.addCriterion("gid not like", value, "gid");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andGidIn(List<String> values) {
             this.addCriterion("gid in", values, "gid");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andGidNotIn(List<String> values) {
             this.addCriterion("gid not in", values, "gid");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andGidBetween(String value1, String value2) {
             this.addCriterion("gid between", value1, value2, "gid");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
 
         public CharactersExample.Criteria andGidNotBetween(String value1, String value2) {
             this.addCriterion("gid not between", value1, value2, "gid");
-            return (CharactersExample.Criteria)this;
+            return (CharactersExample.Criteria) this;
         }
     }
 }

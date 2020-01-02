@@ -9,10 +9,12 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class SaleGood implements Cloneable, Serializable, Comparable<SaleGood> {
@@ -235,9 +237,11 @@ public class SaleGood implements Cloneable, Serializable, Comparable<SaleGood> {
             return false;
         } else {
             boolean var10000;
-            label169: {
-                label161: {
-                    SaleGood other = (SaleGood)that;
+            label169:
+            {
+                label161:
+                {
+                    SaleGood other = (SaleGood) that;
                     if (this.getId() == null) {
                         if (other.getId() != null) {
                             break label161;
@@ -407,7 +411,7 @@ public class SaleGood implements Cloneable, Serializable, Comparable<SaleGood> {
     }
 
     public SaleGood clone() throws CloneNotSupportedException {
-        return (SaleGood)super.clone();
+        return (SaleGood) super.clone();
     }
 
     public int compareTo(SaleGood o) {
@@ -482,7 +486,7 @@ public class SaleGood implements Cloneable, Serializable, Comparable<SaleGood> {
                 columns.removeAll(new ArrayList(Arrays.asList(excludes)));
             }
 
-            return (SaleGood.Column[])columns.toArray(new SaleGood.Column[0]);
+            return (SaleGood.Column[]) columns.toArray(new SaleGood.Column[0]);
         }
 
         public String getEscapedColumnName() {

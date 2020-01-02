@@ -14,7 +14,7 @@ public class LuckDrawUtils {
     }
 
     public static void main(String[] args) {
-        for(int i = 0; i < 100; ++i) {
+        for (int i = 0; i < 100; ++i) {
             if (luckDraw(false)[1].contentEquals("装备")) {
                 System.out.println(equipmentLuckDraw(75));
             }
@@ -24,6 +24,7 @@ public class LuckDrawUtils {
 
     /**
      * 抽奖方法
+     *
      * @param isSenior
      * @return
      */

@@ -8,6 +8,7 @@ package org.linlinjava.litemall.gameserver.fight;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
 import org.linlinjava.litemall.gameserver.data.vo.Vo_19945_0;
 import org.linlinjava.litemall.gameserver.data.vo.Vo_19959_0;
 import org.linlinjava.litemall.gameserver.data.vo.Vo_64989_0;
@@ -48,16 +49,16 @@ public class FuzhuMu81Skill extends FightRoundSkill {
         Iterator var9 = targetList.iterator();
 
         FightObject fightObject;
-        while(var9.hasNext()) {
-            fightObject = (FightObject)var9.next();
+        while (var9.hasNext()) {
+            fightObject = (FightObject) var9.next();
             vo_64989_0.list.add(fightObject.fid);
         }
 
         FightManager.send(fightContainer, new M64989_0(), vo_64989_0);
         var9 = targetList.iterator();
 
-        while(var9.hasNext()) {
-            fightObject = (FightObject)var9.next();
+        while (var9.hasNext()) {
+            fightObject = (FightObject) var9.next();
             vo_19959_0 = new Vo_19959_0();
             vo_19959_0.round = fightContainer.round;
             vo_19959_0.aid = fightObject.fid;
@@ -79,7 +80,7 @@ public class FuzhuMu81Skill extends FightRoundSkill {
                 fightObject.removeSkill(that);
                 fightObject.removeBuffState(fightContainer, this.getStateType());
             } else {
-                int jiaxue = (int)BattleUtils.extAdd(jiNeng.skill_level, jiNeng.skill_no);
+                int jiaxue = (int) BattleUtils.extAdd(jiNeng.skill_level, jiNeng.skill_no);
                 int xueliang = fightObject.max_shengming * jiaxue / 100;
                 xueliang = fightObject.addShengming(xueliang);
                 fightObject.update(fightContainer);
@@ -131,13 +132,13 @@ public class FuzhuMu81Skill extends FightRoundSkill {
         List<FightObject> friendsFightTeam = null;
         Iterator iterator = teamList.iterator();
 
-        while(iterator.hasNext()) {
-            FightTeam fightTeam = (FightTeam)iterator.next();
+        while (iterator.hasNext()) {
+            FightTeam fightTeam = (FightTeam) iterator.next();
             List<FightObject> fightObjectList = fightTeam.fightObjectList;
             Iterator var10 = fightObjectList.iterator();
 
-            while(var10.hasNext()) {
-                FightObject fightObject = (FightObject)var10.next();
+            while (var10.hasNext()) {
+                FightObject fightObject = (FightObject) var10.next();
                 if (fightObject.fid == fightRequest.id) {
                     friendsFightTeam = new ArrayList(fightTeam.fightObjectList);
                 }
@@ -147,8 +148,8 @@ public class FuzhuMu81Skill extends FightRoundSkill {
         iterator = friendsFightTeam.iterator();
 
         FightObject newTarget;
-        while(iterator.hasNext()) {
-            newTarget = (FightObject)iterator.next();
+        while (iterator.hasNext()) {
+            newTarget = (FightObject) iterator.next();
             if (newTarget.fid == fightRequest.vid) {
                 --num;
                 fightObjects.add(newTarget);
@@ -156,8 +157,8 @@ public class FuzhuMu81Skill extends FightRoundSkill {
             }
         }
 
-        for(int i = 0; i < num && friendsFightTeam.size() != 0; ++i) {
-            newTarget = (FightObject)friendsFightTeam.remove(FightManager.RANDOM.nextInt(friendsFightTeam.size()));
+        for (int i = 0; i < num && friendsFightTeam.size() != 0; ++i) {
+            newTarget = (FightObject) friendsFightTeam.remove(FightManager.RANDOM.nextInt(friendsFightTeam.size()));
             fightObjects.add(newTarget);
         }
 

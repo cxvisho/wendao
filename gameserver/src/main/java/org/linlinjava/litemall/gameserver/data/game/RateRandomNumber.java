@@ -30,8 +30,8 @@ public class RateRandomNumber {
 
                 Iterator var5;
                 Integer p;
-                for(var5 = percents.iterator(); var5.hasNext(); totalPercent += p) {
-                    p = (Integer)var5.next();
+                for (var5 = percents.iterator(); var5.hasNext(); totalPercent += p) {
+                    p = (Integer) var5.next();
                     if (p < 0 || p > 100) {
                         throw new IllegalArgumentException("百分比必须在[0,100]之间");
                     }
@@ -50,11 +50,11 @@ public class RateRandomNumber {
                             int scopeMax = 0;
 
                             int r;
-                            for(r = 0; r < rangeCount; ++r) {
+                            for (r = 0; r < rangeCount; ++r) {
                                 RateRandomNumber.Range range = new RateRandomNumber.Range();
-                                range.min = r == 0 ? min : (Integer)separates.get(r - 1);
-                                range.max = r == rangeCount - 1 ? max : (Integer)separates.get(r);
-                                range.percent = (Integer)percents.get(r);
+                                range.min = r == 0 ? min : (Integer) separates.get(r - 1);
+                                range.max = r == rangeCount - 1 ? max : (Integer) separates.get(r);
+                                range.percent = (Integer) percents.get(r);
                                 range.percentScopeMin = scopeMax + 1;
                                 range.percentScopeMax = range.percentScopeMin + (range.percent - 1);
                                 scopeMax = range.percentScopeMax;
@@ -65,8 +65,8 @@ public class RateRandomNumber {
                             Random random = new Random();
                             int randomInt = random.nextInt(100) + 1;
 
-                            for(int i = 0; i < ranges.size(); ++i) {
-                                RateRandomNumber.Range range = (RateRandomNumber.Range)ranges.get(i);
+                            for (int i = 0; i < ranges.size(); ++i) {
+                                RateRandomNumber.Range range = (RateRandomNumber.Range) ranges.get(i);
                                 if (range.percentScopeMin <= randomInt && randomInt <= range.percentScopeMax) {
                                     r = produceRandomNumber(range.min, range.max);
                                     break;
@@ -76,8 +76,8 @@ public class RateRandomNumber {
                             return r;
                         }
 
-                        s = (double)(Integer)var5.next();
-                    } while(s > (double)min && s < (double)max);
+                        s = (double) (Integer) var5.next();
+                    } while (s > (double) min && s < (double) max);
 
                     throw new IllegalArgumentException("分割数值必须在(min,max)之间");
                 }
@@ -96,7 +96,7 @@ public class RateRandomNumber {
         percents.add(98);
         percents.add(1);
 
-        for(int i = 0; i < 100; ++i) {
+        for (int i = 0; i < 100; ++i) {
             int number = produceRateRandomNumber(5, 20, separates, percents);
             System.out.println(number);
         }

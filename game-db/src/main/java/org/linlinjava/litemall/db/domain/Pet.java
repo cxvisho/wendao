@@ -9,10 +9,12 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class Pet implements Cloneable, Serializable {
@@ -225,9 +227,11 @@ public class Pet implements Cloneable, Serializable {
             return false;
         } else {
             boolean var10000;
-            label161: {
-                label153: {
-                    Pet other = (Pet)that;
+            label161:
+            {
+                label153:
+                {
+                    Pet other = (Pet) that;
                     if (this.getId() == null) {
                         if (other.getId() != null) {
                             break label153;
@@ -388,7 +392,7 @@ public class Pet implements Cloneable, Serializable {
     }
 
     public Pet clone() throws CloneNotSupportedException {
-        return (Pet)super.clone();
+        return (Pet) super.clone();
     }
 
     static {
@@ -458,7 +462,7 @@ public class Pet implements Cloneable, Serializable {
                 columns.removeAll(new ArrayList(Arrays.asList(excludes)));
             }
 
-            return (Pet.Column[])columns.toArray(new Pet.Column[0]);
+            return (Pet.Column[]) columns.toArray(new Pet.Column[0]);
         }
 
         public String getEscapedColumnName() {

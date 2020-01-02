@@ -24,7 +24,7 @@ public class PackUtils {
 
         int mana = manas[skill];
         int swType = type / 10;
-        switch(swType) {
+        switch (swType) {
             case 10:
                 return def;
             case 11:

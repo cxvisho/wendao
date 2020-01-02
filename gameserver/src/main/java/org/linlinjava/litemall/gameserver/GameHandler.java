@@ -3,11 +3,10 @@ package org.linlinjava.litemall.gameserver;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 
-public abstract interface GameHandler
-{
-  public abstract void process(ChannelHandlerContext paramChannelHandlerContext, ByteBuf paramByteBuf);
-  
-  public abstract int cmd();
+public abstract interface GameHandler {
+    public abstract void process(ChannelHandlerContext paramChannelHandlerContext, ByteBuf paramByteBuf);
+
+    public abstract int cmd();
 }
 
 

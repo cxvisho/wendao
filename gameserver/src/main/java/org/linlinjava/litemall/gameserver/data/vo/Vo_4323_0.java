@@ -6,9 +6,9 @@
 package org.linlinjava.litemall.gameserver.data.vo;
 
 public class Vo_4323_0 {
-  public int id;
-  public int level;
+    public int id;
+    public int level;
 
-  public Vo_4323_0() {
-  }
+    public Vo_4323_0() {
+    }
 }

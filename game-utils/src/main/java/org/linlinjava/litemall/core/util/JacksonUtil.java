@@ -22,7 +22,7 @@ public class JacksonUtil {
             if (leaf != null)
                 return leaf.asText();
         } catch (IOException e) {
-        	logger.error("",e);
+            logger.error("", e);
         }
         return null;
     }
@@ -39,7 +39,7 @@ public class JacksonUtil {
                 return mapper.convertValue(leaf, new TypeReference<List<String>>() {
                 });
         } catch (IOException e) {
-        	logger.error("",e);
+            logger.error("", e);
         }
         return null;
     }
@@ -53,7 +53,7 @@ public class JacksonUtil {
             if (leaf != null)
                 return leaf.asInt();
         } catch (IOException e) {
-        	logger.error("",e);
+            logger.error("", e);
         }
         return null;
     }
@@ -69,7 +69,7 @@ public class JacksonUtil {
                 return mapper.convertValue(leaf, new TypeReference<List<Integer>>() {
                 });
         } catch (IOException e) {
-        	logger.error("",e);
+            logger.error("", e);
         }
         return null;
     }
@@ -84,7 +84,7 @@ public class JacksonUtil {
             if (leaf != null)
                 return leaf.asBoolean();
         } catch (IOException e) {
-        	logger.error("",e);
+            logger.error("", e);
         }
         return null;
     }
@@ -100,7 +100,7 @@ public class JacksonUtil {
                 return value.shortValue();
             }
         } catch (IOException e) {
-        	logger.error("",e);
+            logger.error("", e);
         }
         return null;
     }
@@ -116,7 +116,7 @@ public class JacksonUtil {
                 return value.byteValue();
             }
         } catch (IOException e) {
-        	logger.error("",e);
+            logger.error("", e);
         }
         return null;
     }
@@ -129,7 +129,7 @@ public class JacksonUtil {
             node = node.get(field);
             return mapper.treeToValue(node, clazz);
         } catch (IOException e) {
-        	logger.error("",e);
+            logger.error("", e);
         }
         return null;
     }
@@ -143,7 +143,7 @@ public class JacksonUtil {
             JsonNode jsonNode = mapper.readTree(json);
             return jsonNode;
         } catch (IOException e) {
-        	logger.error("",e);
+            logger.error("", e);
         }
 
         return null;

@@ -9,10 +9,12 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class Reports implements Cloneable, Serializable {
@@ -135,9 +137,11 @@ public class Reports implements Cloneable, Serializable {
             return false;
         } else {
             boolean var10000;
-            label89: {
-                label81: {
-                    Reports other = (Reports)that;
+            label89:
+            {
+                label81:
+                {
+                    Reports other = (Reports) that;
                     if (this.getId() == null) {
                         if (other.getId() != null) {
                             break label81;
@@ -206,7 +210,7 @@ public class Reports implements Cloneable, Serializable {
 
     public int hashCode() {
         int result = 1;
-         result = 31 * result + (this.getId() == null ? 0 : this.getId().hashCode());
+        result = 31 * result + (this.getId() == null ? 0 : this.getId().hashCode());
         result = 31 * result + (this.getZhanghao() == null ? 0 : this.getZhanghao().hashCode());
         result = 31 * result + (this.getYuanbaoshu() == null ? 0 : this.getYuanbaoshu().hashCode());
         result = 31 * result + (this.getShifouchongzhi() == null ? 0 : this.getShifouchongzhi().hashCode());
@@ -217,7 +221,7 @@ public class Reports implements Cloneable, Serializable {
     }
 
     public Reports clone() throws CloneNotSupportedException {
-        return (Reports)super.clone();
+        return (Reports) super.clone();
     }
 
     static {
@@ -278,7 +282,7 @@ public class Reports implements Cloneable, Serializable {
                 columns.removeAll(new ArrayList(Arrays.asList(excludes)));
             }
 
-            return (Reports.Column[])columns.toArray(new Reports.Column[0]);
+            return (Reports.Column[]) columns.toArray(new Reports.Column[0]);
         }
 
         public String getEscapedColumnName() {

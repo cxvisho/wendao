@@ -9,10 +9,12 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class ShowTasks implements Cloneable, Serializable {
@@ -205,8 +207,9 @@ public class ShowTasks implements Cloneable, Serializable {
             return false;
         } else {
             boolean var10000;
-            label144: {
-                ShowTasks other = (ShowTasks)that;
+            label144:
+            {
+                ShowTasks other = (ShowTasks) that;
                 if (this.getId() == null) {
                     if (other.getId() != null) {
                         break label144;
@@ -330,7 +333,7 @@ public class ShowTasks implements Cloneable, Serializable {
 
     public int hashCode() {
         int result = 1;
-     result = 31 * result + (this.getId() == null ? 0 : this.getId().hashCode());
+        result = 31 * result + (this.getId() == null ? 0 : this.getId().hashCode());
         result = 31 * result + (this.getTaskType() == null ? 0 : this.getTaskType().hashCode());
         result = 31 * result + (this.getTaskDesc() == null ? 0 : this.getTaskDesc().hashCode());
         result = 31 * result + (this.getTaskPrompt() == null ? 0 : this.getTaskPrompt().hashCode());
@@ -348,7 +351,7 @@ public class ShowTasks implements Cloneable, Serializable {
     }
 
     public ShowTasks clone() throws CloneNotSupportedException {
-        return (ShowTasks)super.clone();
+        return (ShowTasks) super.clone();
     }
 
     static {
@@ -416,7 +419,7 @@ public class ShowTasks implements Cloneable, Serializable {
                 columns.removeAll(new ArrayList(Arrays.asList(excludes)));
             }
 
-            return (ShowTasks.Column[])columns.toArray(new ShowTasks.Column[0]);
+            return (ShowTasks.Column[]) columns.toArray(new ShowTasks.Column[0]);
         }
 
         public String getEscapedColumnName() {

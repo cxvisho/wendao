@@ -8,6 +8,7 @@ package org.linlinjava.litemall.gameserver.fight;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
 import org.linlinjava.litemall.gameserver.data.vo.Vo_19945_0;
 import org.linlinjava.litemall.gameserver.data.vo.Vo_19959_0;
 import org.linlinjava.litemall.gameserver.data.vo.Vo_64989_0;
@@ -60,8 +61,8 @@ public class CastMagic501Skill implements FightSkill {
         vo_64989_0.a = 1;
         Iterator var14 = targetList.iterator();
 
-        while(var14.hasNext()) {
-            FightObject fightObject = (FightObject)var14.next();
+        while (var14.hasNext()) {
+            FightObject fightObject = (FightObject) var14.next();
             vo_64989_0.list.add(fightObject.fid);
             vo_64989_0.missList.add(1);
         }
@@ -70,16 +71,16 @@ public class CastMagic501Skill implements FightSkill {
         int hurt = 0;
         Iterator var20 = targetList.iterator();
 
-        while(var20.hasNext()) {
-            FightObject fightObject = (FightObject)var20.next();
+        while (var20.hasNext()) {
+            FightObject fightObject = (FightObject) var20.next();
             int showhurt;
             if (hurt == 0) {
                 showhurt = BattleUtils.skillAttack(attFightObject.accurate + attFightObject.accurate_ext, jiNeng.skill_level, "WS", jiNeng.skill_no - 501);
-                showhurt = (int)((float)showhurt * jiabei);
+                showhurt = (int) ((float) showhurt * jiabei);
                 int thurt = BattleUtils.battle(attFightObject.accurate + attFightObject.accurate_ext, showhurt, fightObject.fangyu + fightObject.fangyu_ext);
                 hurt = thurt;
             } else {
-                hurt = (int)((double)hurt * 0.9D);
+                hurt = (int) ((double) hurt * 0.9D);
             }
 
             showhurt = fightObject.reduceShengming(hurt, fabao);

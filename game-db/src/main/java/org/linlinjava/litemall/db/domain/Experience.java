@@ -9,10 +9,12 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class Experience implements Cloneable, Serializable {
@@ -115,9 +117,11 @@ public class Experience implements Cloneable, Serializable {
             return false;
         } else {
             boolean var10000;
-            label73: {
-                label65: {
-                    Experience other = (Experience)that;
+            label73:
+            {
+                label65:
+                {
+                    Experience other = (Experience) that;
                     if (this.getAttrib() == null) {
                         if (other.getAttrib() != null) {
                             break label65;
@@ -170,7 +174,7 @@ public class Experience implements Cloneable, Serializable {
 
     public int hashCode() {
         int result = 1;
-         result = 31 * result + (this.getAttrib() == null ? 0 : this.getAttrib().hashCode());
+        result = 31 * result + (this.getAttrib() == null ? 0 : this.getAttrib().hashCode());
         result = 31 * result + (this.getMaxLevel() == null ? 0 : this.getMaxLevel().hashCode());
         result = 31 * result + (this.getAddTime() == null ? 0 : this.getAddTime().hashCode());
         result = 31 * result + (this.getUpdateTime() == null ? 0 : this.getUpdateTime().hashCode());
@@ -179,7 +183,7 @@ public class Experience implements Cloneable, Serializable {
     }
 
     public Experience clone() throws CloneNotSupportedException {
-        return (Experience)super.clone();
+        return (Experience) super.clone();
     }
 
     static {
@@ -238,7 +242,7 @@ public class Experience implements Cloneable, Serializable {
                 columns.removeAll(new ArrayList(Arrays.asList(excludes)));
             }
 
-            return (Experience.Column[])columns.toArray(new Experience.Column[0]);
+            return (Experience.Column[]) columns.toArray(new Experience.Column[0]);
         }
 
         public String getEscapedColumnName() {

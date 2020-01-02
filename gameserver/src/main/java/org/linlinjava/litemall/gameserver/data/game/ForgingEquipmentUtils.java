@@ -65,7 +65,7 @@ public class ForgingEquipmentUtils {
         } else {
             Random random = new Random();
             int raInt = random.nextInt(100000000);
-            int suc = (int)(9.6E7D / Math.pow(2.0D, (double)currentColor));
+            int suc = (int) (9.6E7D / Math.pow(2.0D, (double) currentColor));
             if (raInt < suc) {
                 ++currentColor;
                 currentProportion = 0;
@@ -146,7 +146,7 @@ public class ForgingEquipmentUtils {
                 int count = (maxValue + step - currentValue) / step;
 
                 int length;
-                for(length = 0; length < count; ++length) {
+                for (length = 0; length < count; ++length) {
                     int value = currentValue + length * step;
                     if (value >= maxValue) {
                         value = maxValue;
@@ -192,7 +192,7 @@ public class ForgingEquipmentUtils {
                 }
 
                 int number = RateRandomNumber.produceRateRandomNumber(0, length, separates, percents);
-                v_a[0] = (Integer)vlist.get(number);
+                v_a[0] = (Integer) vlist.get(number);
                 new_value = proportion(currentProportion, v_a[1], maxValue, v_a[0], step);
                 v_a[0] = new_value[0];
                 v_a[2] = new_value[1];
@@ -229,7 +229,7 @@ public class ForgingEquipmentUtils {
     }
 
     public static List<Hashtable<String, Integer>> appraisalEquipment(int eqType, int eq_attrib, int appraisalType) {
-        return appraisalEquipment(eqType, eq_attrib, appraisalType, (HashSet)null, 0, 0);
+        return appraisalEquipment(eqType, eq_attrib, appraisalType, (HashSet) null, 0, 0);
     }
 
     public static List<Hashtable<String, Integer>> appraisalALLEquipment(int eqType, int dst_eq_attrib, Hashtable<String, Integer> hashtable) {
@@ -244,20 +244,20 @@ public class ForgingEquipmentUtils {
                 Set<String> keys = hashtable.keySet();
                 Iterator var5 = keys.iterator();
 
-                while(var5.hasNext()) {
-                    String key = (String)var5.next();
+                while (var5.hasNext()) {
+                    String key = (String) var5.next();
                     String chineseName = getEquipmentKeyByName(key, false);
                     int current_max = getMaxValueByChineseName(chineseName, dst_eq_attrib - 10, false, false);
                     int dst_max = getMaxValueByChineseName(chineseName, dst_eq_attrib, false, false);
-                    int dst_value = (Integer)hashtable.get(key) * dst_max / current_max;
+                    int dst_value = (Integer) hashtable.get(key) * dst_max / current_max;
                     hashtable.put(key, dst_value);
                 }
             }
 
-            ((Hashtable)((List)hashtableList).get(0)).putAll(hashtable);
+            ((Hashtable) ((List) hashtableList).get(0)).putAll(hashtable);
         }
 
-        return (List)hashtableList;
+        return (List) hashtableList;
     }
 
     public static boolean appraisalEquipment(int dst_eq_attrib) {
@@ -299,22 +299,22 @@ public class ForgingEquipmentUtils {
     }
 
     public static List<Hashtable<String, Integer>> appraisalGreenEquipment(int eqType, int eq_attrib, int polar) {
-        return appraisalEquipment(eqType, eq_attrib, 5, (HashSet)null, polar, 0);
+        return appraisalEquipment(eqType, eq_attrib, 5, (HashSet) null, polar, 0);
     }
 
     public static List<Hashtable<String, Integer>> appraisalRemakeEquipment(int eqType, int eq_attrib, int currentColor) {
         List<Hashtable<String, Integer>> hashtableList = new ArrayList();
         if (currentColor < 5) {
-            hashtableList.addAll(appraisalEquipment(eqType, eq_attrib, 6, (HashSet)null, 0, currentColor));
+            hashtableList.addAll(appraisalEquipment(eqType, eq_attrib, 6, (HashSet) null, 0, currentColor));
         } else {
-            List<Hashtable<String, Integer>> list = appraisalEquipment(eqType, eq_attrib, 6, (HashSet)null, 0, currentColor);
+            List<Hashtable<String, Integer>> list = appraisalEquipment(eqType, eq_attrib, 6, (HashSet) null, 0, currentColor);
             if (!list.isEmpty()) {
-                Hashtable<String, Integer> hashtable = (Hashtable)list.get(0);
+                Hashtable<String, Integer> hashtable = (Hashtable) list.get(0);
                 if (null != hashtable) {
-                    List<Hashtable<String, Integer>> listf = appraisalEquipment(eqType, eq_attrib, 7, (HashSet)null, 0, currentColor);
+                    List<Hashtable<String, Integer>> listf = appraisalEquipment(eqType, eq_attrib, 7, (HashSet) null, 0, currentColor);
                     if (!list.isEmpty()) {
-                        Hashtable<String, Integer> hashtablef = (Hashtable)listf.get(0);
-                        if (((Integer)hashtablef.get("groupNo")).equals(hashtable.get("groupNo"))) {
+                        Hashtable<String, Integer> hashtablef = (Hashtable) listf.get(0);
+                        if (((Integer) hashtablef.get("groupNo")).equals(hashtable.get("groupNo"))) {
                             hashtable.putAll(hashtablef);
                             hashtableList.add(hashtable);
                         }
@@ -344,18 +344,18 @@ public class ForgingEquipmentUtils {
         List<Hashtable<String, Integer>> hashtableList = new ArrayList();
         Random random = new Random();
         if (addOrChange || stone >= 3 || random.nextBoolean()) {
-            hashtableList.addAll(appraisalEquipment(0, eq_attrib, 8, (HashSet)null, 0, currentColor));
+            hashtableList.addAll(appraisalEquipment(0, eq_attrib, 8, (HashSet) null, 0, currentColor));
         }
 
         return hashtableList;
     }
 
     public static List<Hashtable<String, Integer>> appraisalEquipment(int eqType, int eq_attrib, int appraisalType, int polar) {
-        return appraisalEquipment(eqType, eq_attrib, appraisalType, (HashSet)null, polar, 0);
+        return appraisalEquipment(eqType, eq_attrib, appraisalType, (HashSet) null, polar, 0);
     }
 
     public static List<Hashtable<String, Integer>> appraisalEquipment(int eqType, int eq_attrib, int appraisalType, HashSet<String> repeatAttributes) {
-        return (List)(3 == appraisalType ? appraisalEquipment(eqType, eq_attrib, appraisalType, repeatAttributes, 0, 0) : new ArrayList());
+        return (List) (3 == appraisalType ? appraisalEquipment(eqType, eq_attrib, appraisalType, repeatAttributes, 0, 0) : new ArrayList());
     }
 
     public static List<Hashtable<String, Integer>> appraisalYellowEquipment(int eqType, int eq_attrib, int appraisalType, HashSet<String> repeatAttributes, int stone) {
@@ -378,26 +378,26 @@ public class ForgingEquipmentUtils {
         String repKey;
         if (10 == appraisalType) {
             key_vlaue_tab = baseBlueSuit(eqType, eq_attrib);
-            blueList = randomAttribute((String[])key_vlaue_tab.get(eqType), (new Random()).nextInt(5) < 4 ? 1 : 2);
+            blueList = randomAttribute((String[]) key_vlaue_tab.get(eqType), (new Random()).nextInt(5) < 4 ? 1 : 2);
             key_vlaue_tab = new Hashtable();
             key_vlaue_tab.put("groupNo", 2);
             iterator = blueList.iterator();
 
-            while(iterator.hasNext()) {
-                repKey = (String)iterator.next();
+            while (iterator.hasNext()) {
+                repKey = (String) iterator.next();
                 key_vlaue_tab.put(getEquipmentKeyByName(repKey), getMaxValueByChineseName(repKey, eq_attrib, eqType == 3, false));
             }
 
             appraisalList.add(key_vlaue_tab);
         } else if (1 == appraisalType) {
             key_vlaue_tab = baseBlueSuit(eqType, eq_attrib);
-            blueList = randomAttribute((String[])key_vlaue_tab.get(eqType), (new Random()).nextInt(3) + 1);
+            blueList = randomAttribute((String[]) key_vlaue_tab.get(eqType), (new Random()).nextInt(3) + 1);
             key_vlaue_tab = new Hashtable();
             key_vlaue_tab.put("groupNo", 2);
             iterator = blueList.iterator();
 
-            while(iterator.hasNext()) {
-                repKey = (String)iterator.next();
+            while (iterator.hasNext()) {
+                repKey = (String) iterator.next();
                 key_vlaue_tab.put(getEquipmentKeyByName(repKey), getValueByChineseName(repKey, eq_attrib, eqType == 3, false));
             }
 
@@ -408,28 +408,28 @@ public class ForgingEquipmentUtils {
             if (2 == appraisalType) {
                 Random random = new Random();
                 key_vlaue_tab = baseBlueSuit(eqType, eq_attrib);
-                greenAttribute = randomAttribute((String[])key_vlaue_tab.get(eqType), random.nextInt(2) + 2);
+                greenAttribute = randomAttribute((String[]) key_vlaue_tab.get(eqType), random.nextInt(2) + 2);
                 key_vlaue_tab = new Hashtable();
                 Iterator var25 = greenAttribute.iterator();
 
-                while(var25.hasNext()) {
-                    name = (String)var25.next();
+                while (var25.hasNext()) {
+                    name = (String) var25.next();
                     key_vlaue_tab.put("groupNo", 2);
                     key_vlaue_tab.put(getEquipmentKeyByName(name), getValueByChineseName(name, eq_attrib, eqType == 3, false));
                 }
 
                 appraisalList.add(key_vlaue_tab);
                 Hashtable<Integer, String[]> pink_hashtable = pinkSuit(eqType, eq_attrib);
-                List<String> pinkList = randomAttribute((String[])pink_hashtable.get(eqType), 2);
+                List<String> pinkList = randomAttribute((String[]) pink_hashtable.get(eqType), 2);
                 if (pinkList.size() == 2) {
                     Hashtable<String, Integer> key_vlaue_pTab = new Hashtable();
                     key_vlaue_pTab.put("groupNo", 3);
-                    key_vlaue_pTab.put(getEquipmentKeyByName((String)pinkList.get(0)), getValueByChineseName((String)pinkList.get(0), eq_attrib, eqType == 3, false));
+                    key_vlaue_pTab.put(getEquipmentKeyByName((String) pinkList.get(0)), getValueByChineseName((String) pinkList.get(0), eq_attrib, eqType == 3, false));
                     appraisalList.add(key_vlaue_pTab);
                     if (random.nextInt(10) <= 7) {
                         Hashtable<String, Integer> key_vlaue_yTab = new Hashtable();
                         key_vlaue_yTab.put("groupNo", 4);
-                        key_vlaue_yTab.put(getEquipmentKeyByName((String)pinkList.get(1)), getValueByChineseName((String)pinkList.get(1), eq_attrib, eqType == 3, false));
+                        key_vlaue_yTab.put(getEquipmentKeyByName((String) pinkList.get(1)), getValueByChineseName((String) pinkList.get(1), eq_attrib, eqType == 3, false));
                         appraisalList.add(key_vlaue_yTab);
                     }
                 }
@@ -442,14 +442,14 @@ public class ForgingEquipmentUtils {
                 if (3 != appraisalType && 4 != appraisalType) {
                     if (9 == appraisalType) {
                         key_vlaue_tab = baseBlueSuit(eqType, eq_attrib);
-                        attributes = (String[])key_vlaue_tab.get(eqType);
+                        attributes = (String[]) key_vlaue_tab.get(eqType);
                         resultList = new ArrayList(attributes.length);
                         Collections.addAll(resultList, attributes);
                         if (null != repeatAttributes && !repeatAttributes.isEmpty()) {
                             iterator = repeatAttributes.iterator();
 
-                            while(iterator.hasNext()) {
-                                repKey = (String)iterator.next();
+                            while (iterator.hasNext()) {
+                                repKey = (String) iterator.next();
                                 name = getEquipmentKeyByName(repKey, false);
                                 if (resultList.contains(name)) {
                                     resultList.remove(name);
@@ -457,19 +457,19 @@ public class ForgingEquipmentUtils {
                             }
                         }
 
-                        arrayLeave = (String[])resultList.toArray(new String[resultList.size()]);
+                        arrayLeave = (String[]) resultList.toArray(new String[resultList.size()]);
                         pinkList = randomAttribute(arrayLeave, 1);
                         key_vlaue_pTab = new Hashtable();
                         key_vlaue_pTab.put("groupNo", 2);
-                        key_vlaue_pTab.put(getEquipmentKeyByName((String)pinkList.get(0)), getValueByChineseName((String)pinkList.get(0), eq_attrib, eqType == 3, false));
+                        key_vlaue_pTab.put(getEquipmentKeyByName((String) pinkList.get(0)), getValueByChineseName((String) pinkList.get(0), eq_attrib, eqType == 3, false));
                         appraisalList.add(key_vlaue_pTab);
                     } else if (5 == appraisalType) {
                         key_vlaue_tab = randomGreenSuit(polar);
-                        attributes = (String[])key_vlaue_tab.get(eqType);
+                        attributes = (String[]) key_vlaue_tab.get(eqType);
                         greenAttribute = randomAttribute(attributes, 1);
                         key_vlaue_tab = new Hashtable();
                         key_vlaue_tab.put("groupNo", 12);
-                        key_vlaue_tab.put(getEquipmentKeyByName((String)greenAttribute.get(0)), getValueByChineseName((String)greenAttribute.get(0), eq_attrib, eqType == 3, true));
+                        key_vlaue_tab.put(getEquipmentKeyByName((String) greenAttribute.get(0)), getValueByChineseName((String) greenAttribute.get(0), eq_attrib, eqType == 3, true));
                         appraisalList.add(key_vlaue_tab);
                         repKey = getEquipmentKeyByName(baseGreenSuit(polar));
                         key_vlaue_pTab = new Hashtable();
@@ -500,22 +500,22 @@ public class ForgingEquipmentUtils {
 
                         appraisalList.add(key_vlaue_tab);
                     } else if (8 == appraisalType) {
-                  greenAttribute = randomAttribute(resonanceBlueSuit(), 1);
+                        greenAttribute = randomAttribute(resonanceBlueSuit(), 1);
                         key_vlaue_tab = new Hashtable();
                         key_vlaue_tab.put("groupNo", 27);
-                        key_vlaue_tab.put(getEquipmentKeyByName((String)greenAttribute.get(0)), getMaxValueByChineseName((String)greenAttribute.get(0), eq_attrib, eqType == 3, true) * 2 / 12 * color);
+                        key_vlaue_tab.put(getEquipmentKeyByName((String) greenAttribute.get(0)), getMaxValueByChineseName((String) greenAttribute.get(0), eq_attrib, eqType == 3, true) * 2 / 12 * color);
                         appraisalList.add(key_vlaue_tab);
                     }
                 } else {
                     key_vlaue_tab = pinkSuit(eqType, eq_attrib);
-                    attributes = (String[])key_vlaue_tab.get(eqType);
+                    attributes = (String[]) key_vlaue_tab.get(eqType);
                     resultList = new ArrayList(attributes.length);
                     Collections.addAll(resultList, attributes);
                     if (null != repeatAttributes && !repeatAttributes.isEmpty()) {
                         iterator = repeatAttributes.iterator();
 
-                        while(iterator.hasNext()) {
-                            repKey = (String)iterator.next();
+                        while (iterator.hasNext()) {
+                            repKey = (String) iterator.next();
                             name = getEquipmentKeyByName(repKey, false);
                             if (resultList.contains(name)) {
                                 resultList.remove(name);
@@ -523,11 +523,11 @@ public class ForgingEquipmentUtils {
                         }
                     }
 
-                    arrayLeave = (String[])resultList.toArray(new String[resultList.size()]);
+                    arrayLeave = (String[]) resultList.toArray(new String[resultList.size()]);
                     pinkList = randomAttribute(arrayLeave, 1);
                     key_vlaue_pTab = new Hashtable();
                     key_vlaue_pTab.put("groupNo", 3 == appraisalType ? 3 : 4);
-                    key_vlaue_pTab.put(getEquipmentKeyByName((String)pinkList.get(0)), getValueByChineseName((String)pinkList.get(0), eq_attrib, eqType == 3, false));
+                    key_vlaue_pTab.put(getEquipmentKeyByName((String) pinkList.get(0)), getValueByChineseName((String) pinkList.get(0), eq_attrib, eqType == 3, false));
                     appraisalList.add(key_vlaue_pTab);
                 }
             }
@@ -541,7 +541,7 @@ public class ForgingEquipmentUtils {
         Random random = new Random();
         ArrayList list = new ArrayList();
 
-        while(list.size() < count) {
+        while (list.size() < count) {
             int i = random.nextInt(length);
             if (!list.contains(i)) {
                 list.add(i);
@@ -551,8 +551,8 @@ public class ForgingEquipmentUtils {
         List<String> attributes = new ArrayList();
         Iterator var7 = list.iterator();
 
-        while(var7.hasNext()) {
-            Integer index = (Integer)var7.next();
+        while (var7.hasNext()) {
+            Integer index = (Integer) var7.next();
             attributes.add(pinkAttributes[index]);
         }
 
@@ -715,16 +715,16 @@ public class ForgingEquipmentUtils {
         hashtable.put("强力昏睡", "super_forgotten");
         hashtable.put("强力混乱", "super_frozen");
         if (isName) {
-            return !hashtable.containsKey(chineseName) ? chineseName + "中文 No Find" : (String)hashtable.get(chineseName);
+            return !hashtable.containsKey(chineseName) ? chineseName + "中文 No Find" : (String) hashtable.get(chineseName);
         } else if (!hashtable.containsValue(chineseName)) {
             return chineseName + "英文 No Find";
         } else {
             String key = null;
             Iterator var4 = hashtable.keySet().iterator();
 
-            while(var4.hasNext()) {
-                String getKey = (String)var4.next();
-                if (((String)hashtable.get(getKey)).equals(chineseName)) {
+            while (var4.hasNext()) {
+                String getKey = (String) var4.next();
+                if (((String) hashtable.get(getKey)).equals(chineseName)) {
                     key = getKey;
                 }
             }
@@ -743,7 +743,7 @@ public class ForgingEquipmentUtils {
         if (skill < 10) {
             return skill / 2;
         } else if (skill < 50) {
-            return (int)((double)skill / 2.4D);
+            return (int) ((double) skill / 2.4D);
         } else {
             Random random = new Random();
             int skillCount;
@@ -833,14 +833,14 @@ public class ForgingEquipmentUtils {
         int point = 0;
         int i;
         if (green) {
-            for(i = 0; i < gv.length; ++i) {
+            for (i = 0; i < gv.length; ++i) {
                 if (gv[i].contentEquals(name)) {
                     point = i + 4;
                     break;
                 }
             }
         } else {
-            for(i = 0; i < bv.length; ++i) {
+            for (i = 0; i < bv.length; ++i) {
                 if (bv[i].contentEquals(name)) {
                     point = i;
                     break;
@@ -1090,7 +1090,7 @@ public class ForgingEquipmentUtils {
         hashtable.put("skill", String.valueOf(skill));
         hashtable.put("", String.valueOf(skill));
         int swType = type / 10;
-        switch(swType) {
+        switch (swType) {
             case 10:
                 hashtable.put("def", String.valueOf(def));
                 hashtable.put("str", "凝香幻彩");
@@ -1140,7 +1140,7 @@ public class ForgingEquipmentUtils {
 
         int mana = manas[skill];
         int swType = type / 10;
-        switch(swType) {
+        switch (swType) {
             case 10:
                 return def;
             case 11:

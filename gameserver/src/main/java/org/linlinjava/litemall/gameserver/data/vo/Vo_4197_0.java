@@ -6,8 +6,8 @@
 package org.linlinjava.litemall.gameserver.data.vo;
 
 public class Vo_4197_0 {
-  public int id;
+    public int id;
 
-  public Vo_4197_0() {
-  }
+    public Vo_4197_0() {
+    }
 }

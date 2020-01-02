@@ -20,8 +20,7 @@ public class JSONUtils {
         String str = null;
         try {
             str = mapper.writeValueAsString(data);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             log.error("data: " + data, e);
         }
         return str;
@@ -31,8 +30,7 @@ public class JSONUtils {
         try {
             T t = mapper.readValue(jsonData, beanType);
             return t;
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             log.error("data: " + jsonData, e);
         }
         return null;

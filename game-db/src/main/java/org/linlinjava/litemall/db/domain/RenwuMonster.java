@@ -9,10 +9,12 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class RenwuMonster implements Cloneable, Serializable {
@@ -175,9 +177,11 @@ public class RenwuMonster implements Cloneable, Serializable {
             return false;
         } else {
             boolean var10000;
-            label121: {
-                label113: {
-                    RenwuMonster other = (RenwuMonster)that;
+            label121:
+            {
+                label113:
+                {
+                    RenwuMonster other = (RenwuMonster) that;
                     if (this.getId() == null) {
                         if (other.getId() != null) {
                             break label113;
@@ -293,7 +297,7 @@ public class RenwuMonster implements Cloneable, Serializable {
     }
 
     public RenwuMonster clone() throws CloneNotSupportedException {
-        return (RenwuMonster)super.clone();
+        return (RenwuMonster) super.clone();
     }
 
     static {
@@ -358,7 +362,7 @@ public class RenwuMonster implements Cloneable, Serializable {
                 columns.removeAll(new ArrayList(Arrays.asList(excludes)));
             }
 
-            return (RenwuMonster.Column[])columns.toArray(new RenwuMonster.Column[0]);
+            return (RenwuMonster.Column[]) columns.toArray(new RenwuMonster.Column[0]);
         }
 
         public String getEscapedColumnName() {

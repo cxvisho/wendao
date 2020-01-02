@@ -77,9 +77,11 @@ public class ResponseUtil {
     public static Object badArgument() {
         return fail(401, "参数不对");
     }
+
     public static Object badArgument(String str) {
-        return fail(401, "参数不对,"+str);
+        return fail(401, "参数不对," + str);
     }
+
     public static Object badArgumentValue() {
         return fail(402, "参数值不对");
     }
@@ -107,17 +109,23 @@ public class ResponseUtil {
     public static Object unauthz() {
         return fail(506, "无操作权限");
     }
+
     public static Object notimes() {
         return fail(507, "查询次数用尽");
     }
 
-    public static Object errEmail() { return fail(800, "请输入正确的邮箱!"); }
+    public static Object errEmail() {
+        return fail(800, "请输入正确的邮箱!");
+    }
+
     public static Object errPhone() {
         return fail(801, "请输入正确的电话号码!");
     }
+
     public static Object errMobilePhone() {
         return fail(802, "请输入正确的手机号码!");
     }
+
     public static Object errInputEmpty() {
         return fail(803, "请填入必填项!");
     }

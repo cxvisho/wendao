@@ -15,18 +15,18 @@ public class BasicAttributesUtils {
     public static int[] calculationAttributes(int attrib, int constitution, int mag_power, int phy_power, int speed, int wood, int water, int fire, int earth, int resist_metal) {
         int[] attributes = new int[]{100, 80, 40, 40, 48, 20};
         int accurate_phy_power = phy_power * 5 + 40;
-        int accurate_resist_metal = (int)((double)phy_power * 0.45D * (double)resist_metal);
+        int accurate_resist_metal = (int) ((double) phy_power * 0.45D * (double) resist_metal);
         int accurate_all = accurate_phy_power + accurate_resist_metal;
         int mana_mag_power = mag_power * 5 + 40;
-        int mana_wood = (int)((double)mag_power * 0.16D * (double)wood);
+        int mana_wood = (int) ((double) mag_power * 0.16D * (double) wood);
         int mana_all = mana_mag_power + mana_wood;
         int wiz_constitution = constitution * 5 + 20;
-        int wiz_fire = (int)((double)constitution * 0.25D * (double)fire);
+        int wiz_fire = (int) ((double) constitution * 0.25D * (double) fire);
         int wiz_all = wiz_constitution + wiz_fire;
         int parry_speed = speed * 2 + 48;
-        int parry_earth = (int)((double)speed * 0.023D * (double)earth);
+        int parry_earth = (int) ((double) speed * 0.023D * (double) earth);
         int parry_all = parry_speed + parry_earth;
-        int dex_constitution_per = (int)((double)(attrib - 2) * 0.3D + 4.0D);
+        int dex_constitution_per = (int) ((double) (attrib - 2) * 0.3D + 4.0D);
         int dex_constitution = dex_constitution_per * mag_power;
         int[] dex_attribs = new int[]{80, 239, 452, 699, 983, 1303, 1658, 2049, 2476, 2939, 3337, 3861, 4421, 5018};
         int dex_attrib = dex_attribs[0];
@@ -38,9 +38,9 @@ public class BasicAttributesUtils {
             dex_attrib = dex_attribs[index] + (dex_attribs[index + 1] - dex_attribs[index]) / 10 * (attrib % 10);
         }
 
-        index = (int)((double)mag_power * 0.657D * (double)water);
+        index = (int) ((double) mag_power * 0.657D * (double) water);
         int dex_all = dex_constitution + dex_attrib + index;
-        int def_constitution_per = (int)((double)(attrib - 2) * 0.3D + 5.0D);
+        int def_constitution_per = (int) ((double) (attrib - 2) * 0.3D + 5.0D);
         int def_constitution = def_constitution_per * constitution;
         int[] def_attribs = new int[]{100, 359, 727, 1177, 1712, 2281, 2971, 3746, 4604, 5546, 6571, 7569, 8751, 10016};
         int def_attrib = def_attribs[0];
@@ -51,7 +51,7 @@ public class BasicAttributesUtils {
             def_attrib = def_attribs[index] + (def_attribs[index + 1] - def_attribs[index]) / 10 * (attrib % 10);
         }
 
-        index = (int)((double)constitution * 1.4D * (double)water);
+        index = (int) ((double) constitution * 1.4D * (double) water);
         int def_all = def_constitution + def_attrib + index;
         attributes[0] = def_all;
         attributes[1] = dex_all;
@@ -104,21 +104,21 @@ public class BasicAttributesUtils {
         int mana_all = mag_power * 5;
         int wiz_all = constitution * 5;
         int parry_all = speed * 2;
-        int dex_constitution_per = (int)((double)(attrib - 2) * 0.3D + 4.0D);
+        int dex_constitution_per = (int) ((double) (attrib - 2) * 0.3D + 4.0D);
         int dex_all = dex_constitution_per * mag_power;
-        int def_constitution_per = (int)((double)(attrib - 2) * 0.3D + 5.0D);
+        int def_constitution_per = (int) ((double) (attrib - 2) * 0.3D + 5.0D);
         int def_all = def_constitution_per * constitution;
         int[] attributes = new int[]{def_all, dex_all, accurate_all, mana_all, parry_all, wiz_all};
         return attributes;
     }
 
     public static int[] changeRelAttributes(int attrib, int constitution, int mag_power, int phy_power, int speed, int wood, int water, int fire, int earth, int resist_metal) {
-        int accurate_all = (int)((double)phy_power * 0.45D * (double)resist_metal);
-        int mana_all = (int)((double)mag_power * 0.16D * (double)wood);
-        int wiz_all = (int)((double)constitution * 0.25D * (double)fire);
-        int parry_all = (int)((double)speed * 0.023D * (double)earth);
-        int dex_all = (int)((double)mag_power * 0.657D * (double)water);
-        int def_all = (int)((double)constitution * 1.4D * (double)water);
+        int accurate_all = (int) ((double) phy_power * 0.45D * (double) resist_metal);
+        int mana_all = (int) ((double) mag_power * 0.16D * (double) wood);
+        int wiz_all = (int) ((double) constitution * 0.25D * (double) fire);
+        int parry_all = (int) ((double) speed * 0.023D * (double) earth);
+        int dex_all = (int) ((double) mag_power * 0.657D * (double) water);
+        int def_all = (int) ((double) constitution * 1.4D * (double) water);
         int[] attributes = new int[]{def_all, dex_all, accurate_all, mana_all, parry_all, wiz_all};
         return attributes;
     }
@@ -126,18 +126,18 @@ public class BasicAttributesUtils {
     public static int[] calculationHelpAttributes(int attrib, int constitution, int mag_power, int phy_power, int speed, int wood, int water, int fire, int earth, int resist_metal, int polar) {
         int[] attributes = new int[]{100, 80, 40, 40, 48, 20};
         int accurate_phy_power = phy_power * 5 + 40;
-        int accurate_resist_metal = (int)((double)phy_power * 0.45D * (double)resist_metal);
+        int accurate_resist_metal = (int) ((double) phy_power * 0.45D * (double) resist_metal);
         int accurate_all = accurate_phy_power + accurate_resist_metal;
         int mana_mag_power = mag_power * 5 + 40;
-        int mana_wood = (int)((double)mag_power * 0.16D * (double)wood);
+        int mana_wood = (int) ((double) mag_power * 0.16D * (double) wood);
         int mana_all = mana_mag_power + mana_wood;
         int wiz_constitution = constitution * 5 + 20;
-        int wiz_fire = (int)((double)constitution * 0.25D * (double)fire);
+        int wiz_fire = (int) ((double) constitution * 0.25D * (double) fire);
         int wiz_all = wiz_constitution + wiz_fire;
         int parry_speed = speed * 2 + 48;
-        int parry_earth = (int)((double)speed * 0.023D * (double)earth);
+        int parry_earth = (int) ((double) speed * 0.023D * (double) earth);
         int parry_all = parry_speed + parry_earth;
-        int dex_constitution_per = (int)((double)(attrib - 2) * 0.3D + 4.0D);
+        int dex_constitution_per = (int) ((double) (attrib - 2) * 0.3D + 4.0D);
         int dex_constitution = dex_constitution_per * mag_power;
         int[] dex_attribs = new int[]{80, 239, 452, 699, 983, 1303, 1658, 2049, 2476, 2939, 3337, 3861, 4421, 5018};
         int dex_attrib = dex_attribs[0];
@@ -149,9 +149,9 @@ public class BasicAttributesUtils {
             dex_attrib = dex_attribs[index] + (dex_attribs[index + 1] - dex_attribs[index]) / 10 * (attrib % 10);
         }
 
-        index = (int)((double)mag_power * 0.657D * (double)water);
+        index = (int) ((double) mag_power * 0.657D * (double) water);
         int dex_all = dex_constitution + dex_attrib + index;
-        int def_constitution_per = (int)((double)(attrib - 2) * 0.3D + 5.0D);
+        int def_constitution_per = (int) ((double) (attrib - 2) * 0.3D + 5.0D);
         int def_constitution = def_constitution_per * constitution;
         int[] def_attribs = new int[]{100, 359, 727, 1177, 1712, 2281, 2971, 3746, 4604, 5546, 6571, 7569, 8751, 10016};
         int def_attrib = def_attribs[0];
@@ -162,15 +162,15 @@ public class BasicAttributesUtils {
             def_attrib = def_attribs[index] + (def_attribs[index + 1] - def_attribs[index]) / 10 * (attrib % 10);
         }
 
-        index = (int)((double)constitution * 1.4D * (double)water);
+        index = (int) ((double) constitution * 1.4D * (double) water);
         int def_all = def_constitution + def_attrib + index;
         double[][] hs = new double[][]{{2.0D, 8.0D, 4.0D, 2.0D, 10.0D}, {1.3D, 8.0D, 9.0D, 2.0D, 2.6D}, {1.3D, 6.0D, 3.0D, 2.0D, 3.0D}, {2.0D, 1.7D, 7.0D, 2.0D, 6.3D}, {1.5D, 2.1D, 13.0D, 2.0D, 7.0D}};
-        attributes[0] = (int)((double)def_all * hs[polar - 1][0]);
-        attributes[1] = (int)((double)dex_all * hs[polar - 1][0]);
-        attributes[2] = (int)((double)accurate_all * hs[polar - 1][1]);
-        attributes[3] = (int)((double)mana_all * hs[polar - 1][2]);
-        attributes[4] = (int)((double)parry_all * hs[polar - 1][3]);
-        attributes[5] = (int)((double)wiz_all * hs[polar - 1][4]);
+        attributes[0] = (int) ((double) def_all * hs[polar - 1][0]);
+        attributes[1] = (int) ((double) dex_all * hs[polar - 1][0]);
+        attributes[2] = (int) ((double) accurate_all * hs[polar - 1][1]);
+        attributes[3] = (int) ((double) mana_all * hs[polar - 1][2]);
+        attributes[4] = (int) ((double) parry_all * hs[polar - 1][3]);
+        attributes[5] = (int) ((double) wiz_all * hs[polar - 1][4]);
         return attributes;
     }
 }

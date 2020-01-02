@@ -6,7 +6,9 @@
 package org.linlinjava.litemall.db.util;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+
 import java.util.concurrent.TimeUnit;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
@@ -38,7 +40,7 @@ public class RedisUtils {
 
     public <T> T get(String key, Class<T> clazz, long expire) {
         ValueOperations<String, String> opsForValue = this.redisTemplate.opsForValue();
-        String value = (String)opsForValue.get(key);
+        String value = (String) opsForValue.get(key);
         if (expire != -1L) {
             this.redisTemplate.expire(key, expire, TimeUnit.SECONDS);
         }
@@ -52,7 +54,7 @@ public class RedisUtils {
 
     public String get(String key, long expire) {
         ValueOperations<String, String> opsForValue = this.redisTemplate.opsForValue();
-        String value = (String)opsForValue.get(key);
+        String value = (String) opsForValue.get(key);
         if (expire != -1L) {
             this.redisTemplate.expire(key, expire, TimeUnit.SECONDS);
         }

@@ -8,6 +8,7 @@ package org.linlinjava.litemall.db.domain.vo.base;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
 import org.linlinjava.litemall.db.domain.StoreGoods;
 
 public class BaseStoreGoodsVo {
@@ -58,8 +59,8 @@ public class BaseStoreGoodsVo {
         List<BaseStoreGoodsVo> listVo = new ArrayList();
         Iterator var2 = list.iterator();
 
-        while(var2.hasNext()) {
-            StoreGoods temp = (StoreGoods)var2.next();
+        while (var2.hasNext()) {
+            StoreGoods temp = (StoreGoods) var2.next();
             listVo.add(new BaseStoreGoodsVo(temp));
         }
 

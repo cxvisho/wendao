@@ -12,6 +12,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -30,7 +31,7 @@ public class PetAndHelpSkillUtils {
     }
 
     public static int getMaxSkill(int attrib) {
-        int maxSkill = (int)((double)attrib * 1.6D);
+        int maxSkill = (int) ((double) attrib * 1.6D);
         return maxSkill;
     }
 
@@ -52,7 +53,7 @@ public class PetAndHelpSkillUtils {
         int[] sh_gj = new int[]{1, 19, 32, 50, 100};
         int sh_gj_count = 0;
 
-        for(int i = sh_gj.length - 1; i >= 0; --i) {
+        for (int i = sh_gj.length - 1; i >= 0; --i) {
             if (attrib >= sh_gj[i]) {
                 sh_gj_count = i + 1;
                 break;
@@ -63,7 +64,7 @@ public class PetAndHelpSkillUtils {
         int[] sh_fz = new int[]{1, 1, 1, 50, 100};
         int sh_fz_count = 0;
 
-        for(int i = sh_fz.length - 1; i >= 0; --i) {
+        for (int i = sh_fz.length - 1; i >= 0; --i) {
             if (attrib >= sh_fz[i]) {
                 sh_fz_count = i + 1;
                 break;
@@ -76,7 +77,7 @@ public class PetAndHelpSkillUtils {
         List<Integer> pet_gj_counts = new ArrayList();
 
         int i;
-        for(i = pet_gj.length - 1; i >= 0; --i) {
+        for (i = pet_gj.length - 1; i >= 0; --i) {
             if (attrib >= pet_gj[i]) {
                 if (i == 2) {
                     pet_gj_counts.add(1);
@@ -98,7 +99,7 @@ public class PetAndHelpSkillUtils {
         int skillIndex;
         int[] skillNum_round;
         if (pet == 2 && (null == skill_value || skill_value.isEmpty())) {
-            for(i = 0; i < jsonArray.length(); ++i) {
+            for (i = 0; i < jsonArray.length(); ++i) {
                 jsonObject = jsonArray.optJSONObject(i);
                 metal = jsonObject.optInt("metal");
                 skillType = jsonObject.optString("skillType");
@@ -133,7 +134,7 @@ public class PetAndHelpSkillUtils {
             sh_gj_list.addAll(sh_fz_list);
             return sh_gj_list;
         } else if (pet == 1 && isMagic && (null == skill_value || skill_value.isEmpty())) {
-            for(i = 0; i < jsonArray.length(); ++i) {
+            for (i = 0; i < jsonArray.length(); ++i) {
                 jsonObject = jsonArray.optJSONObject(i);
                 metal = jsonObject.optInt("metal");
                 skillType = jsonObject.optString("skillType");
@@ -152,14 +153,14 @@ public class PetAndHelpSkillUtils {
 
             return pet_gj_list;
         } else if (null != skill_value && !skill_value.isEmpty()) {
-            for(i = 0; i < jsonArray.length(); ++i) {
+            for (i = 0; i < jsonArray.length(); ++i) {
                 jsonObject = jsonArray.optJSONObject(i);
                 metal = jsonObject.optInt("metal");
                 skillType = jsonObject.optString("skillType");
                 skillIndex = jsonObject.optInt("skillIndex");
                 String skillType_skillIndex = String.format("%s_%d", skillType, skillIndex);
                 if (skill_value.contains(skillType_skillIndex) && pMetal == metal) {
-                   skillNum_round = skillNum(jsonObject, getMaxSkill(attrib));
+                    skillNum_round = skillNum(jsonObject, getMaxSkill(attrib));
                     jsonObject.put("skillNum", skillNum_round[0]);
                     jsonObject.put("skillRound", skillNum_round[1]);
                     jsonObject.put("skillLevel", getMaxSkill(attrib));
@@ -194,7 +195,7 @@ public class PetAndHelpSkillUtils {
             return bp;
         } else {
             if (skillType.contentEquals("WS")) {
-                bp[0] = (int)((double)attrib * 17.5D);
+                bp[0] = (int) ((double) attrib * 17.5D);
                 bp[1] = attrib * attrib * 60;
             } else {
                 Hashtable<String, Double> addHashtable = new Hashtable();
@@ -202,31 +203,31 @@ public class PetAndHelpSkillUtils {
                 addHashtable.put("ZA", 0.3D);
                 addHashtable.put("FZ", 0.4D);
                 addHashtable.put("BD", 0.5D);
-                Double add = (Double)addHashtable.get(skillType);
+                Double add = (Double) addHashtable.get(skillType);
                 if (null == add) {
                     add = 0.0D;
                 }
 
-                switch(skillIndex) {
+                switch (skillIndex) {
                     case 1:
-                        bp[0] = (int)((double)attrib * (10.7D + add));
-                        bp[1] = (int)((double)(attrib * attrib) * (15.7D + add));
+                        bp[0] = (int) ((double) attrib * (10.7D + add));
+                        bp[1] = (int) ((double) (attrib * attrib) * (15.7D + add));
                         break;
                     case 2:
-                        bp[0] = (int)((double)attrib * (13.5D + add));
-                        bp[1] = (int)((double)(attrib * attrib) * (14.0D + add));
+                        bp[0] = (int) ((double) attrib * (13.5D + add));
+                        bp[1] = (int) ((double) (attrib * attrib) * (14.0D + add));
                         break;
                     case 3:
-                        bp[0] = (int)((double)attrib * (15.5D + add));
-                        bp[1] = (int)((double)(attrib * attrib) * (22.0D + add));
+                        bp[0] = (int) ((double) attrib * (15.5D + add));
+                        bp[1] = (int) ((double) (attrib * attrib) * (22.0D + add));
                         break;
                     case 4:
-                        bp[0] = (int)((double)attrib * (25.0D + add));
-                        bp[1] = (int)((double)(attrib * attrib) * (33.0D + add));
+                        bp[0] = (int) ((double) attrib * (25.0D + add));
+                        bp[1] = (int) ((double) (attrib * attrib) * (33.0D + add));
                         break;
                     case 5:
-                        bp[0] = (int)((double)attrib * (28.0D + add));
-                        bp[1] = (int)((double)(attrib * attrib) * (43.0D + add));
+                        bp[0] = (int) ((double) attrib * (28.0D + add));
+                        bp[1] = (int) ((double) (attrib * attrib) * (43.0D + add));
                 }
             }
 
@@ -252,7 +253,7 @@ public class PetAndHelpSkillUtils {
         int skillLevel;
         int skillRound;
         if (num_round[0] == 0) {
-            for(i = 0; i < jsonArray.length(); ++i) {
+            for (i = 0; i < jsonArray.length(); ++i) {
                 jsonObject = jsonArray.optJSONObject(i);
                 skillLevelMin = jsonObject.optInt("skillLevelMin");
                 skillLevel = jsonObject.optInt("skillLevel");
@@ -268,7 +269,7 @@ public class PetAndHelpSkillUtils {
         }
 
         if (num_round[1] == 0) {
-            for(i = 0; i < jsonArrayRound.length(); ++i) {
+            for (i = 0; i < jsonArrayRound.length(); ++i) {
                 jsonObject = jsonArrayRound.optJSONObject(i);
                 skillLevelMin = jsonObject.optInt("skillLevelMin");
                 skillLevel = jsonObject.optInt("skillLevel");
@@ -318,7 +319,7 @@ public class PetAndHelpSkillUtils {
 
         String skill_attrib = null;
 
-        for(int i = 0; i < jsonArray.length(); ++i) {
+        for (int i = 0; i < jsonArray.length(); ++i) {
             JSONObject jsonObject = jsonArray.optJSONObject(i);
             int no = jsonObject.optInt("skillNo");
             if (no == skillNo) {
@@ -336,7 +337,7 @@ public class PetAndHelpSkillUtils {
         JSONObject skillObject = jsonArray(skillNo);
         JSONArray jsonArray = skillObject.optJSONArray("skillUse");
         if (null != jsonArray && jsonArray.length() != 0) {
-            for(int i = 0; i < jsonArray.length(); ++i) {
+            for (int i = 0; i < jsonArray.length(); ++i) {
                 JSONObject jsonObject = jsonArray.optJSONObject(i);
                 int skillLevelMin = jsonObject.optInt("skillLevelMin");
                 int skillLevel = jsonObject.optInt("skillLevel");
@@ -366,7 +367,7 @@ public class PetAndHelpSkillUtils {
         String leixing = null;
         int skillIndex = 0;
 
-        for(int i = 0; i < jsonArray.length(); ++i) {
+        for (int i = 0; i < jsonArray.length(); ++i) {
             JSONObject jsonObject = jsonArray.optJSONObject(i);
             int no = jsonObject.optInt("skillNo");
             if (no == skillNo) {
@@ -381,7 +382,7 @@ public class PetAndHelpSkillUtils {
             return bp;
         } else {
             if (leixing.contentEquals("WS")) {
-                bp[0] = (int)((double)attrib * 17.5D);
+                bp[0] = (int) ((double) attrib * 17.5D);
                 bp[1] = attrib * attrib * 60;
             } else {
                 Hashtable<String, Double> addHashtable = new Hashtable();
@@ -389,31 +390,31 @@ public class PetAndHelpSkillUtils {
                 addHashtable.put("ZA", 0.3D);
                 addHashtable.put("FZ", 0.4D);
                 addHashtable.put("BD", 0.5D);
-                Double add = (Double)addHashtable.get(leixing);
+                Double add = (Double) addHashtable.get(leixing);
                 if (null == add) {
                     add = 0.0D;
                 }
 
-                switch(skillIndex) {
+                switch (skillIndex) {
                     case 1:
-                        bp[0] = (int)((double)attrib * (10.7D + add));
-                        bp[1] = (int)((double)(attrib * attrib) * (15.7D + add));
+                        bp[0] = (int) ((double) attrib * (10.7D + add));
+                        bp[1] = (int) ((double) (attrib * attrib) * (15.7D + add));
                         break;
                     case 2:
-                        bp[0] = (int)((double)attrib * (13.5D + add));
-                        bp[1] = (int)((double)(attrib * attrib) * (14.0D + add));
+                        bp[0] = (int) ((double) attrib * (13.5D + add));
+                        bp[1] = (int) ((double) (attrib * attrib) * (14.0D + add));
                         break;
                     case 3:
-                        bp[0] = (int)((double)attrib * (15.5D + add));
-                        bp[1] = (int)((double)(attrib * attrib) * (22.0D + add));
+                        bp[0] = (int) ((double) attrib * (15.5D + add));
+                        bp[1] = (int) ((double) (attrib * attrib) * (22.0D + add));
                         break;
                     case 4:
-                        bp[0] = (int)((double)attrib * (25.0D + add));
-                        bp[1] = (int)((double)(attrib * attrib) * (33.0D + add));
+                        bp[0] = (int) ((double) attrib * (25.0D + add));
+                        bp[1] = (int) ((double) (attrib * attrib) * (33.0D + add));
                         break;
                     case 5:
-                        bp[0] = (int)((double)attrib * (28.0D + add));
-                        bp[1] = (int)((double)(attrib * attrib) * (43.0D + add));
+                        bp[0] = (int) ((double) attrib * (28.0D + add));
+                        bp[1] = (int) ((double) (attrib * attrib) * (43.0D + add));
                 }
 
                 if (leixing.contentEquals("BD")) {

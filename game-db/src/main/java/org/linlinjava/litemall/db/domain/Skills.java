@@ -9,10 +9,12 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class Skills implements Cloneable, Serializable {
@@ -185,9 +187,11 @@ public class Skills implements Cloneable, Serializable {
             return false;
         } else {
             boolean var10000;
-            label129: {
-                label121: {
-                    Skills other = (Skills)that;
+            label129:
+            {
+                label121:
+                {
+                    Skills other = (Skills) that;
                     if (this.getId() == null) {
                         if (other.getId() != null) {
                             break label121;
@@ -296,7 +300,7 @@ public class Skills implements Cloneable, Serializable {
 
     public int hashCode() {
         int result = 1;
-         result = 31 * result + (this.getId() == null ? 0 : this.getId().hashCode());
+        result = 31 * result + (this.getId() == null ? 0 : this.getId().hashCode());
         result = 31 * result + (this.getSkillIdHex() == null ? 0 : this.getSkillIdHex().hashCode());
         result = 31 * result + (this.getSkillName() == null ? 0 : this.getSkillName().hashCode());
         result = 31 * result + (this.getSkillReqMenpai() == null ? 0 : this.getSkillReqMenpai().hashCode());
@@ -312,7 +316,7 @@ public class Skills implements Cloneable, Serializable {
     }
 
     public Skills clone() throws CloneNotSupportedException {
-        return (Skills)super.clone();
+        return (Skills) super.clone();
     }
 
     static {
@@ -378,7 +382,7 @@ public class Skills implements Cloneable, Serializable {
                 columns.removeAll(new ArrayList(Arrays.asList(excludes)));
             }
 
-            return (Skills.Column[])columns.toArray(new Skills.Column[0]);
+            return (Skills.Column[]) columns.toArray(new Skills.Column[0]);
         }
 
         public String getEscapedColumnName() {

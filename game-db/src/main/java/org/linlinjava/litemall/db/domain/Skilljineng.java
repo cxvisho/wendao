@@ -9,10 +9,12 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class Skilljineng implements Cloneable, Serializable {
@@ -165,8 +167,9 @@ public class Skilljineng implements Cloneable, Serializable {
             return false;
         } else {
             boolean var10000;
-            label112: {
-                Skilljineng other = (Skilljineng)that;
+            label112:
+            {
+                Skilljineng other = (Skilljineng) that;
                 if (this.getId() == null) {
                     if (other.getId() != null) {
                         break label112;
@@ -258,7 +261,7 @@ public class Skilljineng implements Cloneable, Serializable {
 
     public int hashCode() {
         int result = 1;
-       result = 31 * result + (this.getId() == null ? 0 : this.getId().hashCode());
+        result = 31 * result + (this.getId() == null ? 0 : this.getId().hashCode());
         result = 31 * result + (this.getRid() == null ? 0 : this.getRid().hashCode());
         result = 31 * result + (this.getPid() == null ? 0 : this.getPid().hashCode());
         result = 31 * result + (this.getSkillName() == null ? 0 : this.getSkillName().hashCode());
@@ -272,7 +275,7 @@ public class Skilljineng implements Cloneable, Serializable {
     }
 
     public Skilljineng clone() throws CloneNotSupportedException {
-        return (Skilljineng)super.clone();
+        return (Skilljineng) super.clone();
     }
 
     static {
@@ -336,7 +339,7 @@ public class Skilljineng implements Cloneable, Serializable {
                 columns.removeAll(new ArrayList(Arrays.asList(excludes)));
             }
 
-            return (Skilljineng.Column[])columns.toArray(new Skilljineng.Column[0]);
+            return (Skilljineng.Column[]) columns.toArray(new Skilljineng.Column[0]);
         }
 
         public String getEscapedColumnName() {

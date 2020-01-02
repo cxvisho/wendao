@@ -8,6 +8,7 @@ package org.linlinjava.litemall.db.domain.example;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+
 import org.linlinjava.litemall.db.domain.Shuxingduiying.Column;
 import org.linlinjava.litemall.db.domain.Shuxingduiying.Deleted;
 
@@ -57,7 +58,7 @@ public class ShuxingduiyingExample {
     public ShuxingduiyingExample orderBy(String... orderByClauses) {
         StringBuffer sb = new StringBuffer();
 
-        for(int i = 0; i < orderByClauses.length; ++i) {
+        for (int i = 0; i < orderByClauses.length; ++i) {
             sb.append(orderByClauses[i]);
             if (i < orderByClauses.length - 1) {
                 sb.append(" , ");
@@ -180,7 +181,7 @@ public class ShuxingduiyingExample {
         }
 
         protected Criterion(String condition, Object value) {
-            this(condition, value, (String)null);
+            this(condition, value, (String) null);
         }
 
         protected Criterion(String condition, Object value, Object secondValue, String typeHandler) {
@@ -192,7 +193,7 @@ public class ShuxingduiyingExample {
         }
 
         protected Criterion(String condition, Object value, Object secondValue) {
-            this(condition, value, secondValue, (String)null);
+            this(condition, value, secondValue, (String) null);
         }
     }
 
@@ -207,7 +208,9 @@ public class ShuxingduiyingExample {
             return this.example;
         }
 
-        /** @deprecated */
+        /**
+         * @deprecated
+         */
         @Deprecated
         public ShuxingduiyingExample.Criteria andIf(boolean ifAdd, ShuxingduiyingExample.Criteria.ICriteriaAdd add) {
             if (ifAdd) {
@@ -239,7 +242,9 @@ public class ShuxingduiyingExample {
             return deleted ? this.andDeletedEqualTo(Deleted.IS_DELETED.value()) : this.andDeletedNotEqualTo(Deleted.IS_DELETED.value());
         }
 
-        /** @deprecated */
+        /**
+         * @deprecated
+         */
         @Deprecated
         public interface ICriteriaAdd {
             ShuxingduiyingExample.Criteria add(ShuxingduiyingExample.Criteria add);
@@ -290,562 +295,562 @@ public class ShuxingduiyingExample {
 
         public ShuxingduiyingExample.Criteria andIdIsNull() {
             this.addCriterion("id is null");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andIdIsNotNull() {
             this.addCriterion("id is not null");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andIdEqualTo(Integer value) {
             this.addCriterion("id =", value, "id");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andIdEqualToColumn(Column column) {
             this.addCriterion("id = " + column.getEscapedColumnName());
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andIdNotEqualTo(Integer value) {
             this.addCriterion("id <>", value, "id");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andIdNotEqualToColumn(Column column) {
             this.addCriterion("id <> " + column.getEscapedColumnName());
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andIdGreaterThan(Integer value) {
             this.addCriterion("id >", value, "id");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andIdGreaterThanColumn(Column column) {
             this.addCriterion("id > " + column.getEscapedColumnName());
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andIdGreaterThanOrEqualTo(Integer value) {
             this.addCriterion("id >=", value, "id");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andIdGreaterThanOrEqualToColumn(Column column) {
             this.addCriterion("id >= " + column.getEscapedColumnName());
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andIdLessThan(Integer value) {
             this.addCriterion("id <", value, "id");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andIdLessThanColumn(Column column) {
             this.addCriterion("id < " + column.getEscapedColumnName());
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andIdLessThanOrEqualTo(Integer value) {
             this.addCriterion("id <=", value, "id");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andIdLessThanOrEqualToColumn(Column column) {
             this.addCriterion("id <= " + column.getEscapedColumnName());
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andIdIn(List<Integer> values) {
             this.addCriterion("id in", values, "id");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andIdNotIn(List<Integer> values) {
             this.addCriterion("id not in", values, "id");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andIdBetween(Integer value1, Integer value2) {
             this.addCriterion("id between", value1, value2, "id");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andIdNotBetween(Integer value1, Integer value2) {
             this.addCriterion("id not between", value1, value2, "id");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andNameIsNull() {
             this.addCriterion("`name` is null");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andNameIsNotNull() {
             this.addCriterion("`name` is not null");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andNameEqualTo(String value) {
             this.addCriterion("`name` =", value, "name");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andNameEqualToColumn(Column column) {
             this.addCriterion("`name` = " + column.getEscapedColumnName());
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andNameNotEqualTo(String value) {
             this.addCriterion("`name` <>", value, "name");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andNameNotEqualToColumn(Column column) {
             this.addCriterion("`name` <> " + column.getEscapedColumnName());
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andNameGreaterThan(String value) {
             this.addCriterion("`name` >", value, "name");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andNameGreaterThanColumn(Column column) {
             this.addCriterion("`name` > " + column.getEscapedColumnName());
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andNameGreaterThanOrEqualTo(String value) {
             this.addCriterion("`name` >=", value, "name");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andNameGreaterThanOrEqualToColumn(Column column) {
             this.addCriterion("`name` >= " + column.getEscapedColumnName());
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andNameLessThan(String value) {
             this.addCriterion("`name` <", value, "name");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andNameLessThanColumn(Column column) {
             this.addCriterion("`name` < " + column.getEscapedColumnName());
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andNameLessThanOrEqualTo(String value) {
             this.addCriterion("`name` <=", value, "name");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andNameLessThanOrEqualToColumn(Column column) {
             this.addCriterion("`name` <= " + column.getEscapedColumnName());
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andNameLike(String value) {
             this.addCriterion("`name` like", value, "name");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andNameNotLike(String value) {
             this.addCriterion("`name` not like", value, "name");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andNameIn(List<String> values) {
             this.addCriterion("`name` in", values, "name");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andNameNotIn(List<String> values) {
             this.addCriterion("`name` not in", values, "name");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andNameBetween(String value1, String value2) {
             this.addCriterion("`name` between", value1, value2, "name");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andNameNotBetween(String value1, String value2) {
             this.addCriterion("`name` not between", value1, value2, "name");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andYingwenIsNull() {
             this.addCriterion("yingwen is null");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andYingwenIsNotNull() {
             this.addCriterion("yingwen is not null");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andYingwenEqualTo(String value) {
             this.addCriterion("yingwen =", value, "yingwen");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andYingwenEqualToColumn(Column column) {
             this.addCriterion("yingwen = " + column.getEscapedColumnName());
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andYingwenNotEqualTo(String value) {
             this.addCriterion("yingwen <>", value, "yingwen");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andYingwenNotEqualToColumn(Column column) {
             this.addCriterion("yingwen <> " + column.getEscapedColumnName());
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andYingwenGreaterThan(String value) {
             this.addCriterion("yingwen >", value, "yingwen");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andYingwenGreaterThanColumn(Column column) {
             this.addCriterion("yingwen > " + column.getEscapedColumnName());
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andYingwenGreaterThanOrEqualTo(String value) {
             this.addCriterion("yingwen >=", value, "yingwen");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andYingwenGreaterThanOrEqualToColumn(Column column) {
             this.addCriterion("yingwen >= " + column.getEscapedColumnName());
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andYingwenLessThan(String value) {
             this.addCriterion("yingwen <", value, "yingwen");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andYingwenLessThanColumn(Column column) {
             this.addCriterion("yingwen < " + column.getEscapedColumnName());
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andYingwenLessThanOrEqualTo(String value) {
             this.addCriterion("yingwen <=", value, "yingwen");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andYingwenLessThanOrEqualToColumn(Column column) {
             this.addCriterion("yingwen <= " + column.getEscapedColumnName());
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andYingwenLike(String value) {
             this.addCriterion("yingwen like", value, "yingwen");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andYingwenNotLike(String value) {
             this.addCriterion("yingwen not like", value, "yingwen");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andYingwenIn(List<String> values) {
             this.addCriterion("yingwen in", values, "yingwen");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andYingwenNotIn(List<String> values) {
             this.addCriterion("yingwen not in", values, "yingwen");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andYingwenBetween(String value1, String value2) {
             this.addCriterion("yingwen between", value1, value2, "yingwen");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andYingwenNotBetween(String value1, String value2) {
             this.addCriterion("yingwen not between", value1, value2, "yingwen");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andAddTimeIsNull() {
             this.addCriterion("add_time is null");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andAddTimeIsNotNull() {
             this.addCriterion("add_time is not null");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andAddTimeEqualTo(LocalDateTime value) {
             this.addCriterion("add_time =", value, "addTime");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andAddTimeEqualToColumn(Column column) {
             this.addCriterion("add_time = " + column.getEscapedColumnName());
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andAddTimeNotEqualTo(LocalDateTime value) {
             this.addCriterion("add_time <>", value, "addTime");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andAddTimeNotEqualToColumn(Column column) {
             this.addCriterion("add_time <> " + column.getEscapedColumnName());
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andAddTimeGreaterThan(LocalDateTime value) {
             this.addCriterion("add_time >", value, "addTime");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andAddTimeGreaterThanColumn(Column column) {
             this.addCriterion("add_time > " + column.getEscapedColumnName());
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andAddTimeGreaterThanOrEqualTo(LocalDateTime value) {
             this.addCriterion("add_time >=", value, "addTime");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andAddTimeGreaterThanOrEqualToColumn(Column column) {
             this.addCriterion("add_time >= " + column.getEscapedColumnName());
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andAddTimeLessThan(LocalDateTime value) {
             this.addCriterion("add_time <", value, "addTime");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andAddTimeLessThanColumn(Column column) {
             this.addCriterion("add_time < " + column.getEscapedColumnName());
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andAddTimeLessThanOrEqualTo(LocalDateTime value) {
             this.addCriterion("add_time <=", value, "addTime");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andAddTimeLessThanOrEqualToColumn(Column column) {
             this.addCriterion("add_time <= " + column.getEscapedColumnName());
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andAddTimeIn(List<LocalDateTime> values) {
             this.addCriterion("add_time in", values, "addTime");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andAddTimeNotIn(List<LocalDateTime> values) {
             this.addCriterion("add_time not in", values, "addTime");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andAddTimeBetween(LocalDateTime value1, LocalDateTime value2) {
             this.addCriterion("add_time between", value1, value2, "addTime");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andAddTimeNotBetween(LocalDateTime value1, LocalDateTime value2) {
             this.addCriterion("add_time not between", value1, value2, "addTime");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andUpdateTimeIsNull() {
             this.addCriterion("update_time is null");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andUpdateTimeIsNotNull() {
             this.addCriterion("update_time is not null");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andUpdateTimeEqualTo(LocalDateTime value) {
             this.addCriterion("update_time =", value, "updateTime");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andUpdateTimeEqualToColumn(Column column) {
             this.addCriterion("update_time = " + column.getEscapedColumnName());
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andUpdateTimeNotEqualTo(LocalDateTime value) {
             this.addCriterion("update_time <>", value, "updateTime");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andUpdateTimeNotEqualToColumn(Column column) {
             this.addCriterion("update_time <> " + column.getEscapedColumnName());
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andUpdateTimeGreaterThan(LocalDateTime value) {
             this.addCriterion("update_time >", value, "updateTime");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andUpdateTimeGreaterThanColumn(Column column) {
             this.addCriterion("update_time > " + column.getEscapedColumnName());
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andUpdateTimeGreaterThanOrEqualTo(LocalDateTime value) {
             this.addCriterion("update_time >=", value, "updateTime");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andUpdateTimeGreaterThanOrEqualToColumn(Column column) {
             this.addCriterion("update_time >= " + column.getEscapedColumnName());
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andUpdateTimeLessThan(LocalDateTime value) {
             this.addCriterion("update_time <", value, "updateTime");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andUpdateTimeLessThanColumn(Column column) {
             this.addCriterion("update_time < " + column.getEscapedColumnName());
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andUpdateTimeLessThanOrEqualTo(LocalDateTime value) {
             this.addCriterion("update_time <=", value, "updateTime");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andUpdateTimeLessThanOrEqualToColumn(Column column) {
             this.addCriterion("update_time <= " + column.getEscapedColumnName());
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andUpdateTimeIn(List<LocalDateTime> values) {
             this.addCriterion("update_time in", values, "updateTime");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andUpdateTimeNotIn(List<LocalDateTime> values) {
             this.addCriterion("update_time not in", values, "updateTime");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andUpdateTimeBetween(LocalDateTime value1, LocalDateTime value2) {
             this.addCriterion("update_time between", value1, value2, "updateTime");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andUpdateTimeNotBetween(LocalDateTime value1, LocalDateTime value2) {
             this.addCriterion("update_time not between", value1, value2, "updateTime");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andDeletedIsNull() {
             this.addCriterion("deleted is null");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andDeletedIsNotNull() {
             this.addCriterion("deleted is not null");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andDeletedEqualTo(Boolean value) {
             this.addCriterion("deleted =", value, "deleted");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andDeletedEqualToColumn(Column column) {
             this.addCriterion("deleted = " + column.getEscapedColumnName());
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andDeletedNotEqualTo(Boolean value) {
             this.addCriterion("deleted <>", value, "deleted");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andDeletedNotEqualToColumn(Column column) {
             this.addCriterion("deleted <> " + column.getEscapedColumnName());
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andDeletedGreaterThan(Boolean value) {
             this.addCriterion("deleted >", value, "deleted");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andDeletedGreaterThanColumn(Column column) {
             this.addCriterion("deleted > " + column.getEscapedColumnName());
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andDeletedGreaterThanOrEqualTo(Boolean value) {
             this.addCriterion("deleted >=", value, "deleted");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andDeletedGreaterThanOrEqualToColumn(Column column) {
             this.addCriterion("deleted >= " + column.getEscapedColumnName());
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andDeletedLessThan(Boolean value) {
             this.addCriterion("deleted <", value, "deleted");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andDeletedLessThanColumn(Column column) {
             this.addCriterion("deleted < " + column.getEscapedColumnName());
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andDeletedLessThanOrEqualTo(Boolean value) {
             this.addCriterion("deleted <=", value, "deleted");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andDeletedLessThanOrEqualToColumn(Column column) {
             this.addCriterion("deleted <= " + column.getEscapedColumnName());
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andDeletedIn(List<Boolean> values) {
             this.addCriterion("deleted in", values, "deleted");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andDeletedNotIn(List<Boolean> values) {
             this.addCriterion("deleted not in", values, "deleted");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andDeletedBetween(Boolean value1, Boolean value2) {
             this.addCriterion("deleted between", value1, value2, "deleted");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
 
         public ShuxingduiyingExample.Criteria andDeletedNotBetween(Boolean value1, Boolean value2) {
             this.addCriterion("deleted not between", value1, value2, "deleted");
-            return (ShuxingduiyingExample.Criteria)this;
+            return (ShuxingduiyingExample.Criteria) this;
         }
     }
 }

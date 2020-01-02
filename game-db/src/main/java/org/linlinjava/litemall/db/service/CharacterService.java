@@ -6,6 +6,7 @@
 package org.linlinjava.litemall.db.service;
 
 import java.util.List;
+
 import org.linlinjava.litemall.db.domain.Characters;
 import org.linlinjava.litemall.db.domain.example.CharactersExample;
 import org.linlinjava.litemall.db.domain.example.CharactersExample.Criteria;

@@ -9,10 +9,12 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class SaleClassifyGood implements Cloneable, Serializable {
@@ -175,9 +177,11 @@ public class SaleClassifyGood implements Cloneable, Serializable {
             return false;
         } else {
             boolean var10000;
-            label121: {
-                label113: {
-                    SaleClassifyGood other = (SaleClassifyGood)that;
+            label121:
+            {
+                label113:
+                {
+                    SaleClassifyGood other = (SaleClassifyGood) that;
                     if (this.getId() == null) {
                         if (other.getId() != null) {
                             break label113;
@@ -293,7 +297,7 @@ public class SaleClassifyGood implements Cloneable, Serializable {
     }
 
     public SaleClassifyGood clone() throws CloneNotSupportedException {
-        return (SaleClassifyGood)super.clone();
+        return (SaleClassifyGood) super.clone();
     }
 
     static {
@@ -358,7 +362,7 @@ public class SaleClassifyGood implements Cloneable, Serializable {
                 columns.removeAll(new ArrayList(Arrays.asList(excludes)));
             }
 
-            return (SaleClassifyGood.Column[])columns.toArray(new SaleClassifyGood.Column[0]);
+            return (SaleClassifyGood.Column[]) columns.toArray(new SaleClassifyGood.Column[0]);
         }
 
         public String getEscapedColumnName() {

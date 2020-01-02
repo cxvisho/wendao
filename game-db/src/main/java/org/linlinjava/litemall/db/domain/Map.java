@@ -9,10 +9,12 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class Map implements Cloneable, Serializable {
@@ -165,8 +167,9 @@ public class Map implements Cloneable, Serializable {
             return false;
         } else {
             boolean var10000;
-            label112: {
-                Map other = (Map)that;
+            label112:
+            {
+                Map other = (Map) that;
                 if (this.getId() == null) {
                     if (other.getId() != null) {
                         break label112;
@@ -258,7 +261,7 @@ public class Map implements Cloneable, Serializable {
 
     public int hashCode() {
         int result = 1;
-       result = 31 * result + (this.getId() == null ? 0 : this.getId().hashCode());
+        result = 31 * result + (this.getId() == null ? 0 : this.getId().hashCode());
         result = 31 * result + (this.getName() == null ? 0 : this.getName().hashCode());
         result = 31 * result + (this.getMapId() == null ? 0 : this.getMapId().hashCode());
         result = 31 * result + (this.getX() == null ? 0 : this.getX().hashCode());
@@ -272,7 +275,7 @@ public class Map implements Cloneable, Serializable {
     }
 
     public Map clone() throws CloneNotSupportedException {
-        return (Map)super.clone();
+        return (Map) super.clone();
     }
 
     static {
@@ -336,7 +339,7 @@ public class Map implements Cloneable, Serializable {
                 columns.removeAll(new ArrayList(Arrays.asList(excludes)));
             }
 
-            return (Map.Column[])columns.toArray(new Map.Column[0]);
+            return (Map.Column[]) columns.toArray(new Map.Column[0]);
         }
 
         public String getEscapedColumnName() {

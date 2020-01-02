@@ -8,6 +8,7 @@ package org.linlinjava.litemall.gameserver.fight;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
 import org.linlinjava.litemall.gameserver.data.vo.Vo_19945_0;
 import org.linlinjava.litemall.gameserver.data.vo.Vo_19959_0;
 import org.linlinjava.litemall.gameserver.data.vo.Vo_64989_0;
@@ -78,8 +79,8 @@ public class CastMagic11Skill implements FightSkill {
         Iterator var16 = targetList.iterator();
 
         FightObject fightObject;
-        while(var16.hasNext()) {
-            fightObject = (FightObject)var16.next();
+        while (var16.hasNext()) {
+            fightObject = (FightObject) var16.next();
             vo_64989_0.list.add(fightObject.fid);
             vo_64989_0.missList.add(1);
         }
@@ -89,15 +90,15 @@ public class CastMagic11Skill implements FightSkill {
 
         int remove;
         FightObject next;
-        while(var16.hasNext()) {
-            fightObject = (FightObject)var16.next();
+        while (var16.hasNext()) {
+            fightObject = (FightObject) var16.next();
             if (hurt == 0) {
                 remove = BattleUtils.skillAttack(attFightObject.fashang + attFightObject.fashang_ext, jiNeng.skill_level, "FS", jiNeng.skill_no);
-                remove = (int)((float)remove * jiabei);
+                remove = (int) ((float) remove * jiabei);
                 int thurt = BattleUtils.battle(attFightObject.fashang + attFightObject.fashang_ext, remove, fightObject.fangyu + fightObject.fangyu_ext);
                 hurt = thurt;
             } else {
-                hurt = (int)((double)hurt * 0.9D);
+                hurt = (int) ((double) hurt * 0.9D);
             }
 
             fabaoSkill = fightObject.getFabaoSkill();
@@ -131,8 +132,8 @@ public class CastMagic11Skill implements FightSkill {
             if (resultList != null) {
                 var16 = resultList.iterator();
 
-                while(var16.hasNext()) {
-                    FightResult fightResult = (FightResult)var16.next();
+                while (var16.hasNext()) {
+                    FightResult fightResult = (FightResult) var16.next();
                     FightManager.send_LIFE_DELTA(fightContainer, fightResult);
                 }
             }
@@ -143,8 +144,8 @@ public class CastMagic11Skill implements FightSkill {
             Iterator<FightObject> iterator = targetList.iterator();
             remove = 0;
 
-            while(iterator.hasNext()) {
-                next = (FightObject)iterator.next();
+            while (iterator.hasNext()) {
+                next = (FightObject) iterator.next();
                 if (next.isDead()) {
                     iterator.remove();
                     ++remove;
@@ -155,8 +156,8 @@ public class CastMagic11Skill implements FightSkill {
             Iterator var31 = fightObjectList.iterator();
 
             FightObject object;
-            while(var31.hasNext()) {
-                object = (FightObject)var31.next();
+            while (var31.hasNext()) {
+                object = (FightObject) var31.next();
                 if (remove == 0) {
                     break;
                 }
@@ -168,7 +169,7 @@ public class CastMagic11Skill implements FightSkill {
             }
 
             if (FightManager.getFightObject(fightContainer, fightRequest.vid).isDead() && targetList.size() > 0) {
-                fightRequest.vid = ((FightObject)targetList.get(0)).fid;
+                fightRequest.vid = ((FightObject) targetList.get(0)).fid;
             }
 
             vo_19959_0 = new Vo_19959_0();
@@ -191,8 +192,8 @@ public class CastMagic11Skill implements FightSkill {
             vo_64989_0.a = 1;
             var31 = targetList.iterator();
 
-            while(var31.hasNext()) {
-                object = (FightObject)var31.next();
+            while (var31.hasNext()) {
+                object = (FightObject) var31.next();
                 vo_64989_0.list.add(object.fid);
                 vo_64989_0.missList.add(1);
             }
@@ -202,15 +203,15 @@ public class CastMagic11Skill implements FightSkill {
             hurt = 0;
             var31 = targetList.iterator();
 
-            while(var31.hasNext()) {
-                object = (FightObject)var31.next();
+            while (var31.hasNext()) {
+                object = (FightObject) var31.next();
                 int showhurt;
                 if (hurt == 0) {
                     showhurt = BattleUtils.skillAttack(attFightObject.fashang + attFightObject.fashang_ext, jiNeng.skill_level, "FS", jiNeng.skill_no);
                     int thurt = BattleUtils.battle(attFightObject.fashang + attFightObject.fashang_ext, showhurt, object.fangyu + object.fangyu_ext);
                     hurt = thurt;
                 } else {
-                    hurt = (int)((double)hurt * 0.9D);
+                    hurt = (int) ((double) hurt * 0.9D);
                 }
 
                 showhurt = object.reduceShengming(hurt, fabao);

@@ -9,10 +9,12 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class Renwu implements Cloneable, Serializable {
@@ -165,8 +167,9 @@ public class Renwu implements Cloneable, Serializable {
             return false;
         } else {
             boolean var10000;
-            label112: {
-                Renwu other = (Renwu)that;
+            label112:
+            {
+                Renwu other = (Renwu) that;
                 if (this.getId() == null) {
                     if (other.getId() != null) {
                         break label112;
@@ -258,7 +261,7 @@ public class Renwu implements Cloneable, Serializable {
 
     public int hashCode() {
         int result = 1;
-       result = 31 * result + (this.getId() == null ? 0 : this.getId().hashCode());
+        result = 31 * result + (this.getId() == null ? 0 : this.getId().hashCode());
         result = 31 * result + (this.getUncontent() == null ? 0 : this.getUncontent().hashCode());
         result = 31 * result + (this.getNpcName() == null ? 0 : this.getNpcName().hashCode());
         result = 31 * result + (this.getCurrentTask() == null ? 0 : this.getCurrentTask().hashCode());
@@ -272,7 +275,7 @@ public class Renwu implements Cloneable, Serializable {
     }
 
     public Renwu clone() throws CloneNotSupportedException {
-        return (Renwu)super.clone();
+        return (Renwu) super.clone();
     }
 
     static {
@@ -336,7 +339,7 @@ public class Renwu implements Cloneable, Serializable {
                 columns.removeAll(new ArrayList(Arrays.asList(excludes)));
             }
 
-            return (Renwu.Column[])columns.toArray(new Renwu.Column[0]);
+            return (Renwu.Column[]) columns.toArray(new Renwu.Column[0]);
         }
 
         public String getEscapedColumnName() {

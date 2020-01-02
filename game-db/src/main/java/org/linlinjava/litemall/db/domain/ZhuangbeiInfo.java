@@ -9,10 +9,12 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class ZhuangbeiInfo implements Cloneable, Serializable {
@@ -235,9 +237,11 @@ public class ZhuangbeiInfo implements Cloneable, Serializable {
             return false;
         } else {
             boolean var10000;
-            label169: {
-                label161: {
-                    ZhuangbeiInfo other = (ZhuangbeiInfo)that;
+            label169:
+            {
+                label161:
+                {
+                    ZhuangbeiInfo other = (ZhuangbeiInfo) that;
                     if (this.getId() == null) {
                         if (other.getId() != null) {
                             break label161;
@@ -407,7 +411,7 @@ public class ZhuangbeiInfo implements Cloneable, Serializable {
     }
 
     public ZhuangbeiInfo clone() throws CloneNotSupportedException {
-        return (ZhuangbeiInfo)super.clone();
+        return (ZhuangbeiInfo) super.clone();
     }
 
     static {
@@ -478,7 +482,7 @@ public class ZhuangbeiInfo implements Cloneable, Serializable {
                 columns.removeAll(new ArrayList(Arrays.asList(excludes)));
             }
 
-            return (ZhuangbeiInfo.Column[])columns.toArray(new ZhuangbeiInfo.Column[0]);
+            return (ZhuangbeiInfo.Column[]) columns.toArray(new ZhuangbeiInfo.Column[0]);
         }
 
         public String getEscapedColumnName() {

@@ -8,6 +8,7 @@ package org.linlinjava.litemall.db.domain.vo.base;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
 import org.linlinjava.litemall.db.domain.Renwu;
 
 public class BaseRenwuVo {
@@ -42,8 +43,8 @@ public class BaseRenwuVo {
         List<BaseRenwuVo> listVo = new ArrayList();
         Iterator var2 = list.iterator();
 
-        while(var2.hasNext()) {
-            Renwu temp = (Renwu)var2.next();
+        while (var2.hasNext()) {
+            Renwu temp = (Renwu) var2.next();
             listVo.add(new BaseRenwuVo(temp));
         }
 

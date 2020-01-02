@@ -6,6 +6,7 @@
 package org.linlinjava.litemall.gameserver.fight;
 
 import java.util.List;
+
 import org.linlinjava.litemall.gameserver.domain.JiNeng;
 
 public interface FightSkill {
@@ -15,7 +16,7 @@ public interface FightSkill {
 
     static FightFabaoSkill getFabaoSkill(String name) {
         byte var2 = -1;
-        switch(name.hashCode()) {
+        switch (name.hashCode()) {
             case 23433827:
                 if (name.equals("定海珠")) {
                     var2 = 1;
@@ -42,7 +43,7 @@ public interface FightSkill {
                 }
         }
 
-        switch(var2) {
+        switch (var2) {
             case 0:
                 return new FantianyingSkill();
             case 1:
@@ -59,7 +60,7 @@ public interface FightSkill {
     }
 
     static boolean isOpSkill(int para) {
-        switch(para) {
+        switch (para) {
             case 31:
             case 32:
             case 33:
@@ -96,13 +97,13 @@ public interface FightSkill {
             System.out.println("error getFightSkill");
         }
 
-        switch(action) {
+        switch (action) {
             case 1:
                 return new DefenseSkill();
             case 2:
                 return new NormalAttackSkill();
             case 3:
-                switch(para) {
+                switch (para) {
                     case 11:
                     case 12:
                     case 13:

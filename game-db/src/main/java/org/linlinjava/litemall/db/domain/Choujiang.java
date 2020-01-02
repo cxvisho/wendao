@@ -9,10 +9,12 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class Choujiang implements Cloneable, Serializable {
@@ -145,9 +147,11 @@ public class Choujiang implements Cloneable, Serializable {
             return false;
         } else {
             boolean var10000;
-            label97: {
-                label89: {
-                    Choujiang other = (Choujiang)that;
+            label97:
+            {
+                label89:
+                {
+                    Choujiang other = (Choujiang) that;
                     if (this.getId() == null) {
                         if (other.getId() != null) {
                             break label89;
@@ -236,7 +240,7 @@ public class Choujiang implements Cloneable, Serializable {
     }
 
     public Choujiang clone() throws CloneNotSupportedException {
-        return (Choujiang)super.clone();
+        return (Choujiang) super.clone();
     }
 
     static {
@@ -298,7 +302,7 @@ public class Choujiang implements Cloneable, Serializable {
                 columns.removeAll(new ArrayList(Arrays.asList(excludes)));
             }
 
-            return (Choujiang.Column[])columns.toArray(new Choujiang.Column[0]);
+            return (Choujiang.Column[]) columns.toArray(new Choujiang.Column[0]);
         }
 
         public String getEscapedColumnName() {

@@ -9,10 +9,12 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class NpcDialogue implements Cloneable, Serializable {
@@ -195,9 +197,11 @@ public class NpcDialogue implements Cloneable, Serializable {
             return false;
         } else {
             boolean var10000;
-            label137: {
-                label129: {
-                    NpcDialogue other = (NpcDialogue)that;
+            label137:
+            {
+                label129:
+                {
+                    NpcDialogue other = (NpcDialogue) that;
                     if (this.getId() == null) {
                         if (other.getId() != null) {
                             break label129;
@@ -331,7 +335,7 @@ public class NpcDialogue implements Cloneable, Serializable {
     }
 
     public NpcDialogue clone() throws CloneNotSupportedException {
-        return (NpcDialogue)super.clone();
+        return (NpcDialogue) super.clone();
     }
 
     static {
@@ -398,7 +402,7 @@ public class NpcDialogue implements Cloneable, Serializable {
                 columns.removeAll(new ArrayList(Arrays.asList(excludes)));
             }
 
-            return (NpcDialogue.Column[])columns.toArray(new NpcDialogue.Column[0]);
+            return (NpcDialogue.Column[]) columns.toArray(new NpcDialogue.Column[0]);
         }
 
         public String getEscapedColumnName() {

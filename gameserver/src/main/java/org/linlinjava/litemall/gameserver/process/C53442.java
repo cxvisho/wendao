@@ -17,8 +17,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class C53442 implements GameHandler {
 
-    public void process(ChannelHandlerContext ctx, ByteBuf buff)
-    {
+    public void process(ChannelHandlerContext ctx, ByteBuf buff) {
         System.out.println(buff.toString());
         String para1 = GameReadTool.readString(buff);  //爪子
         String para2 = GameReadTool.readString(buff);

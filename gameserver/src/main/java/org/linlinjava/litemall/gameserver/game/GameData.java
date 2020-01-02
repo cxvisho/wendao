@@ -6,6 +6,7 @@
 package org.linlinjava.litemall.gameserver.game;
 
 import javax.annotation.PostConstruct;
+
 import org.linlinjava.litemall.db.service.CharacterService;
 import org.linlinjava.litemall.db.service.SaleGoodService;
 import org.linlinjava.litemall.db.service.base.BaseAccountsService;

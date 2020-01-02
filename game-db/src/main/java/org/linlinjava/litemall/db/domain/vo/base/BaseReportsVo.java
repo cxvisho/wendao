@@ -8,6 +8,7 @@ package org.linlinjava.litemall.db.domain.vo.base;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
 import org.linlinjava.litemall.db.domain.Reports;
 
 public class BaseReportsVo {
@@ -36,8 +37,8 @@ public class BaseReportsVo {
         List<BaseReportsVo> listVo = new ArrayList();
         Iterator var2 = list.iterator();
 
-        while(var2.hasNext()) {
-            Reports temp = (Reports)var2.next();
+        while (var2.hasNext()) {
+            Reports temp = (Reports) var2.next();
             listVo.add(new BaseReportsVo(temp));
         }
 

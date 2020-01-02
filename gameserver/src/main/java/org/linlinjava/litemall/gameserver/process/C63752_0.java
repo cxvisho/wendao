@@ -7,6 +7,7 @@ package org.linlinjava.litemall.gameserver.process;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Hashtable;
@@ -15,6 +16,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+
 import org.linlinjava.litemall.db.domain.Characters;
 import org.linlinjava.litemall.db.domain.DaySignPrize;
 import org.linlinjava.litemall.db.domain.PetHelpType;
@@ -124,7 +126,7 @@ public class C63752_0 implements GameHandler {
             GameObjectChar.send(new M8165_0(), vo_8165_0);
             Vo_20480_0 vo_20480_0 = new Vo_20480_0();
             vo_20480_0.msg = "喜从天降,恭喜#Y" + chara.name + "#n在高级挖宝中获得#R" + strings[1] + "#n ";
-            vo_20480_0.time = (int)(System.currentTimeMillis() / 1000L);
+            vo_20480_0.time = (int) (System.currentTimeMillis() / 1000L);
             GameObjectChar.send(new M20480_0(), vo_20480_0);
             if (!strings[1].equals("金币")) {
                 Vo_16383_0 vo_16383_5 = new Vo_16383_0();
@@ -132,7 +134,7 @@ public class C63752_0 implements GameHandler {
                 vo_16383_5.id = 0;
                 vo_16383_5.name = "";
                 vo_16383_5.msg = "喜从天降,恭喜#Y" + chara.name + "#n在高级挖宝中获得#R" + strings[1] + "#n ";
-                vo_16383_5.time = (int)(System.currentTimeMillis() / 1000L);
+                vo_16383_5.time = (int) (System.currentTimeMillis() / 1000L);
                 vo_16383_5.privilege = 0;
                 vo_16383_5.server_name = "3周年14线";
                 vo_16383_5.show_extra = 1;
@@ -254,7 +256,7 @@ public class C63752_0 implements GameHandler {
         if (type == 40005) {
             characters = GameData.that.characterService.finOnByGiD(para1);
             name = characters.getData();
-            Chara charaCha = (Chara)JSONUtils.parseObject(name, Chara.class);
+            Chara charaCha = (Chara) JSONUtils.parseObject(name, Chara.class);
             Vo_49153_0 vo_49153_0 = new Vo_49153_0();
             vo_49153_0.name = chara.name;
             vo_49153_0.level = chara.level;
@@ -269,8 +271,8 @@ public class C63752_0 implements GameHandler {
             vo_49153_0.upgradetype = 0;
             vo_49153_0.upgradelevel = 0;
 
-            for(def = 0; def < charaCha.backpack.size(); ++def) {
-                if (((Goods)charaCha.backpack.get(def)).pos <= 10) {
+            for (def = 0; def < charaCha.backpack.size(); ++def) {
+                if (((Goods) charaCha.backpack.get(def)).pos <= 10) {
                     vo_49153_0.backpack.add(charaCha.backpack.get(def));
                 }
             }
@@ -287,9 +289,9 @@ public class C63752_0 implements GameHandler {
         int pos2;
         int pos1;
         if (4 == type) {
-            for(i = 0; i < chara.pets.size(); ++i) {
-                if (((Petbeibao)chara.pets.get(i)).no == Integer.valueOf(para1)) {
-                    Petbeibao petbeibao = (Petbeibao)chara.pets.get(i);
+            for (i = 0; i < chara.pets.size(); ++i) {
+                if (((Petbeibao) chara.pets.get(i)).no == Integer.valueOf(para1)) {
+                    Petbeibao petbeibao = (Petbeibao) chara.pets.get(i);
                     pos1 = 0;
                     pos2 = 0;
                     def = 0;
@@ -298,9 +300,9 @@ public class C63752_0 implements GameHandler {
                     weizhi = 0;
 
                     PetShuXing petShuXing;
-                    for(size = 0; size < petbeibao.petShuXing.size(); ++size) {
-                        if (((PetShuXing)petbeibao.petShuXing.get(size)).str.equals(para2)) {
-                            petShuXing = (PetShuXing)petbeibao.petShuXing.get(size);
+                    for (size = 0; size < petbeibao.petShuXing.size(); ++size) {
+                        if (((PetShuXing) petbeibao.petShuXing.get(size)).str.equals(para2)) {
+                            petShuXing = (PetShuXing) petbeibao.petShuXing.get(size);
                             pos1 = petShuXing.wiz;
                             pos2 = petShuXing.parry;
                             def = petShuXing.def;
@@ -311,9 +313,9 @@ public class C63752_0 implements GameHandler {
                         }
                     }
 
-                    for(size = 0; size < petbeibao.petShuXing.size(); ++size) {
-                        if (((PetShuXing)petbeibao.petShuXing.get(size)).no == 0) {
-                            petShuXing = (PetShuXing)petbeibao.petShuXing.get(size);
+                    for (size = 0; size < petbeibao.petShuXing.size(); ++size) {
+                        if (((PetShuXing) petbeibao.petShuXing.get(size)).no == 0) {
+                            petShuXing = (PetShuXing) petbeibao.petShuXing.get(size);
                             petShuXing.wiz -= pos1;
                             petShuXing.parry -= pos2;
                             petShuXing.def -= def;
@@ -343,7 +345,7 @@ public class C63752_0 implements GameHandler {
             chara.xinshoulibao[Integer.parseInt(para1)] = 1;
             GameUtil.a49171(chara);
 
-            for(pos1 = 0; pos1 < strings.length; ++pos1) {
+            for (pos1 = 0; pos1 < strings.length; ++pos1) {
                 String[] split = strings[pos1].split("\\#");
                 vo816501 = new Vo_8165_0();
                 vo816501.msg = "你获得了#R" + split[0];
@@ -351,7 +353,7 @@ public class C63752_0 implements GameHandler {
                 GameObjectChar.send(new M8165_0(), vo816501);
                 vo_20480_0 = new Vo_20480_0();
                 vo_20480_0.msg = "你获得了#R" + split[0];
-                vo_20480_0.time = (int)System.currentTimeMillis();
+                vo_20480_0.time = (int) System.currentTimeMillis();
                 GameObjectChar.send(new M20480_0(), vo_20480_0);
                 GameUtil.huodechoujiang(split, chara);
             }
@@ -367,9 +369,9 @@ public class C63752_0 implements GameHandler {
             chara.autofight_select = Integer.valueOf(para1);
             saleGoodList = chara.pets;
 
-            for(coin = 0; coin < saleGoodList.size(); ++coin) {
-                if (((Petbeibao)saleGoodList.get(coin)).id == chara.chongwuchanzhanId) {
-                    ((Petbeibao)saleGoodList.get(coin)).autofight_select = Integer.valueOf(para1);
+            for (coin = 0; coin < saleGoodList.size(); ++coin) {
+                if (((Petbeibao) saleGoodList.get(coin)).id == chara.chongwuchanzhanId) {
+                    ((Petbeibao) saleGoodList.get(coin)).autofight_select = Integer.valueOf(para1);
                     break;
                 }
             }
@@ -395,7 +397,7 @@ public class C63752_0 implements GameHandler {
             }
 
             if (fightObject.fightRequest != null) {
-                FightManager.addRequest(FightManager.getFightContainer(), (FightRequest)null);
+                FightManager.addRequest(FightManager.getFightContainer(), (FightRequest) null);
             }
 
             FightRequest fightRequest = new FightRequest();
@@ -475,7 +477,7 @@ public class C63752_0 implements GameHandler {
 
         if (50006 == type) {
             if (chara.vipTime != 0) {
-                chara.vipTime = (int)(System.currentTimeMillis() / 1000L);
+                chara.vipTime = (int) (System.currentTimeMillis() / 1000L);
             }
 
             i = Integer.valueOf(para1);
@@ -549,30 +551,30 @@ public class C63752_0 implements GameHandler {
 
         Vo_20481_0 vo_20481_0;
         if (5 == type) {
-            for(i = 0; i < chara.pets.size(); ++i) {
-                if (((Petbeibao)chara.pets.get(i)).no == Integer.valueOf(para1)) {
-                    for(coin = 0; coin < ((Petbeibao)chara.pets.get(i)).tianshu.size(); ++coin) {
-                        if (((Vo_12023_0)((Petbeibao)chara.pets.get(i)).tianshu.get(coin)).god_book_skill_name.equals(para2)) {
-                            ((Petbeibao)chara.pets.get(i)).tianshu.remove(((Petbeibao)chara.pets.get(i)).tianshu.get(coin));
+            for (i = 0; i < chara.pets.size(); ++i) {
+                if (((Petbeibao) chara.pets.get(i)).no == Integer.valueOf(para1)) {
+                    for (coin = 0; coin < ((Petbeibao) chara.pets.get(i)).tianshu.size(); ++coin) {
+                        if (((Vo_12023_0) ((Petbeibao) chara.pets.get(i)).tianshu.get(coin)).god_book_skill_name.equals(para2)) {
+                            ((Petbeibao) chara.pets.get(i)).tianshu.remove(((Petbeibao) chara.pets.get(i)).tianshu.get(coin));
                             List list = new ArrayList();
                             list.add(chara.pets.get(i));
                             GameObjectChar.send(new M65507_0(), list);
-                            boolean isfagong = ((PetShuXing)((Petbeibao)chara.pets.get(i)).petShuXing.get(0)).rank > ((PetShuXing)((Petbeibao)chara.pets.get(i)).petShuXing.get(0)).pet_mag_shape;
-                            GameUtil.dujineng(1, ((PetShuXing)((Petbeibao)chara.pets.get(i)).petShuXing.get(0)).metal, ((PetShuXing)((Petbeibao)chara.pets.get(i)).petShuXing.get(0)).skill, isfagong, ((Petbeibao)chara.pets.get(i)).id, chara);
-                            if (((Petbeibao)chara.pets.get(i)).tianshu.size() == 0) {
+                            boolean isfagong = ((PetShuXing) ((Petbeibao) chara.pets.get(i)).petShuXing.get(0)).rank > ((PetShuXing) ((Petbeibao) chara.pets.get(i)).petShuXing.get(0)).pet_mag_shape;
+                            GameUtil.dujineng(1, ((PetShuXing) ((Petbeibao) chara.pets.get(i)).petShuXing.get(0)).metal, ((PetShuXing) ((Petbeibao) chara.pets.get(i)).petShuXing.get(0)).skill, isfagong, ((Petbeibao) chara.pets.get(i)).id, chara);
+                            if (((Petbeibao) chara.pets.get(i)).tianshu.size() == 0) {
                                 Vo_12023_0 vo_12023_0 = new Vo_12023_0();
                                 vo_12023_0.owner_id = chara.id;
-                                vo_12023_0.id = ((Petbeibao)chara.pets.get(i)).id;
+                                vo_12023_0.id = ((Petbeibao) chara.pets.get(i)).id;
                                 GameObjectChar.send(new M12023_1(), vo_12023_0);
                             } else {
-                                GameObjectChar.send(new M12023_0(), ((Petbeibao)chara.pets.get(i)).tianshu);
+                                GameObjectChar.send(new M12023_0(), ((Petbeibao) chara.pets.get(i)).tianshu);
                             }
 
                             StoreInfo info = GameData.that.baseStoreInfoService.findOneByName(para2);
                             GameUtil.huodedaoju(chara, info, 1);
                             vo_20481_0 = new Vo_20481_0();
-                            vo_20481_0.msg = "你的宠物#Y" + ((PetShuXing)((Petbeibao)chara.pets.get(i)).petShuXing.get(0)).str + "#n成功取出了天书散卷#R" + para2 + "#n。";
-                            vo_20481_0.time = (int)(System.currentTimeMillis() / 1000L);
+                            vo_20481_0.msg = "你的宠物#Y" + ((PetShuXing) ((Petbeibao) chara.pets.get(i)).petShuXing.get(0)).str + "#n成功取出了天书散卷#R" + para2 + "#n。";
+                            vo_20481_0.time = (int) (System.currentTimeMillis() / 1000L);
                             GameObjectChar.send(new M20481_0(), vo_20481_0);
                             break;
                         }
@@ -583,14 +585,14 @@ public class C63752_0 implements GameHandler {
 
         ArrayList list;
         if (30010 == type) {
-            for(i = 0; i < chara.listshouhu.size(); ++i) {
-                if (((ShouHu)chara.listshouhu.get(i)).id == Integer.parseInt(para2)) {
+            for (i = 0; i < chara.listshouhu.size(); ++i) {
+                if (((ShouHu) chara.listshouhu.get(i)).id == Integer.parseInt(para2)) {
                     --chara.canzhanshouhunumber;
-                    ((ShouHuShuXing)((ShouHu)chara.listshouhu.get(i)).listShouHuShuXing.get(0)).salary = 0;
-                    if (((ShouHuShuXing)((ShouHu)chara.listshouhu.get(i)).listShouHuShuXing.get(0)).nil == 0) {
-                        ((ShouHuShuXing)((ShouHu)chara.listshouhu.get(i)).listShouHuShuXing.get(0)).nil = 1;
+                    ((ShouHuShuXing) ((ShouHu) chara.listshouhu.get(i)).listShouHuShuXing.get(0)).salary = 0;
+                    if (((ShouHuShuXing) ((ShouHu) chara.listshouhu.get(i)).listShouHuShuXing.get(0)).nil == 0) {
+                        ((ShouHuShuXing) ((ShouHu) chara.listshouhu.get(i)).listShouHuShuXing.get(0)).nil = 1;
                     } else {
-                        ((ShouHuShuXing)((ShouHu)chara.listshouhu.get(i)).listShouHuShuXing.get(0)).nil = 0;
+                        ((ShouHuShuXing) ((ShouHu) chara.listshouhu.get(i)).listShouHuShuXing.get(0)).nil = 0;
                     }
 
                     list = new ArrayList();
@@ -598,18 +600,18 @@ public class C63752_0 implements GameHandler {
                     GameObjectChar.send(new M12016_0(), list);
                 }
 
-                if (((ShouHu)chara.listshouhu.get(i)).id == Integer.parseInt(para1)) {
+                if (((ShouHu) chara.listshouhu.get(i)).id == Integer.parseInt(para1)) {
                     if (chara.canzhanshouhunumber == 0) {
-                        ((ShouHuShuXing)((ShouHu)chara.listshouhu.get(i)).listShouHuShuXing.get(0)).salary = 5;
+                        ((ShouHuShuXing) ((ShouHu) chara.listshouhu.get(i)).listShouHuShuXing.get(0)).salary = 5;
                         ++chara.canzhanshouhunumber;
                     } else {
-                        ((ShouHuShuXing)((ShouHu)chara.listshouhu.get(i)).listShouHuShuXing.get(0)).salary = chara.canzhanshouhunumber++;
+                        ((ShouHuShuXing) ((ShouHu) chara.listshouhu.get(i)).listShouHuShuXing.get(0)).salary = chara.canzhanshouhunumber++;
                     }
 
-                    if (((ShouHuShuXing)((ShouHu)chara.listshouhu.get(i)).listShouHuShuXing.get(0)).nil == 0) {
-                        ((ShouHuShuXing)((ShouHu)chara.listshouhu.get(i)).listShouHuShuXing.get(0)).nil = 1;
+                    if (((ShouHuShuXing) ((ShouHu) chara.listshouhu.get(i)).listShouHuShuXing.get(0)).nil == 0) {
+                        ((ShouHuShuXing) ((ShouHu) chara.listshouhu.get(i)).listShouHuShuXing.get(0)).nil = 1;
                     } else {
-                        ((ShouHuShuXing)((ShouHu)chara.listshouhu.get(i)).listShouHuShuXing.get(0)).nil = 0;
+                        ((ShouHuShuXing) ((ShouHu) chara.listshouhu.get(i)).listShouHuShuXing.get(0)).nil = 0;
                     }
 
                     list = new ArrayList();
@@ -621,30 +623,30 @@ public class C63752_0 implements GameHandler {
             GameObjectChar.send(new M12016_0(), chara.listshouhu);
             List<Vo_45074_0> arrayList = new ArrayList();
 
-            for(coin = 0; coin < chara.listshouhu.size(); ++coin) {
-                if (((ShouHuShuXing)((ShouHu)chara.listshouhu.get(coin)).listShouHuShuXing.get(0)).nil != 0) {
+            for (coin = 0; coin < chara.listshouhu.size(); ++coin) {
+                if (((ShouHuShuXing) ((ShouHu) chara.listshouhu.get(coin)).listShouHuShuXing.get(0)).nil != 0) {
                     Vo_45074_0 vo_45074_0 = new Vo_45074_0();
-                    vo_45074_0.guardName = ((ShouHuShuXing)((ShouHu)chara.listshouhu.get(coin)).listShouHuShuXing.get(0)).str;
+                    vo_45074_0.guardName = ((ShouHuShuXing) ((ShouHu) chara.listshouhu.get(coin)).listShouHuShuXing.get(0)).str;
                     vo_45074_0.guardLevel = chara.level;
-                    vo_45074_0.guardIcon = ((ShouHuShuXing)((ShouHu)chara.listshouhu.get(coin)).listShouHuShuXing.get(0)).type;
-                    vo_45074_0.guardOrder = ((ShouHuShuXing)((ShouHu)chara.listshouhu.get(coin)).listShouHuShuXing.get(0)).salary;
-                    vo_45074_0.guardId = ((ShouHu)chara.listshouhu.get(coin)).id;
+                    vo_45074_0.guardIcon = ((ShouHuShuXing) ((ShouHu) chara.listshouhu.get(coin)).listShouHuShuXing.get(0)).type;
+                    vo_45074_0.guardOrder = ((ShouHuShuXing) ((ShouHu) chara.listshouhu.get(coin)).listShouHuShuXing.get(0)).salary;
+                    vo_45074_0.guardId = ((ShouHu) chara.listshouhu.get(coin)).id;
                     arrayList.add(vo_45074_0);
                 }
             }
 
             GameObjectChar.sendduiwu(new M45074_0(), arrayList, chara.id);
             if (GameObjectChar.getGameObjectChar().gameTeam != null && GameObjectChar.getGameObjectChar().gameTeam.duiwu != null) {
-                for(coin = 0; coin < GameObjectChar.getGameObjectChar().gameTeam.duiwu.size(); ++coin) {
-                    GameObjectCharMng.getGameObjectChar(((Chara)GameObjectChar.getGameObjectChar().gameTeam.duiwu.get(coin)).id).sendOne(new M45074_0(), arrayList);
+                for (coin = 0; coin < GameObjectChar.getGameObjectChar().gameTeam.duiwu.size(); ++coin) {
+                    GameObjectCharMng.getGameObjectChar(((Chara) GameObjectChar.getGameObjectChar().gameTeam.duiwu.get(coin)).id).sendOne(new M45074_0(), arrayList);
                 }
             }
         }
 
         if (8 == type) {
-            for(i = 0; i < chara.listshouhu.size(); ++i) {
-                if (((ShouHu)chara.listshouhu.get(i)).id == Integer.parseInt(para1)) {
-                    ((ShouHuShuXing)((ShouHu)chara.listshouhu.get(i)).listShouHuShuXing.get(0)).max_degree = Integer.parseInt(para2);
+            for (i = 0; i < chara.listshouhu.size(); ++i) {
+                if (((ShouHu) chara.listshouhu.get(i)).id == Integer.parseInt(para1)) {
+                    ((ShouHuShuXing) ((ShouHu) chara.listshouhu.get(i)).listShouHuShuXing.get(0)).max_degree = Integer.parseInt(para2);
                     list = new ArrayList();
                     list.add(chara.listshouhu.get(i));
                     GameObjectChar.send(new M12016_0(), list);
@@ -654,8 +656,8 @@ public class C63752_0 implements GameHandler {
 
         ListVo_65527_0 listVo6552701;
         if (30006 == type) {
-            for(i = 0; i < chara.backpack.size(); ++i) {
-                Goods goods = (Goods)chara.backpack.get(i);
+            for (i = 0; i < chara.backpack.size(); ++i) {
+                Goods goods = (Goods) chara.backpack.get(i);
                 if (goods.pos == Integer.parseInt(para1)) {
                     GameUtil.removemunber(chara, goods, Integer.valueOf(para2));
                     chara.use_money_type += goods.goodsInfo.rebuild_level / 5 * Integer.valueOf(para2);
@@ -699,7 +701,7 @@ public class C63752_0 implements GameHandler {
             GameObjectChar.send(new M8165_0(), vo816501);
             vo_20480_0 = new Vo_20480_0();
             vo_20480_0.msg = "你提款了钱";
-            vo_20480_0.time = (int)(System.currentTimeMillis() / 1000L);
+            vo_20480_0.time = (int) (System.currentTimeMillis() / 1000L);
             GameObjectChar.send(new M20480_0(), vo_20480_0);
         }
 
@@ -708,7 +710,7 @@ public class C63752_0 implements GameHandler {
             Vo_40964_0 vo_40964_0;
             if (saleGood.getIspet() == 1) {
                 name = saleGood.getGoods();
-                Goods goods1 = (Goods)JSONUtils.parseObject(name, Goods.class);
+                Goods goods1 = (Goods) JSONUtils.parseObject(name, Goods.class);
                 new LinkedList();
                 goods1.pos = GameUtil.beibaoweizhi(chara);
                 goods1.goodsInfo.owner_id = 1;
@@ -721,11 +723,11 @@ public class C63752_0 implements GameHandler {
                 vo_40964_0.rightNow = 0;
                 vo_20481_0 = new Vo_20481_0();
                 vo_20481_0.msg = "你成功将#R" + saleGood.getName() + "#n撤摊了";
-                vo_20481_0.time = (int)(System.currentTimeMillis() / 1000L);
+                vo_20481_0.time = (int) (System.currentTimeMillis() / 1000L);
                 GameObjectChar.send(new M20481_0(), vo_20481_0);
             } else {
                 name = saleGood.getGoods();
-                Petbeibao petbeibao = (Petbeibao)JSONUtils.parseObject(name, Petbeibao.class);
+                Petbeibao petbeibao = (Petbeibao) JSONUtils.parseObject(name, Petbeibao.class);
                 Vo_12269_0 vo_12269_0 = new Vo_12269_0();
                 vo_12269_0.id = petbeibao.id;
                 vo_12269_0.owner_id = chara.id;
@@ -733,18 +735,18 @@ public class C63752_0 implements GameHandler {
                 vo_40964_0 = new Vo_40964_0();
                 vo_40964_0.type = 2;
                 vo_40964_0.name = "立正";
-                vo_40964_0.param = String.valueOf(((PetShuXing)petbeibao.petShuXing.get(0)).type);
+                vo_40964_0.param = String.valueOf(((PetShuXing) petbeibao.petShuXing.get(0)).type);
                 vo_40964_0.rightNow = 0;
                 GameObjectChar.send(new M40964_0(), vo_40964_0);
                 vo_20481_0 = new Vo_20481_0();
                 vo_20481_0.msg = "你成功将#R" + saleGood.getName() + "#n撤摊了";
-                vo_20481_0.time = (int)(System.currentTimeMillis() / 1000L);
+                vo_20481_0.time = (int) (System.currentTimeMillis() / 1000L);
                 GameObjectChar.send(new M20481_0(), vo_20481_0);
                 List arrayList = new ArrayList();
                 arrayList.add(petbeibao);
                 GameObjectChar.send(new M65507_0(), arrayList);
-                boolean isfagong = ((PetShuXing)petbeibao.petShuXing.get(0)).rank > ((PetShuXing)petbeibao.petShuXing.get(0)).pet_mag_shape;
-                GameUtil.dujineng(1, ((PetShuXing)petbeibao.petShuXing.get(0)).metal, ((PetShuXing)petbeibao.petShuXing.get(0)).skill, isfagong, petbeibao.id, chara);
+                boolean isfagong = ((PetShuXing) petbeibao.petShuXing.get(0)).rank > ((PetShuXing) petbeibao.petShuXing.get(0)).pet_mag_shape;
+                GameUtil.dujineng(1, ((PetShuXing) petbeibao.petShuXing.get(0)).metal, ((PetShuXing) petbeibao.petShuXing.get(0)).skill, isfagong, petbeibao.id, chara);
                 chara.pets.add(petbeibao);
                 GameData.that.baseSaleGoodService.deleteById(saleGood.getId());
             }
@@ -775,42 +777,42 @@ public class C63752_0 implements GameHandler {
                 size = 8;
             }
 
-            for( i = 0; i < size; ++i) {
+            for (i = 0; i < size; ++i) {
                 Vo_49183 vo_49183 = new Vo_49183();
-                vo_49183.name = ((SaleGood)byStr.get(i + weizhi)).getName();
-                if (((SaleGood)byStr.get(i + weizhi)).getName().contains("超级黑水晶·")) {
-                    SaleGood saleGood = (SaleGood)byStr.get(i + weizhi);
+                vo_49183.name = ((SaleGood) byStr.get(i + weizhi)).getName();
+                if (((SaleGood) byStr.get(i + weizhi)).getName().contains("超级黑水晶·")) {
+                    SaleGood saleGood = (SaleGood) byStr.get(i + weizhi);
                     String goods = saleGood.getGoods();
-                    Goods goods1 = (Goods)JSONUtils.parseObject(goods, Goods.class);
+                    Goods goods1 = (Goods) JSONUtils.parseObject(goods, Goods.class);
                     Map<Object, Object> goodsFenSe1 = UtilObjMapshuxing.GoodsLanSe(goods1.goodsLanSe);
                     int value = 0;
                     Iterator var23 = goodsFenSe1.entrySet().iterator();
 
-                    while(var23.hasNext()) {
-                        Entry<Object, Object> entry = (Entry)var23.next();
-                        if (!entry.getKey().equals("groupNo") && !entry.getKey().equals("groupType") && (Integer)entry.getValue() != 0) {
-                            value = (Integer)entry.getValue();
+                    while (var23.hasNext()) {
+                        Entry<Object, Object> entry = (Entry) var23.next();
+                        if (!entry.getKey().equals("groupNo") && !entry.getKey().equals("groupType") && (Integer) entry.getValue() != 0) {
+                            value = (Integer) entry.getValue();
                             break;
                         }
                     }
 
-                    vo_49183.name = ((SaleGood)byStr.get(i + weizhi)).getName() + "|" + value + "|1";
+                    vo_49183.name = ((SaleGood) byStr.get(i + weizhi)).getName() + "|" + value + "|1";
                 }
 
                 vo_49183.is_my_goods = 0;
-                vo_49183.id = ((SaleGood)byStr.get(i + weizhi)).getGoodsId();
-                vo_49183.price = ((SaleGood)byStr.get(i + weizhi)).getPrice();
+                vo_49183.id = ((SaleGood) byStr.get(i + weizhi)).getGoodsId();
+                vo_49183.price = ((SaleGood) byStr.get(i + weizhi)).getPrice();
                 vo_49183.status = 2;
-                vo_49183.startTime = ((SaleGood)byStr.get(i + weizhi)).getStartTime();
-                vo_49183.endTime = ((SaleGood)byStr.get(i + weizhi)).getEndTime();
-                vo_49183.level = ((SaleGood)byStr.get(i + weizhi)).getReqLevel();
-                vo_49183.unidentified = ((SaleGood)byStr.get(i + weizhi)).getLevel() > 0 ? 1 : 0;
-                if (((SaleGood)byStr.get(i + weizhi)).getIspet() == 2) {
+                vo_49183.startTime = ((SaleGood) byStr.get(i + weizhi)).getStartTime();
+                vo_49183.endTime = ((SaleGood) byStr.get(i + weizhi)).getEndTime();
+                vo_49183.level = ((SaleGood) byStr.get(i + weizhi)).getReqLevel();
+                vo_49183.unidentified = ((SaleGood) byStr.get(i + weizhi)).getLevel() > 0 ? 1 : 0;
+                if (((SaleGood) byStr.get(i + weizhi)).getIspet() == 2) {
                     vo_49183.unidentified = 0;
                 }
 
                 vo_49183.amount = 1;
-                vo_49183.req_level = ((SaleGood)byStr.get(i + weizhi)).getReqLevel();
+                vo_49183.req_level = ((SaleGood) byStr.get(i + weizhi)).getReqLevel();
                 vo_49183.extra = "\"{\"rank\":2,\"enchant\":0,\"mount_type\":0,\"rebuild_level\":1,\"eclosion\":0}\"";
                 vo_49183.item_polar = 0;
                 vo_49183_0.vo_49183s.add(vo_49183);
@@ -1025,7 +1027,7 @@ public class C63752_0 implements GameHandler {
                 if (chara.extra_life < coin) {
                     vo204810 = new Vo_20481_0();
                     vo204810.msg = "代金卷不足";
-                    vo204810.time = (int)(System.currentTimeMillis() / 1000L);
+                    vo204810.time = (int) (System.currentTimeMillis() / 1000L);
                     GameObjectChar.send(new M20481_0(), vo204810);
                     return;
                 }
@@ -1035,7 +1037,7 @@ public class C63752_0 implements GameHandler {
                 if (chara.balance < coin) {
                     vo204810 = new Vo_20481_0();
                     vo204810.msg = "金币不足";
-                    vo204810.time = (int)(System.currentTimeMillis() / 1000L);
+                    vo204810.time = (int) (System.currentTimeMillis() / 1000L);
                     GameObjectChar.send(new M20481_0(), vo204810);
                     return;
                 }
@@ -1051,8 +1053,8 @@ public class C63752_0 implements GameHandler {
             pos1 = petHelpType.getPolar();
             pos2 = petHelpType.getQuality();
             Hashtable<String, int[]> stringHashtable = PetAttributesUtils.helpPet(pos2, pos1, chara.level);
-            ints = (int[])stringHashtable.get("attribute");
-            int[] polars = (int[])stringHashtable.get("polars");
+            ints = (int[]) stringHashtable.get("attribute");
+            int[] polars = (int[]) stringHashtable.get("polars");
             new Vo_45128_0();
             shouHuShuXing.life = ints[0];
             shouHuShuXing.mag_power = ints[1];
@@ -1110,8 +1112,8 @@ public class C63752_0 implements GameHandler {
             pos1 = Integer.parseInt(strings[0]);
             pos2 = Integer.parseInt(strings[1]);
             Hashtable<String, int[]> stringHashtable = PetAttributesUtils.helpPet(pos2, pos1, chara.level);
-            int[] attributes = (int[])stringHashtable.get("attribute");
-            int[] polars = (int[])stringHashtable.get("polars");
+            int[] attributes = (int[]) stringHashtable.get("attribute");
+            int[] polars = (int[]) stringHashtable.get("polars");
             Vo_45128_0 vo_45128_0 = new Vo_45128_0();
             vo_45128_0.life = attributes[0];
             vo_45128_0.mag_power = attributes[1];

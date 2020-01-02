@@ -17,7 +17,7 @@ public class M4197_0 extends BaseWrite {
     }
 
     protected void writeO(ByteBuf writeBuf, Object object) {
-        Vo_4197_0 object1 = (Vo_4197_0)object;
+        Vo_4197_0 object1 = (Vo_4197_0) object;
         GameWriteTool.writeInt(writeBuf, object1.id);
     }
 

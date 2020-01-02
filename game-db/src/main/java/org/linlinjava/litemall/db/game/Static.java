@@ -4,5 +4,5 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Static {
-    public static Map<String,Integer> CHAR_TOKEN_DATA = new HashMap<>();
+    public static Map<String, Integer> CHAR_TOKEN_DATA = new HashMap<>();
 }

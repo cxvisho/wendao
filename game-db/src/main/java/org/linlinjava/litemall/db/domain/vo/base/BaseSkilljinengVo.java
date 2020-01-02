@@ -8,6 +8,7 @@ package org.linlinjava.litemall.db.domain.vo.base;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
 import org.linlinjava.litemall.db.domain.Skilljineng;
 
 public class BaseSkilljinengVo {
@@ -42,8 +43,8 @@ public class BaseSkilljinengVo {
         List<BaseSkilljinengVo> listVo = new ArrayList();
         Iterator var2 = list.iterator();
 
-        while(var2.hasNext()) {
-            Skilljineng temp = (Skilljineng)var2.next();
+        while (var2.hasNext()) {
+            Skilljineng temp = (Skilljineng) var2.next();
             listVo.add(new BaseSkilljinengVo(temp));
         }
 

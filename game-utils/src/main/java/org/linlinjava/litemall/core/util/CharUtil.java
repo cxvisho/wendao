@@ -25,6 +25,7 @@ public class CharUtil {
         }
         return sb.toString();
     }
+
     public static String getSubString(String text, String left, String right) {
         String result = "";
         int zLen;

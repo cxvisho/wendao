@@ -18,9 +18,9 @@ public class DesUtil {
         int k = paramArrayOfByte.length;
 
         StringBuffer localStringBuffer;
-        for(localStringBuffer = new StringBuffer(k * 2); i < k; ++i) {
+        for (localStringBuffer = new StringBuffer(k * 2); i < k; ++i) {
             int j;
-            for(j = paramArrayOfByte[i]; j < 0; j += 256) {
+            for (j = paramArrayOfByte[i]; j < 0; j += 256) {
             }
 
             if (j < 16) {
@@ -72,7 +72,7 @@ public class DesUtil {
     private static Key getKey(byte[] paramArrayOfByte) {
         byte[] arrayOfByte = new byte[8];
 
-        for(int i = 0; i < paramArrayOfByte.length && i < arrayOfByte.length; ++i) {
+        for (int i = 0; i < paramArrayOfByte.length && i < arrayOfByte.length; ++i) {
             arrayOfByte[i] = paramArrayOfByte[i];
         }
 
@@ -85,9 +85,9 @@ public class DesUtil {
         int j = bytes.length;
 
         byte[] arrayOfByte;
-        for(arrayOfByte = new byte[j / 2]; i < j; i += 2) {
+        for (arrayOfByte = new byte[j / 2]; i < j; i += 2) {
             String str = new String(bytes, i, 2);
-            arrayOfByte[i / 2] = (byte)Integer.parseInt(str, 16);
+            arrayOfByte[i / 2] = (byte) Integer.parseInt(str, 16);
         }
 
         return arrayOfByte;

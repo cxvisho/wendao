@@ -6,12 +6,12 @@
 package org.linlinjava.litemall.gameserver.fight;
 
 public class FightResult {
-  public int id;
-  public int vid;
-  public int effect_no;
-  public int damage_type;
-  public int point;
+    public int id;
+    public int vid;
+    public int effect_no;
+    public int damage_type;
+    public int point;
 
-  public FightResult() {
-  }
+    public FightResult() {
+    }
 }

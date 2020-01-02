@@ -9,10 +9,12 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class PackModification implements Cloneable, Serializable {
@@ -195,9 +197,11 @@ public class PackModification implements Cloneable, Serializable {
             return false;
         } else {
             boolean var10000;
-            label137: {
-                label129: {
-                    PackModification other = (PackModification)that;
+            label137:
+            {
+                label129:
+                {
+                    PackModification other = (PackModification) that;
                     if (this.getId() == null) {
                         if (other.getId() != null) {
                             break label129;
@@ -314,7 +318,7 @@ public class PackModification implements Cloneable, Serializable {
 
     public int hashCode() {
         int result = 1;
-       result = 31 * result + (this.getId() == null ? 0 : this.getId().hashCode());
+        result = 31 * result + (this.getId() == null ? 0 : this.getId().hashCode());
         result = 31 * result + (this.getAlias() == null ? 0 : this.getAlias().hashCode());
         result = 31 * result + (this.getFasionType() == null ? 0 : this.getFasionType().hashCode());
         result = 31 * result + (this.getStr() == null ? 0 : this.getStr().hashCode());
@@ -331,7 +335,7 @@ public class PackModification implements Cloneable, Serializable {
     }
 
     public PackModification clone() throws CloneNotSupportedException {
-        return (PackModification)super.clone();
+        return (PackModification) super.clone();
     }
 
     static {
@@ -398,7 +402,7 @@ public class PackModification implements Cloneable, Serializable {
                 columns.removeAll(new ArrayList(Arrays.asList(excludes)));
             }
 
-            return (PackModification.Column[])columns.toArray(new PackModification.Column[0]);
+            return (PackModification.Column[]) columns.toArray(new PackModification.Column[0]);
         }
 
         public String getEscapedColumnName() {

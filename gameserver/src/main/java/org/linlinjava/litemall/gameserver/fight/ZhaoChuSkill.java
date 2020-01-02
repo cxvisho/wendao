@@ -7,6 +7,7 @@ package org.linlinjava.litemall.gameserver.fight;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import org.linlinjava.litemall.gameserver.data.vo.Vo_12023_0;
 import org.linlinjava.litemall.gameserver.data.vo.Vo_19959_0;
 import org.linlinjava.litemall.gameserver.data.vo.Vo_64971_0;
@@ -61,8 +62,8 @@ public class ZhaoChuSkill implements FightSkill {
         FightObject fightObject = null;
         Petbeibao petbeibaoChuzhan = null;
 
-        for(int j = 0; j < pets.size(); ++j) {
-            Petbeibao petbeibao = (Petbeibao)pets.get(j);
+        for (int j = 0; j < pets.size(); ++j) {
+            Petbeibao petbeibao = (Petbeibao) pets.get(j);
             if (petbeibao.id == fightRequest.vid) {
                 chara.chongwuchanzhanId = fightRequest.vid;
                 fightObject = new FightObject(petbeibao);
@@ -72,8 +73,8 @@ public class ZhaoChuSkill implements FightSkill {
                 fightObject.cid = chara.id;
                 petbeibaoChuzhan = petbeibao;
                 if (petbeibao.tianshu.size() != 0) {
-                    Vo_12023_0 vo_12023_0 = (Vo_12023_0)petbeibao.tianshu.get(FightManager.RANDOM.nextInt(petbeibao.tianshu.size()));
-                    fightObject.godbook = (Integer)FightTianshuMap.TIANSHU_EFFECT.get(vo_12023_0.god_book_skill_name);
+                    Vo_12023_0 vo_12023_0 = (Vo_12023_0) petbeibao.tianshu.get(FightManager.RANDOM.nextInt(petbeibao.tianshu.size()));
+                    fightObject.godbook = (Integer) FightTianshuMap.TIANSHU_EFFECT.get(vo_12023_0.god_book_skill_name);
                 }
 
                 friendsFightTeam.add(fightObject);

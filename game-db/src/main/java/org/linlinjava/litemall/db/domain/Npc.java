@@ -9,10 +9,12 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class Npc implements Cloneable, Serializable {
@@ -155,9 +157,11 @@ public class Npc implements Cloneable, Serializable {
             return false;
         } else {
             boolean var10000;
-            label105: {
-                label97: {
-                    Npc other = (Npc)that;
+            label105:
+            {
+                label97:
+                {
+                    Npc other = (Npc) that;
                     if (this.getId() == null) {
                         if (other.getId() != null) {
                             break label97;
@@ -242,7 +246,7 @@ public class Npc implements Cloneable, Serializable {
 
     public int hashCode() {
         int result = 1;
-       result = 31 * result + (this.getId() == null ? 0 : this.getId().hashCode());
+        result = 31 * result + (this.getId() == null ? 0 : this.getId().hashCode());
         result = 31 * result + (this.getIcon() == null ? 0 : this.getIcon().hashCode());
         result = 31 * result + (this.getX() == null ? 0 : this.getX().hashCode());
         result = 31 * result + (this.getY() == null ? 0 : this.getY().hashCode());
@@ -255,7 +259,7 @@ public class Npc implements Cloneable, Serializable {
     }
 
     public Npc clone() throws CloneNotSupportedException {
-        return (Npc)super.clone();
+        return (Npc) super.clone();
     }
 
     static {
@@ -318,7 +322,7 @@ public class Npc implements Cloneable, Serializable {
                 columns.removeAll(new ArrayList(Arrays.asList(excludes)));
             }
 
-            return (Npc.Column[])columns.toArray(new Npc.Column[0]);
+            return (Npc.Column[]) columns.toArray(new Npc.Column[0]);
         }
 
         public String getEscapedColumnName() {

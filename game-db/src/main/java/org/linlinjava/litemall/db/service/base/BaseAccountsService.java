@@ -6,8 +6,10 @@
 package org.linlinjava.litemall.db.service.base;
 
 import com.github.pagehelper.PageHelper;
+
 import java.time.LocalDateTime;
 import java.util.List;
+
 import org.linlinjava.litemall.db.dao.AccountsMapper;
 import org.linlinjava.litemall.db.domain.Accounts;
 import org.linlinjava.litemall.db.domain.example.AccountsExample;
@@ -69,11 +71,12 @@ public class BaseAccountsService {
 
 
     public List<Accounts> findUserName() {
-        PageHelper.startPage(1,10);
+        PageHelper.startPage(1, 10);
         List<Accounts> accounts = mapper.selectByExample(null);
 
         return accounts;
     }
+
     public List<Accounts> findByName(String name) {
         AccountsExample example = new AccountsExample();
         Criteria criteria = example.createCriteria();

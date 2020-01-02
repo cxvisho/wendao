@@ -53,9 +53,11 @@ public class SaleGoodWithBLOBs extends SaleGood implements Cloneable, Serializab
             return false;
         } else {
             boolean var10000;
-            label153: {
-                label145: {
-                    SaleGoodWithBLOBs other = (SaleGoodWithBLOBs)that;
+            label153:
+            {
+                label145:
+                {
+                    SaleGoodWithBLOBs other = (SaleGoodWithBLOBs) that;
                     if (this.getId() == null) {
                         if (other.getId() != null) {
                             break label145;
@@ -188,7 +190,7 @@ public class SaleGoodWithBLOBs extends SaleGood implements Cloneable, Serializab
 
     public int hashCode() {
         int result = 1;
-       result = 31 * result + (this.getId() == null ? 0 : this.getId().hashCode());
+        result = 31 * result + (this.getId() == null ? 0 : this.getId().hashCode());
         result = 31 * result + (this.getGoodsId() == null ? 0 : this.getGoodsId().hashCode());
         result = 31 * result + (this.getName() == null ? 0 : this.getName().hashCode());
         result = 31 * result + (this.getStartTime() == null ? 0 : this.getStartTime().hashCode());
@@ -207,7 +209,7 @@ public class SaleGoodWithBLOBs extends SaleGood implements Cloneable, Serializab
     }
 
     public SaleGoodWithBLOBs clone() throws CloneNotSupportedException {
-        return (SaleGoodWithBLOBs)super.clone();
+        return (SaleGoodWithBLOBs) super.clone();
     }
 
     public static enum Column {
@@ -271,7 +273,7 @@ public class SaleGoodWithBLOBs extends SaleGood implements Cloneable, Serializab
                 columns.removeAll(new ArrayList(Arrays.asList(excludes)));
             }
 
-            return (SaleGoodWithBLOBs.Column[])columns.toArray(new SaleGoodWithBLOBs.Column[0]);
+            return (SaleGoodWithBLOBs.Column[]) columns.toArray(new SaleGoodWithBLOBs.Column[0]);
         }
 
         public String getEscapedColumnName() {

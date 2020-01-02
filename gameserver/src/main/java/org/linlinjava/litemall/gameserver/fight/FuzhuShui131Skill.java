@@ -7,6 +7,7 @@ package org.linlinjava.litemall.gameserver.fight;
 
 import java.util.Iterator;
 import java.util.List;
+
 import org.linlinjava.litemall.gameserver.data.vo.Vo_19945_0;
 import org.linlinjava.litemall.gameserver.data.vo.Vo_19959_0;
 import org.linlinjava.litemall.gameserver.data.vo.Vo_64989_0;
@@ -44,8 +45,8 @@ public class FuzhuShui131Skill extends FightRoundSkill {
         Iterator var8 = targetList.iterator();
 
         FightObject fightObject;
-        while(var8.hasNext()) {
-            fightObject = (FightObject)var8.next();
+        while (var8.hasNext()) {
+            fightObject = (FightObject) var8.next();
             vo_64989_0.list.add(fightObject.fid);
         }
 
@@ -53,8 +54,8 @@ public class FuzhuShui131Skill extends FightRoundSkill {
 
         FuzhuShui131Skill that;
         int fangyu;
-        for(var8 = targetList.iterator(); var8.hasNext(); that.buffObject.fangyu_ext = that.buffObject.fangyu * fangyu / 100) {
-            fightObject = (FightObject)var8.next();
+        for (var8 = targetList.iterator(); var8.hasNext(); that.buffObject.fangyu_ext = that.buffObject.fangyu * fangyu / 100) {
+            fightObject = (FightObject) var8.next();
             vo_19959_0 = new Vo_19959_0();
             vo_19959_0.round = fightContainer.round;
             vo_19959_0.aid = fightObject.fid;
@@ -70,7 +71,7 @@ public class FuzhuShui131Skill extends FightRoundSkill {
             fightObject.addSkill(that);
             that.buffObject = fightObject;
             that.removeRound = fightContainer.round + jiNeng.skillRound - 1;
-            fangyu = (int)BattleUtils.extAdd(jiNeng.skill_level, jiNeng.skill_no);
+            fangyu = (int) BattleUtils.extAdd(jiNeng.skill_level, jiNeng.skill_no);
         }
 
         return null;

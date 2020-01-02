@@ -18,7 +18,7 @@ public class FightMove {
     }
 
     public static boolean move(int id) {
-        FightMove fightMove = (FightMove)MOVE_MAP.get(id);
+        FightMove fightMove = (FightMove) MOVE_MAP.get(id);
         if (fightMove == null) {
             fightMove = new FightMove();
             fightMove.curMove = 0;

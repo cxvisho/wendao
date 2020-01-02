@@ -9,10 +9,12 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class Skilldata implements Cloneable, Serializable {
@@ -145,9 +147,11 @@ public class Skilldata implements Cloneable, Serializable {
             return false;
         } else {
             boolean var10000;
-            label97: {
-                label89: {
-                    Skilldata other = (Skilldata)that;
+            label97:
+            {
+                label89:
+                {
+                    Skilldata other = (Skilldata) that;
                     if (this.getId() == null) {
                         if (other.getId() != null) {
                             break label89;
@@ -236,7 +240,7 @@ public class Skilldata implements Cloneable, Serializable {
     }
 
     public Skilldata clone() throws CloneNotSupportedException {
-        return (Skilldata)super.clone();
+        return (Skilldata) super.clone();
     }
 
     static {
@@ -298,7 +302,7 @@ public class Skilldata implements Cloneable, Serializable {
                 columns.removeAll(new ArrayList(Arrays.asList(excludes)));
             }
 
-            return (Skilldata.Column[])columns.toArray(new Skilldata.Column[0]);
+            return (Skilldata.Column[]) columns.toArray(new Skilldata.Column[0]);
         }
 
         public String getEscapedColumnName() {

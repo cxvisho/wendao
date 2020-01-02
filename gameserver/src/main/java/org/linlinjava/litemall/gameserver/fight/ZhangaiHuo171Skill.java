@@ -8,6 +8,7 @@ package org.linlinjava.litemall.gameserver.fight;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
 import org.linlinjava.litemall.gameserver.data.vo.Vo_19945_0;
 import org.linlinjava.litemall.gameserver.data.vo.Vo_19959_0;
 import org.linlinjava.litemall.gameserver.data.vo.Vo_64989_0;
@@ -47,16 +48,16 @@ public class ZhangaiHuo171Skill extends FightRoundSkill {
         Iterator var10 = targetList.iterator();
 
         FightObject fightObject;
-        while(var10.hasNext()) {
-            fightObject = (FightObject)var10.next();
+        while (var10.hasNext()) {
+            fightObject = (FightObject) var10.next();
             vo_64989_0.list.add(fightObject.fid);
         }
 
         FightManager.send(fightContainer, new M64989_0(), vo_64989_0);
 
         ZhangaiHuo171Skill that;
-        for(var10 = targetList.iterator(); var10.hasNext(); that.removeRound = fightContainer.round + jiNeng.skillRound - 1) {
-            fightObject = (FightObject)var10.next();
+        for (var10 = targetList.iterator(); var10.hasNext(); that.removeRound = fightContainer.round + jiNeng.skillRound - 1) {
+            fightObject = (FightObject) var10.next();
             vo_19959_0 = new Vo_19959_0();
             vo_19959_0.round = fightContainer.round;
             vo_19959_0.aid = fightObject.fid;

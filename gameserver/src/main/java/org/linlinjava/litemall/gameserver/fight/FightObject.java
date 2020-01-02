@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
+
 import org.json.JSONObject;
 import org.linlinjava.litemall.db.domain.Pet;
 import org.linlinjava.litemall.db.domain.SkillMonster;
@@ -117,8 +118,8 @@ public class FightObject {
         FightContainer fightContainer = FightManager.getFightContainer(this.fid);
         Iterator var3 = roundSkill.iterator();
 
-        while(var3.hasNext()) {
-            FightRoundSkill fightRoundSkill = (FightRoundSkill)var3.next();
+        while (var3.hasNext()) {
+            FightRoundSkill fightRoundSkill = (FightRoundSkill) var3.next();
             if (fightRoundSkill.getStateType() != 528128) {
                 this.removeBuffState(fightContainer, fightRoundSkill.getStateType());
                 this.fightSkillList.remove(fightRoundSkill);
@@ -132,10 +133,10 @@ public class FightObject {
         List<FightRoundSkill> list = new ArrayList();
         Iterator var2 = this.fightSkillList.iterator();
 
-        while(var2.hasNext()) {
-            FightSkill fightSkill = (FightSkill)var2.next();
+        while (var2.hasNext()) {
+            FightSkill fightSkill = (FightSkill) var2.next();
             if (fightSkill instanceof FightRoundSkill) {
-                list.add((FightRoundSkill)fightSkill);
+                list.add((FightRoundSkill) fightSkill);
             }
         }
 
@@ -151,19 +152,19 @@ public class FightObject {
                 return null;
             }
 
-            fightSkill = (FightSkill)var1.next();
-        } while(!(fightSkill instanceof FightFabaoSkill));
+            fightSkill = (FightSkill) var1.next();
+        } while (!(fightSkill instanceof FightFabaoSkill));
 
-        return (FightFabaoSkill)fightSkill;
+        return (FightFabaoSkill) fightSkill;
     }
 
     public boolean isActiveTianshu(FightContainer fc, int state) {
         Iterator var3 = this.fightSkillList.iterator();
 
-        while(var3.hasNext()) {
-            FightSkill fightSkill = (FightSkill)var3.next();
+        while (var3.hasNext()) {
+            FightSkill fightSkill = (FightSkill) var3.next();
             if (fightSkill instanceof FightTianshuSkill) {
-                FightTianshuSkill fts = (FightTianshuSkill)fightSkill;
+                FightTianshuSkill fts = (FightTianshuSkill) fightSkill;
                 if (fts.getStateType() == state) {
                     fts.sendEffect(fc);
                     return fts.isActive();
@@ -287,7 +288,7 @@ public class FightObject {
 
         if (name.contains("仙界叛逆")) {
             strname = chara.npcXuanShangName;
-            this.friend = (int)(0.29D * (double)chara.level * (double)chara.level * (double)chara.level * 0.29D * (double)chara.level * (double)chara.level * (double)chara.level);
+            this.friend = (int) (0.29D * (double) chara.level * (double) chara.level * (double) chara.level * 0.29D * (double) chara.level * (double) chara.level * (double) chara.level);
         }
 
         String names = "土匪#强盗#狐狸妖#鱼妖#蓝精#黄怪#疯魑#狂魍#蟒怪#鸟精#琵琶妖蟒妖#怪王狂狮#鬼王黑熊#鬼王悍猪#混天巨象#兑灵#艮灵#坎灵#离灵#狂灵#疯灵#山神#炎神#雷神#花神#龙神#刀斧手#火扇儒生#红衣剑客#试道元魔";
@@ -301,26 +302,26 @@ public class FightObject {
         List<SkillMonster> monsters = GameData.that.baseSkillMonsterService.findByName(strname);
         String skills = "";
         if (monsters != null && monsters.size() > 0) {
-            for(int i = 0; i < monsters.size(); ++i) {
-                if (((SkillMonster)monsters.get(i)).getType() == 1) {
-                    skills = ((SkillMonster)monsters.get(i)).getSkills();
+            for (int i = 0; i < monsters.size(); ++i) {
+                if (((SkillMonster) monsters.get(i)).getType() == 1) {
+                    skills = ((SkillMonster) monsters.get(i)).getSkills();
                 }
             }
         }
 
         this.str = name;
-        this.guaiwulevel = ((PetShuXing)petbeibao.petShuXing.get(0)).skill;
-        this.shengming = (int)((double)((PetShuXing)petbeibao.petShuXing.get(0)).max_life * 0.8D);
-        this.mofa = (int)((double)((PetShuXing)petbeibao.petShuXing.get(0)).max_mana * 0.8D);
-        this.max_mofa = (int)((double)((PetShuXing)petbeibao.petShuXing.get(0)).dex * 0.8D);
-        this.max_shengming = (int)((double)((PetShuXing)petbeibao.petShuXing.get(0)).def * 0.8D);
-        this.fashang = (int)((double)((PetShuXing)petbeibao.petShuXing.get(0)).mana * 0.8D);
-        this.parry = (int)((double)((PetShuXing)petbeibao.petShuXing.get(0)).parry * 0.8D);
-        this.accurate = (int)((double)((PetShuXing)petbeibao.petShuXing.get(0)).accurate * 0.8D);
-        this.fangyu = (int)((double)((PetShuXing)petbeibao.petShuXing.get(0)).wiz * 0.8D);
-        this.org_icon = ((PetShuXing)petbeibao.petShuXing.get(0)).type;
-        boolean isfagong = ((PetShuXing)petbeibao.petShuXing.get(0)).rank > ((PetShuXing)petbeibao.petShuXing.get(0)).pet_mag_shape;
-        this.skillsList = dujineng(1, ((PetShuXing)petbeibao.petShuXing.get(0)).metal, ((PetShuXing)petbeibao.petShuXing.get(0)).skill, isfagong, 123456, skills);
+        this.guaiwulevel = ((PetShuXing) petbeibao.petShuXing.get(0)).skill;
+        this.shengming = (int) ((double) ((PetShuXing) petbeibao.petShuXing.get(0)).max_life * 0.8D);
+        this.mofa = (int) ((double) ((PetShuXing) petbeibao.petShuXing.get(0)).max_mana * 0.8D);
+        this.max_mofa = (int) ((double) ((PetShuXing) petbeibao.petShuXing.get(0)).dex * 0.8D);
+        this.max_shengming = (int) ((double) ((PetShuXing) petbeibao.petShuXing.get(0)).def * 0.8D);
+        this.fashang = (int) ((double) ((PetShuXing) petbeibao.petShuXing.get(0)).mana * 0.8D);
+        this.parry = (int) ((double) ((PetShuXing) petbeibao.petShuXing.get(0)).parry * 0.8D);
+        this.accurate = (int) ((double) ((PetShuXing) petbeibao.petShuXing.get(0)).accurate * 0.8D);
+        this.fangyu = (int) ((double) ((PetShuXing) petbeibao.petShuXing.get(0)).wiz * 0.8D);
+        this.org_icon = ((PetShuXing) petbeibao.petShuXing.get(0)).type;
+        boolean isfagong = ((PetShuXing) petbeibao.petShuXing.get(0)).rank > ((PetShuXing) petbeibao.petShuXing.get(0)).pet_mag_shape;
+        this.skillsList = dujineng(1, ((PetShuXing) petbeibao.petShuXing.get(0)).metal, ((PetShuXing) petbeibao.petShuXing.get(0)).skill, isfagong, 123456, skills);
         this.type = 4;
     }
 
@@ -349,81 +350,82 @@ public class FightObject {
     public FightObject(String name) {
         this.str = name;
         Petbeibao petbeibao = this.petCreate(name);
-        this.shengming = ((PetShuXing)petbeibao.petShuXing.get(0)).max_life;
-        this.mofa = ((PetShuXing)petbeibao.petShuXing.get(0)).max_mana;
-        this.max_mofa = ((PetShuXing)petbeibao.petShuXing.get(0)).dex;
-        this.max_shengming = ((PetShuXing)petbeibao.petShuXing.get(0)).def;
-        this.fashang = ((PetShuXing)petbeibao.petShuXing.get(0)).mana;
-        this.parry = ((PetShuXing)petbeibao.petShuXing.get(0)).parry;
-        this.accurate = ((PetShuXing)petbeibao.petShuXing.get(0)).accurate;
-        this.fangyu = ((PetShuXing)petbeibao.petShuXing.get(0)).wiz;
-        this.org_icon = ((PetShuXing)petbeibao.petShuXing.get(0)).type;
-        boolean isfagong = ((PetShuXing)petbeibao.petShuXing.get(0)).rank > ((PetShuXing)petbeibao.petShuXing.get(0)).pet_mag_shape;
-        this.skillsList = dujineng(1, ((PetShuXing)petbeibao.petShuXing.get(0)).metal, ((PetShuXing)petbeibao.petShuXing.get(0)).skill, isfagong, 123456, "");
+        this.shengming = ((PetShuXing) petbeibao.petShuXing.get(0)).max_life;
+        this.mofa = ((PetShuXing) petbeibao.petShuXing.get(0)).max_mana;
+        this.max_mofa = ((PetShuXing) petbeibao.petShuXing.get(0)).dex;
+        this.max_shengming = ((PetShuXing) petbeibao.petShuXing.get(0)).def;
+        this.fashang = ((PetShuXing) petbeibao.petShuXing.get(0)).mana;
+        this.parry = ((PetShuXing) petbeibao.petShuXing.get(0)).parry;
+        this.accurate = ((PetShuXing) petbeibao.petShuXing.get(0)).accurate;
+        this.fangyu = ((PetShuXing) petbeibao.petShuXing.get(0)).wiz;
+        this.org_icon = ((PetShuXing) petbeibao.petShuXing.get(0)).type;
+        boolean isfagong = ((PetShuXing) petbeibao.petShuXing.get(0)).rank > ((PetShuXing) petbeibao.petShuXing.get(0)).pet_mag_shape;
+        this.skillsList = dujineng(1, ((PetShuXing) petbeibao.petShuXing.get(0)).metal, ((PetShuXing) petbeibao.petShuXing.get(0)).skill, isfagong, 123456, "");
         this.type = 4;
     }
 
     public FightObject(ShouHu shouHu) {
-        this.str = ((ShouHuShuXing)shouHu.listShouHuShuXing.get(0)).str;
-        this.shengming = ((ShouHuShuXing)shouHu.listShouHuShuXing.get(0)).max_life;
-        this.max_shengming = ((ShouHuShuXing)shouHu.listShouHuShuXing.get(0)).def;
-        this.fashang = ((ShouHuShuXing)shouHu.listShouHuShuXing.get(0)).mana;
-        this.parry = ((ShouHuShuXing)shouHu.listShouHuShuXing.get(0)).parry;
-        this.accurate = ((ShouHuShuXing)shouHu.listShouHuShuXing.get(0)).accurate;
-        this.fangyu = ((ShouHuShuXing)shouHu.listShouHuShuXing.get(0)).wiz;
-        this.org_icon = ((ShouHuShuXing)shouHu.listShouHuShuXing.get(0)).type;
+        this.str = ((ShouHuShuXing) shouHu.listShouHuShuXing.get(0)).str;
+        this.shengming = ((ShouHuShuXing) shouHu.listShouHuShuXing.get(0)).max_life;
+        this.max_shengming = ((ShouHuShuXing) shouHu.listShouHuShuXing.get(0)).def;
+        this.fashang = ((ShouHuShuXing) shouHu.listShouHuShuXing.get(0)).mana;
+        this.parry = ((ShouHuShuXing) shouHu.listShouHuShuXing.get(0)).parry;
+        this.accurate = ((ShouHuShuXing) shouHu.listShouHuShuXing.get(0)).accurate;
+        this.fangyu = ((ShouHuShuXing) shouHu.listShouHuShuXing.get(0)).wiz;
+        this.org_icon = ((ShouHuShuXing) shouHu.listShouHuShuXing.get(0)).type;
         List<SkillMonster> monsters = GameData.that.baseSkillMonsterService.findByName(this.str);
         String skills = "";
         if (monsters != null && monsters.size() > 0) {
-            for(int i = 0; i < monsters.size(); ++i) {
-                if (((SkillMonster)monsters.get(i)).getType() == 2) {
-                    skills = ((SkillMonster)monsters.get(i)).getSkills();
+            for (int i = 0; i < monsters.size(); ++i) {
+                if (((SkillMonster) monsters.get(i)).getType() == 2) {
+                    skills = ((SkillMonster) monsters.get(i)).getSkills();
                 }
             }
         }
 
         String[] split = skills.split("##");
-        if (((ShouHuShuXing)shouHu.listShouHuShuXing.get(0)).max_degree == 0) {
+        if (((ShouHuShuXing) shouHu.listShouHuShuXing.get(0)).max_degree == 0) {
             skills = split[0];
         } else {
             skills = split[1];
         }
 
-        this.skillsList = dujineng(2, ((ShouHuShuXing)shouHu.listShouHuShuXing.get(0)).metal, ((ShouHuShuXing)shouHu.listShouHuShuXing.get(0)).skill, true, shouHu.id, skills);
+        this.skillsList = dujineng(2, ((ShouHuShuXing) shouHu.listShouHuShuXing.get(0)).metal, ((ShouHuShuXing) shouHu.listShouHuShuXing.get(0)).skill, true, shouHu.id, skills);
         this.type = 3;
         this.durability = 32;
         this.rank = 2;
     }
 
     public FightObject(Petbeibao pet) {
-        int life = ((PetShuXing)pet.petShuXing.get(0)).def;
-        if (((PetShuXing)pet.petShuXing.get(0)).max_life > ((PetShuXing)pet.petShuXing.get(0)).def) {
-            life = ((PetShuXing)pet.petShuXing.get(0)).max_life;
+        int life = ((PetShuXing) pet.petShuXing.get(0)).def;
+        if (((PetShuXing) pet.petShuXing.get(0)).max_life > ((PetShuXing) pet.petShuXing.get(0)).def) {
+            life = ((PetShuXing) pet.petShuXing.get(0)).max_life;
         }
 
-        this.str = ((PetShuXing)pet.petShuXing.get(0)).str;
+        this.str = ((PetShuXing) pet.petShuXing.get(0)).str;
         this.shengming = life;
-        this.mofa = ((PetShuXing)pet.petShuXing.get(0)).dex;
-        this.max_mofa = ((PetShuXing)pet.petShuXing.get(0)).max_mana;
+        this.mofa = ((PetShuXing) pet.petShuXing.get(0)).dex;
+        this.max_mofa = ((PetShuXing) pet.petShuXing.get(0)).max_mana;
         this.max_shengming = life;
-        this.fashang = ((PetShuXing)pet.petShuXing.get(0)).mana;
-        this.parry = ((PetShuXing)pet.petShuXing.get(0)).parry;
-        this.accurate = ((PetShuXing)pet.petShuXing.get(0)).accurate;
-        this.fangyu = ((PetShuXing)pet.petShuXing.get(0)).wiz;
-        this.org_icon = ((PetShuXing)pet.petShuXing.get(0)).type;
-        boolean isfagong = ((PetShuXing)pet.petShuXing.get(0)).rank > ((PetShuXing)pet.petShuXing.get(0)).pet_mag_shape;
-        this.skillsList = dujineng(1, ((PetShuXing)pet.petShuXing.get(0)).metal, ((PetShuXing)pet.petShuXing.get(0)).skill, isfagong, pet.id, "");
+        this.fashang = ((PetShuXing) pet.petShuXing.get(0)).mana;
+        this.parry = ((PetShuXing) pet.petShuXing.get(0)).parry;
+        this.accurate = ((PetShuXing) pet.petShuXing.get(0)).accurate;
+        this.fangyu = ((PetShuXing) pet.petShuXing.get(0)).wiz;
+        this.org_icon = ((PetShuXing) pet.petShuXing.get(0)).type;
+        boolean isfagong = ((PetShuXing) pet.petShuXing.get(0)).rank > ((PetShuXing) pet.petShuXing.get(0)).pet_mag_shape;
+        this.skillsList = dujineng(1, ((PetShuXing) pet.petShuXing.get(0)).metal, ((PetShuXing) pet.petShuXing.get(0)).skill, isfagong, pet.id, "");
         this.type = 2;
         this.autofight_skillno = pet.autofight_skillno;
         this.autofight_select = pet.autofight_select;
         this.autofight_skillaction = pet.autofight_skillaction;
-        this.friend = ((PetShuXing)pet.petShuXing.get(0)).intimacy / 2;
+        this.friend = ((PetShuXing) pet.petShuXing.get(0)).intimacy / 2;
         this.durability = 32768;
         this.rank = 2;
     }
 
     /**
      * 奔雷
+     *
      * @param name
      * @return
      */
@@ -565,20 +567,20 @@ public class FightObject {
         List<JiNeng> jiNengList = new ArrayList();
         List<JSONObject> nomelSkills = PetAndHelpSkillUtils.getNomelSkills(leixing, pos, level, true, skills);
 
-        for(int i = 0; i < nomelSkills.size(); ++i) {
+        for (int i = 0; i < nomelSkills.size(); ++i) {
             JiNeng jiNeng = new JiNeng();
-            JSONObject jsonObject = (JSONObject)nomelSkills.get(i);
+            JSONObject jsonObject = (JSONObject) nomelSkills.get(i);
             jiNeng.id = id;
-            jiNeng.skill_no = Integer.parseInt((String)jsonObject.get("skillNo"));
-            jiNeng.skill_attrib = (Integer)jsonObject.get("skillLevel");
-            jiNeng.skill_level = (Integer)jsonObject.get("skillLevel");
+            jiNeng.skill_no = Integer.parseInt((String) jsonObject.get("skillNo"));
+            jiNeng.skill_attrib = (Integer) jsonObject.get("skillLevel");
+            jiNeng.skill_level = (Integer) jsonObject.get("skillLevel");
             jiNeng.skillRound = jsonObject.optInt("skillRound");
             jiNeng.level_improved = 0;
-            jiNeng.skill_mana_cost = (Integer)jsonObject.get("skillBlue");
+            jiNeng.skill_mana_cost = (Integer) jsonObject.get("skillBlue");
             jiNeng.skill_nimbus = 42949672;
             jiNeng.skill_disabled = 0;
-            jiNeng.range = (Integer)jsonObject.get("skillNum");
-            jiNeng.max_range = (Integer)jsonObject.get("skillNum");
+            jiNeng.range = (Integer) jsonObject.get("skillNum");
+            jiNeng.max_range = (Integer) jsonObject.get("skillNum");
             jiNengList.add(jiNeng);
         }
 
@@ -610,8 +612,8 @@ public class FightObject {
             int value = 0;
 
             Integer integer;
-            for(Iterator var5 = this.buffState.iterator(); var5.hasNext(); value += integer) {
-                integer = (Integer)var5.next();
+            for (Iterator var5 = this.buffState.iterator(); var5.hasNext(); value += integer) {
+                integer = (Integer) var5.next();
             }
 
             vo_11757_0.list.add(value);
@@ -685,7 +687,7 @@ public class FightObject {
                 this.updateState(fightContainer);
             }
 
-            switch(state) {
+            switch (state) {
                 case 3842:
                     this.removeBuffSK(fightContainer, 3856);
                     this.removeBuffSK(fightContainer, 3844);
@@ -748,8 +750,8 @@ public class FightObject {
         List<FightRoundSkill> roundSkill = this.getRoundSkill();
         Iterator var3 = roundSkill.iterator();
 
-        while(var3.hasNext()) {
-            FightRoundSkill skill = (FightRoundSkill)var3.next();
+        while (var3.hasNext()) {
+            FightRoundSkill skill = (FightRoundSkill) var3.next();
             if (skill.getStateType() == fightSkill.getStateType()) {
                 this.removeSkill(skill);
             }
@@ -766,8 +768,8 @@ public class FightObject {
         List<FightRoundSkill> roundSkill = this.getRoundSkill();
         Iterator var3 = roundSkill.iterator();
 
-        while(var3.hasNext()) {
-            FightRoundSkill fightRoundSkill = (FightRoundSkill)var3.next();
+        while (var3.hasNext()) {
+            FightRoundSkill fightRoundSkill = (FightRoundSkill) var3.next();
             if (fightRoundSkill.getStateType() == buffstate) {
                 this.fightSkillList.remove(fightRoundSkill);
             }
@@ -831,8 +833,8 @@ public class FightObject {
                 return false;
             }
 
-            integer = (Integer)var2.next();
-        } while(integer != buff);
+            integer = (Integer) var2.next();
+        } while (integer != buff);
 
         return true;
     }
@@ -911,9 +913,9 @@ public class FightObject {
         String skills = "";
         int i;
         if (monsters != null && monsters.size() > 0) {
-            for(i = 0; i < monsters.size(); ++i) {
-                if (((SkillMonster)monsters.get(i)).getType() == 1) {
-                    skills = ((SkillMonster)monsters.get(i)).getSkills();
+            for (i = 0; i < monsters.size(); ++i) {
+                if (((SkillMonster) monsters.get(i)).getType() == 1) {
+                    skills = ((SkillMonster) monsters.get(i)).getSkills();
                 }
             }
         }
@@ -922,30 +924,30 @@ public class FightObject {
         List<ZhuangbeiInfo> infoList = GameData.that.baseZhuangbeiInfoService.findByAttrib(vo_65529_0.level / 10 * 10);
         Iterator var15 = infoList.iterator();
 
-        while(var15.hasNext()) {
-            ZhuangbeiInfo zhuangbeiInfo = (ZhuangbeiInfo)var15.next();
-            if (zhuangbeiInfo.getAmount() == 1 && zhuangbeiInfo.getMetal() == ((PetShuXing)petbeibao.petShuXing.get(0)).metal) {
+        while (var15.hasNext()) {
+            ZhuangbeiInfo zhuangbeiInfo = (ZhuangbeiInfo) var15.next();
+            if (zhuangbeiInfo.getAmount() == 1 && zhuangbeiInfo.getMetal() == ((PetShuXing) petbeibao.petShuXing.get(0)).metal) {
                 i = zhuangbeiInfo.getType();
             }
         }
 
         this.str = name;
         this.guaiwulevel = vo_65529_0.level;
-        this.shengming = (int)((double)((PetShuXing)petbeibao.petShuXing.get(0)).max_life * 0.8D);
-        this.mofa = (int)((double)((PetShuXing)petbeibao.petShuXing.get(0)).max_mana * 0.8D);
-        this.max_mofa = (int)((double)((PetShuXing)petbeibao.petShuXing.get(0)).dex * 0.8D);
-        this.max_shengming = (int)((double)((PetShuXing)petbeibao.petShuXing.get(0)).def * 0.8D);
-        this.fashang = (int)((double)((PetShuXing)petbeibao.petShuXing.get(0)).mana * 0.8D);
-        this.parry = (int)((double)((PetShuXing)petbeibao.petShuXing.get(0)).parry * 0.8D);
-        this.accurate = (int)((double)((PetShuXing)petbeibao.petShuXing.get(0)).accurate * 0.8D);
-        this.fangyu = (int)((double)((PetShuXing)petbeibao.petShuXing.get(0)).wiz * 0.8D);
+        this.shengming = (int) ((double) ((PetShuXing) petbeibao.petShuXing.get(0)).max_life * 0.8D);
+        this.mofa = (int) ((double) ((PetShuXing) petbeibao.petShuXing.get(0)).max_mana * 0.8D);
+        this.max_mofa = (int) ((double) ((PetShuXing) petbeibao.petShuXing.get(0)).dex * 0.8D);
+        this.max_shengming = (int) ((double) ((PetShuXing) petbeibao.petShuXing.get(0)).def * 0.8D);
+        this.fashang = (int) ((double) ((PetShuXing) petbeibao.petShuXing.get(0)).mana * 0.8D);
+        this.parry = (int) ((double) ((PetShuXing) petbeibao.petShuXing.get(0)).parry * 0.8D);
+        this.accurate = (int) ((double) ((PetShuXing) petbeibao.petShuXing.get(0)).accurate * 0.8D);
+        this.fangyu = (int) ((double) ((PetShuXing) petbeibao.petShuXing.get(0)).wiz * 0.8D);
         this.weapon_icon = i;
         this.org_icon = icon;
         this.suit_icon = suit_iconlinshi;
         this.suit_light_effect = suit_light_effectlinshi;
-        this.friend = (int)(0.29D * (double)vo_65529_0.level * (double)vo_65529_0.level * (double)vo_65529_0.level * 0.29D * (double)vo_65529_0.level * (double)vo_65529_0.level * (double)vo_65529_0.level);
-        boolean isfagong = ((PetShuXing)petbeibao.petShuXing.get(0)).rank > ((PetShuXing)petbeibao.petShuXing.get(0)).pet_mag_shape;
-        this.skillsList = dujineng(1, ((PetShuXing)petbeibao.petShuXing.get(0)).metal, ((PetShuXing)petbeibao.petShuXing.get(0)).skill, isfagong, 123456, skills);
+        this.friend = (int) (0.29D * (double) vo_65529_0.level * (double) vo_65529_0.level * (double) vo_65529_0.level * 0.29D * (double) vo_65529_0.level * (double) vo_65529_0.level * (double) vo_65529_0.level);
+        boolean isfagong = ((PetShuXing) petbeibao.petShuXing.get(0)).rank > ((PetShuXing) petbeibao.petShuXing.get(0)).pet_mag_shape;
+        this.skillsList = dujineng(1, ((PetShuXing) petbeibao.petShuXing.get(0)).metal, ((PetShuXing) petbeibao.petShuXing.get(0)).skill, isfagong, 123456, skills);
         this.type = 4;
     }
 }

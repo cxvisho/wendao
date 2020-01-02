@@ -43,7 +43,7 @@ public class JsonIntegerArrayTypeHandler extends BaseTypeHandler<Integer[]> {
         try {
             return mapper.writeValueAsString(params);
         } catch (Exception e) {
-        	logger.error("",e);
+            logger.error("", e);
         }
         return "[]";
     }
@@ -53,7 +53,7 @@ public class JsonIntegerArrayTypeHandler extends BaseTypeHandler<Integer[]> {
             try {
                 return (Integer[]) mapper.readValue(content, Integer[].class);
             } catch (Exception e) {
-            	logger.error("",e);
+                logger.error("", e);
 
                 throw new RuntimeException(e);
             }

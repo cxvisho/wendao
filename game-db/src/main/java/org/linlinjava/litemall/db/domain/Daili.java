@@ -9,10 +9,12 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class Daili implements Cloneable, Serializable {
@@ -145,9 +147,11 @@ public class Daili implements Cloneable, Serializable {
             return false;
         } else {
             boolean var10000;
-            label97: {
-                label89: {
-                    Daili other = (Daili)that;
+            label97:
+            {
+                label89:
+                {
+                    Daili other = (Daili) that;
                     if (this.getId() == null) {
                         if (other.getId() != null) {
                             break label89;
@@ -224,7 +228,7 @@ public class Daili implements Cloneable, Serializable {
 
     public int hashCode() {
         int result = 1;
-         result = 31 * result + (this.getId() == null ? 0 : this.getId().hashCode());
+        result = 31 * result + (this.getId() == null ? 0 : this.getId().hashCode());
         result = 31 * result + (this.getAccount() == null ? 0 : this.getAccount().hashCode());
         result = 31 * result + (this.getPasswd() == null ? 0 : this.getPasswd().hashCode());
         result = 31 * result + (this.getCode() == null ? 0 : this.getCode().hashCode());
@@ -236,7 +240,7 @@ public class Daili implements Cloneable, Serializable {
     }
 
     public Daili clone() throws CloneNotSupportedException {
-        return (Daili)super.clone();
+        return (Daili) super.clone();
     }
 
     static {
@@ -298,7 +302,7 @@ public class Daili implements Cloneable, Serializable {
                 columns.removeAll(new ArrayList(Arrays.asList(excludes)));
             }
 
-            return (Daili.Column[])columns.toArray(new Daili.Column[0]);
+            return (Daili.Column[]) columns.toArray(new Daili.Column[0]);
         }
 
         public String getEscapedColumnName() {

@@ -9,10 +9,12 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class Pets implements Cloneable, Serializable {
@@ -385,9 +387,11 @@ public class Pets implements Cloneable, Serializable {
             return false;
         } else {
             boolean var10000;
-            label289: {
-                label281: {
-                    Pets other = (Pets)that;
+            label289:
+            {
+                label281:
+                {
+                    Pets other = (Pets) that;
                     if (this.getId() == null) {
                         if (other.getId() != null) {
                             break label281;
@@ -656,7 +660,7 @@ public class Pets implements Cloneable, Serializable {
 
     public int hashCode() {
         int result = 1;
-         result = 31 * result + (this.getId() == null ? 0 : this.getId().hashCode());
+        result = 31 * result + (this.getId() == null ? 0 : this.getId().hashCode());
         result = 31 * result + (this.getOwnerid() == null ? 0 : this.getOwnerid().hashCode());
         result = 31 * result + (this.getPetid() == null ? 0 : this.getPetid().hashCode());
         result = 31 * result + (this.getNickname() == null ? 0 : this.getNickname().hashCode());
@@ -692,7 +696,7 @@ public class Pets implements Cloneable, Serializable {
     }
 
     public Pets clone() throws CloneNotSupportedException {
-        return (Pets)super.clone();
+        return (Pets) super.clone();
     }
 
     static {
@@ -778,7 +782,7 @@ public class Pets implements Cloneable, Serializable {
                 columns.removeAll(new ArrayList(Arrays.asList(excludes)));
             }
 
-            return (Pets.Column[])columns.toArray(new Pets.Column[0]);
+            return (Pets.Column[]) columns.toArray(new Pets.Column[0]);
         }
 
         public String getEscapedColumnName() {

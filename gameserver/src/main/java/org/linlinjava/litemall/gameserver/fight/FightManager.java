@@ -10,6 +10,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.CopyOnWriteArrayList;
+
 import org.linlinjava.litemall.db.domain.Pet;
 import org.linlinjava.litemall.gameserver.data.vo.ListVo_65527_0;
 import org.linlinjava.litemall.gameserver.data.vo.Vo_12023_0;
@@ -83,23 +84,23 @@ public class FightManager {
         List<Pet> monsterList = GameData.that.basePetService.findByZoon(mapName);
         List<String> monsterNameList = new ArrayList();
         if (monsterList.size() != 0) {
-            for(int i = 0; i < monsterNum; ++i) {
-                Pet pet = (Pet)monsterList.get(RANDOM.nextInt(monsterList.size()));
+            for (int i = 0; i < monsterNum; ++i) {
+                Pet pet = (Pet) monsterList.get(RANDOM.nextInt(monsterList.size()));
                 monsterNameList.add(pet.getName());
             }
 
-            goFight(chara, (List)monsterNameList);
+            goFight(chara, (List) monsterNameList);
         }
     }
 
     private static void addFabao(FightContainer fc, Chara chara, FightObject fightObject) {
         List zhandouisyoufabao = GameUtil.zhandouisyoufabao(chara);
         if (zhandouisyoufabao.size() >= 3) {
-            String fabaoName = (String)zhandouisyoufabao.get(0);
+            String fabaoName = (String) zhandouisyoufabao.get(0);
             FightFabaoSkill fabaoSkill = FightSkill.getFabaoSkill(fabaoName);
             if (fabaoSkill != null) {
-                int level = (Integer)zhandouisyoufabao.get(1);
-                int qinmi = (Integer)zhandouisyoufabao.get(2);
+                int level = (Integer) zhandouisyoufabao.get(1);
+                int qinmi = (Integer) zhandouisyoufabao.get(2);
                 fabaoSkill.level = level;
                 fabaoSkill.qinmi = qinmi;
                 fabaoSkill.buffObject = fightObject;
@@ -112,7 +113,7 @@ public class FightManager {
 
     public static void goFight(Chara chara, List<String> monsterList) {
         FightContainer fc;///战斗空间
-        for(fc = getFightContainer(chara.id); fc != null; fc = getFightContainer(chara.id)) {
+        for (fc = getFightContainer(chara.id); fc != null; fc = getFightContainer(chara.id)) {
             listFight.remove(fc);
         }
 
@@ -124,30 +125,30 @@ public class FightManager {
         int i;
         FightObject fightObject;
         if (session.gameTeam != null) {
-            for(i = 0; i < session.gameTeam.duiwu.size(); ++i) {
-                fightObject = new FightObject((Chara)session.gameTeam.duiwu.get(i));
-                fightObject.pos = (Integer)PERSON_POS.get(num);
-                fightObject.fid = ((Chara)session.gameTeam.duiwu.get(i)).id;
-                fightObject.id = ((Chara)session.gameTeam.duiwu.get(i)).id;
-                addFabao(fc, (Chara)session.gameTeam.duiwu.get(i), fightObject);
+            for (i = 0; i < session.gameTeam.duiwu.size(); ++i) {
+                fightObject = new FightObject((Chara) session.gameTeam.duiwu.get(i));
+                fightObject.pos = (Integer) PERSON_POS.get(num);
+                fightObject.fid = ((Chara) session.gameTeam.duiwu.get(i)).id;
+                fightObject.id = ((Chara) session.gameTeam.duiwu.get(i)).id;
+                addFabao(fc, (Chara) session.gameTeam.duiwu.get(i), fightObject);
                 if (i == 0) {
                     fightObject.leader = 1;
                 }
 
                 ft.add(fightObject);
-                List<Petbeibao> pets = ((Chara)session.gameTeam.duiwu.get(i)).pets;
+                List<Petbeibao> pets = ((Chara) session.gameTeam.duiwu.get(i)).pets;
 
-                for(int j = 0; j < pets.size(); ++j) {
-                    Petbeibao petbeibao = (Petbeibao)pets.get(j);
-                    if (((Petbeibao)pets.get(j)).id == ((Chara)session.gameTeam.duiwu.get(i)).chongwuchanzhanId) {
+                for (int j = 0; j < pets.size(); ++j) {
+                    Petbeibao petbeibao = (Petbeibao) pets.get(j);
+                    if (((Petbeibao) pets.get(j)).id == ((Chara) session.gameTeam.duiwu.get(i)).chongwuchanzhanId) {
                         fightObject = new FightObject(petbeibao);
-                        fightObject.pos = (Integer)PERSON_POS.get(num) + 5;
+                        fightObject.pos = (Integer) PERSON_POS.get(num) + 5;
                         fightObject.fid = petbeibao.id;
                         fightObject.id = petbeibao.id;
-                        fightObject.cid = ((Chara)session.gameTeam.duiwu.get(i)).id;
+                        fightObject.cid = ((Chara) session.gameTeam.duiwu.get(i)).id;
                         if (petbeibao.tianshu.size() != 0) {
-                            Vo_12023_0 vo_12023_0 = (Vo_12023_0)petbeibao.tianshu.get(RANDOM.nextInt(petbeibao.tianshu.size()));
-                            fightObject.godbook = (Integer)FightTianshuMap.TIANSHU_EFFECT.get(vo_12023_0.god_book_skill_name);
+                            Vo_12023_0 vo_12023_0 = (Vo_12023_0) petbeibao.tianshu.get(RANDOM.nextInt(petbeibao.tianshu.size()));
+                            fightObject.godbook = (Integer) FightTianshuMap.TIANSHU_EFFECT.get(vo_12023_0.god_book_skill_name);
                             if (vo_12023_0.god_book_skill_name.equals("修罗术")) {
                                 XiuluoshuSkill xiuluoshuSkill = new XiuluoshuSkill();
                                 xiuluoshuSkill.buffObject = fightObject;
@@ -164,8 +165,8 @@ public class FightManager {
                 ++num;
             }
         } else {
-         fightObject = new FightObject(chara);
-            fightObject.pos = (Integer)PERSON_POS.get(num);
+            fightObject = new FightObject(chara);
+            fightObject.pos = (Integer) PERSON_POS.get(num);
             fightObject.fid = chara.id;
             fightObject.leader = 1;
             fightObject.id = chara.id;
@@ -173,17 +174,17 @@ public class FightManager {
             ft.add(fightObject);//战斗加入法宝
             List<Petbeibao> pets = chara.pets;
 
-            for(int j = 0; j < pets.size(); ++j) {//判断是哪个宠物上场
-                Petbeibao petbeibao = (Petbeibao)pets.get(j);
+            for (int j = 0; j < pets.size(); ++j) {//判断是哪个宠物上场
+                Petbeibao petbeibao = (Petbeibao) pets.get(j);
                 if (petbeibao.id == chara.chongwuchanzhanId) {//商场的宠物id
                     fightObject = new FightObject(petbeibao);
-                    fightObject.pos = (Integer)PERSON_POS.get(num) + 5;
+                    fightObject.pos = (Integer) PERSON_POS.get(num) + 5;
                     fightObject.fid = petbeibao.id;
                     fightObject.id = petbeibao.id;
                     fightObject.cid = chara.id;
                     if (petbeibao.tianshu.size() != 0) {
-                        Vo_12023_0 vo_12023_0 = (Vo_12023_0)petbeibao.tianshu.get(RANDOM.nextInt(petbeibao.tianshu.size()));
-                        fightObject.godbook = (Integer)FightTianshuMap.TIANSHU_EFFECT.get(vo_12023_0.god_book_skill_name);
+                        Vo_12023_0 vo_12023_0 = (Vo_12023_0) petbeibao.tianshu.get(RANDOM.nextInt(petbeibao.tianshu.size()));
+                        fightObject.godbook = (Integer) FightTianshuMap.TIANSHU_EFFECT.get(vo_12023_0.god_book_skill_name);
                         if (vo_12023_0.god_book_skill_name.equals("修罗术")) {
                             XiuluoshuSkill xiuluoshuSkill = new XiuluoshuSkill();
                             xiuluoshuSkill.buffObject = fightObject;
@@ -200,10 +201,10 @@ public class FightManager {
             ++num;
         }
 
-        for(i = 0; i < chara.listshouhu.size() && num < 5; ++i) {
-            if (((ShouHuShuXing)((ShouHu)chara.listshouhu.get(i)).listShouHuShuXing.get(0)).nil != 0) {
-                fightObject = new FightObject((ShouHu)chara.listshouhu.get(i));
-                fightObject.pos = (Integer)PERSON_POS.get(num);
+        for (i = 0; i < chara.listshouhu.size() && num < 5; ++i) {
+            if (((ShouHuShuXing) ((ShouHu) chara.listshouhu.get(i)).listShouHuShuXing.get(0)).nil != 0) {
+                fightObject = new FightObject((ShouHu) chara.listshouhu.get(i));
+                fightObject.pos = (Integer) PERSON_POS.get(num);
                 fightObject.fid = fc.id++;
                 ft.add(fightObject);
                 ++num;
@@ -215,11 +216,10 @@ public class FightManager {
         num = 0;
 
 
-
-        for(Iterator var20 = monsterList.iterator(); var20.hasNext(); ++num) {
-            String monsterName = (String)var20.next();
+        for (Iterator var20 = monsterList.iterator(); var20.hasNext(); ++num) {
+            String monsterName = (String) var20.next();
             fightObject = new FightObject(chara, monsterName);
-            fightObject.pos = (Integer)MONSTER_POS.get(num);
+            fightObject.pos = (Integer) MONSTER_POS.get(num);
             fightObject.fid = fc.id++;
             if (num == 1) {
                 fightObject.leader = 1;
@@ -263,8 +263,8 @@ public class FightManager {
         List<FightObject> fightObjectList1 = friendsFightTeam.fightObjectList;
         Iterator var31 = fightObjectList1.iterator();
 
-        while(var31.hasNext()) {
-           fightObject = (FightObject)var31.next();
+        while (var31.hasNext()) {
+            fightObject = (FightObject) var31.next();
             if (fightObject.type == 2) {
                 Vo_64971_0 vo_64971_0 = new Vo_64971_0();
                 vo_64971_0.count = 1;
@@ -278,8 +278,8 @@ public class FightManager {
         List<FightObject> fightObjectList = getFightTeam(fc, chara.id).fightObjectList;
         Iterator var37 = fightObjectList.iterator();
 
-        while(var37.hasNext()) {
-            fightObject = (FightObject)var37.next();
+        while (var37.hasNext()) {
+            fightObject = (FightObject) var37.next();
             Vo_65017_0 vo_65019_0 = new Vo_65017_0();
             vo_65019_0.id = fightObject.fid;
             vo_65019_0.leader = fightObject.leader;
@@ -309,8 +309,8 @@ public class FightManager {
         fightObjectList = getFightTeamDM(fc, chara.id).fightObjectList;
         Iterator var39 = fightObjectList.iterator();
 
-        while(var39.hasNext()) {
-           fightObject = (FightObject)var39.next();
+        while (var39.hasNext()) {
+            fightObject = (FightObject) var39.next();
             Vo_65017_0 vo_65017_0 = new Vo_65017_0();
             vo_65017_0.id = fightObject.fid;
             vo_65017_0.leader = fightObject.leader;
@@ -346,8 +346,8 @@ public class FightManager {
         send(fc, new M19959_0(), vo_19959_0);
         Iterator var42 = fightObjectList.iterator();
 
-        while(var42.hasNext()) {
-           fightObject = (FightObject)var42.next();
+        while (var42.hasNext()) {
+            fightObject = (FightObject) var42.next();
             if (fightObject.godbook != 0) {
                 Vo_12025_0 vo_12025_0 = new Vo_12025_0();
                 vo_12025_0.id = fightObject.fid;
@@ -390,16 +390,16 @@ public class FightManager {
         List<FightObject> allFightObject = getAllFightObject(fightContainer);
         Iterator var2 = allFightObject.iterator();
 
-        while(true) {
+        while (true) {
             FightObject fightObject;
             do {
                 if (!var2.hasNext()) {
-                    addRequest(fightContainer, (FightRequest)null);
+                    addRequest(fightContainer, (FightRequest) null);
                     return;
                 }
 
-                fightObject = (FightObject)var2.next();
-            } while(fightObject.type != 1 && fightObject.type != 2);
+                fightObject = (FightObject) var2.next();
+            } while (fightObject.type != 1 && fightObject.type != 2);
 
             if (fightObject.fightRequest == null && fightObject.autofight_select != 0) {
                 fightObject.fightRequest = new FightRequest();
@@ -415,16 +415,16 @@ public class FightManager {
         List<FightObject> allFightObject = getAllFightObject(fightContainer);
         Iterator var2 = allFightObject.iterator();
 
-        while(true) {
+        while (true) {
             FightObject fightObject;
             do {
                 if (!var2.hasNext()) {
-                    addRequest(fightContainer, (FightRequest)null);
+                    addRequest(fightContainer, (FightRequest) null);
                     return;
                 }
 
-                fightObject = (FightObject)var2.next();
-            } while(fightObject.type != 1 && (fightObject.type != 2 || fightObject.fightRequest != null));
+                fightObject = (FightObject) var2.next();
+            } while (fightObject.type != 1 && (fightObject.type != 2 || fightObject.fightRequest != null));
 
             fightObject.fightRequest = new FightRequest();
             fightObject.fightRequest.id = fightObject.fid;
@@ -444,7 +444,7 @@ public class FightManager {
         FightRequest fightRequest = new FightRequest();
         List<JiNeng> skillsList = fightObject.skillsList;
         if (skillsList != null && skillsList.size() != 0) {
-            JiNeng jiNeng = (JiNeng)skillsList.get(RANDOM.nextInt(skillsList.size()));
+            JiNeng jiNeng = (JiNeng) skillsList.get(RANDOM.nextInt(skillsList.size()));
             fightRequest.para = jiNeng.skill_no;
             fightRequest.action = 3;
             fightRequest.id = fightObject.fid;
@@ -468,8 +468,8 @@ public class FightManager {
         FightTeam opponentsFightTeam = getFightTeamDM(fightContainer, fightObject.fid);
         Iterator target = opponentsFightTeam.fightObjectList.iterator();
 
-        while(target.hasNext()) {
-            FightObject object = (FightObject)target.next();
+        while (target.hasNext()) {
+            FightObject object = (FightObject) target.next();
             if (object.canbeVictim()) {
                 fightObjects.add(object);
             }
@@ -481,10 +481,10 @@ public class FightManager {
         } else {
             FightObject fightObject1;
             if (fightObjects.size() == 1) {
-                fightObject1 = (FightObject)fightObjects.get(0);
+                fightObject1 = (FightObject) fightObjects.get(0);
             } else {
                 int index = (new Random()).nextInt(fightObjects.size());
-                fightObject1 = (FightObject)fightObjects.get(index);
+                fightObject1 = (FightObject) fightObjects.get(index);
             }
 
             fightRequest.vid = fightObject1.fid;
@@ -497,8 +497,8 @@ public class FightManager {
         FightTeam friendsFightTeam = getFightTeam(fightContainer, fightObject.fid);
         Iterator target = friendsFightTeam.fightObjectList.iterator();
 
-        while(target.hasNext()) {
-            FightObject object = (FightObject)target.next();
+        while (target.hasNext()) {
+            FightObject object = (FightObject) target.next();
             if (object.canbeVictim()) {
                 fightObjects.add(object);
             }
@@ -510,10 +510,10 @@ public class FightManager {
         } else {
             FightObject fightObject1;
             if (fightObjects.size() == 1) {
-                fightObject1 = (FightObject)fightObjects.get(0);
+                fightObject1 = (FightObject) fightObjects.get(0);
             } else {
                 int index = (new Random()).nextInt(fightObjects.size());
-                fightObject1 = (FightObject)fightObjects.get(index);
+                fightObject1 = (FightObject) fightObjects.get(index);
             }
 
             fightRequest.vid = fightObject1.fid;
@@ -526,14 +526,14 @@ public class FightManager {
         Iterator iterator = allFightObject.iterator();
 
         FightObject next;
-        while(iterator.hasNext()) {
-            next = (FightObject)iterator.next();
+        while (iterator.hasNext()) {
+            next = (FightObject) iterator.next();
             if (next.fid == fightObject.fid) {
                 iterator.remove();
             }
         }
 
-        next = (FightObject)allFightObject.get((new Random()).nextInt(allFightObject.size()));
+        next = (FightObject) allFightObject.get((new Random()).nextInt(allFightObject.size()));
         fightRequest.vid = next.fid;
         return fightRequest;
     }
@@ -558,20 +558,20 @@ public class FightManager {
                                     return;
                                 }
 
-                                fightObject = (FightObject)fightContainer.doActionList.remove(0);
+                                fightObject = (FightObject) fightContainer.doActionList.remove(0);
                                 fightRequest = fightObject.fightRequest;
                                 fightObject.fightRequest = null;
                                 if (fightRequest == null) {
                                     fightRequest = generateAction(fightContainer, fightObject);
                                 }
-                            } while((fightObject.isDead() || !fightObject.canAtta()) && fightRequest.action != 7 && fightRequest.action != 4);
-                        } while(fightObject.isYiwang() && RANDOM.nextBoolean());
+                            } while ((fightObject.isDead() || !fightObject.canAtta()) && fightRequest.action != 7 && fightRequest.action != 4);
+                        } while (fightObject.isYiwang() && RANDOM.nextBoolean());
 
                         if (!fightObject.canbeSkill()) {
                             fightRequest.action = 2;
                             fightRequest.para = 2;
                         }
-                    } while(fightObject.isZhongdu() && (fightRequest.action == 3 && fightRequest.para == 501 || fightRequest.action == 2 && fightRequest.para == 2));
+                    } while (fightObject.isZhongdu() && (fightRequest.action == 3 && fightRequest.para == 501 || fightRequest.action == 2 && fightRequest.para == 2));
 
                     FightObject victimObject = getFightObject(fightContainer, fightRequest.vid);
                     if (fightObject.isHunluan()) {
@@ -590,22 +590,22 @@ public class FightManager {
                         resultList = fightObject.skillsList;
                         var7 = resultList.iterator();
 
-                        while(var7.hasNext()) {
-                            JiNeng tjiNeng = (JiNeng)var7.next();
+                        while (var7.hasNext()) {
+                            JiNeng tjiNeng = (JiNeng) var7.next();
                             if (tjiNeng.skill_no == fightRequest.para) {
                                 jiNeng = tjiNeng;
                             }
                         }
                     }
-                } while(skill == null);
-            } while(jiNeng == null && fightRequest.action == 3);
+                } while (skill == null);
+            } while (jiNeng == null && fightRequest.action == 3);
 
             resultList = skill.doSkill(fightContainer, fightRequest, jiNeng);
             if (resultList != null) {
                 var7 = resultList.iterator();
 
-                while(var7.hasNext()) {
-                    FightResult fightResult = (FightResult)var7.next();
+                while (var7.hasNext()) {
+                    FightResult fightResult = (FightResult) var7.next();
                     send_LIFE_DELTA(fightContainer, fightResult);
                 }
             }
@@ -613,7 +613,7 @@ public class FightManager {
             Vo_7655_0 vo_7655_0 = new Vo_7655_0();
             vo_7655_0.id = fightObject.fid;
             send(fightContainer, new M7655_0(), vo_7655_0);
-        } while(!isOver(fightContainer));
+        } while (!isOver(fightContainer));
 
         doOver(fightContainer);
     }
@@ -666,8 +666,8 @@ public class FightManager {
                 List<Petbeibao> pets = session.chara.pets;
                 Iterator var6 = pets.iterator();
 
-                while(var6.hasNext()) {
-                    Petbeibao pet = (Petbeibao)var6.next();
+                while (var6.hasNext()) {
+                    Petbeibao pet = (Petbeibao) var6.next();
                     if (pet.id == fightObject.fid) {
                         pet.autofight_skillaction = action;
                         pet.autofight_skillno = para;
@@ -694,13 +694,13 @@ public class FightManager {
         List<FightObject> allFightObject = getAllFightObject(fightContainer);
         Iterator var2 = allFightObject.iterator();
 
-        while(var2.hasNext()) {
-            FightObject fightObject = (FightObject)var2.next();
+        while (var2.hasNext()) {
+            FightObject fightObject = (FightObject) var2.next();
             List<FightRoundSkill> fightSkillList = fightObject.getRoundSkill();
             Iterator var5 = fightSkillList.iterator();
 
-            while(var5.hasNext()) {
-                FightRoundSkill fightSkill = (FightRoundSkill)var5.next();
+            while (var5.hasNext()) {
+                FightRoundSkill fightSkill = (FightRoundSkill) var5.next();
                 boolean remove = fightSkill.disappear(fightContainer);
                 if (remove) {
                     fightObject.removeBuffSK(fightContainer, fightSkill.getStateType());
@@ -719,13 +719,13 @@ public class FightManager {
         List<FightObject> allFightObject = getAllFightObject(fightContainer);
         Iterator var2 = allFightObject.iterator();
 
-        while(var2.hasNext()) {
-            FightObject fightObject = (FightObject)var2.next();
+        while (var2.hasNext()) {
+            FightObject fightObject = (FightObject) var2.next();
             List<FightRoundSkill> fightSkillList = fightObject.getRoundSkill();
             Iterator var5 = fightSkillList.iterator();
 
-            while(var5.hasNext()) {
-                FightRoundSkill fightSkill = (FightRoundSkill)var5.next();
+            while (var5.hasNext()) {
+                FightRoundSkill fightSkill = (FightRoundSkill) var5.next();
                 fightSkill.doRoundSkill();
             }
 
@@ -768,8 +768,8 @@ public class FightManager {
         send(fightContainer, new M7655_0(), vo_7655_0);
         Iterator var4 = allFightObject.iterator();
 
-        while(var4.hasNext()) {
-            FightObject fightObject = (FightObject)var4.next();
+        while (var4.hasNext()) {
+            FightObject fightObject = (FightObject) var4.next();
             vo_19959_0 = new Vo_19959_0();
             vo_19959_0.round = fightContainer.round;
             vo_19959_0.aid = fightObject.fid;
@@ -798,8 +798,8 @@ public class FightManager {
         List<FightObject> allFightObject = getAllFightObject(fightContainer);
         Iterator var4 = allFightObject.iterator();
 
-        while(var4.hasNext()) {
-            FightObject fightObject = (FightObject)var4.next();
+        while (var4.hasNext()) {
+            FightObject fightObject = (FightObject) var4.next();
             if (fightObject.type == 1) {
                 try {
                     GameObjectCharMng.getGameObjectChar(fightObject.id).sendOne(baseWrite, obj);
@@ -814,8 +814,8 @@ public class FightManager {
     public static void sendTeam(FightContainer fightContainer, List<FightObject> fightObjectList, BaseWrite baseWrite, Object obj) {
         Iterator var4 = fightObjectList.iterator();
 
-        while(var4.hasNext()) {
-            FightObject fightObject = (FightObject)var4.next();
+        while (var4.hasNext()) {
+            FightObject fightObject = (FightObject) var4.next();
             if (fightObject.type == 1) {
                 GameObjectCharMng.getGameObjectChar(fightObject.id).sendOne(baseWrite, obj);
             }
@@ -827,8 +827,8 @@ public class FightManager {
         List<FightObject> allFightObject = getAllFightObject(fightContainer);
         Iterator var2 = allFightObject.iterator();
 
-        while(var2.hasNext()) {
-            FightObject fightObject = (FightObject)var2.next();
+        while (var2.hasNext()) {
+            FightObject fightObject = (FightObject) var2.next();
             if (fightObject.type == 1) {
                 Vo_19959_0 vo_19959_0 = new Vo_19959_0();
                 vo_19959_0.round = fightContainer.round;
@@ -870,15 +870,15 @@ public class FightManager {
                 return false;
             }
 
-            FightTeam fightTeam = (FightTeam)var2.next();
+            FightTeam fightTeam = (FightTeam) var2.next();
             List<FightObject> fightObjectList = fightTeam.fightObjectList;
             over = true;
             int humanNum = 0;
             int runNum = 0;
             Iterator var8 = fightObjectList.iterator();
 
-            while(var8.hasNext()) {
-                FightObject fightObject = (FightObject)var8.next();
+            while (var8.hasNext()) {
+                FightObject fightObject = (FightObject) var8.next();
                 if (!fightObject.isDead() && !fightObject.isRun()) {
                     over = false;
                 }
@@ -894,7 +894,7 @@ public class FightManager {
             if (humanNum == runNum && humanNum > 0) {
                 return true;
             }
-        } while(!over);
+        } while (!over);
 
         return true;
     }
@@ -913,8 +913,8 @@ public class FightManager {
         send(fightContainer, new M7655_0(), vo_7655_0);
         Iterator var4 = allFightObject.iterator();
 
-        while(var4.hasNext()) {
-            FightObject fightObject = (FightObject)var4.next();
+        while (var4.hasNext()) {
+            FightObject fightObject = (FightObject) var4.next();
             if (fightObject.type == 1) {
                 Vo_45141_0 vo_45141_0 = new Vo_45141_0();
                 vo_45141_0.round = fightContainer.round;
@@ -926,7 +926,7 @@ public class FightManager {
                 vo_7659_0.time = 25;
                 vo_7659_0.question = 265576908;
                 vo_7659_0.round = fightContainer.round;
-                vo_7659_0.curTime = (int)(System.currentTimeMillis() / 1000L);
+                vo_7659_0.curTime = (int) (System.currentTimeMillis() / 1000L);
                 GameObjectChar.send(new M7659_0(), vo_7659_0, fightObject.id);
             }
         }
@@ -939,15 +939,15 @@ public class FightManager {
         Iterator var2 = teamList.iterator();
 
         label40:
-        while(true) {
+        while (true) {
             FightTeam fightTeam;
             do {
                 if (!var2.hasNext()) {
                     return true;
                 }
 
-                fightTeam = (FightTeam)var2.next();
-            } while(fightTeam.type == 2);
+                fightTeam = (FightTeam) var2.next();
+            } while (fightTeam.type == 2);
 
             List<FightObject> fightObjectList = fightTeam.fightObjectList;
             Iterator var5 = fightObjectList.iterator();
@@ -960,10 +960,10 @@ public class FightManager {
                             continue label40;
                         }
 
-                        fightObject = (FightObject)var5.next();
-                    } while(!fightObject.canAtta());
-                } while(fightObject.type != 1 && fightObject.type != 2);
-            } while(fightObject.fightRequest != null);
+                        fightObject = (FightObject) var5.next();
+                    } while (!fightObject.canAtta());
+                } while (fightObject.type != 1 && fightObject.type != 2);
+            } while (fightObject.fightRequest != null);
 
             return false;
         }
@@ -973,18 +973,18 @@ public class FightManager {
         int id = GameObjectChar.getGameObjectChar().chara.id;
         Iterator var1 = listFight.iterator();
 
-        while(var1.hasNext()) {
-            FightContainer fightContainer = (FightContainer)var1.next();
+        while (var1.hasNext()) {
+            FightContainer fightContainer = (FightContainer) var1.next();
             List<FightTeam> teamList = fightContainer.teamList;
             Iterator var4 = teamList.iterator();
 
-            while(var4.hasNext()) {
-                FightTeam fightTeam = (FightTeam)var4.next();
+            while (var4.hasNext()) {
+                FightTeam fightTeam = (FightTeam) var4.next();
                 List<FightObject> fightObjectList = fightTeam.fightObjectList;
                 Iterator var7 = fightObjectList.iterator();
 
-                while(var7.hasNext()) {
-                    FightObject fightObject = (FightObject)var7.next();
+                while (var7.hasNext()) {
+                    FightObject fightObject = (FightObject) var7.next();
                     if (fightObject.fid == id) {
                         return fightContainer;
                     }
@@ -998,18 +998,18 @@ public class FightManager {
     public static FightContainer getFightContainer(int id) {
         Iterator var1 = listFight.iterator();
 
-        while(var1.hasNext()) {
-            FightContainer fightContainer = (FightContainer)var1.next();
+        while (var1.hasNext()) {
+            FightContainer fightContainer = (FightContainer) var1.next();
             List<FightTeam> teamList = fightContainer.teamList;
             Iterator var4 = teamList.iterator();
 
-            while(var4.hasNext()) {
-                FightTeam fightTeam = (FightTeam)var4.next();
+            while (var4.hasNext()) {
+                FightTeam fightTeam = (FightTeam) var4.next();
                 List<FightObject> fightObjectList = fightTeam.fightObjectList;
                 Iterator var7 = fightObjectList.iterator();
 
-                while(var7.hasNext()) {
-                    FightObject fightObject = (FightObject)var7.next();
+                while (var7.hasNext()) {
+                    FightObject fightObject = (FightObject) var7.next();
                     if (fightObject.fid == id) {
                         return fightContainer;
                     }
@@ -1024,13 +1024,13 @@ public class FightManager {
         List<FightTeam> teamList = fightContainer.teamList;
         Iterator var3 = teamList.iterator();
 
-        while(var3.hasNext()) {
-            FightTeam fightTeam = (FightTeam)var3.next();
+        while (var3.hasNext()) {
+            FightTeam fightTeam = (FightTeam) var3.next();
             List<FightObject> fightObjectList = fightTeam.fightObjectList;
             Iterator var6 = fightObjectList.iterator();
 
-            while(var6.hasNext()) {
-                FightObject fightObject = (FightObject)var6.next();
+            while (var6.hasNext()) {
+                FightObject fightObject = (FightObject) var6.next();
                 if (fightObject.fid == id) {
                     return fightTeam;
                 }
@@ -1044,15 +1044,15 @@ public class FightManager {
         List<FightTeam> teamList = fightContainer.teamList;
         Iterator var3 = teamList.iterator();
 
-        while(var3.hasNext()) {
-            FightTeam fightTeam = (FightTeam)var3.next();
+        while (var3.hasNext()) {
+            FightTeam fightTeam = (FightTeam) var3.next();
             List<FightObject> fightObjectList = fightTeam.fightObjectList;
             Iterator var6 = fightObjectList.iterator();
 
-            while(var6.hasNext()) {
-                FightObject fightObject = (FightObject)var6.next();
+            while (var6.hasNext()) {
+                FightObject fightObject = (FightObject) var6.next();
                 if (fightObject.fid == id) {
-                    return teamList.get(0) == fightTeam ? (FightTeam)teamList.get(1) : (FightTeam)teamList.get(0);
+                    return teamList.get(0) == fightTeam ? (FightTeam) teamList.get(1) : (FightTeam) teamList.get(0);
                 }
             }
         }
@@ -1064,8 +1064,8 @@ public class FightManager {
         List<FightObject> list = new ArrayList();
         Iterator var2 = fightContainer.teamList.iterator();
 
-        while(var2.hasNext()) {
-            FightTeam fightTeam = (FightTeam)var2.next();
+        while (var2.hasNext()) {
+            FightTeam fightTeam = (FightTeam) var2.next();
             list.addAll(fightTeam.fightObjectList);
         }
 
@@ -1075,18 +1075,18 @@ public class FightManager {
     public static FightObject getFightObject(int id) {
         Iterator var1 = listFight.iterator();
 
-        while(var1.hasNext()) {
-            FightContainer fightContainer = (FightContainer)var1.next();
+        while (var1.hasNext()) {
+            FightContainer fightContainer = (FightContainer) var1.next();
             List<FightTeam> teamList = fightContainer.teamList;
             Iterator var4 = teamList.iterator();
 
-            while(var4.hasNext()) {
-                FightTeam fightTeam = (FightTeam)var4.next();
+            while (var4.hasNext()) {
+                FightTeam fightTeam = (FightTeam) var4.next();
                 List<FightObject> fightObjectList = fightTeam.fightObjectList;
                 Iterator var7 = fightObjectList.iterator();
 
-                while(var7.hasNext()) {
-                    FightObject fightObject = (FightObject)var7.next();
+                while (var7.hasNext()) {
+                    FightObject fightObject = (FightObject) var7.next();
                     if (fightObject.fid == id) {
                         return fightObject;
                     }
@@ -1101,13 +1101,13 @@ public class FightManager {
         List<FightTeam> teamList = fightContainer.teamList;
         Iterator var3 = teamList.iterator();
 
-        while(var3.hasNext()) {
-            FightTeam fightTeam = (FightTeam)var3.next();
+        while (var3.hasNext()) {
+            FightTeam fightTeam = (FightTeam) var3.next();
             List<FightObject> fightObjectList = fightTeam.fightObjectList;
             Iterator var6 = fightObjectList.iterator();
 
-            while(var6.hasNext()) {
-                FightObject fightObject = (FightObject)var6.next();
+            while (var6.hasNext()) {
+                FightObject fightObject = (FightObject) var6.next();
                 if (fightObject.fid == id) {
                     return fightObject;
                 }
@@ -1121,13 +1121,13 @@ public class FightManager {
         List<FightTeam> teamList = fightContainer.teamList;
         Iterator var3 = teamList.iterator();
 
-        while(var3.hasNext()) {
-            FightTeam fightTeam = (FightTeam)var3.next();
+        while (var3.hasNext()) {
+            FightTeam fightTeam = (FightTeam) var3.next();
             List<FightObject> fightObjectList = fightTeam.fightObjectList;
             Iterator var6 = fightObjectList.iterator();
 
-            while(var6.hasNext()) {
-                FightObject tfightObject = (FightObject)var6.next();
+            while (var6.hasNext()) {
+                FightObject tfightObject = (FightObject) var6.next();
                 if (tfightObject.cid == fightObject.id) {
                     return tfightObject;
                 }
@@ -1141,8 +1141,8 @@ public class FightManager {
         List<FightObject> rlist = new ArrayList();
         Iterator var2 = list.iterator();
 
-        while(var2.hasNext()) {
-            FightObject fightObject = (FightObject)var2.next();
+        while (var2.hasNext()) {
+            FightObject fightObject = (FightObject) var2.next();
             if (!fightObject.isDead()) {
                 rlist.add(fightObject);
             }
@@ -1164,7 +1164,7 @@ public class FightManager {
                 if (fightObject.isDead()) {
                     FightTeam opponentsFightTeam = getFightTeamDM(fightContainer, fightRequest.id);
                     List<FightObject> fightObjects1 = getAlive(opponentsFightTeam.fightObjectList);
-                    newTarget = (FightObject)fightObjects1.get(RANDOM.nextInt(fightObjects1.size()));
+                    newTarget = (FightObject) fightObjects1.get(RANDOM.nextInt(fightObjects1.size()));
                     fightObjects.add(newTarget);
                 } else {
                     fightObjects.add(fightObject);
@@ -1174,8 +1174,8 @@ public class FightManager {
                 alive = getAlive(friendsFightTeam.fightObjectList);
                 iterator = alive.iterator();
 
-                while(iterator.hasNext()) {
-                    newTarget = (FightObject)iterator.next();
+                while (iterator.hasNext()) {
+                    newTarget = (FightObject) iterator.next();
                     if (newTarget.fid == fightRequest.vid) {
                         --num;
                         fightObjects.add(newTarget);
@@ -1183,8 +1183,8 @@ public class FightManager {
                     }
                 }
 
-                for(i = 0; i < num && alive.size() != 0; ++i) {
-                    newTarget = (FightObject)alive.remove(RANDOM.nextInt(alive.size()));
+                for (i = 0; i < num && alive.size() != 0; ++i) {
+                    newTarget = (FightObject) alive.remove(RANDOM.nextInt(alive.size()));
                     fightObjects.add(newTarget);
                 }
             }
@@ -1193,8 +1193,8 @@ public class FightManager {
             alive = getAlive(friendsFightTeam.fightObjectList);
             iterator = alive.iterator();
 
-            while(iterator.hasNext()) {
-                newTarget = (FightObject)iterator.next();
+            while (iterator.hasNext()) {
+                newTarget = (FightObject) iterator.next();
                 if (newTarget.fid == fightRequest.vid) {
                     --num;
                     fightObjects.add(newTarget);
@@ -1202,16 +1202,16 @@ public class FightManager {
                 }
             }
 
-            for(i = 0; i < num && alive.size() != 0; ++i) {
-                newTarget = (FightObject)alive.remove(RANDOM.nextInt(alive.size()));
+            for (i = 0; i < num && alive.size() != 0; ++i) {
+                newTarget = (FightObject) alive.remove(RANDOM.nextInt(alive.size()));
                 fightObjects.add(newTarget);
             }
         } else if (type == 3) {
             friendsFightTeam = getFightTeam(fightContainer, fightRequest.id);
             alive = getAlive(friendsFightTeam.fightObjectList);
 
-            for(i = 0; i < num && alive.size() != 0; ++i) {
-                newTarget = (FightObject)alive.remove(RANDOM.nextInt(alive.size()));
+            for (i = 0; i < num && alive.size() != 0; ++i) {
+                newTarget = (FightObject) alive.remove(RANDOM.nextInt(alive.size()));
                 fightObjects.add(newTarget);
             }
         }
@@ -1223,15 +1223,15 @@ public class FightManager {
         List<FightTeam> teamList = fightContainer.teamList;
         Iterator var2 = teamList.iterator();
 
-        while(true) {
+        while (true) {
             int i;
-            while(var2.hasNext()) {
-                FightTeam fightTeam = (FightTeam)var2.next();
+            while (var2.hasNext()) {
+                FightTeam fightTeam = (FightTeam) var2.next();
                 List<FightObject> fightObjectList = fightTeam.fightObjectList;
                 Iterator var5 = fightObjectList.iterator();
 
-                while(var5.hasNext()) {
-                    FightObject fightObject = (FightObject)var5.next();
+                while (var5.hasNext()) {
+                    FightObject fightObject = (FightObject) var5.next();
                     if (fightObject.type == 1) {
                         i = fightObject.fid;
                         Chara chara = GameObjectCharMng.getGameObjectChar(i).chara;
@@ -1246,8 +1246,8 @@ public class FightManager {
             if (guaiwu != null) {
                 Iterator var16 = guaiwu.iterator();
 
-                while(var16.hasNext()) {
-                    FightObject fightObject = (FightObject)var16.next();
+                while (var16.hasNext()) {
+                    FightObject fightObject = (FightObject) var16.next();
                     if (!fightObject.isDead()) {
                         isDead = true;
                     }
@@ -1257,10 +1257,10 @@ public class FightManager {
             Chara chara1 = chara(fightContainer);
             GameUtilRenWu.feiditu(chara1.mapid, chara1);
             if (!isDead) {
-                if (chara1.npcchubao.size() > 0 && guaiwu != null && ((Vo_65529_0)chara1.npcchubao.get(0)).name.equals(((FightObject)guaiwu.get(0)).str)) {
+                if (chara1.npcchubao.size() > 0 && guaiwu != null && ((Vo_65529_0) chara1.npcchubao.get(0)).name.equals(((FightObject) guaiwu.get(0)).str)) {
                     if (GameObjectCharMng.getGameObjectChar(chara1.id).gameTeam != null && GameObjectCharMng.getGameObjectChar(chara1.id).gameTeam.duiwu != null) {
-                        for(i = 0; i < GameObjectCharMng.getGameObjectChar(chara1.id).gameTeam.duiwu.size(); ++i) {
-                            GameUtil.chubaorenwu(chara1, (Chara)GameObjectCharMng.getGameObjectChar(chara1.id).gameTeam.duiwu.get(i));
+                        for (i = 0; i < GameObjectCharMng.getGameObjectChar(chara1.id).gameTeam.duiwu.size(); ++i) {
+                            GameUtil.chubaorenwu(chara1, (Chara) GameObjectCharMng.getGameObjectChar(chara1.id).gameTeam.duiwu.get(i));
                         }
                     } else {
                         GameUtil.chubaorenwu(chara1, chara1);
@@ -1269,10 +1269,10 @@ public class FightManager {
                     return;
                 }
 
-                if (chara1.npcshuadao.size() > 0 && guaiwu != null && ((Vo_65529_0)chara1.npcshuadao.get(0)).name.equals(((FightObject)guaiwu.get(0)).str)) {
+                if (chara1.npcshuadao.size() > 0 && guaiwu != null && ((Vo_65529_0) chara1.npcshuadao.get(0)).name.equals(((FightObject) guaiwu.get(0)).str)) {
                     if (GameObjectCharMng.getGameObjectChar(chara1.id).gameTeam != null && GameObjectCharMng.getGameObjectChar(chara1.id).gameTeam.duiwu != null) {
-                        for(i = 0; i < GameObjectCharMng.getGameObjectChar(chara1.id).gameTeam.duiwu.size(); ++i) {
-                            GameUtil.nextshuadao(chara1, (Chara)GameObjectCharMng.getGameObjectChar(chara1.id).gameTeam.duiwu.get(i));
+                        for (i = 0; i < GameObjectCharMng.getGameObjectChar(chara1.id).gameTeam.duiwu.size(); ++i) {
+                            GameUtil.nextshuadao(chara1, (Chara) GameObjectCharMng.getGameObjectChar(chara1.id).gameTeam.duiwu.get(i));
                         }
                     } else {
                         GameUtil.nextshuadao(chara1, chara1);
@@ -1281,10 +1281,10 @@ public class FightManager {
                     return;
                 }
 
-                if (chara1.npcxuanshang.size() > 0 && "仙界叛逆".equals(((FightObject)guaiwu.get(0)).str)) {
+                if (chara1.npcxuanshang.size() > 0 && "仙界叛逆".equals(((FightObject) guaiwu.get(0)).str)) {
                     if (GameObjectCharMng.getGameObjectChar(chara1.id).gameTeam != null && GameObjectCharMng.getGameObjectChar(chara1.id).gameTeam.duiwu != null) {
-                        for(i = 0; i < GameObjectCharMng.getGameObjectChar(chara1.id).gameTeam.duiwu.size(); ++i) {
-                            GameUtil.nextxuanshang(chara1, (Chara)GameObjectCharMng.getGameObjectChar(chara1.id).gameTeam.duiwu.get(i));
+                        for (i = 0; i < GameObjectCharMng.getGameObjectChar(chara1.id).gameTeam.duiwu.size(); ++i) {
+                            GameUtil.nextxuanshang(chara1, (Chara) GameObjectCharMng.getGameObjectChar(chara1.id).gameTeam.duiwu.get(i));
                         }
                     } else {
                         GameUtil.nextxuanshang(chara1, chara1);
@@ -1293,21 +1293,19 @@ public class FightManager {
                     return;
                 }
 
-                if (guaiwu != null && chara1.xiuxingNpcname.equals(((FightObject)guaiwu.get(0)).str)) {
+                if (guaiwu != null && chara1.xiuxingNpcname.equals(((FightObject) guaiwu.get(0)).str)) {
                     boolean isZhenZhu = false;
-                    if(chara1.xiuxingNpcname.contains("阵主")) isZhenZhu = true;
+                    if (chara1.xiuxingNpcname.contains("阵主")) isZhenZhu = true;
                     if (GameObjectCharMng.getGameObjectChar(chara1.id).gameTeam != null && GameObjectCharMng.getGameObjectChar(chara1.id).gameTeam.duiwu != null) {
-                        for(i = 0; i < GameObjectCharMng.getGameObjectChar(chara1.id).gameTeam.duiwu.size(); ++i) {
-                            if(isZhenZhu)
-                            {
-                                GameUtil.nextzhengzhu(chara1, (Chara)GameObjectCharMng.getGameObjectChar(chara1.id).gameTeam.duiwu.get(i));
+                        for (i = 0; i < GameObjectCharMng.getGameObjectChar(chara1.id).gameTeam.duiwu.size(); ++i) {
+                            if (isZhenZhu) {
+                                GameUtil.nextzhengzhu(chara1, (Chara) GameObjectCharMng.getGameObjectChar(chara1.id).gameTeam.duiwu.get(i));
                                 continue;
                             }
-                            GameUtil.nextxiuxing(chara1, (Chara)GameObjectCharMng.getGameObjectChar(chara1.id).gameTeam.duiwu.get(i));
+                            GameUtil.nextxiuxing(chara1, (Chara) GameObjectCharMng.getGameObjectChar(chara1.id).gameTeam.duiwu.get(i));
                         }
                     } else {
-                        if(isZhenZhu)
-                        {
+                        if (isZhenZhu) {
                             GameUtil.nextzhengzhu(chara1, chara1);
                             continue;
                         }
@@ -1317,35 +1315,35 @@ public class FightManager {
                     return;
                 }
 
-                for(i = 0; i < GameLine.gameShuaGuai.shuaXing.size(); ++i) {
-                    if (guaiwu != null && ((Vo_65529_0)GameLine.gameShuaGuai.shuaXing.get(i)).name.equals(((FightObject)guaiwu.get(0)).str)) {
+                for (i = 0; i < GameLine.gameShuaGuai.shuaXing.size(); ++i) {
+                    if (guaiwu != null && ((Vo_65529_0) GameLine.gameShuaGuai.shuaXing.get(i)).name.equals(((FightObject) guaiwu.get(0)).str)) {
                         String replace = "";
-                        if (((FightObject)guaiwu.get(0)).str.length() > 1) {
-                            String substring = ((FightObject)guaiwu.get(0)).str.substring(1, 2);
-                            replace = ((FightObject)guaiwu.get(0)).str.replace(substring, "");
+                        if (((FightObject) guaiwu.get(0)).str.length() > 1) {
+                            String substring = ((FightObject) guaiwu.get(0)).str.substring(1, 2);
+                            replace = ((FightObject) guaiwu.get(0)).str.replace(substring, "");
                         }
 
                         if (GameObjectCharMng.getGameObjectChar(chara1.id).gameTeam != null && GameObjectCharMng.getGameObjectChar(chara1.id).gameTeam.duiwu != null) {
-                            for(i = 0; i < GameObjectCharMng.getGameObjectChar(chara1.id).gameTeam.duiwu.size(); ++i) {
-                                GameUtil.nextshaxing(chara1, (Chara)GameObjectCharMng.getGameObjectChar(chara1.id).gameTeam.duiwu.get(i), ((FightObject)guaiwu.get(0)).guaiwulevel, replace);
+                            for (i = 0; i < GameObjectCharMng.getGameObjectChar(chara1.id).gameTeam.duiwu.size(); ++i) {
+                                GameUtil.nextshaxing(chara1, (Chara) GameObjectCharMng.getGameObjectChar(chara1.id).gameTeam.duiwu.get(i), ((FightObject) guaiwu.get(0)).guaiwulevel, replace);
                             }
                         } else {
-                            GameUtil.nextshaxing(chara1, chara1, ((FightObject)guaiwu.get(0)).guaiwulevel, replace);
+                            GameUtil.nextshaxing(chara1, chara1, ((FightObject) guaiwu.get(0)).guaiwulevel, replace);
                         }
 
-                        GameObjectChar.sendduiwu(new M12285_1(), ((Vo_65529_0)GameLine.gameShuaGuai.shuaXing.get(i)).id, chara1.id);
+                        GameObjectChar.sendduiwu(new M12285_1(), ((Vo_65529_0) GameLine.gameShuaGuai.shuaXing.get(i)).id, chara1.id);
                         GameLine.gameShuaGuai.shuaXing.remove(GameLine.gameShuaGuai.shuaXing.get(i));
                         return;
                     }
                 }
 
-                if (guaiwu != null && "试道元魔".equals(((FightObject)guaiwu.get(0)).str)) {
+                if (guaiwu != null && "试道元魔".equals(((FightObject) guaiwu.get(0)).str)) {
                     if (GameObjectCharMng.getGameObjectChar(chara1.id).gameTeam != null && GameObjectCharMng.getGameObjectChar(chara1.id).gameTeam.duiwu != null) {
-                        for(i = 0; i < GameObjectCharMng.getGameObjectChar(chara1.id).gameTeam.duiwu.size(); ++i) {
-                            GameUtil.shidaojingyan(chara1, (Chara)GameObjectCharMng.getGameObjectChar(chara1.id).gameTeam.duiwu.get(i), ((FightObject)guaiwu.get(0)).id);
+                        for (i = 0; i < GameObjectCharMng.getGameObjectChar(chara1.id).gameTeam.duiwu.size(); ++i) {
+                            GameUtil.shidaojingyan(chara1, (Chara) GameObjectCharMng.getGameObjectChar(chara1.id).gameTeam.duiwu.get(i), ((FightObject) guaiwu.get(0)).id);
                         }
                     } else {
-                        GameUtil.shidaojingyan(chara1, chara1, ((FightObject)guaiwu.get(0)).id);
+                        GameUtil.shidaojingyan(chara1, chara1, ((FightObject) guaiwu.get(0)).id);
                     }
 
                     return;
@@ -1357,13 +1355,13 @@ public class FightManager {
                         teamList = fightContainer.teamList;
 
                         label267:
-                        for(i = 0; i < teamList.size(); ++i) {
+                        for (i = 0; i < teamList.size(); ++i) {
                             boolean iswin = true;
-                            Iterator var23 = ((FightTeam)teamList.get(i)).fightObjectList.iterator();
+                            Iterator var23 = ((FightTeam) teamList.get(i)).fightObjectList.iterator();
 
                             FightObject fightObject;
-                            while(var23.hasNext()) {
-                                fightObject = (FightObject)var23.next();
+                            while (var23.hasNext()) {
+                                fightObject = (FightObject) var23.next();
                                 if (fightObject.isDead()) {
                                     iswin = false;
                                 }
@@ -1376,16 +1374,16 @@ public class FightManager {
                             Vo_20481_0 vo_20481_0;
                             Chara var26;
                             if (iswin) {
-                                var23 = ((FightTeam)teamList.get(i)).fightObjectList.iterator();
+                                var23 = ((FightTeam) teamList.get(i)).fightObjectList.iterator();
 
-                                while(true) {
+                                while (true) {
                                     do {
                                         if (!var23.hasNext()) {
                                             continue label267;
                                         }
 
-                                        fightObject = (FightObject)var23.next();
-                                    } while(fightObject.type == 2);
+                                        fightObject = (FightObject) var23.next();
+                                    } while (fightObject.type == 2);
 
                                     var26 = GameObjectCharMng.getGameObjectChar(fightObject.id).chara;
                                     var26.shidaodaguaijifen += 25;
@@ -1393,29 +1391,29 @@ public class FightManager {
                                     mingname = "";
                                     mingci = 0;
 
-                                    for(j = 0; j < gameSessions.size(); ++j) {
-                                        if (!mingname.equals(((Chara)((GameObjectChar)gameSessions.get(j)).gameTeam.duiwu.get(0)).name + ((Chara)((GameObjectChar)gameSessions.get(j)).gameTeam.duiwu.get(0)).shidaodaguaijifen)) {
-                                            mingname = ((Chara)((GameObjectChar)gameSessions.get(j)).gameTeam.duiwu.get(0)).name + ((Chara)((GameObjectChar)gameSessions.get(j)).gameTeam.duiwu.get(0)).shidaodaguaijifen;
+                                    for (j = 0; j < gameSessions.size(); ++j) {
+                                        if (!mingname.equals(((Chara) ((GameObjectChar) gameSessions.get(j)).gameTeam.duiwu.get(0)).name + ((Chara) ((GameObjectChar) gameSessions.get(j)).gameTeam.duiwu.get(0)).shidaodaguaijifen)) {
+                                            mingname = ((Chara) ((GameObjectChar) gameSessions.get(j)).gameTeam.duiwu.get(0)).name + ((Chara) ((GameObjectChar) gameSessions.get(j)).gameTeam.duiwu.get(0)).shidaodaguaijifen;
                                             ++mingci;
                                         }
                                     }
 
                                     vo_20481_0 = new Vo_20481_0();
                                     vo_20481_0.msg = "你当前队伍积分" + GameObjectCharMng.getGameObjectChar(fightObject.id).chara.shidaodaguaijifen;
-                                    vo_20481_0.time = (int)(System.currentTimeMillis() / 1000L);
+                                    vo_20481_0.time = (int) (System.currentTimeMillis() / 1000L);
                                     GameObjectCharMng.getGameObjectChar(fightObject.id).sendOne(new M20481_0(), vo_20481_0);
                                 }
                             } else {
-                                var23 = ((FightTeam)teamList.get(i)).fightObjectList.iterator();
+                                var23 = ((FightTeam) teamList.get(i)).fightObjectList.iterator();
 
-                                while(true) {
+                                while (true) {
                                     do {
                                         if (!var23.hasNext()) {
                                             continue label267;
                                         }
 
-                                        fightObject = (FightObject)var23.next();
-                                    } while(fightObject.type == 2);
+                                        fightObject = (FightObject) var23.next();
+                                    } while (fightObject.type == 2);
 
                                     var26 = GameObjectCharMng.getGameObjectChar(fightObject.id).chara;
                                     var26.shidaodaguaijifen -= 25;
@@ -1424,9 +1422,9 @@ public class FightManager {
                                     mingname = "";
                                     mingci = 0;
 
-                                    for(j = 0; j < gameSessions.size(); ++j) {
-                                        if (!mingname.equals(((Chara)((GameObjectChar)gameSessions.get(j)).gameTeam.duiwu.get(0)).name + ((Chara)((GameObjectChar)gameSessions.get(j)).gameTeam.duiwu.get(0)).shidaodaguaijifen)) {
-                                            mingname = ((Chara)((GameObjectChar)gameSessions.get(j)).gameTeam.duiwu.get(0)).name + ((Chara)((GameObjectChar)gameSessions.get(j)).gameTeam.duiwu.get(0)).shidaodaguaijifen;
+                                    for (j = 0; j < gameSessions.size(); ++j) {
+                                        if (!mingname.equals(((Chara) ((GameObjectChar) gameSessions.get(j)).gameTeam.duiwu.get(0)).name + ((Chara) ((GameObjectChar) gameSessions.get(j)).gameTeam.duiwu.get(0)).shidaodaguaijifen)) {
+                                            mingname = ((Chara) ((GameObjectChar) gameSessions.get(j)).gameTeam.duiwu.get(0)).name + ((Chara) ((GameObjectChar) gameSessions.get(j)).gameTeam.duiwu.get(0)).shidaodaguaijifen;
                                             ++mingci;
                                         }
                                     }
@@ -1437,12 +1435,12 @@ public class FightManager {
                                         GameUtil.chenghaoxiaoxi(GameObjectCharMng.getGameObjectChar(fightObject.id).chara);
                                         vo_20481_0 = new Vo_20481_0();
                                         vo_20481_0.msg = "你获得了#R试道勇者#n的称谓。";
-                                        vo_20481_0.time = (int)(System.currentTimeMillis() / 1000L);
+                                        vo_20481_0.time = (int) (System.currentTimeMillis() / 1000L);
                                         GameObjectCharMng.getGameObjectChar(fightObject.id).sendOne(new M20481_0(), vo_20481_0);
                                         GameObjectCharMng.getGameObjectChar(fightObject.id).chara.extra_life += 50000;
                                         vo_20481_0 = new Vo_20481_0();
                                         vo_20481_0.msg = "你获得了50000元宝。";
-                                        vo_20481_0.time = (int)(System.currentTimeMillis() / 1000L);
+                                        vo_20481_0.time = (int) (System.currentTimeMillis() / 1000L);
                                         GameObjectCharMng.getGameObjectChar(fightObject.id).sendOne(new M20481_0(), vo_20481_0);
                                         listVo_65527_0 = GameUtil.a65527(GameObjectCharMng.getGameObjectChar(fightObject.id).chara);
                                         GameObjectCharMng.getGameObjectChar(fightObject.id).sendOne(new M65527_0(), listVo_65527_0);
@@ -1453,12 +1451,12 @@ public class FightManager {
                                         GameUtil.chenghaoxiaoxi(GameObjectCharMng.getGameObjectChar(fightObject.id).chara);
                                         vo_20481_0 = new Vo_20481_0();
                                         vo_20481_0.msg = "你获得了#R试道勇者#n的称谓。";
-                                        vo_20481_0.time = (int)(System.currentTimeMillis() / 1000L);
+                                        vo_20481_0.time = (int) (System.currentTimeMillis() / 1000L);
                                         GameObjectCharMng.getGameObjectChar(fightObject.id).sendOne(new M20481_0(), vo_20481_0);
                                         GameObjectCharMng.getGameObjectChar(fightObject.id).chara.extra_life += 100000;
                                         vo_20481_0 = new Vo_20481_0();
                                         vo_20481_0.msg = "你获得了100000元宝。";
-                                        vo_20481_0.time = (int)(System.currentTimeMillis() / 1000L);
+                                        vo_20481_0.time = (int) (System.currentTimeMillis() / 1000L);
                                         GameObjectCharMng.getGameObjectChar(fightObject.id).sendOne(new M20481_0(), vo_20481_0);
                                         listVo_65527_0 = GameUtil.a65527(GameObjectCharMng.getGameObjectChar(fightObject.id).chara);
                                         GameObjectCharMng.getGameObjectChar(fightObject.id).sendOne(new M65527_0(), listVo_65527_0);
@@ -1466,7 +1464,7 @@ public class FightManager {
 
                                     vo_20481_0 = new Vo_20481_0();
                                     vo_20481_0.msg = "你当前队伍积分" + GameObjectCharMng.getGameObjectChar(fightObject.id).chara.shidaodaguaijifen;
-                                    vo_20481_0.time = (int)(System.currentTimeMillis() / 1000L);
+                                    vo_20481_0.time = (int) (System.currentTimeMillis() / 1000L);
                                     GameObjectCharMng.getGameObjectChar(fightObject.id).sendOne(new M20481_0(), vo_20481_0);
                                     if (GameObjectCharMng.getGameObjectChar(fightObject.id).chara.shidaocishu <= 0) {
                                         GameUtilRenWu.shidaohuicheng(GameObjectCharMng.getGameObjectChar(fightObject.id).chara);
@@ -1481,11 +1479,11 @@ public class FightManager {
 
                 if (guaiwu != null) {
                     if (GameObjectCharMng.getGameObjectChar(chara1.id).gameTeam != null && GameObjectCharMng.getGameObjectChar(chara1.id).gameTeam.duiwu != null) {
-                        for(i = 0; i < GameObjectCharMng.getGameObjectChar(chara1.id).gameTeam.duiwu.size(); ++i) {
-                            GameUtil.shuayeguai(chara1, (Chara)GameObjectCharMng.getGameObjectChar(chara1.id).gameTeam.duiwu.get(i), ((FightObject)guaiwu.get(0)).guaiwulevel);
+                        for (i = 0; i < GameObjectCharMng.getGameObjectChar(chara1.id).gameTeam.duiwu.size(); ++i) {
+                            GameUtil.shuayeguai(chara1, (Chara) GameObjectCharMng.getGameObjectChar(chara1.id).gameTeam.duiwu.get(i), ((FightObject) guaiwu.get(0)).guaiwulevel);
                         }
                     } else {
-                        GameUtil.shuayeguai(chara1, chara1, ((FightObject)guaiwu.get(0)).guaiwulevel);
+                        GameUtil.shuayeguai(chara1, chara1, ((FightObject) guaiwu.get(0)).guaiwulevel);
                     }
                 }
             }
@@ -1504,8 +1502,8 @@ public class FightManager {
                 return null;
             }
 
-            fightTeam = (FightTeam)var2.next();
-        } while(fightTeam.type != 2);
+            fightTeam = (FightTeam) var2.next();
+        } while (fightTeam.type != 2);
 
         List<FightObject> fightObjectList = fightTeam.fightObjectList;
         return fightObjectList;
@@ -1515,21 +1513,21 @@ public class FightManager {
         List<FightTeam> teamList = fightContainer.teamList;
         Iterator var2 = teamList.iterator();
 
-        while(true) {
+        while (true) {
             FightTeam fightTeam;
             do {
                 if (!var2.hasNext()) {
                     return null;
                 }
 
-                fightTeam = (FightTeam)var2.next();
-            } while(fightTeam.type != 1);
+                fightTeam = (FightTeam) var2.next();
+            } while (fightTeam.type != 1);
 
             List<FightObject> fightObjectList = fightTeam.fightObjectList;
             Iterator var5 = fightObjectList.iterator();
 
-            while(var5.hasNext()) {
-                FightObject fightObject = (FightObject)var5.next();
+            while (var5.hasNext()) {
+                FightObject fightObject = (FightObject) var5.next();
                 if (fightObject.type == 1) {
                     int fid = fightObject.fid;
                     Chara chara = GameObjectCharMng.getGameObjectChar(fid).chara;
@@ -1555,31 +1553,31 @@ public class FightManager {
                 Vo_12023_0 vo_12023_0;
                 XiuluoshuSkill xiuluoshuSkill;
                 if (session.gameTeam != null) {
-                    for(num = 0; num < session.gameTeam.duiwu.size(); ++num) {
-                        fightObject = new FightObject((Chara)session.gameTeam.duiwu.get(num));
-                        fightObject.pos = (Integer)PERSON_POS.get(num);
-                        fightObject.fid = ((Chara)session.gameTeam.duiwu.get(num)).id;
-                        fightObject.id = ((Chara)session.gameTeam.duiwu.get(num)).id;
+                    for (num = 0; num < session.gameTeam.duiwu.size(); ++num) {
+                        fightObject = new FightObject((Chara) session.gameTeam.duiwu.get(num));
+                        fightObject.pos = (Integer) PERSON_POS.get(num);
+                        fightObject.fid = ((Chara) session.gameTeam.duiwu.get(num)).id;
+                        fightObject.id = ((Chara) session.gameTeam.duiwu.get(num)).id;
                         if (num == 0) {
                             fightObject.leader = 1;
                         }
 
-                        addFabao(fc, (Chara)session.gameTeam.duiwu.get(num), fightObject);
+                        addFabao(fc, (Chara) session.gameTeam.duiwu.get(num), fightObject);
                         ft.add(fightObject);
-                        fightObjectList = ((Chara)session.gameTeam.duiwu.get(num)).pets;
+                        fightObjectList = ((Chara) session.gameTeam.duiwu.get(num)).pets;
 
-                        for( int j = 0; j < fightObjectList.size(); ++j) {
-                            if (((Petbeibao)fightObjectList.get(j)).id == ((Chara)session.gameTeam.duiwu.get(num)).chongwuchanzhanId) {
-                                petbeibao = (Petbeibao)fightObjectList.get(j);
-                                fightObject = new FightObject((Petbeibao)fightObjectList.get(j));
-                                fightObject.pos = (Integer)PERSON_POS.get(num) + 5;
-                                fightObject.fid = ((Petbeibao)fightObjectList.get(j)).id;
-                                fightObject.id = ((Petbeibao)fightObjectList.get(j)).id;
-                                fightObject.cid = ((Chara)session.gameTeam.duiwu.get(num)).id;
+                        for (int j = 0; j < fightObjectList.size(); ++j) {
+                            if (((Petbeibao) fightObjectList.get(j)).id == ((Chara) session.gameTeam.duiwu.get(num)).chongwuchanzhanId) {
+                                petbeibao = (Petbeibao) fightObjectList.get(j);
+                                fightObject = new FightObject((Petbeibao) fightObjectList.get(j));
+                                fightObject.pos = (Integer) PERSON_POS.get(num) + 5;
+                                fightObject.fid = ((Petbeibao) fightObjectList.get(j)).id;
+                                fightObject.id = ((Petbeibao) fightObjectList.get(j)).id;
+                                fightObject.cid = ((Chara) session.gameTeam.duiwu.get(num)).id;
                                 ft.add(fightObject);
                                 if (petbeibao.tianshu.size() != 0) {
-                                    vo_12023_0 = (Vo_12023_0)petbeibao.tianshu.get(RANDOM.nextInt(petbeibao.tianshu.size()));
-                                    fightObject.godbook = (Integer)FightTianshuMap.TIANSHU_EFFECT.get(vo_12023_0.god_book_skill_name);
+                                    vo_12023_0 = (Vo_12023_0) petbeibao.tianshu.get(RANDOM.nextInt(petbeibao.tianshu.size()));
+                                    fightObject.godbook = (Integer) FightTianshuMap.TIANSHU_EFFECT.get(vo_12023_0.god_book_skill_name);
                                     if (vo_12023_0.god_book_skill_name.equals("修罗术")) {
                                         xiuluoshuSkill = new XiuluoshuSkill();
                                         xiuluoshuSkill.buffObject = fightObject;
@@ -1595,7 +1593,7 @@ public class FightManager {
                     }
                 } else {
                     FightObject object = new FightObject(chara);
-                    object.pos = (Integer)PERSON_POS.get(num);
+                    object.pos = (Integer) PERSON_POS.get(num);
                     object.fid = chara.id;
                     object.leader = 1;
                     object.id = chara.id;
@@ -1603,19 +1601,19 @@ public class FightManager {
                     ft.add(object);
                     List<Petbeibao> pets = chara.pets;
 
-                    for(int j = 0; j < pets.size(); ++j) {
-                        if (((Petbeibao)pets.get(j)).id == chara.chongwuchanzhanId) {
-                            Petbeibao petbeibao2 = (Petbeibao)pets.get(j);
-                            object = new FightObject((Petbeibao)pets.get(j));
-                            object.pos = (Integer)PERSON_POS.get(num) + 5;
-                            object.fid = ((Petbeibao)pets.get(j)).id;
-                            object.id = ((Petbeibao)pets.get(j)).id;
+                    for (int j = 0; j < pets.size(); ++j) {
+                        if (((Petbeibao) pets.get(j)).id == chara.chongwuchanzhanId) {
+                            Petbeibao petbeibao2 = (Petbeibao) pets.get(j);
+                            object = new FightObject((Petbeibao) pets.get(j));
+                            object.pos = (Integer) PERSON_POS.get(num) + 5;
+                            object.fid = ((Petbeibao) pets.get(j)).id;
+                            object.id = ((Petbeibao) pets.get(j)).id;
                             object.cid = chara.id;
                             ft.add(object);
 
                             if (petbeibao2.tianshu.size() != 0) {
-                                Vo_12023_0 vo120230 = (Vo_12023_0)petbeibao2.tianshu.get(RANDOM.nextInt(petbeibao2.tianshu.size()));
-                                object.godbook = (Integer)FightTianshuMap.TIANSHU_EFFECT.get(vo120230.god_book_skill_name);
+                                Vo_12023_0 vo120230 = (Vo_12023_0) petbeibao2.tianshu.get(RANDOM.nextInt(petbeibao2.tianshu.size()));
+                                object.godbook = (Integer) FightTianshuMap.TIANSHU_EFFECT.get(vo120230.god_book_skill_name);
                                 if (vo120230.god_book_skill_name.equals("修罗术")) {
                                     XiuluoshuSkill skill = new XiuluoshuSkill();
                                     skill.buffObject = object;
@@ -1636,32 +1634,32 @@ public class FightManager {
                 num = 0;
                 FightObject object;
                 if (gameObjectChar.gameTeam != null) {
-                    for(int i = 0; i < gameObjectChar.gameTeam.duiwu.size(); ++i) {
-                        object = new FightObject((Chara)gameObjectChar.gameTeam.duiwu.get(i));
-                        object.pos = (Integer)PERSON_POS.get(num);
-                        object.fid = ((Chara)gameObjectChar.gameTeam.duiwu.get(i)).id;
-                        object.id = ((Chara)gameObjectChar.gameTeam.duiwu.get(i)).id;
+                    for (int i = 0; i < gameObjectChar.gameTeam.duiwu.size(); ++i) {
+                        object = new FightObject((Chara) gameObjectChar.gameTeam.duiwu.get(i));
+                        object.pos = (Integer) PERSON_POS.get(num);
+                        object.fid = ((Chara) gameObjectChar.gameTeam.duiwu.get(i)).id;
+                        object.id = ((Chara) gameObjectChar.gameTeam.duiwu.get(i)).id;
                         if (i == 0) {
                             object.leader = 1;
                         }
 
-                        addFabao(fc, (Chara)gameObjectChar.gameTeam.duiwu.get(i), object);
+                        addFabao(fc, (Chara) gameObjectChar.gameTeam.duiwu.get(i), object);
                         ftother.add(object);
-                        List<Petbeibao> pets = ((Chara)gameObjectChar.gameTeam.duiwu.get(i)).pets;
+                        List<Petbeibao> pets = ((Chara) gameObjectChar.gameTeam.duiwu.get(i)).pets;
 
-                        for(int j = 0; j < pets.size(); ++j) {
-                            if (((Petbeibao)pets.get(j)).id == ((Chara)gameObjectChar.gameTeam.duiwu.get(i)).chongwuchanzhanId) {
-                                Petbeibao q = (Petbeibao)pets.get(j);
-                                object = new FightObject((Petbeibao)pets.get(j));
-                                object.pos = (Integer)PERSON_POS.get(num) + 5;
-                                object.fid = ((Petbeibao)pets.get(j)).id;
-                                object.id = ((Petbeibao)pets.get(j)).id;
-                                object.cid = ((Chara)gameObjectChar.gameTeam.duiwu.get(i)).id;
+                        for (int j = 0; j < pets.size(); ++j) {
+                            if (((Petbeibao) pets.get(j)).id == ((Chara) gameObjectChar.gameTeam.duiwu.get(i)).chongwuchanzhanId) {
+                                Petbeibao q = (Petbeibao) pets.get(j);
+                                object = new FightObject((Petbeibao) pets.get(j));
+                                object.pos = (Integer) PERSON_POS.get(num) + 5;
+                                object.fid = ((Petbeibao) pets.get(j)).id;
+                                object.id = ((Petbeibao) pets.get(j)).id;
+                                object.cid = ((Chara) gameObjectChar.gameTeam.duiwu.get(i)).id;
                                 ftother.add(object);
 
                                 if (q.tianshu.size() != 0) {
-                                    Vo_12023_0 vo120230 = (Vo_12023_0)q.tianshu.get(RANDOM.nextInt(q.tianshu.size()));
-                                    object.godbook = (Integer)FightTianshuMap.TIANSHU_EFFECT.get(vo120230.god_book_skill_name);
+                                    Vo_12023_0 vo120230 = (Vo_12023_0) q.tianshu.get(RANDOM.nextInt(q.tianshu.size()));
+                                    object.godbook = (Integer) FightTianshuMap.TIANSHU_EFFECT.get(vo120230.god_book_skill_name);
                                     if (vo120230.god_book_skill_name.equals("修罗术")) {
                                         XiuluoshuSkill skill = new XiuluoshuSkill();
                                         skill.buffObject = object;
@@ -1677,7 +1675,7 @@ public class FightManager {
                     }
                 } else {
                     object = new FightObject(charaduishou);
-                    object.pos = (Integer)PERSON_POS.get(num);
+                    object.pos = (Integer) PERSON_POS.get(num);
                     object.fid = charaduishou.id;
                     object.leader = 1;
                     object.id = charaduishou.id;
@@ -1685,17 +1683,17 @@ public class FightManager {
                     ftother.add(object);
                     fightObjectList = charaduishou.pets;
 
-                    for(int j = 0; j < fightObjectList.size(); ++j) {
-                        if (((Petbeibao)fightObjectList.get(j)).id == charaduishou.chongwuchanzhanId) {
-                            petbeibao = (Petbeibao)fightObjectList.get(j);
+                    for (int j = 0; j < fightObjectList.size(); ++j) {
+                        if (((Petbeibao) fightObjectList.get(j)).id == charaduishou.chongwuchanzhanId) {
+                            petbeibao = (Petbeibao) fightObjectList.get(j);
                             object = new FightObject(petbeibao);
-                            object.pos = (Integer)PERSON_POS.get(num) + 5;
-                            object.fid = ((Petbeibao)fightObjectList.get(j)).id;
-                            object.id = ((Petbeibao)fightObjectList.get(j)).id;
+                            object.pos = (Integer) PERSON_POS.get(num) + 5;
+                            object.fid = ((Petbeibao) fightObjectList.get(j)).id;
+                            object.id = ((Petbeibao) fightObjectList.get(j)).id;
                             object.cid = charaduishou.id;
                             if (petbeibao.tianshu.size() != 0) {
-                                vo_12023_0 = (Vo_12023_0)petbeibao.tianshu.get(RANDOM.nextInt(petbeibao.tianshu.size()));
-                                object.godbook = (Integer)FightTianshuMap.TIANSHU_EFFECT.get(vo_12023_0.god_book_skill_name);
+                                vo_12023_0 = (Vo_12023_0) petbeibao.tianshu.get(RANDOM.nextInt(petbeibao.tianshu.size()));
+                                object.godbook = (Integer) FightTianshuMap.TIANSHU_EFFECT.get(vo_12023_0.god_book_skill_name);
                                 if (vo_12023_0.god_book_skill_name.equals("修罗术")) {
                                     xiuluoshuSkill = new XiuluoshuSkill();
                                     xiuluoshuSkill.buffObject = object;
@@ -1718,8 +1716,8 @@ public class FightManager {
                 List<FightObject> fightObjectListAll = getAllFightObject(fc);
                 Iterator var21 = fightObjectListAll.iterator();
 
-                while(var21.hasNext()) {
-                    object = (FightObject)var21.next();
+                while (var21.hasNext()) {
+                    object = (FightObject) var21.next();
                     if (object.type == 1) {
                         GameObjectChar objectChar = GameObjectCharMng.getGameObjectChar(object.id);
                         Chara tchar = objectChar.chara;
@@ -1754,8 +1752,8 @@ public class FightManager {
                 send(fc, new M3583_0(), vo_3583_0);
                 Iterator var25 = fightObjectListAll.iterator();
 
-                while(var25.hasNext()) {
-                    object = (FightObject)var25.next();
+                while (var25.hasNext()) {
+                    object = (FightObject) var25.next();
                     if (object.type == 2) {
                         Vo_64971_0 vo_64971_0 = new Vo_64971_0();
                         vo_64971_0.count = 1;
@@ -1770,8 +1768,8 @@ public class FightManager {
                 fightObjectList = getFightTeam(fc, chara.id).fightObjectList;
                 Iterator var34 = fightObjectList.iterator();
 
-                while(var34.hasNext()) {
-                    FightObject object1 = (FightObject)var34.next();
+                while (var34.hasNext()) {
+                    FightObject object1 = (FightObject) var34.next();
                     Vo_65017_0 vo_65019_0 = new Vo_65017_0();
                     vo_65019_0.id = object1.fid;
                     vo_65019_0.leader = object1.leader;
@@ -1802,8 +1800,8 @@ public class FightManager {
                 Iterator var43 = fightObjectListOther.iterator();
 
                 FightObject object1;
-                while(var43.hasNext()) {
-                    object1 = (FightObject)var43.next();
+                while (var43.hasNext()) {
+                    object1 = (FightObject) var43.next();
                     Vo_65017_0 vo_65017_0 = new Vo_65017_0();
                     vo_65017_0.id = object1.fid;
                     vo_65017_0.leader = object1.leader;
@@ -1836,8 +1834,8 @@ public class FightManager {
                 fightObjectList = getAllFightObject(fc);
                 var43 = fightObjectList.iterator();
 
-                while(var43.hasNext()) {
-                    object1 = (FightObject)var43.next();
+                while (var43.hasNext()) {
+                    object1 = (FightObject) var43.next();
                     if (object1.godbook != 0) {
                         Vo_12025_0 vo_12025_0 = new Vo_12025_0();
                         vo_12025_0.id = object1.fid;
@@ -1853,7 +1851,7 @@ public class FightManager {
 
     public static void goFight(Chara chara, List<String> monsterList, Vo_65529_0 vo_65529_0) {
         FightContainer fc;
-        for(fc = getFightContainer(chara.id); fc != null; fc = getFightContainer(chara.id)) {
+        for (fc = getFightContainer(chara.id); fc != null; fc = getFightContainer(chara.id)) {
             listFight.remove(fc);
         }
 
@@ -1863,26 +1861,26 @@ public class FightManager {
         GameObjectChar session = GameObjectCharMng.getGameObjectChar(chara.id);
         int num = 0;
         if (session.gameTeam != null) {
-            for(int i = 0; i < session.gameTeam.duiwu.size(); ++i) {
-                FightObject fightObject = new FightObject((Chara)session.gameTeam.duiwu.get(i));
-                fightObject.pos = (Integer)PERSON_POS.get(num);
-                fightObject.fid = ((Chara)session.gameTeam.duiwu.get(i)).id;
-                fightObject.id = ((Chara)session.gameTeam.duiwu.get(i)).id;
+            for (int i = 0; i < session.gameTeam.duiwu.size(); ++i) {
+                FightObject fightObject = new FightObject((Chara) session.gameTeam.duiwu.get(i));
+                fightObject.pos = (Integer) PERSON_POS.get(num);
+                fightObject.fid = ((Chara) session.gameTeam.duiwu.get(i)).id;
+                fightObject.id = ((Chara) session.gameTeam.duiwu.get(i)).id;
                 if (i == 0) {
                     fightObject.leader = 1;
                 }
 
-                addFabao(fc, (Chara)session.gameTeam.duiwu.get(i), fightObject);
+                addFabao(fc, (Chara) session.gameTeam.duiwu.get(i), fightObject);
                 ft.add(fightObject);
-                List<Petbeibao> pets = ((Chara)session.gameTeam.duiwu.get(i)).pets;
+                List<Petbeibao> pets = ((Chara) session.gameTeam.duiwu.get(i)).pets;
 
-                for(int j = 0; j < pets.size(); ++j) {
-                    if (((Petbeibao)pets.get(j)).id == ((Chara)session.gameTeam.duiwu.get(i)).chongwuchanzhanId) {
-                        fightObject = new FightObject((Petbeibao)pets.get(j));
-                        fightObject.pos = (Integer)PERSON_POS.get(num) + 5;
-                        fightObject.fid = ((Petbeibao)pets.get(j)).id;
-                        fightObject.id = ((Petbeibao)pets.get(j)).id;
-                        fightObject.cid = ((Chara)session.gameTeam.duiwu.get(i)).id;
+                for (int j = 0; j < pets.size(); ++j) {
+                    if (((Petbeibao) pets.get(j)).id == ((Chara) session.gameTeam.duiwu.get(i)).chongwuchanzhanId) {
+                        fightObject = new FightObject((Petbeibao) pets.get(j));
+                        fightObject.pos = (Integer) PERSON_POS.get(num) + 5;
+                        fightObject.fid = ((Petbeibao) pets.get(j)).id;
+                        fightObject.id = ((Petbeibao) pets.get(j)).id;
+                        fightObject.cid = ((Chara) session.gameTeam.duiwu.get(i)).id;
                         ft.add(fightObject);
                         break;
                     }
@@ -1892,7 +1890,7 @@ public class FightManager {
             }
         } else {
             FightObject fightObject = new FightObject(chara);
-            fightObject.pos = (Integer)PERSON_POS.get(num);
+            fightObject.pos = (Integer) PERSON_POS.get(num);
             fightObject.fid = chara.id;
             fightObject.leader = 1;
             fightObject.id = chara.id;
@@ -1900,12 +1898,12 @@ public class FightManager {
             addFabao(fc, chara, fightObject);
             List<Petbeibao> pets = chara.pets;
 
-            for(int j = 0; j < pets.size(); ++j) {
-                if (((Petbeibao)pets.get(j)).id == chara.chongwuchanzhanId) {
-                    fightObject = new FightObject((Petbeibao)pets.get(j));
-                    fightObject.pos = (Integer)PERSON_POS.get(num) + 5;
-                    fightObject.fid = ((Petbeibao)pets.get(j)).id;
-                    fightObject.id = ((Petbeibao)pets.get(j)).id;
+            for (int j = 0; j < pets.size(); ++j) {
+                if (((Petbeibao) pets.get(j)).id == chara.chongwuchanzhanId) {
+                    fightObject = new FightObject((Petbeibao) pets.get(j));
+                    fightObject.pos = (Integer) PERSON_POS.get(num) + 5;
+                    fightObject.fid = ((Petbeibao) pets.get(j)).id;
+                    fightObject.id = ((Petbeibao) pets.get(j)).id;
                     fightObject.cid = chara.id;
                     ft.add(fightObject);
                     break;
@@ -1919,10 +1917,10 @@ public class FightManager {
         monsterTeam.type = 2;
         num = 0;
 
-        for(Iterator var19 = monsterList.iterator(); var19.hasNext(); ++num) {
-            String monsterName = (String)var19.next();
+        for (Iterator var19 = monsterList.iterator(); var19.hasNext(); ++num) {
+            String monsterName = (String) var19.next();
             FightObject fightObject = new FightObject(chara, monsterName, vo_65529_0);
-            fightObject.pos = (Integer)MONSTER_POS.get(num);
+            fightObject.pos = (Integer) MONSTER_POS.get(num);
             fightObject.fid = fc.id++;
             if (num == 1) {
                 fightObject.leader = 1;
@@ -1966,8 +1964,8 @@ public class FightManager {
         List<FightObject> fightObjectList1 = friendsFightTeam.fightObjectList;
         Iterator var11 = fightObjectList1.iterator();
 
-        while(var11.hasNext()) {
-            FightObject fightObject = (FightObject)var11.next();
+        while (var11.hasNext()) {
+            FightObject fightObject = (FightObject) var11.next();
             if (fightObject.type == 2) {
                 Vo_64971_0 vo_64971_0 = new Vo_64971_0();
                 vo_64971_0.count = 1;
@@ -1981,8 +1979,8 @@ public class FightManager {
         List<FightObject> fightObjectList = getFightTeam(fc, chara.id).fightObjectList;
         Iterator var31 = fightObjectList.iterator();
 
-        while(var31.hasNext()) {
-            FightObject fightObject = (FightObject)var31.next();
+        while (var31.hasNext()) {
+            FightObject fightObject = (FightObject) var31.next();
             Vo_65017_0 vo_65019_0 = new Vo_65017_0();
             vo_65019_0.id = fightObject.fid;
             vo_65019_0.leader = fightObject.leader;
@@ -2014,8 +2012,8 @@ public class FightManager {
         Iterator var33 = fightObjectList.iterator();
 
         FightObject fightObject;
-        while(var33.hasNext()) {
-            fightObject = (FightObject)var33.next();
+        while (var33.hasNext()) {
+            fightObject = (FightObject) var33.next();
             Vo_65017_0 vo_65017_0 = new Vo_65017_0();
             vo_65017_0.id = fightObject.fid;
             vo_65017_0.leader = fightObject.leader;
@@ -2045,8 +2043,8 @@ public class FightManager {
         fightObjectList = getAllFightObject(fc);
         var33 = fightObjectList.iterator();
 
-        while(var33.hasNext()) {
-            fightObject = (FightObject)var33.next();
+        while (var33.hasNext()) {
+            fightObject = (FightObject) var33.next();
             if (fightObject.godbook != 0) {
                 Vo_12025_0 vo_12025_0 = new Vo_12025_0();
                 vo_12025_0.id = fightObject.fid;
@@ -2068,8 +2066,8 @@ public class FightManager {
                 return null;
             }
 
-            fightObject = (FightObject)var3.next();
-        } while(fightObject.isDead() || exclude.contains(fightObject));
+            fightObject = (FightObject) var3.next();
+        } while (fightObject.isDead() || exclude.contains(fightObject));
 
         return fightObject;
     }
@@ -2078,13 +2076,13 @@ public class FightManager {
         List<FightTeam> teamList = fightContainer.teamList;
         Iterator iterator = teamList.iterator();
 
-        while(true) {
-            while(iterator.hasNext()) {
-                FightTeam fightTeam = (FightTeam)iterator.next();
+        while (true) {
+            while (iterator.hasNext()) {
+                FightTeam fightTeam = (FightTeam) iterator.next();
                 Iterator fightObjectIterator = fightTeam.fightObjectList.iterator();
 
-                while(fightObjectIterator.hasNext()) {
-                    FightObject next = (FightObject)fightObjectIterator.next();
+                while (fightObjectIterator.hasNext()) {
+                    FightObject next = (FightObject) fightObjectIterator.next();
                     if (next.fid == fightObject.fid) {
                         fightObjectIterator.remove();
                         break;
@@ -2094,8 +2092,8 @@ public class FightManager {
 
             iterator = fightContainer.doActionList.iterator();
 
-            while(iterator.hasNext()) {
-                FightObject next = (FightObject)iterator.next();
+            while (iterator.hasNext()) {
+                FightObject next = (FightObject) iterator.next();
                 if (next.fid == fightObject.fid) {
                     iterator.remove();
                     break;
@@ -2119,8 +2117,8 @@ public class FightManager {
             List<Vo_65017_0> list65019 = new ArrayList();
             Iterator var7 = fightObjectList.iterator();
 
-            while(var7.hasNext()) {
-                FightObject fightObject = (FightObject)var7.next();
+            while (var7.hasNext()) {
+                FightObject fightObject = (FightObject) var7.next();
                 Vo_65017_0 vo_65019_0 = new Vo_65017_0();
                 vo_65019_0.id = fightObject.fid;
                 vo_65019_0.leader = fightObject.leader;
@@ -2151,8 +2149,8 @@ public class FightManager {
             fightObjectList = getFightTeamDM(fc, id).fightObjectList;
             Iterator var13 = fightObjectList.iterator();
 
-            while(var13.hasNext()) {
-                FightObject fightObject = (FightObject)var13.next();
+            while (var13.hasNext()) {
+                FightObject fightObject = (FightObject) var13.next();
                 Vo_65017_0 vo_65017_0 = new Vo_65017_0();
                 vo_65017_0.id = fightObject.fid;
                 vo_65017_0.leader = fightObject.leader;
@@ -2188,8 +2186,8 @@ public class FightManager {
             GameObjectChar.send(new M19959_0(), vo_19959_0);
             Iterator var16 = fightObjectList.iterator();
 
-            while(var16.hasNext()) {
-                FightObject fightObject = (FightObject)var16.next();
+            while (var16.hasNext()) {
+                FightObject fightObject = (FightObject) var16.next();
                 if (fightObject.godbook != 0) {
                     Vo_12025_0 vo_12025_0 = new Vo_12025_0();
                     vo_12025_0.id = fightObject.fid;

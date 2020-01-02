@@ -9,10 +9,12 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class StoreInfo implements Cloneable, Serializable {
@@ -185,9 +187,11 @@ public class StoreInfo implements Cloneable, Serializable {
             return false;
         } else {
             boolean var10000;
-            label129: {
-                label121: {
-                    StoreInfo other = (StoreInfo)that;
+            label129:
+            {
+                label121:
+                {
+                    StoreInfo other = (StoreInfo) that;
                     if (this.getId() == null) {
                         if (other.getId() != null) {
                             break label121;
@@ -296,7 +300,7 @@ public class StoreInfo implements Cloneable, Serializable {
 
     public int hashCode() {
         int result = 1;
-         result = 31 * result + (this.getId() == null ? 0 : this.getId().hashCode());
+        result = 31 * result + (this.getId() == null ? 0 : this.getId().hashCode());
         result = 31 * result + (this.getQuality() == null ? 0 : this.getQuality().hashCode());
         result = 31 * result + (this.getValue() == null ? 0 : this.getValue().hashCode());
         result = 31 * result + (this.getType() == null ? 0 : this.getType().hashCode());
@@ -312,7 +316,7 @@ public class StoreInfo implements Cloneable, Serializable {
     }
 
     public StoreInfo clone() throws CloneNotSupportedException {
-        return (StoreInfo)super.clone();
+        return (StoreInfo) super.clone();
     }
 
     static {
@@ -378,7 +382,7 @@ public class StoreInfo implements Cloneable, Serializable {
                 columns.removeAll(new ArrayList(Arrays.asList(excludes)));
             }
 
-            return (StoreInfo.Column[])columns.toArray(new StoreInfo.Column[0]);
+            return (StoreInfo.Column[]) columns.toArray(new StoreInfo.Column[0]);
         }
 
         public String getEscapedColumnName() {

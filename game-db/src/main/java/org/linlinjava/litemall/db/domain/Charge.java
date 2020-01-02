@@ -9,10 +9,12 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class Charge implements Cloneable, Serializable {
@@ -155,9 +157,11 @@ public class Charge implements Cloneable, Serializable {
             return false;
         } else {
             boolean var10000;
-            label105: {
-                label97: {
-                    Charge other = (Charge)that;
+            label105:
+            {
+                label97:
+                {
+                    Charge other = (Charge) that;
                     if (this.getId() == null) {
                         if (other.getId() != null) {
                             break label97;
@@ -243,7 +247,7 @@ public class Charge implements Cloneable, Serializable {
     public int hashCode() {
 
         int result = 1;
-         result = 31 * result + (this.getId() == null ? 0 : this.getId().hashCode());
+        result = 31 * result + (this.getId() == null ? 0 : this.getId().hashCode());
         result = 31 * result + (this.getAccountname() == null ? 0 : this.getAccountname().hashCode());
         result = 31 * result + (this.getCoin() == null ? 0 : this.getCoin().hashCode());
         result = 31 * result + (this.getState() == null ? 0 : this.getState().hashCode());
@@ -256,7 +260,7 @@ public class Charge implements Cloneable, Serializable {
     }
 
     public Charge clone() throws CloneNotSupportedException {
-        return (Charge)super.clone();
+        return (Charge) super.clone();
     }
 
     static {
@@ -319,7 +323,7 @@ public class Charge implements Cloneable, Serializable {
                 columns.removeAll(new ArrayList(Arrays.asList(excludes)));
             }
 
-            return (Charge.Column[])columns.toArray(new Charge.Column[0]);
+            return (Charge.Column[]) columns.toArray(new Charge.Column[0]);
         }
 
         public String getEscapedColumnName() {

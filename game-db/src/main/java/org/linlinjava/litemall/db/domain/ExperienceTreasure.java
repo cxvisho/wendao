@@ -9,10 +9,12 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class ExperienceTreasure implements Cloneable, Serializable {
@@ -115,9 +117,11 @@ public class ExperienceTreasure implements Cloneable, Serializable {
             return false;
         } else {
             boolean var10000;
-            label73: {
-                label65: {
-                    ExperienceTreasure other = (ExperienceTreasure)that;
+            label73:
+            {
+                label65:
+                {
+                    ExperienceTreasure other = (ExperienceTreasure) that;
                     if (this.getAttrib() == null) {
                         if (other.getAttrib() != null) {
                             break label65;
@@ -179,7 +183,7 @@ public class ExperienceTreasure implements Cloneable, Serializable {
     }
 
     public ExperienceTreasure clone() throws CloneNotSupportedException {
-        return (ExperienceTreasure)super.clone();
+        return (ExperienceTreasure) super.clone();
     }
 
     static {
@@ -238,7 +242,7 @@ public class ExperienceTreasure implements Cloneable, Serializable {
                 columns.removeAll(new ArrayList(Arrays.asList(excludes)));
             }
 
-            return (ExperienceTreasure.Column[])columns.toArray(new ExperienceTreasure.Column[0]);
+            return (ExperienceTreasure.Column[]) columns.toArray(new ExperienceTreasure.Column[0]);
         }
 
         public String getEscapedColumnName() {

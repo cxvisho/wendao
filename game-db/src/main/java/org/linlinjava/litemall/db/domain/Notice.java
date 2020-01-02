@@ -9,10 +9,12 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class Notice implements Cloneable, Serializable {
@@ -125,8 +127,9 @@ public class Notice implements Cloneable, Serializable {
             return false;
         } else {
             boolean var10000;
-            label80: {
-                Notice other = (Notice)that;
+            label80:
+            {
+                Notice other = (Notice) that;
                 if (this.getId() == null) {
                     if (other.getId() != null) {
                         break label80;
@@ -186,7 +189,7 @@ public class Notice implements Cloneable, Serializable {
 
     public int hashCode() {
         int result = 1;
-       result = 31 * result + (this.getId() == null ? 0 : this.getId().hashCode());
+        result = 31 * result + (this.getId() == null ? 0 : this.getId().hashCode());
         result = 31 * result + (this.getMessage() == null ? 0 : this.getMessage().hashCode());
         result = 31 * result + (this.getTime() == null ? 0 : this.getTime().hashCode());
         result = 31 * result + (this.getAddTime() == null ? 0 : this.getAddTime().hashCode());
@@ -196,7 +199,7 @@ public class Notice implements Cloneable, Serializable {
     }
 
     public Notice clone() throws CloneNotSupportedException {
-        return (Notice)super.clone();
+        return (Notice) super.clone();
     }
 
     static {
@@ -256,7 +259,7 @@ public class Notice implements Cloneable, Serializable {
                 columns.removeAll(new ArrayList(Arrays.asList(excludes)));
             }
 
-            return (Notice.Column[])columns.toArray(new Notice.Column[0]);
+            return (Notice.Column[]) columns.toArray(new Notice.Column[0]);
         }
 
         public String getEscapedColumnName() {

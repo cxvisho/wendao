@@ -9,8 +9,10 @@ import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectMapper.DefaultTyping;
+
 import java.lang.reflect.Method;
 import java.time.Duration;
+
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.CachingConfigurerSupport;
 import org.springframework.cache.interceptor.SimpleKeyGenerator;
@@ -72,7 +74,7 @@ public class RedisConfig extends CachingConfigurerSupport {
                 Object[] var6 = params;
                 int var7 = params.length;
 
-                for(int var8 = 0; var8 < var7; ++var8) {
+                for (int var8 = 0; var8 < var7; ++var8) {
                     Object param = var6[var8];
                     if (param != null) {
                         paramsSb.append(param.toString());

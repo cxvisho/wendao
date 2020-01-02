@@ -6,9 +6,9 @@
 package org.linlinjava.litemall.gameserver.data.vo;
 
 public class Vo_20480_1 {
-  public String msg;
-  public int time;
+    public String msg;
+    public int time;
 
-  public Vo_20480_1() {
-  }
+    public Vo_20480_1() {
+    }
 }

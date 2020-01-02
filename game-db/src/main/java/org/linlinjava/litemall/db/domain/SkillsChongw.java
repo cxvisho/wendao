@@ -9,10 +9,12 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class SkillsChongw implements Cloneable, Serializable {
@@ -195,9 +197,11 @@ public class SkillsChongw implements Cloneable, Serializable {
             return false;
         } else {
             boolean var10000;
-            label137: {
-                label129: {
-                    SkillsChongw other = (SkillsChongw)that;
+            label137:
+            {
+                label129:
+                {
+                    SkillsChongw other = (SkillsChongw) that;
                     if (this.getId() == null) {
                         if (other.getId() != null) {
                             break label129;
@@ -314,7 +318,7 @@ public class SkillsChongw implements Cloneable, Serializable {
 
     public int hashCode() {
         int result = 1;
-       result = 31 * result + (this.getId() == null ? 0 : this.getId().hashCode());
+        result = 31 * result + (this.getId() == null ? 0 : this.getId().hashCode());
         result = 31 * result + (this.getOwnerid() == null ? 0 : this.getOwnerid().hashCode());
         result = 31 * result + (this.getSkllCwid() == null ? 0 : this.getSkllCwid().hashCode());
         result = 31 * result + (this.getSkillIdHex() == null ? 0 : this.getSkillIdHex().hashCode());
@@ -331,7 +335,7 @@ public class SkillsChongw implements Cloneable, Serializable {
     }
 
     public SkillsChongw clone() throws CloneNotSupportedException {
-        return (SkillsChongw)super.clone();
+        return (SkillsChongw) super.clone();
     }
 
     static {
@@ -398,7 +402,7 @@ public class SkillsChongw implements Cloneable, Serializable {
                 columns.removeAll(new ArrayList(Arrays.asList(excludes)));
             }
 
-            return (SkillsChongw.Column[])columns.toArray(new SkillsChongw.Column[0]);
+            return (SkillsChongw.Column[]) columns.toArray(new SkillsChongw.Column[0]);
         }
 
         public String getEscapedColumnName() {

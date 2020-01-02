@@ -9,10 +9,12 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class GroceriesShop implements Cloneable, Serializable {
@@ -175,9 +177,11 @@ public class GroceriesShop implements Cloneable, Serializable {
             return false;
         } else {
             boolean var10000;
-            label121: {
-                label113: {
-                    GroceriesShop other = (GroceriesShop)that;
+            label121:
+            {
+                label113:
+                {
+                    GroceriesShop other = (GroceriesShop) that;
                     if (this.getId() == null) {
                         if (other.getId() != null) {
                             break label113;
@@ -278,7 +282,7 @@ public class GroceriesShop implements Cloneable, Serializable {
 
     public int hashCode() {
         int result = 1;
-       result = 31 * result + (this.getId() == null ? 0 : this.getId().hashCode());
+        result = 31 * result + (this.getId() == null ? 0 : this.getId().hashCode());
         result = 31 * result + (this.getGoodsNo() == null ? 0 : this.getGoodsNo().hashCode());
         result = 31 * result + (this.getPayType() == null ? 0 : this.getPayType().hashCode());
         result = 31 * result + (this.getName() == null ? 0 : this.getName().hashCode());
@@ -293,7 +297,7 @@ public class GroceriesShop implements Cloneable, Serializable {
     }
 
     public GroceriesShop clone() throws CloneNotSupportedException {
-        return (GroceriesShop)super.clone();
+        return (GroceriesShop) super.clone();
     }
 
     static {
@@ -358,7 +362,7 @@ public class GroceriesShop implements Cloneable, Serializable {
                 columns.removeAll(new ArrayList(Arrays.asList(excludes)));
             }
 
-            return (GroceriesShop.Column[])columns.toArray(new GroceriesShop.Column[0]);
+            return (GroceriesShop.Column[]) columns.toArray(new GroceriesShop.Column[0]);
         }
 
         public String getEscapedColumnName() {

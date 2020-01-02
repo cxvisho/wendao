@@ -48,7 +48,7 @@ public class ConsumeMoneyUtils {
         hashtable.put(100, 600000);
         hashtable.put(110, 1100000);
         hashtable.put(120, 1200000);
-        return (Integer)hashtable.get(dst_eq_attrib);
+        return (Integer) hashtable.get(dst_eq_attrib);
     }
 
     public static int createMoney(int eq_attrib) {

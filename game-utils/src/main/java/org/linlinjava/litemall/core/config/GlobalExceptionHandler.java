@@ -20,42 +20,42 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 @ControllerAdvice
-@Order( value = Ordered.LOWEST_PRECEDENCE )
+@Order(value = Ordered.LOWEST_PRECEDENCE)
 public class GlobalExceptionHandler {
     private final Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
     @ExceptionHandler(IllegalArgumentException.class)
     @ResponseBody
     public Object badArgumentHandler(IllegalArgumentException e) {
-    	logger.error("",e);
+        logger.error("", e);
         return ResponseUtil.badArgumentValue();
     }
 
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
     @ResponseBody
     public Object badArgumentHandler(MethodArgumentTypeMismatchException e) {
-    	logger.error("",e);
+        logger.error("", e);
         return ResponseUtil.badArgumentValue();
     }
 
     @ExceptionHandler(MissingServletRequestParameterException.class)
     @ResponseBody
     public Object badArgumentHandler(MissingServletRequestParameterException e) {
-    	logger.error("",e);
+        logger.error("", e);
         return ResponseUtil.badArgumentValue();
     }
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
     @ResponseBody
     public Object badArgumentHandler(HttpMessageNotReadableException e) {
-    	logger.error("",e);
+        logger.error("", e);
         return ResponseUtil.badArgumentValue();
     }
 
     @ExceptionHandler(ValidationException.class)
     @ResponseBody
     public Object badArgumentHandler(ValidationException e) {
-    	logger.error("",e);
+        logger.error("", e);
         if (e instanceof ConstraintViolationException) {
             ConstraintViolationException exs = (ConstraintViolationException) e;
             Set<ConstraintViolation<?>> violations = exs.getConstraintViolations();
@@ -70,7 +70,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     @ResponseBody
     public Object seriousHandler(Exception e) {
-    	logger.error("",e);
+        logger.error("", e);
         return ResponseUtil.serious();
     }
 }

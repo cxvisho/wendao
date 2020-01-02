@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
 import org.linlinjava.litemall.db.domain.NpcDialogueFrame;
 
 public class BaseNpcDialogueFrameVo {
@@ -59,8 +60,8 @@ public class BaseNpcDialogueFrameVo {
         List<BaseNpcDialogueFrameVo> listVo = new ArrayList();
         Iterator var2 = list.iterator();
 
-        while(var2.hasNext()) {
-            NpcDialogueFrame temp = (NpcDialogueFrame)var2.next();
+        while (var2.hasNext()) {
+            NpcDialogueFrame temp = (NpcDialogueFrame) var2.next();
             listVo.add(new BaseNpcDialogueFrameVo(temp));
         }
 

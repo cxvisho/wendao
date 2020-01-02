@@ -6,11 +6,13 @@
 package org.linlinjava.litemall.db.mybatis;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+
 import org.apache.ibatis.type.BaseTypeHandler;
 import org.apache.ibatis.type.JdbcType;
 import org.slf4j.Logger;
@@ -51,7 +53,7 @@ public class JsonListTypeHandler extends BaseTypeHandler<List> {
     private List toObject(String content) {
         if (content != null && !content.isEmpty()) {
             try {
-                return (List)mapper.readValue(content, List.class);
+                return (List) mapper.readValue(content, List.class);
             } catch (Exception var3) {
                 this.logger.error("", var3);
                 throw new RuntimeException(var3);

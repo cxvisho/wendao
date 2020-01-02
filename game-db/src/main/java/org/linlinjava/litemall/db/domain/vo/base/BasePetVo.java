@@ -8,6 +8,7 @@ package org.linlinjava.litemall.db.domain.vo.base;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
 import org.linlinjava.litemall.db.domain.Pet;
 
 public class BasePetVo {
@@ -54,8 +55,8 @@ public class BasePetVo {
         List<BasePetVo> listVo = new ArrayList();
         Iterator var2 = list.iterator();
 
-        while(var2.hasNext()) {
-            Pet temp = (Pet)var2.next();
+        while (var2.hasNext()) {
+            Pet temp = (Pet) var2.next();
             listVo.add(new BasePetVo(temp));
         }
 
