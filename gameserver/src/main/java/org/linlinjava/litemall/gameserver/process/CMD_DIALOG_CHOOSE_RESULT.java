@@ -7,9 +7,9 @@ import org.linlinjava.litemall.gameserver.data.vo.ListVo_65527_0;
 import org.linlinjava.litemall.gameserver.data.vo.Vo_20481_0;
 import org.linlinjava.litemall.gameserver.data.vo.Vo_61553_0;
 import org.linlinjava.litemall.gameserver.data.vo.Vo_65529_0;
-import org.linlinjava.litemall.gameserver.data.write.M20481_0;
-import org.linlinjava.litemall.gameserver.data.write.M_MSG_TASK_PROMPT;
-import org.linlinjava.litemall.gameserver.data.write.M65527_0;
+import org.linlinjava.litemall.gameserver.data.write.MSG_NOTIFY_MISC_EX;
+import org.linlinjava.litemall.gameserver.data.write.MSG_TASK_PROMPT;
+import org.linlinjava.litemall.gameserver.data.write.MSG_UPDATE_PETS;
 import org.linlinjava.litemall.gameserver.domain.Chara;
 import org.linlinjava.litemall.gameserver.domain.Goods;
 import org.linlinjava.litemall.gameserver.domain.PetShuXing;
@@ -47,7 +47,7 @@ public class CMD_DIALOG_CHOOSE_RESULT<main> implements org.linlinjava.litemall.g
                     Vo_20481_0 vo_20481_0 = new Vo_20481_0();
                     vo_20481_0.msg = "积分不足";
                     vo_20481_0.time = ((int) (System.currentTimeMillis() / 1000L));
-                    GameObjectCharMng.getGameObjectChar(chara1.id).sendOne(new M20481_0(), vo_20481_0);
+                    GameObjectCharMng.getGameObjectChar(chara1.id).sendOne(new MSG_NOTIFY_MISC_EX(), vo_20481_0);
                     return;
                 }
                 accounts.setChongzhijifen(Integer.valueOf(accounts.getChongzhijifen().intValue() - 1000));
@@ -75,11 +75,11 @@ public class CMD_DIALOG_CHOOSE_RESULT<main> implements org.linlinjava.litemall.g
                 shuXing.upgrade_magic = 0;
                 shuXing.upgrade_total = 0;
                 petbeibao.petShuXing.add(shuXing);
-                GameObjectChar.send(new org.linlinjava.litemall.gameserver.data.write.M65507_0(), list);
+                GameObjectChar.send(new org.linlinjava.litemall.gameserver.data.write.MSG_UPDATE_PETS(), list);
                 Vo_20481_0 vo_20481_0 = new Vo_20481_0();
                 vo_20481_0.msg = ("恭喜获得#R" + s);
                 vo_20481_0.time = ((int) (System.currentTimeMillis() / 1000L));
-                GameObjectCharMng.getGameObjectChar(chara1.id).sendOne(new M20481_0(), vo_20481_0);
+                GameObjectCharMng.getGameObjectChar(chara1.id).sendOne(new MSG_NOTIFY_MISC_EX(), vo_20481_0);
                 ZhuangbeiInfo oneByStr = GameData.that.baseZhuangbeiInfoService.findOneByStr("七龙珠");
                 GameUtil.huodezhuangbeixiangwu(chara1, oneByStr, 0, 1);
             }
@@ -88,7 +88,7 @@ public class CMD_DIALOG_CHOOSE_RESULT<main> implements org.linlinjava.litemall.g
                     Vo_20481_0 vo_20481_0 = new Vo_20481_0();
                     vo_20481_0.msg = "积分不足";
                     vo_20481_0.time = ((int) (System.currentTimeMillis() / 1000L));
-                    GameObjectCharMng.getGameObjectChar(chara1.id).sendOne(new M20481_0(), vo_20481_0);
+                    GameObjectCharMng.getGameObjectChar(chara1.id).sendOne(new MSG_NOTIFY_MISC_EX(), vo_20481_0);
                     return;
                 }
                 accounts.setChongzhijifen(Integer.valueOf(accounts.getChongzhijifen().intValue() - 3000));
@@ -101,11 +101,11 @@ public class CMD_DIALOG_CHOOSE_RESULT<main> implements org.linlinjava.litemall.g
                 List<Petbeibao> list = new ArrayList();
                 chara1.pets.add(petbeibao);
                 list.add(petbeibao);
-                GameObjectChar.send(new org.linlinjava.litemall.gameserver.data.write.M65507_0(), list);
+                GameObjectChar.send(new org.linlinjava.litemall.gameserver.data.write.MSG_UPDATE_PETS(), list);
                 Vo_20481_0 vo_20481_0 = new Vo_20481_0();
                 vo_20481_0.msg = ("恭喜获得#R" + s);
                 vo_20481_0.time = ((int) (System.currentTimeMillis() / 1000L));
-                GameObjectCharMng.getGameObjectChar(chara1.id).sendOne(new M20481_0(), vo_20481_0);
+                GameObjectCharMng.getGameObjectChar(chara1.id).sendOne(new MSG_NOTIFY_MISC_EX(), vo_20481_0);
                 ZhuangbeiInfo oneByStr = GameData.that.baseZhuangbeiInfoService.findOneByStr("天机锁链");
                 GameUtil.huodezhuangbeixiangwu(chara1, oneByStr, 0, 1);
             }
@@ -114,7 +114,7 @@ public class CMD_DIALOG_CHOOSE_RESULT<main> implements org.linlinjava.litemall.g
                     Vo_20481_0 vo_20481_0 = new Vo_20481_0();
                     vo_20481_0.msg = "积分不足";
                     vo_20481_0.time = ((int) (System.currentTimeMillis() / 1000L));
-                    GameObjectCharMng.getGameObjectChar(chara1.id).sendOne(new M20481_0(), vo_20481_0);
+                    GameObjectCharMng.getGameObjectChar(chara1.id).sendOne(new MSG_NOTIFY_MISC_EX(), vo_20481_0);
                     return;
                 }
                 accounts.setChongzhijifen(Integer.valueOf(accounts.getChongzhijifen().intValue() - 5000));
@@ -142,11 +142,11 @@ public class CMD_DIALOG_CHOOSE_RESULT<main> implements org.linlinjava.litemall.g
                 shuXing.upgrade_magic = 0;
                 shuXing.upgrade_total = 0;
                 petbeibao.petShuXing.add(shuXing);
-                GameObjectChar.send(new org.linlinjava.litemall.gameserver.data.write.M65507_0(), list);
+                GameObjectChar.send(new org.linlinjava.litemall.gameserver.data.write.MSG_UPDATE_PETS(), list);
                 Vo_20481_0 vo_20481_0 = new Vo_20481_0();
                 vo_20481_0.msg = ("恭喜获得#R" + name);
                 vo_20481_0.time = ((int) (System.currentTimeMillis() / 1000L));
-                GameObjectCharMng.getGameObjectChar(chara1.id).sendOne(new M20481_0(), vo_20481_0);
+                GameObjectCharMng.getGameObjectChar(chara1.id).sendOne(new MSG_NOTIFY_MISC_EX(), vo_20481_0);
                 ZhuangbeiInfo oneByStr = GameData.that.baseZhuangbeiInfoService.findOneByStr("闭月双环");
                 GameUtil.huodezhuangbeixiangwu(chara1, oneByStr, 0, 1);
             }
@@ -190,18 +190,18 @@ public class CMD_DIALOG_CHOOSE_RESULT<main> implements org.linlinjava.litemall.g
                 chara1.shadow_self += jifen;
                 chara1.chongzhijifen += jifen;
                 ListVo_65527_0 listVo_65527_0 = GameUtil.a65527(chara1);
-                GameObjectCharMng.getGameObjectChar(chara1.id).sendOne(new M65527_0(), listVo_65527_0);
+                GameObjectCharMng.getGameObjectChar(chara1.id).sendOne(new MSG_UPDATE_PETS(), listVo_65527_0);
                 accounts.setChongzhiyuanbao(Integer.valueOf(0));
                 GameData.that.baseAccountsService.updateById(accounts);
                 Vo_20481_0 vo_20481_0 = new Vo_20481_0();
                 vo_20481_0.msg = "领取元宝成功";
                 vo_20481_0.time = ((int) (System.currentTimeMillis() / 1000L));
-                GameObjectCharMng.getGameObjectChar(chara1.id).sendOne(new M20481_0(), vo_20481_0);
+                GameObjectCharMng.getGameObjectChar(chara1.id).sendOne(new MSG_NOTIFY_MISC_EX(), vo_20481_0);
             } else {
                 Vo_20481_0 vo_20481_0 = new Vo_20481_0();
                 vo_20481_0.msg = "暂无可领取的元宝";
                 vo_20481_0.time = ((int) (System.currentTimeMillis() / 1000L));
-                GameObjectCharMng.getGameObjectChar(chara1.id).sendOne(new M20481_0(), vo_20481_0);
+                GameObjectCharMng.getGameObjectChar(chara1.id).sendOne(new MSG_NOTIFY_MISC_EX(), vo_20481_0);
             }
         }
 
@@ -255,7 +255,7 @@ public class CMD_DIALOG_CHOOSE_RESULT<main> implements org.linlinjava.litemall.g
                 if (shidaoname == "不在活动时间内") vo_20481_0.msg = shidaoname;
                 else vo_20481_0.msg = "不符合条件";
                 vo_20481_0.time = ((int) (System.currentTimeMillis() / 1000L));
-                GameObjectChar.send(new M20481_0(), vo_20481_0);
+                GameObjectChar.send(new MSG_NOTIFY_MISC_EX(), vo_20481_0);
                 return;
             }
             chara1.y = map.getY().intValue();
@@ -281,13 +281,13 @@ public class CMD_DIALOG_CHOOSE_RESULT<main> implements org.linlinjava.litemall.g
                         (chara1.extra_life > 500)) {
                     chara1.extra_life -= 500;
                     ListVo_65527_0 listVo_65527_0 = GameUtil.a65527(chara1);
-                    GameObjectChar.send(new M65527_0(), listVo_65527_0);
+                    GameObjectChar.send(new MSG_UPDATE_PETS(), listVo_65527_0);
                     ((Goods) chara1.backpack.get(i)).goodsInfo.shape += 1000;
                     Vo_20481_0 vo_20481_0 = new Vo_20481_0();
                     vo_20481_0.msg = ("你的法宝#Y" + ((Goods) chara1.backpack.get(i)).goodsInfo.str + "#n获得了#R1000#n亲密");
                     vo_20481_0.time = ((int) (System.currentTimeMillis() / 1000L));
                     GameObjectChar.getGameObjectChar();
-                    GameObjectChar.send(new M20481_0(), vo_20481_0);
+                    GameObjectChar.send(new MSG_NOTIFY_MISC_EX(), vo_20481_0);
                     has = Boolean.valueOf(true);
                 }
             }
@@ -297,7 +297,7 @@ public class CMD_DIALOG_CHOOSE_RESULT<main> implements org.linlinjava.litemall.g
                 vo_20481_0.msg = "你身上没有法宝！";
                 vo_20481_0.time = ((int) (System.currentTimeMillis() / 1000L));
                 GameObjectChar.getGameObjectChar();
-                GameObjectChar.send(new M20481_0(), vo_20481_0);
+                GameObjectChar.send(new MSG_NOTIFY_MISC_EX(), vo_20481_0);
             }
         }
 
@@ -355,11 +355,11 @@ public class CMD_DIALOG_CHOOSE_RESULT<main> implements org.linlinjava.litemall.g
                         Vo_20481_0 vo_20481_0 = new Vo_20481_0();
                         vo_20481_0.msg = ("宠物获得武学#R" + intimacy);
                         vo_20481_0.time = ((int) (System.currentTimeMillis() / 1000L));
-                        GameObjectCharMng.getGameObjectChar(chara1.id).sendOne(new M20481_0(), vo_20481_0);
+                        GameObjectCharMng.getGameObjectChar(chara1.id).sendOne(new MSG_NOTIFY_MISC_EX(), vo_20481_0);
                     }
                 }
                 ListVo_65527_0 listVo_65527_0 = GameUtil.a65527(chara1);
-                GameObjectCharMng.getGameObjectChar(chara1.id).sendOne(new M65527_0(), listVo_65527_0);
+                GameObjectCharMng.getGameObjectChar(chara1.id).sendOne(new MSG_UPDATE_PETS(), listVo_65527_0);
             }
             if (menu_item.equals("领取悬赏任务")) {
                 boolean b = GameUtil.belongCalendar();
@@ -368,7 +368,7 @@ public class CMD_DIALOG_CHOOSE_RESULT<main> implements org.linlinjava.litemall.g
                     vo_20481_0.msg = "不在任务时间段";
                     vo_20481_0.time = 1562987118;
                     GameObjectChar.getGameObjectChar();
-                    GameObjectChar.send(new M20481_0(), vo_20481_0);
+                    GameObjectChar.send(new MSG_NOTIFY_MISC_EX(), vo_20481_0);
                     return;
                 }
 
@@ -377,7 +377,7 @@ public class CMD_DIALOG_CHOOSE_RESULT<main> implements org.linlinjava.litemall.g
                     vo_20481_0.msg = "请先领取奖励";
                     vo_20481_0.time = 1562987118;
                     GameObjectChar.getGameObjectChar();
-                    GameObjectChar.send(new M20481_0(), vo_20481_0);
+                    GameObjectChar.send(new MSG_NOTIFY_MISC_EX(), vo_20481_0);
                     return;
                 }
                 if (chara1.xuanshangcishu >= 2) {
@@ -385,7 +385,7 @@ public class CMD_DIALOG_CHOOSE_RESULT<main> implements org.linlinjava.litemall.g
                     vo_20481_0.msg = "今天已经做完了";
                     vo_20481_0.time = 1562987118;
                     GameObjectChar.getGameObjectChar();
-                    GameObjectChar.send(new M20481_0(), vo_20481_0);
+                    GameObjectChar.send(new MSG_NOTIFY_MISC_EX(), vo_20481_0);
                     return;
                 }
                 if (chara1.xuanshangcishu < 2) {
@@ -425,7 +425,7 @@ public class CMD_DIALOG_CHOOSE_RESULT<main> implements org.linlinjava.litemall.g
                 vo_20481_0.msg = "人数不足3人！";
                 vo_20481_0.time = ((int) (System.currentTimeMillis() / 1000L));
                 GameObjectChar.getGameObjectChar();
-                GameObjectChar.send(new M20481_0(), vo_20481_0);
+                GameObjectChar.send(new MSG_NOTIFY_MISC_EX(), vo_20481_0);
                 return;
             }
             List<Chara> duiwu = GameObjectChar.getGameObjectChar().gameTeam.duiwu;
@@ -434,7 +434,7 @@ public class CMD_DIALOG_CHOOSE_RESULT<main> implements org.linlinjava.litemall.g
                 vo_20481_0.msg = "人数不足3人！";
                 vo_20481_0.time = ((int) (System.currentTimeMillis() / 1000L));
                 GameObjectChar.getGameObjectChar();
-                GameObjectChar.send(new M20481_0(), vo_20481_0);
+                GameObjectChar.send(new MSG_NOTIFY_MISC_EX(), vo_20481_0);
                 return;
             }
             for (int i = 0; i < duiwu.size(); i++) {
@@ -443,7 +443,7 @@ public class CMD_DIALOG_CHOOSE_RESULT<main> implements org.linlinjava.litemall.g
                     vo_20481_0.msg = (((Chara) duiwu.get(i)).name + "已完成任务");
                     vo_20481_0.time = ((int) (System.currentTimeMillis() / 1000L));
                     GameObjectChar.getGameObjectChar();
-                    GameObjectChar.send(new M20481_0(), vo_20481_0);
+                    GameObjectChar.send(new MSG_NOTIFY_MISC_EX(), vo_20481_0);
                     return;
                 }
             }
@@ -462,7 +462,7 @@ public class CMD_DIALOG_CHOOSE_RESULT<main> implements org.linlinjava.litemall.g
             vo_61553_10.show_name = ("【十绝阵】修行(" + ((chara1.xiuxingcishu + 9) % 10 + 1) + "/10)");
             vo_61553_10.tasktask_extra_para = "";
             vo_61553_10.tasktask_state = "1";
-            GameObjectChar.sendduiwu(new M_MSG_TASK_PROMPT(), vo_61553_10, chara1.id);
+            GameObjectChar.sendduiwu(new MSG_TASK_PROMPT(), vo_61553_10, chara1.id);
             org.linlinjava.litemall.gameserver.data.vo.Vo_45063_0 vo_45063_0 = new org.linlinjava.litemall.gameserver.data.vo.Vo_45063_0();
             vo_45063_0.task_name = vo_61553_10.task_prompt;
             vo_45063_0.check_point = 147761859;
@@ -508,7 +508,7 @@ public class CMD_DIALOG_CHOOSE_RESULT<main> implements org.linlinjava.litemall.g
                 vo_20481_0.msg = "人数不足3人！";
                 vo_20481_0.time = ((int) (System.currentTimeMillis() / 1000L));
                 GameObjectChar.getGameObjectChar();
-                GameObjectChar.send(new M20481_0(), vo_20481_0);
+                GameObjectChar.send(new MSG_NOTIFY_MISC_EX(), vo_20481_0);
                 return;
             }
             List<Chara> duiwu = GameObjectChar.getGameObjectChar().gameTeam.duiwu;
@@ -517,7 +517,7 @@ public class CMD_DIALOG_CHOOSE_RESULT<main> implements org.linlinjava.litemall.g
                 vo_20481_0.msg = "人数不足3人！";
                 vo_20481_0.time = ((int) (System.currentTimeMillis() / 1000L));
                 GameObjectChar.getGameObjectChar();
-                GameObjectChar.send(new M20481_0(), vo_20481_0);
+                GameObjectChar.send(new MSG_NOTIFY_MISC_EX(), vo_20481_0);
                 return;
             }
             for (int i = 0; i < duiwu.size(); i++) {
@@ -526,7 +526,7 @@ public class CMD_DIALOG_CHOOSE_RESULT<main> implements org.linlinjava.litemall.g
                     vo_20481_0.msg = (((Chara) duiwu.get(i)).name + "已完成任务");
                     vo_20481_0.time = ((int) (System.currentTimeMillis() / 1000L));
                     GameObjectChar.getGameObjectChar();
-                    GameObjectChar.send(new M20481_0(), vo_20481_0);
+                    GameObjectChar.send(new MSG_NOTIFY_MISC_EX(), vo_20481_0);
                     return;
                 }
             }
@@ -546,7 +546,7 @@ public class CMD_DIALOG_CHOOSE_RESULT<main> implements org.linlinjava.litemall.g
             vo_61553_10.show_name = ("【修炼】修行(" + chara1.xiuxingcishu + "/10)");
             vo_61553_10.tasktask_extra_para = "";
             vo_61553_10.tasktask_state = "1";
-            GameObjectChar.sendduiwu(new M_MSG_TASK_PROMPT(), vo_61553_10, chara1.id);
+            GameObjectChar.sendduiwu(new MSG_TASK_PROMPT(), vo_61553_10, chara1.id);
         }
 
         if (menu_item.equals("修行_s1")) {
@@ -589,7 +589,7 @@ public class CMD_DIALOG_CHOOSE_RESULT<main> implements org.linlinjava.litemall.g
                 vo_20481_0.msg = "人数不足3人！";
                 vo_20481_0.time = ((int) (System.currentTimeMillis() / 1000L));
                 GameObjectChar.getGameObjectChar();
-                GameObjectChar.send(new M20481_0(), vo_20481_0);
+                GameObjectChar.send(new MSG_NOTIFY_MISC_EX(), vo_20481_0);
                 return;
             }
             List<Chara> duiwu = GameObjectChar.getGameObjectChar().gameTeam.duiwu;
@@ -598,7 +598,7 @@ public class CMD_DIALOG_CHOOSE_RESULT<main> implements org.linlinjava.litemall.g
                 vo_20481_0.msg = "人数不足3人！";
                 vo_20481_0.time = ((int) (System.currentTimeMillis() / 1000L));
                 GameObjectChar.getGameObjectChar();
-                GameObjectChar.send(new M20481_0(), vo_20481_0);
+                GameObjectChar.send(new MSG_NOTIFY_MISC_EX(), vo_20481_0);
                 return;
             }
 
@@ -607,7 +607,7 @@ public class CMD_DIALOG_CHOOSE_RESULT<main> implements org.linlinjava.litemall.g
                 vo_20481_0.msg = "人物等级相差10级，不能接任务！";
                 vo_20481_0.time = ((int) (System.currentTimeMillis() / 1000L));
                 GameObjectChar.getGameObjectChar();
-                GameObjectChar.send(new M20481_0(), vo_20481_0);
+                GameObjectChar.send(new MSG_NOTIFY_MISC_EX(), vo_20481_0);
                 return;
             }
 
@@ -652,7 +652,7 @@ public class CMD_DIALOG_CHOOSE_RESULT<main> implements org.linlinjava.litemall.g
             vo_61553_0.show_name = ("飞仙渡邪(" + cishu + "/10)");
             vo_61553_0.tasktask_extra_para = "";
             vo_61553_0.tasktask_state = "1";
-            GameObjectChar.sendduiwu(new M_MSG_TASK_PROMPT(), vo_61553_0, chara1.id);
+            GameObjectChar.sendduiwu(new MSG_TASK_PROMPT(), vo_61553_0, chara1.id);
 
             org.linlinjava.litemall.gameserver.data.vo.Vo_45063_0 vo_45063_0 = new org.linlinjava.litemall.gameserver.data.vo.Vo_45063_0();
             vo_45063_0.task_name = vo_61553_0.task_prompt;
@@ -670,7 +670,7 @@ public class CMD_DIALOG_CHOOSE_RESULT<main> implements org.linlinjava.litemall.g
             GameObjectChar.sendduiwu(new org.linlinjava.litemall.gameserver.data.write.M8165_0(), vo_8165_0, chara1.id);
 
             if (chara1.mapid == ((Vo_65529_0) chara1.npcshuadao.get(0)).mapid) {
-                GameObjectChar.sendduiwu(new org.linlinjava.litemall.gameserver.data.write.M65529_0(), chara1.npcshuadao.get(0), chara1.id);
+                GameObjectChar.sendduiwu(new org.linlinjava.litemall.gameserver.data.write.MSG_UPDATE_PETS(), chara1.npcshuadao.get(0), chara1.id);
             }
         }
         if ((npc_id == 866) &&
@@ -684,7 +684,7 @@ public class CMD_DIALOG_CHOOSE_RESULT<main> implements org.linlinjava.litemall.g
                 vo_20481_0.msg = "人数不足3人！";
                 vo_20481_0.time = ((int) (System.currentTimeMillis() / 1000L));
                 GameObjectChar.getGameObjectChar();
-                GameObjectChar.send(new M20481_0(), vo_20481_0);
+                GameObjectChar.send(new MSG_NOTIFY_MISC_EX(), vo_20481_0);
                 return;
             }
             int ret = GameUtil.duiwudengjicmp(chara1, GameObjectChar.getGameObjectChar(), 80, 119);
@@ -697,7 +697,7 @@ public class CMD_DIALOG_CHOOSE_RESULT<main> implements org.linlinjava.litemall.g
                 }
                 vo_20481_0.time = ((int) (System.currentTimeMillis() / 1000L));
                 GameObjectChar.getGameObjectChar();
-                GameObjectChar.send(new M20481_0(), vo_20481_0);
+                GameObjectChar.send(new MSG_NOTIFY_MISC_EX(), vo_20481_0);
                 return;
             }
             if (!GameUtil.duiwudengji(chara1, GameObjectChar.getGameObjectChar())) {
@@ -705,7 +705,7 @@ public class CMD_DIALOG_CHOOSE_RESULT<main> implements org.linlinjava.litemall.g
                 vo_20481_0.msg = "人物等级相差10级，不能接任务！";
                 vo_20481_0.time = ((int) (System.currentTimeMillis() / 1000L));
                 GameObjectChar.getGameObjectChar();
-                GameObjectChar.send(new M20481_0(), vo_20481_0);
+                GameObjectChar.send(new MSG_NOTIFY_MISC_EX(), vo_20481_0);
                 return;
             }
 
@@ -750,7 +750,7 @@ public class CMD_DIALOG_CHOOSE_RESULT<main> implements org.linlinjava.litemall.g
             vo_61553_0.show_name = ("附魔(" + cishu + "/10)");
             vo_61553_0.tasktask_extra_para = "";
             vo_61553_0.tasktask_state = "1";
-            GameObjectChar.sendduiwu(new M_MSG_TASK_PROMPT(), vo_61553_0, chara1.id);
+            GameObjectChar.sendduiwu(new MSG_TASK_PROMPT(), vo_61553_0, chara1.id);
 
             org.linlinjava.litemall.gameserver.data.vo.Vo_45063_0 vo_45063_0 = new org.linlinjava.litemall.gameserver.data.vo.Vo_45063_0();
             vo_45063_0.task_name = vo_61553_0.task_prompt;
@@ -768,7 +768,7 @@ public class CMD_DIALOG_CHOOSE_RESULT<main> implements org.linlinjava.litemall.g
             GameObjectChar.sendduiwu(new org.linlinjava.litemall.gameserver.data.write.M8165_0(), vo_8165_0, chara1.id);
 
             if (chara1.mapid == ((Vo_65529_0) chara1.npcshuadao.get(0)).mapid) {
-                GameObjectChar.sendduiwu(new org.linlinjava.litemall.gameserver.data.write.M65529_0(), chara1.npcshuadao.get(0), chara1.id);
+                GameObjectChar.sendduiwu(new org.linlinjava.litemall.gameserver.data.write.MSG_UPDATE_PETS(), chara1.npcshuadao.get(0), chara1.id);
             }
         }
 
@@ -779,7 +779,7 @@ public class CMD_DIALOG_CHOOSE_RESULT<main> implements org.linlinjava.litemall.g
                 vo_20481_0.msg = "人数不足3人！";
                 vo_20481_0.time = ((int) (System.currentTimeMillis() / 1000L));
                 GameObjectChar.getGameObjectChar();
-                GameObjectChar.send(new M20481_0(), vo_20481_0);
+                GameObjectChar.send(new MSG_NOTIFY_MISC_EX(), vo_20481_0);
                 return;
             }
             List<Chara> duiwu = GameObjectChar.getGameObjectChar().gameTeam.duiwu;
@@ -788,7 +788,7 @@ public class CMD_DIALOG_CHOOSE_RESULT<main> implements org.linlinjava.litemall.g
                 vo_20481_0.msg = "人数不足3人！";
                 vo_20481_0.time = ((int) (System.currentTimeMillis() / 1000L));
                 GameObjectChar.getGameObjectChar();
-                GameObjectChar.send(new M20481_0(), vo_20481_0);
+                GameObjectChar.send(new MSG_NOTIFY_MISC_EX(), vo_20481_0);
                 return;
             }
             int ret = GameUtil.duiwudengjicmp(chara1, GameObjectChar.getGameObjectChar(), 45, 79);
@@ -801,7 +801,7 @@ public class CMD_DIALOG_CHOOSE_RESULT<main> implements org.linlinjava.litemall.g
                 }
                 vo_20481_0.time = ((int) (System.currentTimeMillis() / 1000L));
                 GameObjectChar.getGameObjectChar();
-                GameObjectChar.send(new M20481_0(), vo_20481_0);
+                GameObjectChar.send(new MSG_NOTIFY_MISC_EX(), vo_20481_0);
                 return;
             }
 
@@ -810,7 +810,7 @@ public class CMD_DIALOG_CHOOSE_RESULT<main> implements org.linlinjava.litemall.g
                 vo_20481_0.msg = "人物等级相差10级，不能接任务！";
                 vo_20481_0.time = ((int) (System.currentTimeMillis() / 1000L));
                 GameObjectChar.getGameObjectChar();
-                GameObjectChar.send(new M20481_0(), vo_20481_0);
+                GameObjectChar.send(new MSG_NOTIFY_MISC_EX(), vo_20481_0);
             }
             List<RenwuMonster> all = GameData.that.baseRenwuMonsterService.findByType(Integer.valueOf(2));
             Random random = new Random();
@@ -854,7 +854,7 @@ public class CMD_DIALOG_CHOOSE_RESULT<main> implements org.linlinjava.litemall.g
             vo_61553_0.show_name = ("降妖(" + cishu + "/10)");
             vo_61553_0.tasktask_extra_para = "";
             vo_61553_0.tasktask_state = "1";
-            GameObjectChar.sendduiwu(new M_MSG_TASK_PROMPT(), vo_61553_0, chara1.id);
+            GameObjectChar.sendduiwu(new MSG_TASK_PROMPT(), vo_61553_0, chara1.id);
 
             org.linlinjava.litemall.gameserver.data.vo.Vo_45063_0 vo_45063_0 = new org.linlinjava.litemall.gameserver.data.vo.Vo_45063_0();
             vo_45063_0.task_name = vo_61553_0.task_prompt;
@@ -872,7 +872,7 @@ public class CMD_DIALOG_CHOOSE_RESULT<main> implements org.linlinjava.litemall.g
             GameObjectChar.sendduiwu(new org.linlinjava.litemall.gameserver.data.write.M8165_0(), vo_8165_0, chara1.id);
 
             if (chara1.mapid == ((Vo_65529_0) chara1.npcshuadao.get(0)).mapid) {
-                GameObjectChar.sendduiwu(new org.linlinjava.litemall.gameserver.data.write.M65529_0(), chara1.npcshuadao.get(0), chara1.id);
+                GameObjectChar.sendduiwu(new org.linlinjava.litemall.gameserver.data.write.MSG_UPDATE_PETS(), chara1.npcshuadao.get(0), chara1.id);
             }
         }
 
@@ -904,13 +904,13 @@ public class CMD_DIALOG_CHOOSE_RESULT<main> implements org.linlinjava.litemall.g
                 vo_61553_10.show_name = "法宝任务";
                 vo_61553_10.tasktask_extra_para = "";
                 vo_61553_10.tasktask_state = "1";
-                GameObjectChar.send(new M_MSG_TASK_PROMPT(), vo_61553_10);
+                GameObjectChar.send(new MSG_TASK_PROMPT(), vo_61553_10);
                 chara1.fabaorenwu += 1;
             } else {
                 Vo_20481_0 vo_20481_0 = new Vo_20481_0();
                 vo_20481_0.msg = "首饰不足！";
                 vo_20481_0.time = ((int) (System.currentTimeMillis() / 1000L));
-                GameObjectChar.send(new M20481_0(), vo_20481_0);
+                GameObjectChar.send(new MSG_NOTIFY_MISC_EX(), vo_20481_0);
             }
         }
 
@@ -921,7 +921,7 @@ public class CMD_DIALOG_CHOOSE_RESULT<main> implements org.linlinjava.litemall.g
                 vo_20481_0.msg = "今天已经领取任务了！";
                 vo_20481_0.time = 1562987118;
                 GameObjectChar.getGameObjectChar();
-                GameObjectChar.send(new M20481_0(), vo_20481_0);
+                GameObjectChar.send(new MSG_NOTIFY_MISC_EX(), vo_20481_0);
             } else {
                 Vo_61553_0 vo_61553_10 = new Vo_61553_0();
                 vo_61553_10.count = 1;
@@ -935,7 +935,7 @@ public class CMD_DIALOG_CHOOSE_RESULT<main> implements org.linlinjava.litemall.g
                 vo_61553_10.show_name = "法宝任务";
                 vo_61553_10.tasktask_extra_para = "";
                 vo_61553_10.tasktask_state = "0";
-                GameObjectChar.send(new M_MSG_TASK_PROMPT(), vo_61553_10);
+                GameObjectChar.send(new MSG_TASK_PROMPT(), vo_61553_10);
                 chara1.fabaorenwu += 1;
                 return;
             }
@@ -961,7 +961,7 @@ public class CMD_DIALOG_CHOOSE_RESULT<main> implements org.linlinjava.litemall.g
                 vo_61553_10.show_name = "";
                 vo_61553_10.tasktask_extra_para = "";
                 vo_61553_10.tasktask_state = "1";
-                GameObjectChar.send(new M_MSG_TASK_PROMPT(), vo_61553_10);
+                GameObjectChar.send(new MSG_TASK_PROMPT(), vo_61553_10);
                 return;
             }
             chara1.npcName = npces[i];
@@ -977,11 +977,11 @@ public class CMD_DIALOG_CHOOSE_RESULT<main> implements org.linlinjava.litemall.g
             vo_61553_10.show_name = ("师门—入世(" + chara1.shimencishu + "/10)");
             vo_61553_10.tasktask_extra_para = "";
             vo_61553_10.tasktask_state = "1";
-            GameObjectChar.send(new M_MSG_TASK_PROMPT(), vo_61553_10);
+            GameObjectChar.send(new MSG_TASK_PROMPT(), vo_61553_10);
             GameUtil.huodejingyan(chara1, (int) (1420 * chara1.level * (1.0D + 0.1D * chara1.shimencishu)));
             chara1.use_money_type += (int) (chara1.level / 10 * 4374 * (1.0D + 0.1D * chara1.shimencishu));
             ListVo_65527_0 listVo_65527_0 = GameUtil.a65527(chara1);
-            GameObjectChar.send(new M65527_0(), listVo_65527_0);
+            GameObjectChar.send(new MSG_UPDATE_PETS(), listVo_65527_0);
         }
 
         if ((npc_id == 831) || (npc_id == 1068) || (npc_id == 1019) || (npc_id == 1107) || (npc_id == 943)) {
@@ -991,7 +991,7 @@ public class CMD_DIALOG_CHOOSE_RESULT<main> implements org.linlinjava.litemall.g
                 vo_20481_0.msg = "来错门派了！";
                 vo_20481_0.time = 1562987118;
                 GameObjectChar.getGameObjectChar();
-                GameObjectChar.send(new M20481_0(), vo_20481_0);
+                GameObjectChar.send(new MSG_NOTIFY_MISC_EX(), vo_20481_0);
                 return;
             }
 
@@ -1004,7 +1004,7 @@ public class CMD_DIALOG_CHOOSE_RESULT<main> implements org.linlinjava.litemall.g
                     vo_20481_0.msg = "今天已完成任务";
                     vo_20481_0.time = 1562987118;
                     GameObjectChar.getGameObjectChar();
-                    GameObjectChar.send(new M20481_0(), vo_20481_0);
+                    GameObjectChar.send(new MSG_NOTIFY_MISC_EX(), vo_20481_0);
                     return;
                 }
                 if (!chara1.npcName.equals("")) {
@@ -1012,7 +1012,7 @@ public class CMD_DIALOG_CHOOSE_RESULT<main> implements org.linlinjava.litemall.g
                     vo_20481_0.msg = "请完成当前任务";
                     vo_20481_0.time = 1562987118;
                     GameObjectChar.getGameObjectChar();
-                    GameObjectChar.send(new M20481_0(), vo_20481_0);
+                    GameObjectChar.send(new MSG_NOTIFY_MISC_EX(), vo_20481_0);
                     return;
                 }
                 chara1.npcName = npces[i];
@@ -1028,7 +1028,7 @@ public class CMD_DIALOG_CHOOSE_RESULT<main> implements org.linlinjava.litemall.g
                 vo_61553_10.show_name = ("师门—入世(" + chara1.shimencishu + "/10)");
                 vo_61553_10.tasktask_extra_para = "";
                 vo_61553_10.tasktask_state = "1";
-                GameObjectChar.send(new M_MSG_TASK_PROMPT(), vo_61553_10);
+                GameObjectChar.send(new MSG_TASK_PROMPT(), vo_61553_10);
             }
         }
 
@@ -1039,7 +1039,7 @@ public class CMD_DIALOG_CHOOSE_RESULT<main> implements org.linlinjava.litemall.g
                     vo_20481_0.msg = "你今天已经帮了我大忙了，还是先休息休息吧。";
                     vo_20481_0.time = ((int) (System.currentTimeMillis() / 1000L));
                     GameObjectChar.getGameObjectChar();
-                    GameObjectChar.send(new M20481_0(), vo_20481_0);
+                    GameObjectChar.send(new MSG_NOTIFY_MISC_EX(), vo_20481_0);
                     return;
                 }
 
@@ -1061,7 +1061,7 @@ public class CMD_DIALOG_CHOOSE_RESULT<main> implements org.linlinjava.litemall.g
                     vo_20481_0.msg = "金币不够，代金券不够，无法领取奖励";
                     vo_20481_0.time = ((int) (System.currentTimeMillis() / 1000L));
                     GameObjectChar.getGameObjectChar();
-                    GameObjectChar.send(new M20481_0(), vo_20481_0);
+                    GameObjectChar.send(new MSG_NOTIFY_MISC_EX(), vo_20481_0);
                     return;
                 }
                 if (chara1.use_money_type < chara1.level / 10 * 25) {
@@ -1073,7 +1073,7 @@ public class CMD_DIALOG_CHOOSE_RESULT<main> implements org.linlinjava.litemall.g
                 GameUtil.weijianding(chara1);
 
                 ListVo_65527_0 listVo_65527_0 = GameUtil.a65527(chara1);
-                GameObjectChar.send(new M65527_0(), listVo_65527_0);
+                GameObjectChar.send(new MSG_UPDATE_PETS(), listVo_65527_0);
 
                 chara1.baibangmang = 1;
                 return;
@@ -1085,7 +1085,7 @@ public class CMD_DIALOG_CHOOSE_RESULT<main> implements org.linlinjava.litemall.g
                     vo_20481_0.msg = "金币不够，代金券不够，无法领取奖励";
                     vo_20481_0.time = ((int) (System.currentTimeMillis() / 1000L));
                     GameObjectChar.getGameObjectChar();
-                    GameObjectChar.send(new M20481_0(), vo_20481_0);
+                    GameObjectChar.send(new MSG_NOTIFY_MISC_EX(), vo_20481_0);
                     return;
                 }
                 if (chara1.use_money_type < chara1.level / 10 * 25) {
@@ -1102,7 +1102,7 @@ public class CMD_DIALOG_CHOOSE_RESULT<main> implements org.linlinjava.litemall.g
                         ((PetShuXing) ((Petbeibao) chara1.pets.get(i)).petShuXing.get(0)).intimacy += 76 * ((PetShuXing) ((Petbeibao) chara1.pets.get(i)).petShuXing.get(0)).skill;
                         List<Petbeibao> list = new ArrayList();
                         list.add(chara1.pets.get(i));
-                        GameObjectChar.send(new org.linlinjava.litemall.gameserver.data.write.M65507_0(), list);
+                        GameObjectChar.send(new org.linlinjava.litemall.gameserver.data.write.MSG_UPDATE_PETS(), list);
                         break;
                     }
                 }
@@ -1110,9 +1110,9 @@ public class CMD_DIALOG_CHOOSE_RESULT<main> implements org.linlinjava.litemall.g
                 vo_20481_0.msg = ("获得道行#R" + 3392 * chara1.level / 1440 + "天");
                 vo_20481_0.time = ((int) (System.currentTimeMillis() / 1000L));
                 GameObjectChar.getGameObjectChar();
-                GameObjectChar.send(new M20481_0(), vo_20481_0);
+                GameObjectChar.send(new MSG_NOTIFY_MISC_EX(), vo_20481_0);
                 ListVo_65527_0 listVo_65527_0 = GameUtil.a65527(chara1);
-                GameObjectChar.send(new M65527_0(), listVo_65527_0);
+                GameObjectChar.send(new MSG_UPDATE_PETS(), listVo_65527_0);
 
                 GameUtil.weijianding(chara1);
 
@@ -1125,7 +1125,7 @@ public class CMD_DIALOG_CHOOSE_RESULT<main> implements org.linlinjava.litemall.g
                     vo_20481_0.msg = "金币不够，代金券不够，无法领取奖励";
                     vo_20481_0.time = ((int) (System.currentTimeMillis() / 1000L));
                     GameObjectChar.getGameObjectChar();
-                    GameObjectChar.send(new M20481_0(), vo_20481_0);
+                    GameObjectChar.send(new MSG_NOTIFY_MISC_EX(), vo_20481_0);
                     return;
                 }
                 if (chara1.use_money_type < chara1.level / 10 * 25) {
@@ -1141,10 +1141,10 @@ public class CMD_DIALOG_CHOOSE_RESULT<main> implements org.linlinjava.litemall.g
 
                 vo_20481_0.time = 1562987118;
                 GameObjectChar.getGameObjectChar();
-                GameObjectChar.send(new M20481_0(), vo_20481_0);
+                GameObjectChar.send(new MSG_NOTIFY_MISC_EX(), vo_20481_0);
 
                 ListVo_65527_0 listVo_65527_0 = GameUtil.a65527(chara1);
-                GameObjectChar.send(new M65527_0(), listVo_65527_0);
+                GameObjectChar.send(new MSG_UPDATE_PETS(), listVo_65527_0);
 
                 GameUtil.weijianding(chara1);
 
@@ -1231,7 +1231,7 @@ public class CMD_DIALOG_CHOOSE_RESULT<main> implements org.linlinjava.litemall.g
                 Vo_20481_0 vo_20481_0 = new Vo_20481_0();
                 vo_20481_0.msg = "你今天已经完成了";
                 vo_20481_0.time = 1562987118;
-                GameObjectChar.send(new M20481_0(), vo_20481_0);
+                GameObjectChar.send(new MSG_NOTIFY_MISC_EX(), vo_20481_0);
                 return;
             }
 
@@ -1273,7 +1273,7 @@ public class CMD_DIALOG_CHOOSE_RESULT<main> implements org.linlinjava.litemall.g
             vo_61553_0.show_name = ("为民除暴(" + cishu + "/10)");
             vo_61553_0.tasktask_extra_para = "";
             vo_61553_0.tasktask_state = "1";
-            GameObjectChar.sendduiwu(new M_MSG_TASK_PROMPT(), vo_61553_0, chara1.id);
+            GameObjectChar.sendduiwu(new MSG_TASK_PROMPT(), vo_61553_0, chara1.id);
 
             org.linlinjava.litemall.gameserver.data.vo.Vo_45092_0 vo_45092_0 = new org.linlinjava.litemall.gameserver.data.vo.Vo_45092_0();
             vo_45092_0.task_name = "为民除暴";
@@ -1377,7 +1377,7 @@ public class CMD_DIALOG_CHOOSE_RESULT<main> implements org.linlinjava.litemall.g
                         goods2.pos = ((Goods) chara1.backpack.get(i)).pos;
                         listbeibao.add(chara1.backpack.get(i));
                         listbeibao1.add(goods2);
-                        GameObjectChar.send(new org.linlinjava.litemall.gameserver.data.write.M65525_0(), listbeibao1);
+                        GameObjectChar.send(new org.linlinjava.litemall.gameserver.data.write.MSG_UPDATE_PETS(), listbeibao1);
                     }
                 }
 
@@ -1423,7 +1423,7 @@ public class CMD_DIALOG_CHOOSE_RESULT<main> implements org.linlinjava.litemall.g
         }
         List<org.linlinjava.litemall.db.domain.NpcDialogueFrame> npcDialogueFrameList = GameData.that.baseNpcDialogueFrameService.findByName(npc.getName());
         GameObjectChar.send(new org.linlinjava.litemall.gameserver.data.write.M4155_0(), Integer.valueOf(npc_id));
-        
+
         if (!menu_item.equals("离开")) {
             if (chara.current_task.equals(menu_item)) {
                 if (chara.current_task.equals("主线—浮生若梦_s1")) {
@@ -1451,23 +1451,23 @@ public class CMD_DIALOG_CHOOSE_RESULT<main> implements org.linlinjava.litemall.g
                     vo_61553_0.show_name = "为民除暴";
                     vo_61553_0.tasktask_extra_para = "";
                     vo_61553_0.tasktask_state = "1";
-                    GameObjectChar.send(new M_MSG_TASK_PROMPT(), vo_61553_0);
+                    GameObjectChar.send(new MSG_TASK_PROMPT(), vo_61553_0);
                 }
                 chara.current_task = GameUtil.nextrenw(menu_item);
                 org.linlinjava.litemall.db.domain.Renwu tasks = GameData.that.baseRenwuService.findOneByCurrentTask(chara.current_task);
                 Vo_61553_0 vo_61553_0 = GameUtil.a61553(tasks, chara);
-                GameObjectChar.send(new M_MSG_TASK_PROMPT(), vo_61553_0);
+                GameObjectChar.send(new MSG_TASK_PROMPT(), vo_61553_0);
             }
 
             ListVo_65527_0 vo_65527_0 = GameUtil.a65527(chara);
-            GameObjectChar.send(new M65527_0(), vo_65527_0);
-            GameUtil.a65511(chara);
+            GameObjectChar.send(new MSG_UPDATE_PETS(), vo_65527_0);
+            GameUtil.MSG_UPDATE_IMPROVEMENT(chara);
         }
         org.linlinjava.litemall.gameserver.data.vo.Vo_45056_0 vo_45056_0 = GameUtil.a45056(chara);
         GameObjectChar.send(new org.linlinjava.litemall.gameserver.data.write.M45056_0(), vo_45056_0);
 
         ListVo_65527_0 vo_65527_0 = GameUtil.a65527(chara);
-        GameObjectChar.send(new M65527_0(), vo_65527_0);
+        GameObjectChar.send(new MSG_UPDATE_PETS(), vo_65527_0);
     }
 
     public int cmd() {
@@ -1484,7 +1484,7 @@ public class CMD_DIALOG_CHOOSE_RESULT<main> implements org.linlinjava.litemall.g
                 Vo_20481_0 vo_20481_0 = new Vo_20481_0();
                 vo_20481_0.msg = ("你获得了1把#R" + zhuangb.getStr() + "#n。");
                 vo_20481_0.time = 1562987118;
-                GameObjectChar.send(new M20481_0(), vo_20481_0);
+                GameObjectChar.send(new MSG_NOTIFY_MISC_EX(), vo_20481_0);
 
                 org.linlinjava.litemall.gameserver.data.vo.Vo_20480_0 vo_20480_0 = new org.linlinjava.litemall.gameserver.data.vo.Vo_20480_0();
                 vo_20480_0.msg = "你获得了#R260#n点经验。";
@@ -1521,6 +1521,6 @@ public class CMD_DIALOG_CHOOSE_RESULT<main> implements org.linlinjava.litemall.g
         vo_61553_10.show_name = "法宝任务";
         vo_61553_10.tasktask_extra_para = "";
         vo_61553_10.tasktask_state = "1";
-        GameObjectChar.send(new M_MSG_TASK_PROMPT(), vo_61553_10);
+        GameObjectChar.send(new MSG_TASK_PROMPT(), vo_61553_10);
     }
 }

@@ -25,6 +25,8 @@ public class GameData {
     @Autowired
     public BasePetService basePetService;
     @Autowired
+    public BaseFightObjectService baseFightObjectService;
+    @Autowired
     public BaseExperienceService baseExperienceService;
     @Autowired
     public BaseStoreInfoService baseStoreInfoService;
@@ -46,6 +48,10 @@ public class GameData {
     public SaleGoodService saleGoodService;
     @Autowired
     public BaseNpcService baseNpcService;
+    @Autowired
+    public BaseShangGuYaoWangInfoService BaseShangGuYaoWangInfoService;
+    @Autowired
+    public BaseShangGuYaoWangRewardInfoService BaseShangGuYaoWangRewardInfoService;
     @Autowired
     public BaseMapService baseMapService;
     @Autowired
