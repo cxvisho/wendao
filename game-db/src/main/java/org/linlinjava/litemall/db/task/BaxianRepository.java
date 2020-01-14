@@ -3,29 +3,22 @@ package org.linlinjava.litemall.db.task;
 import com.alibaba.fastjson.JSON;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
 import org.linlinjava.litemall.db.domain.Npc;
+import org.linlinjava.litemall.db.service.JsonBasedRepository;
 import org.linlinjava.litemall.db.service.base.BaseMapService;
 import org.linlinjava.litemall.db.service.base.BaseNpcService;
 import org.linlinjava.litemall.db.util.JsonConfigLoader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Repository;
-import org.springframework.util.ResourceUtils;
 
 import javax.annotation.PostConstruct;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.List;
 import java.util.Map;
 
-@Repository
-public class BaxianRepository extends JsonBasedRepository {
+@Repository(value = "baxian")
+public class BaxianRepository implements JsonBasedRepository {
     private static final Logger logger = LoggerFactory.getLogger(BaxianRepository.class);
 
     private Map<Integer, TaskChain> taskChainMap = Maps.newHashMap();
@@ -36,7 +29,7 @@ public class BaxianRepository extends JsonBasedRepository {
     @Autowired
     private BaseNpcService npcService;
 
-    public void constructFromJsonString(String json) {
+    public void loadConfigFromJsonString(String json) {
         List<TaskChain> taskChainList = JSON.parseArray(json, TaskChain.class);
         for (TaskChain taskChain : taskChainList) {
             for (TaskVO taskVO : taskChain.getTaskList()) {
@@ -62,7 +55,7 @@ public class BaxianRepository extends JsonBasedRepository {
     @PostConstruct
     private void init() {
         String json = JsonConfigLoader.getJson("baxian");
-        constructFromJsonString(json);
+        loadConfigFromJsonString(json);
     }
 
     public TaskVO getChainAndTaskIdByNpcId(int npcId) {

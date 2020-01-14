@@ -10,7 +10,7 @@ import java.io.InputStreamReader;
 public class JsonConfigLoader {
     public static String getJson(String filename) {
         try {
-            ClassPathResource resource = new ClassPathResource("data/" + filename);
+            ClassPathResource resource = new ClassPathResource("data/" + filename + ".json");
             InputStream inputStream = resource.getInputStream();
             InputStreamReader reader = new InputStreamReader(inputStream);
             return String.join("", IOUtils.readLines(reader));
