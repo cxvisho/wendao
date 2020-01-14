@@ -8,6 +8,7 @@ import org.apache.commons.io.IOUtils;
 import org.linlinjava.litemall.db.domain.Npc;
 import org.linlinjava.litemall.db.service.base.BaseMapService;
 import org.linlinjava.litemall.db.service.base.BaseNpcService;
+import org.linlinjava.litemall.db.util.JsonConfigLoader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,7 @@ import java.util.List;
 import java.util.Map;
 
 @Repository
-public class BaxianRepository {
+public class BaxianRepository extends JsonBasedRepository {
     private static final Logger logger = LoggerFactory.getLogger(BaxianRepository.class);
 
     private Map<Integer, TaskChain> taskChainMap = Maps.newHashMap();
@@ -35,36 +36,33 @@ public class BaxianRepository {
     @Autowired
     private BaseNpcService npcService;
 
-    @PostConstruct
-    private void init() {
-        try {
-            ClassPathResource resource = new ClassPathResource("data/baxian.json");
-            InputStream inputStream = resource.getInputStream();
-            InputStreamReader reader = new InputStreamReader(inputStream);
-            String json = String.join("", IOUtils.readLines(reader));
-            List<TaskChain> taskChainList = JSON.parseArray(json, TaskChain.class);
-            for (TaskChain taskChain : taskChainList) {
-                for (TaskVO taskVO : taskChain.getTaskList()) {
-                    taskVO.setChainId(taskChain.getChainId());
-                    Integer npcId = taskVO.getNpcId();
-                    Npc npc = npcService.findById(npcId);
-                    if (npc != null) {
-                        taskVO.setMapId(npc.getMapId());
-                        taskVO.setNpcX(npc.getX());
-                        taskVO.setNpcY(npc.getY());
-                        List<org.linlinjava.litemall.db.domain.Map> mapList = mapService.findByMapId(npc.getMapId());
-                        if (mapList.size() != 0) {
-                            taskVO.setMapName(mapList.get(0).getName());
-                        }
+    public void constructFromJsonString(String json) {
+        List<TaskChain> taskChainList = JSON.parseArray(json, TaskChain.class);
+        for (TaskChain taskChain : taskChainList) {
+            for (TaskVO taskVO : taskChain.getTaskList()) {
+                taskVO.setChainId(taskChain.getChainId());
+                Integer npcId = taskVO.getNpcId();
+                Npc npc = npcService.findById(npcId);
+                if (npc != null) {
+                    taskVO.setMapId(npc.getMapId());
+                    taskVO.setNpcX(npc.getX());
+                    taskVO.setNpcY(npc.getY());
+                    List<org.linlinjava.litemall.db.domain.Map> mapList = mapService.findByMapId(npc.getMapId());
+                    if (mapList.size() != 0) {
+                        taskVO.setMapName(mapList.get(0).getName());
                     }
                 }
-                taskChainMap.put(taskChain.getChainId(), taskChain);
             }
-        } catch (IOException e) {
-            e.printStackTrace();
+            taskChainMap.put(taskChain.getChainId(), taskChain);
         }
 
         logger.info(taskChainMap.toString());
+    }
+
+    @PostConstruct
+    private void init() {
+        String json = JsonConfigLoader.getJson("baxian");
+        constructFromJsonString(json);
     }
 
     public TaskVO getChainAndTaskIdByNpcId(int npcId) {
