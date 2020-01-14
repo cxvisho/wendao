@@ -1,4 +1,4 @@
-package org.linlinjava.litemall.gameserver.service;
+package org.linlinjava.litemall.db.task;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

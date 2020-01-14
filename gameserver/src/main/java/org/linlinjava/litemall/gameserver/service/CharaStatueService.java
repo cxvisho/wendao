@@ -29,10 +29,10 @@ public class CharaStatueService {
     private static final Map<String, CharaStatue> cacheMap = new HashMap<>();
 
     public static final void init(String serverId){
-        CharaStatueService.serverId = serverId;
-        for(Chara_Statue chara_statue:GameData.that.baseCharaStatueService.findAll(serverId)){
-            cacheMap.put(chara_statue.getNpcName(), JSONUtils.parseObject(chara_statue.getData(), CharaStatue.class));
-        }
+//        CharaStatueService.serverId = serverId;
+//        for(Chara_Statue chara_statue:GameData.that.baseCharaStatueService.findAll(serverId)){
+//            cacheMap.put(chara_statue.getNpcName(), JSONUtils.parseObject(chara_statue.getData(), CharaStatue.class));
+//        }
     }
 
     /**

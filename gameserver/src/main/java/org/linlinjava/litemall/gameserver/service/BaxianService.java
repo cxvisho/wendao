@@ -7,7 +7,7 @@ import org.linlinjava.litemall.db.service.base.BaseMapService;
 import org.linlinjava.litemall.db.service.base.BaseNpcService;
 import org.linlinjava.litemall.db.service.base.BaseRenwuMonsterService;
 import org.linlinjava.litemall.db.service.base.BaseRenwuService;
-import org.linlinjava.litemall.db.task.BaxianRepository;
+import org.linlinjava.litemall.db.repository.BaxianRepository;
 import org.linlinjava.litemall.db.task.TaskVO;
 import org.linlinjava.litemall.gameserver.data.vo.*;
 import org.linlinjava.litemall.gameserver.data.write.*;
@@ -23,7 +23,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
-import reactor.util.function.Tuple2;
 
 import java.util.Iterator;
 import java.util.List;

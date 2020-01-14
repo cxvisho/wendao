@@ -1,12 +1,13 @@
-package org.linlinjava.litemall.db.task;
+package org.linlinjava.litemall.db.repository;
 
 import com.alibaba.fastjson.JSON;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import org.linlinjava.litemall.db.domain.Npc;
-import org.linlinjava.litemall.db.service.JsonBasedRepository;
 import org.linlinjava.litemall.db.service.base.BaseMapService;
 import org.linlinjava.litemall.db.service.base.BaseNpcService;
+import org.linlinjava.litemall.db.task.TaskChain;
+import org.linlinjava.litemall.db.task.TaskVO;
 import org.linlinjava.litemall.db.util.JsonConfigLoader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,6 +31,7 @@ public class BaxianRepository implements JsonBasedRepository {
     private BaseNpcService npcService;
 
     public void loadConfigFromJsonString(String json) {
+        taskChainMap.clear();
         List<TaskChain> taskChainList = JSON.parseArray(json, TaskChain.class);
         for (TaskChain taskChain : taskChainList) {
             for (TaskVO taskVO : taskChain.getTaskList()) {
